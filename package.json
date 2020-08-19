@@ -1,0 +1,20 @@
+{
+  "name": "@rbxts/playfab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "out/init.lua",
+  "scripts": {
+    "prepublishOnly": "rbxtsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "types": "out/index.d.ts",
+  "devDependencies": {
+    "@rbxts/services": "^1.1.0",
+    "@rbxts/types": "^1.0.389"
+  }
+}
