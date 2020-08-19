@@ -1,12 +1,11 @@
 <h1 align="center"><b>PlayFab SDK</b></h1>
 <h3 align="center"> A PlayFab SDK for Roblox written in TypeScript.</h3>
 <p align="center">
-    <a href="https://github.com/grilme99/RobloxPlayFabSDK" target="_">GitHub</a>
+    <a href="https://github.com/grilme99/RobloxPlayFabSDK">GitHub</a>
     -
-    <a href="https://www.npmjs.com/package/@rbxts/playfab" target="_">NPM</a>
+    <a href="https://www.npmjs.com/package/@rbxts/playfab">NPM</a>
 <p>
 <hr>
-<br>
 
 # Introduction
 This is a module for interfacing with all PlayFab APIs and services that are relevant and/or usable on Roblox. It has been written with *TypeScript* (using <a href="http://roblox-ts.com/">Roblox-TS</a>). While it is possible to use the produced Lua code with a bit of modification, this project is specifically designed for Roblox-TS users because of the benefits TypeScript brings.
