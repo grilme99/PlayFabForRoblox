@@ -1,5 +1,5 @@
 -- Compiled with https://roblox-ts.github.io v0.3.2
--- August 19, 2020, 4:37 PM British Summer Time
+-- August 19, 2020, 5:16 PM British Summer Time
 
 local TS = _G[script];
 local exports = {};
@@ -13,6 +13,7 @@ local groups = TS.import(script, script, "GroupsApi");
 local multiplayer = TS.import(script, script, "MultiplayerApi");
 local profiles = TS.import(script, script, "ProfilesApi");
 local server = TS.import(script, script, "ServerApi");
+local settings = TS.import(script, script, "Settings").default;
 local AdminApi = admin;
 local AuthenticationApi = auth;
 local ClientApi = client;
@@ -23,6 +24,7 @@ local GroupsApi = groups;
 local MultiplayerApi = multiplayer;
 local ProfilesApi = profiles;
 local ServerApi = server;
+exports.Settings = settings;
 exports.AdminApi = AdminApi;
 exports.AuthenticationApi = AuthenticationApi;
 exports.ClientApi = ClientApi;

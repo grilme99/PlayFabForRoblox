@@ -8,8 +8,8 @@ import Settings from './Settings'
  * https://docs.microsoft.com/rest/api/playfab/data/object/getobjects
  */
 export const GetObjects = async (request: GetObjectsRequest) => {
-    if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
-    const result = await MakeRequest<GetObjectsResponse>('/Object/GetObjects', request, 'X-EntityToken', Settings.settings.entityToken)
+    if (Settings._internalSettings.entityToken === '') throw 'Must have Settings._internalSettings.entityToken set to call this method'
+    const result = await MakeRequest<GetObjectsResponse>('/Object/GetObjects', request, 'X-EntityToken', Settings._internalSettings.entityToken)
     return result
 }
 
@@ -18,7 +18,7 @@ export const GetObjects = async (request: GetObjectsRequest) => {
  * https://docs.microsoft.com/rest/api/playfab/data/object/setobjects
  */
 export const SetObjects = async (request: SetObjectsRequest) => {
-    if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
-    const result = await MakeRequest<SetObjectsResponse>('/Object/SetObjects', request, 'X-EntityToken', Settings.settings.entityToken)
+    if (Settings._internalSettings.entityToken === '') throw 'Must have Settings._internalSettings.entityToken set to call this method'
+    const result = await MakeRequest<SetObjectsResponse>('/Object/SetObjects', request, 'X-EntityToken', Settings._internalSettings.entityToken)
     return result
 }
