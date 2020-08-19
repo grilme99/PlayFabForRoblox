@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "PlayFab SDK for Roblox written in TypeScript",
   "main": "out/init.lua",
+  "types": "out",
   "homepage": "https://github.com/grilme99/RobloxPlayFabSDK",
   "scripts": {
     "prepublishOnly": "rbxtsc"
