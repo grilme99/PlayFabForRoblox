@@ -8,6 +8,7 @@ import * as groups from './GroupsApi'
 import * as multiplayer from './MultiplayerApi'
 import * as profiles from './ProfilesApi'
 import * as server from './ServerApi'
+import settings from './Settings'
 
 export const AdminApi = admin
 export const AuthenticationApi = auth
@@ -19,3 +20,4 @@ export const GroupsApi = groups
 export const MultiplayerApi = multiplayer
 export const ProfilesApi = profiles
 export const ServerApi = server
+export let Settings = settings
