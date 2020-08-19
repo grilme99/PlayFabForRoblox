@@ -1,4 +1,4 @@
-<h2 align="center"><b>PlayFab SDK</b></h2>
+<h1 align="center"><b>PlayFab SDK</b></h1>
 <h3 align="center"> A PlayFab SDK for Roblox written in TypeScript.</h3>
 <p align="center">
     <a href="https://github.com/grilme99/RobloxPlayFabSDK" target="_">GitHub</a>
