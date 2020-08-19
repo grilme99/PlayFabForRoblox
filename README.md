@@ -51,3 +51,19 @@ Players.PlayerAdded.Connect(async player => {
     }
 })
 ```
+
+# APIs
+This module covers all PlayFab APIs, excluding a few which are not usable on Roblox.
+
+- AdminApi
+- AuthenticationApi
+- ClientApi
+- DataApi
+- EventsApi
+- ExperimentationApi
+- GroupsApi
+- MultiplayerApi
+- ProfilesApi
+- ServerApi
+
+Should you come across any missing or broken endpoints then please let me know or create a pull request with a potential solution!
