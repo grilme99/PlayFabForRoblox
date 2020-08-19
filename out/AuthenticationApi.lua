@@ -1,5 +1,5 @@
 -- Compiled with https://roblox-ts.github.io v0.3.2
--- August 19, 2020, 4:29 PM British Summer Time
+-- August 19, 2020, 4:37 PM British Summer Time
 
 local TS = _G[script];
 local exports = {};
@@ -29,9 +29,7 @@ local GetEntityToken = TS.async(function(request, player)
 			authValue = Settings.settings.secretKey;
 		end;
 	end;
-	local result = TS.await(MakeRequest('/Authentication/GetEntityToken', request, authKey, authValue):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Authentication/GetEntityToken', request, authKey, authValue));
 	return result;
 end);
 exports.GetEntityToken = GetEntityToken;

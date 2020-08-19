@@ -1,5 +1,5 @@
 -- Compiled with https://roblox-ts.github.io v0.3.2
--- August 19, 2020, 4:29 PM British Summer Time
+-- August 19, 2020, 4:37 PM British Summer Time
 
 local TS = _G[script];
 local exports = {};
@@ -12,9 +12,7 @@ local AcceptTrade = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/AcceptTrade', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/AcceptTrade', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local AddFriend = TS.async(function(player, request)
@@ -22,9 +20,7 @@ local AddFriend = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/AddFriend', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/AddFriend', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local AddGenericID = TS.async(function(player, request)
@@ -32,9 +28,7 @@ local AddGenericID = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/AddGenericID', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/AddGenericID', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local AddSharedGroupMembers = TS.async(function(player, request)
@@ -42,9 +36,7 @@ local AddSharedGroupMembers = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/AddSharedGroupMembers', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/AddSharedGroupMembers', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local AddUserVirtualCurrency = TS.async(function(player, request)
@@ -52,9 +44,7 @@ local AddUserVirtualCurrency = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/AddUserVirtualCurrency', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/AddUserVirtualCurrency', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local CancelTrade = TS.async(function(player, request)
@@ -62,9 +52,7 @@ local CancelTrade = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/CancelTrade', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/CancelTrade', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local ConfirmPurchase = TS.async(function(player, request)
@@ -72,9 +60,7 @@ local ConfirmPurchase = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/ConfirmPurchase', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/ConfirmPurchase', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local ConsumeItem = TS.async(function(player, request)
@@ -82,9 +68,7 @@ local ConsumeItem = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/ConsumeItem', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/ConsumeItem', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local CreateSharedGroup = TS.async(function(player, request)
@@ -92,9 +76,7 @@ local CreateSharedGroup = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/CreateSharedGroup', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/CreateSharedGroup', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local ExecuteCloudScript = TS.async(function(player, request)
@@ -102,9 +84,7 @@ local ExecuteCloudScript = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/ExecuteCloudScript', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/ExecuteCloudScript', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetAccountInfo = TS.async(function(player, request)
@@ -112,9 +92,7 @@ local GetAccountInfo = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetAccountInfo', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetAccountInfo', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetAllUsersCharacters = TS.async(function(player, request)
@@ -122,9 +100,7 @@ local GetAllUsersCharacters = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetAllUsersCharacters', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetAllUsersCharacters', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetCatalogItems = TS.async(function(player, request)
@@ -132,9 +108,7 @@ local GetCatalogItems = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetCatalogItems', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetCatalogItems', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetCharacterData = TS.async(function(player, request)
@@ -142,9 +116,7 @@ local GetCharacterData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetCharacterData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetCharacterData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetCharacterInventory = TS.async(function(player, request)
@@ -152,9 +124,7 @@ local GetCharacterInventory = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetCharacterInventory', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetCharacterInventory', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetCharacterLeaderboard = TS.async(function(player, request)
@@ -162,9 +132,7 @@ local GetCharacterLeaderboard = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetCharacterLeaderboard', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetCharacterLeaderboard', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetCharacterReadOnlyData = TS.async(function(player, request)
@@ -172,9 +140,7 @@ local GetCharacterReadOnlyData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetCharacterReadOnlyData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetCharacterReadOnlyData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetCharacterStatistics = TS.async(function(player, request)
@@ -182,9 +148,7 @@ local GetCharacterStatistics = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetCharacterStatistics', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetCharacterStatistics', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetContentDownloadUrl = TS.async(function(player, request)
@@ -192,9 +156,7 @@ local GetContentDownloadUrl = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetContentDownloadUrl', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetContentDownloadUrl', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetFriendLeaderboard = TS.async(function(player, request)
@@ -202,9 +164,7 @@ local GetFriendLeaderboard = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetFriendLeaderboard', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetFriendLeaderboard', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetFriendLeaderboardAroundPlayer = TS.async(function(player, request)
@@ -212,9 +172,7 @@ local GetFriendLeaderboardAroundPlayer = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetFriendLeaderboardAroundPlayer', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetFriendLeaderboardAroundPlayer', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetFriendsList = TS.async(function(player, request)
@@ -222,9 +180,7 @@ local GetFriendsList = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetFriendsList', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetFriendsList', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetLeaderboard = TS.async(function(player, request)
@@ -232,9 +188,7 @@ local GetLeaderboard = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetLeaderboard', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetLeaderboard', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetLeaderboardAroundCharacter = TS.async(function(player, request)
@@ -242,9 +196,7 @@ local GetLeaderboardAroundCharacter = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetLeaderboardAroundCharacter', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetLeaderboardAroundCharacter', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetLeaderboardAroundPlayer = TS.async(function(player, request)
@@ -252,9 +204,7 @@ local GetLeaderboardAroundPlayer = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetLeaderboardAroundPlayer', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetLeaderboardAroundPlayer', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetPlayerCombinedInfo = TS.async(function(player, request)
@@ -262,9 +212,7 @@ local GetPlayerCombinedInfo = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetPlayerCombinedInfo', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetPlayerCombinedInfo', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetPlayerProfile = TS.async(function(player, request)
@@ -272,9 +220,7 @@ local GetPlayerProfile = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetPlayerProfile', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetPlayerProfile', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetPlayerSegments = TS.async(function(player, request)
@@ -282,9 +228,7 @@ local GetPlayerSegments = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetPlayerSegments', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetPlayerSegments', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetPlayerStatistics = TS.async(function(player, request)
@@ -292,9 +236,7 @@ local GetPlayerStatistics = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetPlayerStatistics', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetPlayerStatistics', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetPlayerStatisticVersions = TS.async(function(player, request)
@@ -302,9 +244,7 @@ local GetPlayerStatisticVersions = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetPlayerStatisticVersions', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetPlayerStatisticVersions', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetPlayerTags = TS.async(function(player, request)
@@ -312,9 +252,7 @@ local GetPlayerTags = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetPlayerTags', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetPlayerTags', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetPlayerTrades = TS.async(function(player, request)
@@ -322,9 +260,7 @@ local GetPlayerTrades = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetPlayerTrades', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetPlayerTrades', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetPlayFabIDsFromGenericIDs = TS.async(function(player, request)
@@ -332,9 +268,7 @@ local GetPlayFabIDsFromGenericIDs = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetPlayFabIDsFromGenericIDs', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetPlayFabIDsFromGenericIDs', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetPublisherData = TS.async(function(player, request)
@@ -342,9 +276,7 @@ local GetPublisherData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetPublisherData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetPublisherData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetPurchase = TS.async(function(player, request)
@@ -352,9 +284,7 @@ local GetPurchase = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetPurchase', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetPurchase', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetSharedGroupData = TS.async(function(player, request)
@@ -362,9 +292,7 @@ local GetSharedGroupData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetSharedGroupData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetSharedGroupData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetStoreItems = TS.async(function(player, request)
@@ -372,9 +300,7 @@ local GetStoreItems = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetStoreItems', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetStoreItems', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetTime = TS.async(function(player, request)
@@ -382,9 +308,7 @@ local GetTime = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetTime', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetTime', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetTitleData = TS.async(function(player, request)
@@ -392,9 +316,7 @@ local GetTitleData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetTitleData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetTitleData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetTitleNews = TS.async(function(player, request)
@@ -402,9 +324,7 @@ local GetTitleNews = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetTitleNews', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetTitleNews', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetTitlePublicKey = TS.async(function(player, request)
@@ -412,9 +332,7 @@ local GetTitlePublicKey = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetTitlePublicKey', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetTitlePublicKey', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetTradeStatus = TS.async(function(player, request)
@@ -422,9 +340,7 @@ local GetTradeStatus = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetTradeStatus', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetTradeStatus', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetUserData = TS.async(function(player, request)
@@ -432,9 +348,7 @@ local GetUserData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetUserData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetUserData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetUserInventory = TS.async(function(player, request)
@@ -442,9 +356,7 @@ local GetUserInventory = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetUserInventory', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetUserInventory', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetUserPublisherData = TS.async(function(player, request)
@@ -452,9 +364,7 @@ local GetUserPublisherData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetUserPublisherData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetUserPublisherData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetUserPublisherReadOnlyData = TS.async(function(player, request)
@@ -462,9 +372,7 @@ local GetUserPublisherReadOnlyData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetUserPublisherReadOnlyData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetUserPublisherReadOnlyData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GetUserReadOnlyData = TS.async(function(player, request)
@@ -472,9 +380,7 @@ local GetUserReadOnlyData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GetUserReadOnlyData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GetUserReadOnlyData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local GrantCharacterToUser = TS.async(function(player, request)
@@ -482,9 +388,7 @@ local GrantCharacterToUser = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/GrantCharacterToUser', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/GrantCharacterToUser', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local LinkCustomID = TS.async(function(player, request)
@@ -492,9 +396,7 @@ local LinkCustomID = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/LinkCustomID', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/LinkCustomID', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local LoginWithCustomID = TS.async(function(player, request)
@@ -506,9 +408,7 @@ local LoginWithCustomID = TS.async(function(player, request)
 	if not (_2 ~= "" and _2) then
 		error('Must be have settings.titleId set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/LoginWithCustomID', request):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/LoginWithCustomID', request));
 	local _3 = result.SessionTicket;
 	if not (_3 ~= "" and _3) then
 		error('No session ticket');
@@ -537,9 +437,7 @@ local Matchmake = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/Matchmake', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/Matchmake', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local OpenTrade = TS.async(function(player, request)
@@ -547,9 +445,7 @@ local OpenTrade = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/OpenTrade', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/OpenTrade', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local PayForPurchase = TS.async(function(player, request)
@@ -557,9 +453,7 @@ local PayForPurchase = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/PayForPurchase', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/PayForPurchase', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local PurchaseItem = TS.async(function(player, request)
@@ -567,9 +461,7 @@ local PurchaseItem = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/PurchaseItem', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/PurchaseItem', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local RedeemCoupon = TS.async(function(player, request)
@@ -577,9 +469,7 @@ local RedeemCoupon = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/RedeemCoupon', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/RedeemCoupon', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local RemoveFriend = TS.async(function(player, request)
@@ -587,9 +477,7 @@ local RemoveFriend = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/RemoveFriend', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/RemoveFriend', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local RemoveGenericID = TS.async(function(player, request)
@@ -597,9 +485,7 @@ local RemoveGenericID = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/RemoveGenericID', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/RemoveGenericID', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local RemoveSharedGroupMembers = TS.async(function(player, request)
@@ -607,9 +493,7 @@ local RemoveSharedGroupMembers = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/RemoveSharedGroupMembers', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/RemoveSharedGroupMembers', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local ReportPlayer = TS.async(function(player, request)
@@ -617,9 +501,7 @@ local ReportPlayer = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/ReportPlayer', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/ReportPlayer', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local SetFriendTags = TS.async(function(player, request)
@@ -627,9 +509,7 @@ local SetFriendTags = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/SetFriendTags', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/SetFriendTags', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local SetPlayerSecret = TS.async(function(player, request)
@@ -637,9 +517,7 @@ local SetPlayerSecret = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/SetPlayerSecret', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/SetPlayerSecret', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local StartPurchase = TS.async(function(player, request)
@@ -647,9 +525,7 @@ local StartPurchase = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/StartPurchase', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/StartPurchase', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local SubtractUserVirtualCurrency = TS.async(function(player, request)
@@ -657,9 +533,7 @@ local SubtractUserVirtualCurrency = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/SubtractUserVirtualCurrency', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/SubtractUserVirtualCurrency', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UnlinkCustomID = TS.async(function(player, request)
@@ -667,9 +541,7 @@ local UnlinkCustomID = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UnlinkCustomID', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UnlinkCustomID', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UnlockContainerInstance = TS.async(function(player, request)
@@ -677,9 +549,7 @@ local UnlockContainerInstance = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UnlockContainerInstance', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UnlockContainerInstance', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UnlockContainerItem = TS.async(function(player, request)
@@ -687,9 +557,7 @@ local UnlockContainerItem = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UnlockContainerItem', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UnlockContainerItem', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UpdateAvatarUrl = TS.async(function(player, request)
@@ -697,9 +565,7 @@ local UpdateAvatarUrl = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UpdateAvatarUrl', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UpdateAvatarUrl', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UpdateCharacterData = TS.async(function(player, request)
@@ -707,9 +573,7 @@ local UpdateCharacterData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UpdateCharacterData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UpdateCharacterData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UpdateCharacterStatistics = TS.async(function(player, request)
@@ -717,9 +581,7 @@ local UpdateCharacterStatistics = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UpdateCharacterStatistics', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UpdateCharacterStatistics', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UpdatePlayerStatistics = TS.async(function(player, request)
@@ -727,9 +589,7 @@ local UpdatePlayerStatistics = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UpdatePlayerStatistics', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UpdatePlayerStatistics', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UpdateSharedGroupData = TS.async(function(player, request)
@@ -737,9 +597,7 @@ local UpdateSharedGroupData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UpdateSharedGroupData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UpdateSharedGroupData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UpdateUserData = TS.async(function(player, request)
@@ -747,9 +605,7 @@ local UpdateUserData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UpdateUserData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UpdateUserData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UpdateUserPublisherData = TS.async(function(player, request)
@@ -757,9 +613,7 @@ local UpdateUserPublisherData = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UpdateUserPublisherData', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UpdateUserPublisherData', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local UpdateUserTitleDisplayName = TS.async(function(player, request)
@@ -767,9 +621,7 @@ local UpdateUserTitleDisplayName = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/UpdateUserTitleDisplayName', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/UpdateUserTitleDisplayName', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local WriteCharacterEvent = TS.async(function(player, request)
@@ -777,9 +629,7 @@ local WriteCharacterEvent = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/WriteCharacterEvent', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/WriteCharacterEvent', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local WritePlayerEvent = TS.async(function(player, request)
@@ -787,9 +637,7 @@ local WritePlayerEvent = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/WritePlayerEvent', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/WritePlayerEvent', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 local WriteTitleEvent = TS.async(function(player, request)
@@ -797,9 +645,7 @@ local WriteTitleEvent = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Client/WriteTitleEvent', request, 'X-Authorization', data.SessionTicket):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Client/WriteTitleEvent', request, 'X-Authorization', data.SessionTicket));
 	return result;
 end);
 exports.AcceptTrade = AcceptTrade;

@@ -1,5 +1,5 @@
 -- Compiled with https://roblox-ts.github.io v0.3.2
--- August 19, 2020, 4:29 PM British Summer Time
+-- August 19, 2020, 4:37 PM British Summer Time
 
 local TS = _G[script];
 local exports = {};
@@ -11,9 +11,7 @@ local WriteEvents = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Event/WriteEvents', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Event/WriteEvents', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local WriteTelemetryEvents = TS.async(function(player, request)
@@ -21,9 +19,7 @@ local WriteTelemetryEvents = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Event/WriteTelemetryEvents', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Event/WriteTelemetryEvents', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 exports.WriteEvents = WriteEvents;

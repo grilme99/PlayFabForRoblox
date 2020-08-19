@@ -1,5 +1,5 @@
 -- Compiled with https://roblox-ts.github.io v0.3.2
--- August 19, 2020, 4:29 PM British Summer Time
+-- August 19, 2020, 4:37 PM British Summer Time
 
 local TS = _G[script];
 local exports = {};
@@ -10,9 +10,7 @@ local AbortTaskInstance = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/AbortTaskInstance', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/AbortTaskInstance', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local AddLocalizedNews = TS.async(function(request)
@@ -20,9 +18,7 @@ local AddLocalizedNews = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/AddLocalizedNews', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/AddLocalizedNews', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local AddNews = TS.async(function(request)
@@ -30,9 +26,7 @@ local AddNews = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/AddNews', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/AddNews', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local AddPlayerTag = TS.async(function(request)
@@ -40,9 +34,7 @@ local AddPlayerTag = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/AddPlayerTag', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/AddPlayerTag', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local AddUserVirtualCurrency = TS.async(function(request)
@@ -50,9 +42,7 @@ local AddUserVirtualCurrency = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/AddUserVirtualCurrency', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/AddUserVirtualCurrency', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local AddVirtualCurrencyTypes = TS.async(function(request)
@@ -60,9 +50,7 @@ local AddVirtualCurrencyTypes = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/AddVirtualCurrencyTypes', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/AddVirtualCurrencyTypes', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local BanUsers = TS.async(function(request)
@@ -70,9 +58,7 @@ local BanUsers = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/BanUsers', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/BanUsers', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local CheckLimitedEditionItemAvailability = TS.async(function(request)
@@ -80,9 +66,7 @@ local CheckLimitedEditionItemAvailability = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/CheckLimitedEditionItemAvailability', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/CheckLimitedEditionItemAvailability', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local CreateActionsOnPlayersInSegmentTask = TS.async(function(request)
@@ -90,9 +74,7 @@ local CreateActionsOnPlayersInSegmentTask = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/CreateActionsOnPlayersInSegmentTask', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/CreateActionsOnPlayersInSegmentTask', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local CreateCloudScriptTask = TS.async(function(request)
@@ -100,9 +82,7 @@ local CreateCloudScriptTask = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/CreateCloudScriptTask', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/CreateCloudScriptTask', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local CreateInsightsScheduledScalingTask = TS.async(function(request)
@@ -110,9 +90,7 @@ local CreateInsightsScheduledScalingTask = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/CreateInsightsScheduledScalingTask', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/CreateInsightsScheduledScalingTask', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local CreatePlayerSharedSecret = TS.async(function(request)
@@ -120,9 +98,7 @@ local CreatePlayerSharedSecret = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/CreatePlayerSharedSecret', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/CreatePlayerSharedSecret', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local CreatePlayerStatisticDefinition = TS.async(function(request)
@@ -130,9 +106,7 @@ local CreatePlayerStatisticDefinition = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/CreatePlayerStatisticDefinition', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/CreatePlayerStatisticDefinition', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local DeleteContent = TS.async(function(request)
@@ -140,9 +114,7 @@ local DeleteContent = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/DeleteContent', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/DeleteContent', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local DeleteMasterPlayerAccount = TS.async(function(request)
@@ -150,9 +122,7 @@ local DeleteMasterPlayerAccount = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/DeleteMasterPlayerAccount', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/DeleteMasterPlayerAccount', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local DeletePlayer = TS.async(function(request)
@@ -160,9 +130,7 @@ local DeletePlayer = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/DeletePlayer', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/DeletePlayer', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local DeletePlayerSharedSecret = TS.async(function(request)
@@ -170,9 +138,7 @@ local DeletePlayerSharedSecret = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/DeletePlayerSharedSecret', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/DeletePlayerSharedSecret', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local DeleteStore = TS.async(function(request)
@@ -180,9 +146,7 @@ local DeleteStore = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/DeleteStore', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/DeleteStore', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local DeleteTask = TS.async(function(request)
@@ -190,9 +154,7 @@ local DeleteTask = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/DeleteTask', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/DeleteTask', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local DeleteTitle = TS.async(function(request)
@@ -200,9 +162,7 @@ local DeleteTitle = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/DeleteTitle', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/DeleteTitle', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local DeleteTitleDataOverride = TS.async(function(request)
@@ -210,9 +170,7 @@ local DeleteTitleDataOverride = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/DeleteTitleDataOverride', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/DeleteTitleDataOverride', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local ExportMasterPlayerData = TS.async(function(request)
@@ -220,9 +178,7 @@ local ExportMasterPlayerData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/ExportMasterPlayerData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/ExportMasterPlayerData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetActionsOnPlayersInSegmentTaskInstance = TS.async(function(request)
@@ -230,9 +186,7 @@ local GetActionsOnPlayersInSegmentTaskInstance = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetActionsOnPlayersInSegmentTaskInstance', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetActionsOnPlayersInSegmentTaskInstance', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetAllSegments = TS.async(function(request)
@@ -240,9 +194,7 @@ local GetAllSegments = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetAllSegments', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetAllSegments', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetCatalogItems = TS.async(function(request)
@@ -250,9 +202,7 @@ local GetCatalogItems = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetCatalogItems', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetCatalogItems', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetCloudScriptRevision = TS.async(function(request)
@@ -260,9 +210,7 @@ local GetCloudScriptRevision = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetCloudScriptRevision', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetCloudScriptRevision', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetCloudScriptTaskInstance = TS.async(function(request)
@@ -270,9 +218,7 @@ local GetCloudScriptTaskInstance = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetCloudScriptTaskInstance', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetCloudScriptTaskInstance', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetCloudScriptVersions = TS.async(function(request)
@@ -280,9 +226,7 @@ local GetCloudScriptVersions = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetCloudScriptVersions', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetCloudScriptVersions', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetContentList = TS.async(function(request)
@@ -290,9 +234,7 @@ local GetContentList = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetContentList', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetContentList', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetContentUploadUrl = TS.async(function(request)
@@ -300,9 +242,7 @@ local GetContentUploadUrl = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetContentUploadUrl', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetContentUploadUrl', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetDataReport = TS.async(function(request)
@@ -310,9 +250,7 @@ local GetDataReport = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetDataReport', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetDataReport', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetMatchmakerGameInfo = TS.async(function(request)
@@ -320,9 +258,7 @@ local GetMatchmakerGameInfo = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetMatchmakerGameInfo', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetMatchmakerGameInfo', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetMatchmakerGameModes = TS.async(function(request)
@@ -330,9 +266,7 @@ local GetMatchmakerGameModes = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetMatchmakerGameModes', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetMatchmakerGameModes', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPlayedTitleList = TS.async(function(request)
@@ -340,9 +274,7 @@ local GetPlayedTitleList = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPlayedTitleList', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPlayedTitleList', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPlayerIdFromAuthToken = TS.async(function(request)
@@ -350,9 +282,7 @@ local GetPlayerIdFromAuthToken = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPlayerIdFromAuthToken', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPlayerIdFromAuthToken', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPlayerProfile = TS.async(function(request)
@@ -360,9 +290,7 @@ local GetPlayerProfile = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPlayerProfile', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPlayerProfile', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPlayerSegments = TS.async(function(request)
@@ -370,9 +298,7 @@ local GetPlayerSegments = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPlayerSegments', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPlayerSegments', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPlayerSharedSecrets = TS.async(function(request)
@@ -380,9 +306,7 @@ local GetPlayerSharedSecrets = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPlayerSharedSecrets', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPlayerSharedSecrets', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPlayersInSegment = TS.async(function(request)
@@ -390,9 +314,7 @@ local GetPlayersInSegment = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPlayersInSegment', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPlayersInSegment', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPlayerStatisticDefinitions = TS.async(function(request)
@@ -400,9 +322,7 @@ local GetPlayerStatisticDefinitions = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPlayerStatisticDefinitions', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPlayerStatisticDefinitions', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPlayerStatisticVersions = TS.async(function(request)
@@ -410,9 +330,7 @@ local GetPlayerStatisticVersions = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPlayerStatisticVersions', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPlayerStatisticVersions', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPlayerTags = TS.async(function(request)
@@ -420,9 +338,7 @@ local GetPlayerTags = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPlayerTags', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPlayerTags', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPolicy = TS.async(function(request)
@@ -430,9 +346,7 @@ local GetPolicy = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPolicy', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPolicy', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetPublisherData = TS.async(function(request)
@@ -440,9 +354,7 @@ local GetPublisherData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetPublisherData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetPublisherData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetRandomResultTables = TS.async(function(request)
@@ -450,9 +362,7 @@ local GetRandomResultTables = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetRandomResultTables', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetRandomResultTables', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetStoreItems = TS.async(function(request)
@@ -460,9 +370,7 @@ local GetStoreItems = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetStoreItems', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetStoreItems', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetTaskInstances = TS.async(function(request)
@@ -470,9 +378,7 @@ local GetTaskInstances = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetTaskInstances', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetTaskInstances', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetTasks = TS.async(function(request)
@@ -480,9 +386,7 @@ local GetTasks = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetTasks', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetTasks', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetTitleData = TS.async(function(request)
@@ -490,9 +394,7 @@ local GetTitleData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetTitleData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetTitleData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetTitleInternalData = TS.async(function(request)
@@ -500,9 +402,7 @@ local GetTitleInternalData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetTitleInternalData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetTitleInternalData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetUserAccountInfo = TS.async(function(request)
@@ -510,9 +410,7 @@ local GetUserAccountInfo = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetUserAccountInfo', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetUserAccountInfo', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetUserBans = TS.async(function(request)
@@ -520,9 +418,7 @@ local GetUserBans = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetUserBans', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetUserBans', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetUserData = TS.async(function(request)
@@ -530,9 +426,7 @@ local GetUserData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetUserData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetUserData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetUserInternalData = TS.async(function(request)
@@ -540,9 +434,7 @@ local GetUserInternalData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetUserInternalData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetUserInternalData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetUserInventory = TS.async(function(request)
@@ -550,9 +442,7 @@ local GetUserInventory = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetUserInventory', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetUserInventory', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetUserPublisherData = TS.async(function(request)
@@ -560,9 +450,7 @@ local GetUserPublisherData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetUserPublisherData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetUserPublisherData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetUserPublisherInternalData = TS.async(function(request)
@@ -570,9 +458,7 @@ local GetUserPublisherInternalData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetUserPublisherInternalData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetUserPublisherInternalData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetUserPublisherReadOnlyData = TS.async(function(request)
@@ -580,9 +466,7 @@ local GetUserPublisherReadOnlyData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetUserPublisherReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetUserPublisherReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GetUserReadOnlyData = TS.async(function(request)
@@ -590,9 +474,7 @@ local GetUserReadOnlyData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GetUserReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GetUserReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local GrantItemsToUsers = TS.async(function(request)
@@ -600,9 +482,7 @@ local GrantItemsToUsers = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/GrantItemsToUsers', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/GrantItemsToUsers', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local IncrementLimitedEditionItemAvailability = TS.async(function(request)
@@ -610,9 +490,7 @@ local IncrementLimitedEditionItemAvailability = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/IncrementLimitedEditionItemAvailability', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/IncrementLimitedEditionItemAvailability', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local IncrementPlayerStatisticVersion = TS.async(function(request)
@@ -620,9 +498,7 @@ local IncrementPlayerStatisticVersion = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/IncrementPlayerStatisticVersion', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/IncrementPlayerStatisticVersion', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local ListVirtualCurrencyTypes = TS.async(function(request)
@@ -630,9 +506,7 @@ local ListVirtualCurrencyTypes = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/ListVirtualCurrencyTypes', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/ListVirtualCurrencyTypes', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local ModifyMatchmakerGameModes = TS.async(function(request)
@@ -640,9 +514,7 @@ local ModifyMatchmakerGameModes = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/ModifyMatchmakerGameModes', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/ModifyMatchmakerGameModes', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local RemovePlayerTag = TS.async(function(request)
@@ -650,9 +522,7 @@ local RemovePlayerTag = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/RemovePlayerTag', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/RemovePlayerTag', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local RemoveVirtualCurrencyTypes = TS.async(function(request)
@@ -660,9 +530,7 @@ local RemoveVirtualCurrencyTypes = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/RemoveVirtualCurrencyTypes', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/RemoveVirtualCurrencyTypes', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local ResetCharacterStatistics = TS.async(function(request)
@@ -670,9 +538,7 @@ local ResetCharacterStatistics = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/ResetCharacterStatistics', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/ResetCharacterStatistics', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local RevokeAllBansForUser = TS.async(function(request)
@@ -680,9 +546,7 @@ local RevokeAllBansForUser = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/RevokeAllBansForUser', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/RevokeAllBansForUser', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local RevokeBans = TS.async(function(request)
@@ -690,9 +554,7 @@ local RevokeBans = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/RevokeBans', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/RevokeBans', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local RevokeInventoryItem = TS.async(function(request)
@@ -700,9 +562,7 @@ local RevokeInventoryItem = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/RevokeInventoryItem', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/RevokeInventoryItem', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local RevokeInventoryItems = TS.async(function(request)
@@ -710,9 +570,7 @@ local RevokeInventoryItems = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/RevokeInventoryItems', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/RevokeInventoryItems', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local RunTask = TS.async(function(request)
@@ -720,9 +578,7 @@ local RunTask = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/RunTask', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/RunTask', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local SetCatalogItems = TS.async(function(request)
@@ -730,9 +586,7 @@ local SetCatalogItems = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/SetCatalogItems', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/SetCatalogItems', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local SetPlayerSecret = TS.async(function(request)
@@ -740,9 +594,7 @@ local SetPlayerSecret = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/SetPlayerSecret', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/SetPlayerSecret', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local SetPublishedRevision = TS.async(function(request)
@@ -750,9 +602,7 @@ local SetPublishedRevision = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/SetPublishedRevision', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/SetPublishedRevision', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local SetPublisherData = TS.async(function(request)
@@ -760,9 +610,7 @@ local SetPublisherData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/SetPublisherData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/SetPublisherData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local SetStoreItems = TS.async(function(request)
@@ -770,9 +618,7 @@ local SetStoreItems = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/SetStoreItems', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/SetStoreItems', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local SetTitleData = TS.async(function(request)
@@ -780,9 +626,7 @@ local SetTitleData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/SetTitleData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/SetTitleData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local SubtractUserVirtualCurrency = TS.async(function(request)
@@ -790,9 +634,7 @@ local SubtractUserVirtualCurrency = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/SubtractUserVirtualCurrency', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/SubtractUserVirtualCurrency', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdateBans = TS.async(function(request)
@@ -800,9 +642,7 @@ local UpdateBans = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdateBans', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdateBans', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdateCatalogItems = TS.async(function(request)
@@ -810,9 +650,7 @@ local UpdateCatalogItems = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdateCatalogItems', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdateCatalogItems', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdatePlayerSharedSecret = TS.async(function(request)
@@ -820,9 +658,7 @@ local UpdatePlayerSharedSecret = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdatePlayerSharedSecret', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdatePlayerSharedSecret', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdatePlayerStatisticDefinition = TS.async(function(request)
@@ -830,9 +666,7 @@ local UpdatePlayerStatisticDefinition = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdatePlayerStatisticDefinition', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdatePlayerStatisticDefinition', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdateRandomResultTables = TS.async(function(request)
@@ -840,9 +674,7 @@ local UpdateRandomResultTables = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdateRandomResultTables', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdateRandomResultTables', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdateUserData = TS.async(function(request)
@@ -850,9 +682,7 @@ local UpdateUserData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdateUserData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdateUserData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdateUserInternalData = TS.async(function(request)
@@ -860,9 +690,7 @@ local UpdateUserInternalData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdateUserInternalData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdateUserInternalData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdateUserPublisherData = TS.async(function(request)
@@ -870,9 +698,7 @@ local UpdateUserPublisherData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdateUserPublisherData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdateUserPublisherData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdateUserPublisherInternalData = TS.async(function(request)
@@ -880,9 +706,7 @@ local UpdateUserPublisherInternalData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdateUserPublisherInternalData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdateUserPublisherInternalData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdateUserPublisherReadOnlyData = TS.async(function(request)
@@ -890,9 +714,7 @@ local UpdateUserPublisherReadOnlyData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdateUserPublisherReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdateUserPublisherReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdateUserReadOnlyData = TS.async(function(request)
@@ -900,9 +722,7 @@ local UpdateUserReadOnlyData = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdateUserReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdateUserReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 local UpdateUserTitleDisplayName = TS.async(function(request)
@@ -910,9 +730,7 @@ local UpdateUserTitleDisplayName = TS.async(function(request)
 	if not (_0 ~= "" and _0) then
 		error('Must have Settings.settings.secretKey set to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Admin/UpdateUserTitleDisplayName', request, 'X-SecretKey', Settings.settings.secretKey):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Admin/UpdateUserTitleDisplayName', request, 'X-SecretKey', Settings.settings.secretKey));
 	return result;
 end);
 exports.AbortTaskInstance = AbortTaskInstance;

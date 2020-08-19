@@ -1,5 +1,5 @@
 -- Compiled with https://roblox-ts.github.io v0.3.2
--- August 19, 2020, 4:29 PM British Summer Time
+-- August 19, 2020, 4:37 PM British Summer Time
 
 local TS = _G[script];
 local exports = {};
@@ -11,9 +11,7 @@ local AcceptGroupApplication = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/AcceptGroupApplication', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/AcceptGroupApplication', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local AcceptGroupInvitation = TS.async(function(player, request)
@@ -21,9 +19,7 @@ local AcceptGroupInvitation = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/AcceptGroupInvitation', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/AcceptGroupInvitation', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local AddMembers = TS.async(function(player, request)
@@ -31,9 +27,7 @@ local AddMembers = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/AddMembers', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/AddMembers', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local ApplyToGroup = TS.async(function(player, request)
@@ -41,9 +35,7 @@ local ApplyToGroup = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/ApplyToGroup', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/ApplyToGroup', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local BlockEntity = TS.async(function(player, request)
@@ -51,9 +43,7 @@ local BlockEntity = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/BlockEntity', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/BlockEntity', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local ChangeMemberRole = TS.async(function(player, request)
@@ -61,9 +51,7 @@ local ChangeMemberRole = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/ChangeMemberRole', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/ChangeMemberRole', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local CreateGroup = TS.async(function(player, request)
@@ -71,9 +59,7 @@ local CreateGroup = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/CreateGroup', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/CreateGroup', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local CreateRole = TS.async(function(player, request)
@@ -81,9 +67,7 @@ local CreateRole = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/CreateRole', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/CreateRole', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local DeleteGroup = TS.async(function(player, request)
@@ -91,9 +75,7 @@ local DeleteGroup = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/DeleteGroup', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/DeleteGroup', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local GetGroup = TS.async(function(player, request)
@@ -101,9 +83,7 @@ local GetGroup = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/GetGroup', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/GetGroup', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local InviteToGroup = TS.async(function(player, request)
@@ -111,9 +91,7 @@ local InviteToGroup = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/InviteToGroup', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/InviteToGroup', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local IsMember = TS.async(function(player, request)
@@ -121,9 +99,7 @@ local IsMember = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/IsMember', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/IsMember', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local ListGroupApplications = TS.async(function(player, request)
@@ -131,9 +107,7 @@ local ListGroupApplications = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/ListGroupApplications', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/ListGroupApplications', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local ListGroupMembers = TS.async(function(player, request)
@@ -141,9 +115,7 @@ local ListGroupMembers = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/ListGroupMembers', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/ListGroupMembers', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local ListMembership = TS.async(function(player, request)
@@ -151,9 +123,7 @@ local ListMembership = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/ListMembership', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/ListMembership', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local ListMembershipOpportunities = TS.async(function(player, request)
@@ -161,9 +131,7 @@ local ListMembershipOpportunities = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/ListMembershipOpportunities', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/ListMembershipOpportunities', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local RemoveGroupApplication = TS.async(function(player, request)
@@ -171,9 +139,7 @@ local RemoveGroupApplication = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/RemoveGroupApplication', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/RemoveGroupApplication', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local RemoveGroupInvitation = TS.async(function(player, request)
@@ -181,9 +147,7 @@ local RemoveGroupInvitation = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/RemoveGroupInvitation', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/RemoveGroupInvitation', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local RemoveMembers = TS.async(function(player, request)
@@ -191,9 +155,7 @@ local RemoveMembers = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/RemoveMembers', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/RemoveMembers', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local UnblockEntity = TS.async(function(player, request)
@@ -201,9 +163,7 @@ local UnblockEntity = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/UnblockEntity', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/UnblockEntity', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local UpdateGroup = TS.async(function(player, request)
@@ -211,9 +171,7 @@ local UpdateGroup = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/UpdateGroup', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/UpdateGroup', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 local UpdateRole = TS.async(function(player, request)
@@ -221,9 +179,7 @@ local UpdateRole = TS.async(function(player, request)
 	if (not (IsClientLoggedIn(player))) or (not (data)) then
 		error('Must be logged in to call this method');
 	end;
-	local result = TS.await(MakeRequest('/Group/UpdateRole', request, 'X-EntityToken', data.EntityToken):catch(function(e)
-		error(e);
-	end));
+	local result = TS.await(MakeRequest('/Group/UpdateRole', request, 'X-EntityToken', data.EntityToken));
 	return result;
 end);
 exports.AcceptGroupApplication = AcceptGroupApplication;
