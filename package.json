@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/playfab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PlayFab SDK for Roblox written in TypeScript",
   "main": "out/init.lua",
   "homepage": "https://github.com/grilme99/RobloxPlayFabSDK",
