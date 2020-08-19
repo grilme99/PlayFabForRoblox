@@ -12,7 +12,7 @@
 		"rootDir": "src",
 		"outDir": "out",
 
-		"declaration": true,
+		"declaration": false,
 
 		"jsx": "react",
 		"jsxFactory": "Roact.createElement"
