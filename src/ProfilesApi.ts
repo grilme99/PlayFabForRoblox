@@ -10,7 +10,6 @@ import Settings from './Settings'
 export const GetGlobalPolicy = async (request: GetGlobalPolicyRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetGlobalPolicyResponse>('/Profile/GetGlobalPolicy', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -21,7 +20,6 @@ export const GetGlobalPolicy = async (request: GetGlobalPolicyRequest) => {
 export const GetProfile = async (request: GetEntityProfileRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetEntityProfileResponse>('/Profile/GetProfile', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -32,7 +30,6 @@ export const GetProfile = async (request: GetEntityProfileRequest) => {
 export const GetProfiles = async (request: GetEntityProfileRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetEntityProfileResponse>('/Profile/GetProfiles', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -43,7 +40,6 @@ export const GetProfiles = async (request: GetEntityProfileRequest) => {
 export const GetTitlePlayersFromMasterPlayerAccountIds = async (request: GetTitlePlayersFromMasterPlayerAccountIdsRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetTitlePlayersFromMasterPlayerAccountIdsResponse>('/Profile/GetTitlePlayersFromMasterPlayerAccountIds', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -54,7 +50,6 @@ export const GetTitlePlayersFromMasterPlayerAccountIds = async (request: GetTitl
 export const SetGlobalPolicy = async (request: SetGlobalPolicyRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<SetGlobalPolicyResponse>('/Profile/SetGlobalPolicy', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -66,7 +61,6 @@ export const SetGlobalPolicy = async (request: SetGlobalPolicyRequest) => {
 export const SetProfileLanguage = async (request: SetProfileLanguageRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<SetProfileLanguageResponse>('/Profile/SetProfileLanguage', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -77,6 +71,5 @@ export const SetProfileLanguage = async (request: SetProfileLanguageRequest) => 
 export const SetProfilePolicy = async (request: SetEntityProfilePolicyRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<SetEntityProfilePolicyResponse>('/Profile/SetProfilePolicy', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }

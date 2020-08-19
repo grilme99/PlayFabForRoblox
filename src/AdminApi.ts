@@ -10,7 +10,6 @@ import Settings from './Settings'
 export const AbortTaskInstance = async (request: AbortTaskInstanceRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<EmptyResponse>('/Admin/AbortTaskInstance', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -21,7 +20,6 @@ export const AbortTaskInstance = async (request: AbortTaskInstanceRequest) => {
 export const AddLocalizedNews = async (request: AddLocalizedNewsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<AddLocalizedNewsResult>('/Admin/AddLocalizedNews', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -32,7 +30,6 @@ export const AddLocalizedNews = async (request: AddLocalizedNewsRequest) => {
 export const AddNews = async (request: AddNewsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<AddNewsResult>('/Admin/AddNews', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -43,7 +40,6 @@ export const AddNews = async (request: AddNewsRequest) => {
 export const AddPlayerTag = async (request: AddPlayerTagRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<AddPlayerTagResult>('/Admin/AddPlayerTag', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -54,7 +50,6 @@ export const AddPlayerTag = async (request: AddPlayerTagRequest) => {
 export const AddUserVirtualCurrency = async (request: AddUserVirtualCurrencyRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<ModifyUserVirtualCurrencyResult>('/Admin/AddUserVirtualCurrency', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -66,7 +61,6 @@ export const AddUserVirtualCurrency = async (request: AddUserVirtualCurrencyRequ
 export const AddVirtualCurrencyTypes = async (request: AddVirtualCurrencyTypesRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<BlankResult>('/Admin/AddVirtualCurrencyTypes', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -77,7 +71,6 @@ export const AddVirtualCurrencyTypes = async (request: AddVirtualCurrencyTypesRe
 export const BanUsers = async (request: BanUsersRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<BanUsersResult>('/Admin/BanUsers', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -88,7 +81,6 @@ export const BanUsers = async (request: BanUsersRequest) => {
 export const CheckLimitedEditionItemAvailability = async (request: CheckLimitedEditionItemAvailabilityRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<CheckLimitedEditionItemAvailabilityResult>('/Admin/CheckLimitedEditionItemAvailability', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -99,7 +91,6 @@ export const CheckLimitedEditionItemAvailability = async (request: CheckLimitedE
 export const CreateActionsOnPlayersInSegmentTask = async (request: CreateActionsOnPlayerSegmentTaskRequest ) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<CreateTaskResult>('/Admin/CreateActionsOnPlayersInSegmentTask', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -110,7 +101,6 @@ export const CreateActionsOnPlayersInSegmentTask = async (request: CreateActions
 export const CreateCloudScriptTask = async (request: CreateCloudScriptTaskRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<CreateTaskResult>('/Admin/CreateCloudScriptTask', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -121,7 +111,6 @@ export const CreateCloudScriptTask = async (request: CreateCloudScriptTaskReques
 export const CreateInsightsScheduledScalingTask = async (request: CreateInsightsScheduledScalingTaskRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<CreateTaskResult>('/Admin/CreateInsightsScheduledScalingTask', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -133,7 +122,6 @@ export const CreateInsightsScheduledScalingTask = async (request: CreateInsights
 export const CreatePlayerSharedSecret = async (request: CreatePlayerSharedSecretRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<CreatePlayerSharedSecretResult>('/Admin/CreatePlayerSharedSecret', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -145,7 +133,6 @@ export const CreatePlayerSharedSecret = async (request: CreatePlayerSharedSecret
 export const CreatePlayerStatisticDefinition = async (request: CreatePlayerStatisticDefinitionRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<CreatePlayerStatisticDefinitionResult>('/Admin/CreatePlayerStatisticDefinition', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -156,7 +143,6 @@ export const CreatePlayerStatisticDefinition = async (request: CreatePlayerStati
 export const DeleteContent = async (request: DeleteContentRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<BlankResult>('/Admin/DeleteContent', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -167,7 +153,6 @@ export const DeleteContent = async (request: DeleteContentRequest) => {
 export const DeleteMasterPlayerAccount = async (request: DeleteMasterPlayerAccountRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<DeleteMasterPlayerAccountResult>('/Admin/DeleteMasterPlayerAccount', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -178,7 +163,6 @@ export const DeleteMasterPlayerAccount = async (request: DeleteMasterPlayerAccou
 export const DeletePlayer = async (request: DeletePlayerRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<DeletePlayerResult>('/Admin/DeletePlayer', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -190,7 +174,6 @@ export const DeletePlayer = async (request: DeletePlayerRequest) => {
 export const DeletePlayerSharedSecret = async (request: DeletePlayerSharedSecretRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<DeletePlayerSharedSecretResult>('/Admin/DeletePlayerSharedSecret', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -201,7 +184,6 @@ export const DeletePlayerSharedSecret = async (request: DeletePlayerSharedSecret
 export const DeleteStore = async (request: DeleteStoreRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<DeleteStoreResult>('/Admin/DeleteStore', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -212,7 +194,6 @@ export const DeleteStore = async (request: DeleteStoreRequest) => {
 export const DeleteTask = async (request: DeleteTaskRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<EmptyResponse>('/Admin/DeleteTask', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -223,7 +204,6 @@ export const DeleteTask = async (request: DeleteTaskRequest) => {
 export const DeleteTitle = async (request: DeleteTitleRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<DeleteTitleResult>('/Admin/DeleteTitle', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -234,7 +214,6 @@ export const DeleteTitle = async (request: DeleteTitleRequest) => {
 export const DeleteTitleDataOverride = async (request: DeleteTitleDataOverrideRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<DeleteTitleDataOverrideResult>('/Admin/DeleteTitleDataOverride', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -245,7 +224,6 @@ export const DeleteTitleDataOverride = async (request: DeleteTitleDataOverrideRe
 export const ExportMasterPlayerData = async (request: ExportMasterPlayerDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<ExportMasterPlayerDataResult>('/Admin/ExportMasterPlayerData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -256,7 +234,6 @@ export const ExportMasterPlayerData = async (request: ExportMasterPlayerDataRequ
 export const GetActionsOnPlayersInSegmentTaskInstance = async (request: GetTaskInstanceRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetActionsOnPlayersInSegmentTaskInstanceResult>('/Admin/GetActionsOnPlayersInSegmentTaskInstance', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -268,7 +245,6 @@ export const GetActionsOnPlayersInSegmentTaskInstance = async (request: GetTaskI
 export const GetAllSegments = async (request: GetAllSegmentsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetAllSegmentsResult>('/Admin/GetAllSegments', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -279,7 +255,6 @@ export const GetAllSegments = async (request: GetAllSegmentsRequest) => {
 export const GetCatalogItems = async (request: GetCatalogItemsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetCatalogItemsResult>('/Admin/GetCatalogItems', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -290,7 +265,6 @@ export const GetCatalogItems = async (request: GetCatalogItemsRequest) => {
 export const GetCloudScriptRevision = async (request: GetCloudScriptRevisionRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetCloudScriptRevisionResult>('/Admin/GetCloudScriptRevision', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -301,7 +275,6 @@ export const GetCloudScriptRevision = async (request: GetCloudScriptRevisionRequ
 export const GetCloudScriptTaskInstance = async (request: GetTaskInstanceRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetCloudScriptTaskInstanceResult>('/Admin/GetCloudScriptTaskInstance', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -313,7 +286,6 @@ export const GetCloudScriptTaskInstance = async (request: GetTaskInstanceRequest
 export const GetCloudScriptVersions = async (request: GetCloudScriptVersionsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetCloudScriptVersionsResult>('/Admin/GetCloudScriptVersions', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -324,7 +296,6 @@ export const GetCloudScriptVersions = async (request: GetCloudScriptVersionsRequ
 export const GetContentList = async (request: GetContentListRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetContentListResult>('/Admin/GetContentList', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -337,7 +308,6 @@ export const GetContentList = async (request: GetContentListRequest) => {
 export const GetContentUploadUrl = async (request: GetContentUploadUrlRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetContentUploadUrlResult>('/Admin/GetContentUploadUrl', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -348,7 +318,6 @@ export const GetContentUploadUrl = async (request: GetContentUploadUrlRequest) =
 export const GetDataReport = async (request: GetDataReportRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetDataReportResult>('/Admin/GetDataReport', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -359,7 +328,6 @@ export const GetDataReport = async (request: GetDataReportRequest) => {
 export const GetMatchmakerGameInfo = async (request: GetMatchmakerGameInfoRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetMatchmakerGameInfoResult>('/Admin/GetMatchmakerGameInfo', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -370,7 +338,6 @@ export const GetMatchmakerGameInfo = async (request: GetMatchmakerGameInfoReques
 export const GetMatchmakerGameModes = async (request: GetMatchmakerGameModesRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetMatchmakerGameModesResult>('/Admin/GetMatchmakerGameModes', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -381,7 +348,6 @@ export const GetMatchmakerGameModes = async (request: GetMatchmakerGameModesRequ
 export const GetPlayedTitleList = async (request: GetPlayedTitleListRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPlayedTitleListResult>('/Admin/GetPlayedTitleList', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -392,7 +358,6 @@ export const GetPlayedTitleList = async (request: GetPlayedTitleListRequest) => 
 export const GetPlayerIdFromAuthToken = async (request: GetPlayerIdFromAuthTokenRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPlayerIdFromAuthTokenResult>('/Admin/GetPlayerIdFromAuthToken', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -403,7 +368,6 @@ export const GetPlayerIdFromAuthToken = async (request: GetPlayerIdFromAuthToken
 export const GetPlayerProfile = async (request: GetPlayerProfileRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPlayerProfileResult>('/Admin/GetPlayerProfile', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -414,7 +378,6 @@ export const GetPlayerProfile = async (request: GetPlayerProfileRequest) => {
 export const GetPlayerSegments = async (request: GetPlayerSegmentsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPlayerSegmentsResult>('/Admin/GetPlayerSegments', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -425,7 +388,6 @@ export const GetPlayerSegments = async (request: GetPlayerSegmentsRequest) => {
 export const GetPlayerSharedSecrets = async (request: GetPlayerSharedSecretsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPlayerSharedSecretsResult>('/Admin/GetPlayerSharedSecrets', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -440,7 +402,6 @@ export const GetPlayerSharedSecrets = async (request: GetPlayerSharedSecretsRequ
 export const GetPlayersInSegment = async (request: GetPlayersInSegmentRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPlayersInSegmentResult>('/Admin/GetPlayersInSegment', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -452,7 +413,6 @@ export const GetPlayersInSegment = async (request: GetPlayersInSegmentRequest) =
 export const GetPlayerStatisticDefinitions = async (request: GetPlayerStatisticDefinitionsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPlayerStatisticDefinitionsResult>('/Admin/GetPlayerStatisticDefinitions', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -463,7 +423,6 @@ export const GetPlayerStatisticDefinitions = async (request: GetPlayerStatisticD
 export const GetPlayerStatisticVersions = async (request: GetPlayerStatisticVersionsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPlayerStatisticVersionsResult>('/Admin/GetPlayerStatisticVersions', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -474,7 +433,6 @@ export const GetPlayerStatisticVersions = async (request: GetPlayerStatisticVers
 export const GetPlayerTags = async (request: GetPlayerTagsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPlayerTagsResult>('/Admin/GetPlayerTags', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -485,7 +443,6 @@ export const GetPlayerTags = async (request: GetPlayerTagsRequest) => {
 export const GetPolicy = async (request: GetPolicyRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPolicyResponse>('/Admin/GetPolicy', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -496,7 +453,6 @@ export const GetPolicy = async (request: GetPolicyRequest) => {
 export const GetPublisherData = async (request: GetPublisherDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetPublisherDataResult>('/Admin/GetPublisherData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -507,7 +463,6 @@ export const GetPublisherData = async (request: GetPublisherDataRequest) => {
 export const GetRandomResultTables = async (request: GetRandomResultTablesRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetRandomResultTablesResult>('/Admin/GetRandomResultTables', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -518,7 +473,6 @@ export const GetRandomResultTables = async (request: GetRandomResultTablesReques
 export const GetStoreItems = async (request: GetStoreItemsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetStoreItemsResult>('/Admin/GetStoreItems', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -529,7 +483,6 @@ export const GetStoreItems = async (request: GetStoreItemsRequest) => {
 export const GetTaskInstances = async (request: GetTaskInstancesRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetTaskInstancesResult>('/Admin/GetTaskInstances', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -540,7 +493,6 @@ export const GetTaskInstances = async (request: GetTaskInstancesRequest) => {
 export const GetTasks = async (request: GetTasksRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetTasksResult>('/Admin/GetTasks', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -551,7 +503,6 @@ export const GetTasks = async (request: GetTasksRequest) => {
 export const GetTitleData = async (request: GetTitleDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetTitleDataResult>('/Admin/GetTitleData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -562,7 +513,6 @@ export const GetTitleData = async (request: GetTitleDataRequest) => {
 export const GetTitleInternalData = async (request: GetTitleDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetTitleDataResult>('/Admin/GetTitleInternalData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -573,7 +523,6 @@ export const GetTitleInternalData = async (request: GetTitleDataRequest) => {
 export const GetUserAccountInfo = async (request: LookupUserAccountInfoRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<LookupUserAccountInfoResult>('/Admin/GetUserAccountInfo', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -584,7 +533,6 @@ export const GetUserAccountInfo = async (request: LookupUserAccountInfoRequest) 
 export const GetUserBans = async (request: GetUserBansRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetUserBansResult>('/Admin/GetUserBans', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -595,7 +543,6 @@ export const GetUserBans = async (request: GetUserBansRequest) => {
 export const GetUserData = async (request: GetUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetUserDataResult>('/Admin/GetUserData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -606,7 +553,6 @@ export const GetUserData = async (request: GetUserDataRequest) => {
 export const GetUserInternalData = async (request: GetUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetUserDataResult>('/Admin/GetUserInternalData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -617,7 +563,6 @@ export const GetUserInternalData = async (request: GetUserDataRequest) => {
 export const GetUserInventory = async (request: GetUserInventoryRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetUserInventoryResult>('/Admin/GetUserInventory', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -628,7 +573,6 @@ export const GetUserInventory = async (request: GetUserInventoryRequest) => {
 export const GetUserPublisherData = async (request: GetUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetUserDataResult>('/Admin/GetUserPublisherData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -639,7 +583,6 @@ export const GetUserPublisherData = async (request: GetUserDataRequest) => {
 export const GetUserPublisherInternalData = async (request: GetUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetUserDataResult>('/Admin/GetUserPublisherInternalData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -650,7 +593,6 @@ export const GetUserPublisherInternalData = async (request: GetUserDataRequest) 
 export const GetUserPublisherReadOnlyData = async (request: GetUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetUserDataResult>('/Admin/GetUserPublisherReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -661,7 +603,6 @@ export const GetUserPublisherReadOnlyData = async (request: GetUserDataRequest) 
 export const GetUserReadOnlyData = async (request: GetUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GetUserDataResult>('/Admin/GetUserReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -672,7 +613,6 @@ export const GetUserReadOnlyData = async (request: GetUserDataRequest) => {
 export const GrantItemsToUsers = async (request: GrantItemsToUsersRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<GrantItemsToUsersResult>('/Admin/GrantItemsToUsers', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -683,7 +623,6 @@ export const GrantItemsToUsers = async (request: GrantItemsToUsersRequest) => {
 export const IncrementLimitedEditionItemAvailability = async (request: IncrementLimitedEditionItemAvailabilityRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<IncrementLimitedEditionItemAvailabilityResult>('/Admin/IncrementLimitedEditionItemAvailability', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -694,7 +633,6 @@ export const IncrementLimitedEditionItemAvailability = async (request: Increment
 export const IncrementPlayerStatisticVersion = async (request: IncrementPlayerStatisticVersionRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<IncrementPlayerStatisticVersionResult>('/Admin/IncrementPlayerStatisticVersion', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -705,7 +643,6 @@ export const IncrementPlayerStatisticVersion = async (request: IncrementPlayerSt
 export const ListVirtualCurrencyTypes = async (request: ListVirtualCurrencyTypesRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<ListVirtualCurrencyTypesResult>('/Admin/ListVirtualCurrencyTypes', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -716,7 +653,6 @@ export const ListVirtualCurrencyTypes = async (request: ListVirtualCurrencyTypes
 export const ModifyMatchmakerGameModes = async (request: ModifyMatchmakerGameModesRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<ModifyMatchmakerGameModesResult>('/Admin/ModifyMatchmakerGameModes', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -727,7 +663,6 @@ export const ModifyMatchmakerGameModes = async (request: ModifyMatchmakerGameMod
 export const RemovePlayerTag = async (request: RemovePlayerTagRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<RemovePlayerTagResult>('/Admin/RemovePlayerTag', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -738,7 +673,6 @@ export const RemovePlayerTag = async (request: RemovePlayerTagRequest) => {
 export const RemoveVirtualCurrencyTypes = async (request: RemoveVirtualCurrencyTypesRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<BlankResult>('/Admin/RemoveVirtualCurrencyTypes', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -749,7 +683,6 @@ export const RemoveVirtualCurrencyTypes = async (request: RemoveVirtualCurrencyT
 export const ResetCharacterStatistics = async (request: ResetCharacterStatisticsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<ResetCharacterStatisticsResult>('/Admin/ResetCharacterStatistics', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -760,7 +693,6 @@ export const ResetCharacterStatistics = async (request: ResetCharacterStatistics
 export const RevokeAllBansForUser = async (request: RevokeAllBansForUserRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<RevokeAllBansForUserResult>('/Admin/RevokeAllBansForUser', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -771,7 +703,6 @@ export const RevokeAllBansForUser = async (request: RevokeAllBansForUserRequest)
 export const RevokeBans = async (request: RevokeBansRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<RevokeBansResult>('/Admin/RevokeBans', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -782,7 +713,6 @@ export const RevokeBans = async (request: RevokeBansRequest) => {
 export const RevokeInventoryItem = async (request: RevokeInventoryItemRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<RevokeInventoryResult>('/Admin/RevokeInventoryItem', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -793,7 +723,6 @@ export const RevokeInventoryItem = async (request: RevokeInventoryItemRequest) =
 export const RevokeInventoryItems = async (request: RevokeInventoryItemsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<RevokeInventoryItemsResult>('/Admin/RevokeInventoryItems', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -804,7 +733,6 @@ export const RevokeInventoryItems = async (request: RevokeInventoryItemsRequest)
 export const RunTask = async (request: RunTaskRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<RunTaskResult>('/Admin/RunTask', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -815,7 +743,6 @@ export const RunTask = async (request: RunTaskRequest) => {
 export const SetCatalogItems = async (request: UpdateCatalogItemsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateCatalogItemsResult>('/Admin/SetCatalogItems', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -826,7 +753,6 @@ export const SetCatalogItems = async (request: UpdateCatalogItemsRequest) => {
 export const SetPlayerSecret = async (request: SetPlayerSecretRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<SetPlayerSecretResult>('/Admin/SetPlayerSecret', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -837,7 +763,6 @@ export const SetPlayerSecret = async (request: SetPlayerSecretRequest) => {
 export const SetPublishedRevision = async (request: SetPublishedRevisionRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<SetPublishedRevisionResult>('/Admin/SetPublishedRevision', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -848,7 +773,6 @@ export const SetPublishedRevision = async (request: SetPublishedRevisionRequest)
 export const SetPublisherData = async (request: SetPublisherDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<SetPublisherDataResult>('/Admin/SetPublisherData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -859,7 +783,6 @@ export const SetPublisherData = async (request: SetPublisherDataRequest) => {
 export const SetStoreItems = async (request: UpdateStoreItemsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateStoreItemsResult>('/Admin/SetStoreItems', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -870,7 +793,6 @@ export const SetStoreItems = async (request: UpdateStoreItemsRequest) => {
 export const SetTitleData = async (request: SetTitleDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<SetTitleDataResult>('/Admin/SetTitleData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -881,7 +803,6 @@ export const SetTitleData = async (request: SetTitleDataRequest) => {
 export const SubtractUserVirtualCurrency = async (request: SubtractUserVirtualCurrencyRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<ModifyUserVirtualCurrencyResult>('/Admin/SubtractUserVirtualCurrency', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -892,7 +813,6 @@ export const SubtractUserVirtualCurrency = async (request: SubtractUserVirtualCu
 export const UpdateBans = async (request: UpdateBansRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateBansResult>('/Admin/UpdateBans', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -903,7 +823,6 @@ export const UpdateBans = async (request: UpdateBansRequest) => {
 export const UpdateCatalogItems = async (request: UpdateCatalogItemsRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateCatalogItemsResult>('/Admin/UpdateCatalogItems', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -915,7 +834,6 @@ export const UpdateCatalogItems = async (request: UpdateCatalogItemsRequest) => 
 export const UpdatePlayerSharedSecret = async (request: UpdatePlayerSharedSecretRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdatePlayerSharedSecretResult>('/Admin/UpdatePlayerSharedSecret', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -926,7 +844,6 @@ export const UpdatePlayerSharedSecret = async (request: UpdatePlayerSharedSecret
 export const UpdatePlayerStatisticDefinition = async (request: UpdatePlayerStatisticDefinitionRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdatePlayerStatisticDefinitionResult>('/Admin/UpdatePlayerStatisticDefinition', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -937,7 +854,6 @@ export const UpdatePlayerStatisticDefinition = async (request: UpdatePlayerStati
 export const UpdateRandomResultTables = async (request: UpdateRandomResultTablesRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateRandomResultTablesResult>('/Admin/UpdateRandomResultTables', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -948,7 +864,6 @@ export const UpdateRandomResultTables = async (request: UpdateRandomResultTables
 export const UpdateUserData = async (request: UpdateUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateUserDataResult>('/Admin/UpdateUserData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -959,7 +874,6 @@ export const UpdateUserData = async (request: UpdateUserDataRequest) => {
 export const UpdateUserInternalData = async (request: UpdateUserInternalDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateUserDataResult>('/Admin/UpdateUserInternalData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -970,7 +884,6 @@ export const UpdateUserInternalData = async (request: UpdateUserInternalDataRequ
 export const UpdateUserPublisherData = async (request: UpdateUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateUserDataResult>('/Admin/UpdateUserPublisherData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -981,7 +894,6 @@ export const UpdateUserPublisherData = async (request: UpdateUserDataRequest) =>
 export const UpdateUserPublisherInternalData = async (request: UpdateUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateUserDataResult>('/Admin/UpdateUserPublisherInternalData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -992,7 +904,6 @@ export const UpdateUserPublisherInternalData = async (request: UpdateUserDataReq
 export const UpdateUserPublisherReadOnlyData = async (request: UpdateUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateUserDataResult>('/Admin/UpdateUserPublisherReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -1003,7 +914,6 @@ export const UpdateUserPublisherReadOnlyData = async (request: UpdateUserDataReq
 export const UpdateUserReadOnlyData = async (request: UpdateUserDataRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateUserDataResult>('/Admin/UpdateUserReadOnlyData', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -1014,6 +924,5 @@ export const UpdateUserReadOnlyData = async (request: UpdateUserDataRequest) => 
 export const UpdateUserTitleDisplayName = async (request: UpdateUserTitleDisplayNameRequest) => {
     if (!Settings.settings.secretKey) throw 'Must have Settings.settings.secretKey set to call this method'
     const result = await MakeRequest<UpdateUserTitleDisplayNameResult>('/Admin/UpdateUserTitleDisplayName', request, 'X-SecretKey', Settings.settings.secretKey)
-        .catch((e: string) => { throw e })
     return result
 }

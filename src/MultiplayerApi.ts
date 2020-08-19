@@ -10,7 +10,6 @@ import Settings from './Settings'
 export const CancelAllMatchmakingTicketsForPlayer = async (request: CancelAllMatchmakingTicketsForPlayerRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<CancelAllMatchmakingTicketsForPlayerResult>('/Match/CancelAllMatchmakingTicketsForPlayer', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -21,7 +20,6 @@ export const CancelAllMatchmakingTicketsForPlayer = async (request: CancelAllMat
 export const CancelAllServerBackfillTicketsForPlayer = async (request: CancelAllServerBackfillTicketsForPlayerRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<CancelAllServerBackfillTicketsForPlayerResult>('/Match/CancelAllServerBackfillTicketsForPlayer', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -32,7 +30,6 @@ export const CancelAllServerBackfillTicketsForPlayer = async (request: CancelAll
 export const CancelMatchmakingTicket = async (request: CancelMatchmakingTicketRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<CancelMatchmakingTicketResult>('/Match/CancelMatchmakingTicket', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -43,7 +40,6 @@ export const CancelMatchmakingTicket = async (request: CancelMatchmakingTicketRe
 export const CancelServerBackfillTicket = async (request: CancelServerBackfillTicketRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<CancelServerBackfillTicketResult>('/Match/CancelServerBackfillTicket', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -54,7 +50,6 @@ export const CancelServerBackfillTicket = async (request: CancelServerBackfillTi
 export const CreateMatchmakingTicket = async (request: CreateMatchmakingTicketRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<CreateMatchmakingTicketResult>('/Match/CreateMatchmakingTicket', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -67,7 +62,6 @@ export const CreateMatchmakingTicket = async (request: CreateMatchmakingTicketRe
 export const CreateServerBackfillTicket = async (request: CreateServerBackfillTicketRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<CreateServerBackfillTicketResult>('/Match/CreateServerBackfillTicket', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -79,7 +73,6 @@ export const CreateServerBackfillTicket = async (request: CreateServerBackfillTi
 export const CreateServerMatchmakingTicket = async (request: CreateServerMatchmakingTicketRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<CreateMatchmakingTicketResult>('/Match/CreateServerMatchmakingTicket', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -90,7 +83,6 @@ export const CreateServerMatchmakingTicket = async (request: CreateServerMatchma
 export const GetMatchmakingQueue = async (request: GetMatchmakingQueueRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetMatchmakingQueueResult>('/Match/GetMatchmakingQueue', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -101,7 +93,6 @@ export const GetMatchmakingQueue = async (request: GetMatchmakingQueueRequest) =
 export const GetMatchmakingTicket = async (request: GetMatchmakingTicketRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetMatchmakingTicketResult>('/Match/GetMatchmakingTicket', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -112,7 +103,6 @@ export const GetMatchmakingTicket = async (request: GetMatchmakingTicketRequest)
 export const GetQueueStatistics = async (request: GetQueueStatisticsRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetQueueStatisticsResult>('/Match/GetQueueStatistics', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -123,7 +113,6 @@ export const GetQueueStatistics = async (request: GetQueueStatisticsRequest) => 
 export const GetServerBackfillTicket = async (request: GetServerBackfillTicketRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetServerBackfillTicketResult>('/Match/GetServerBackfillTicket', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -134,7 +123,6 @@ export const GetServerBackfillTicket = async (request: GetServerBackfillTicketRe
 export const JoinMatchmakingTicket = async (request: JoinMatchmakingTicketRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<JoinMatchmakingTicketResult>('/Match/JoinMatchmakingTicket', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -145,7 +133,6 @@ export const JoinMatchmakingTicket = async (request: JoinMatchmakingTicketReques
 export const ListMatchmakingQueues = async (request: ListMatchmakingQueuesRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<ListMatchmakingQueuesResult>('/Match/ListMatchmakingQueues', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -156,7 +143,6 @@ export const ListMatchmakingQueues = async (request: ListMatchmakingQueuesReques
 export const ListMatchmakingTicketsForPlayer = async (request: ListMatchmakingTicketsForPlayerRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<ListMatchmakingTicketsForPlayerResult>('/Match/ListMatchmakingTicketsForPlayer', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -167,7 +153,6 @@ export const ListMatchmakingTicketsForPlayer = async (request: ListMatchmakingTi
 export const ListServerBackfillTicketsForPlayer = async (request: ListServerBackfillTicketsForPlayerRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<ListServerBackfillTicketsForPlayerResult>('/Match/ListServerBackfillTicketsForPlayer', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -178,7 +163,6 @@ export const ListServerBackfillTicketsForPlayer = async (request: ListServerBack
 export const RemoveMatchmakingQueue = async (request: RemoveMatchmakingQueueRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<RemoveMatchmakingQueueResult>('/Match/RemoveMatchmakingQueue', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -189,6 +173,5 @@ export const RemoveMatchmakingQueue = async (request: RemoveMatchmakingQueueRequ
 export const SetMatchmakingQueue = async (request: SetMatchmakingQueueRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<SetMatchmakingQueueResult>('/Match/SetMatchmakingQueue', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }

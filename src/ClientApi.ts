@@ -14,7 +14,6 @@ export const AcceptTrade = async (player: Player, request: AcceptTradeRequest) =
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<AcceptTradeResponse>('/Client/AcceptTrade', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -27,7 +26,6 @@ export const AddFriend = async (player: Player, request: AddFriendRequest) => {
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<AddFriendResult>('/Client/AddFriend', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -41,7 +39,6 @@ export const AddGenericID = async (player: Player, request: AddGenericIDRequest)
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<AddGenericIDResult>('/Client/AddGenericID', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -55,7 +52,6 @@ export const AddSharedGroupMembers = async (player: Player, request: AddSharedGr
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<AddSharedGroupMembersResult>('/Client/AddSharedGroupMembers', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -67,7 +63,6 @@ export const AddUserVirtualCurrency = async (player: Player, request: AddUserVir
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResult>('/Client/AddUserVirtualCurrency', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -81,7 +76,6 @@ export const CancelTrade = async (player: Player, request: CancelTradeRequest) =
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<CancelTradeResponse>('/Client/CancelTrade', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -94,7 +88,6 @@ export const ConfirmPurchase = async (player: Player, request: ConfirmPurchaseRe
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ConfirmPurchaseResult>('/Client/ConfirmPurchase', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -106,7 +99,6 @@ export const ConsumeItem = async (player: Player, request: ConsumeItemRequest) =
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ConsumeItemResult>('/Client/ConsumeItem', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -121,7 +113,6 @@ export const CreateSharedGroup = async (player: Player, request: CreateSharedGro
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<CreateSharedGroupResult>('/Client/CreateSharedGroup', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -133,7 +124,6 @@ export const ExecuteCloudScript = async (player: Player, request: ExecuteCloudSc
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ExecuteCloudScriptResult>('/Client/ExecuteCloudScript', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -145,7 +135,6 @@ export const GetAccountInfo = async (player: Player, request: GetAccountInfoRequ
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetAccountInfoResult>('/Client/GetAccountInfo', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -158,7 +147,6 @@ export const GetAllUsersCharacters = async (player: Player, request: ListUsersCh
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ListUsersCharactersResult>('/Client/GetAllUsersCharacters', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -170,7 +158,6 @@ export const GetCatalogItems = async (player: Player, request: GetCatalogItemsRe
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetCatalogItemsResult>('/Client/GetCatalogItems', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -182,7 +169,6 @@ export const GetCharacterData = async (player: Player, request: GetCharacterData
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetCharacterDataResult>('/Client/GetCharacterData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -194,7 +180,6 @@ export const GetCharacterInventory = async (player: Player, request: GetCharacte
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetCharacterInventoryResult>('/Client/GetCharacterInventory', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -206,7 +191,6 @@ export const GetCharacterLeaderboard = async (player: Player, request: GetCharac
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetCharacterLeaderboardResult>('/Client/GetCharacterLeaderboard', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -218,7 +202,6 @@ export const GetCharacterReadOnlyData = async (player: Player, request: GetChara
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetCharacterDataResult>('/Client/GetCharacterReadOnlyData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -230,7 +213,6 @@ export const GetCharacterStatistics = async (player: Player, request: GetCharact
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetCharacterStatisticsResult>('/Client/GetCharacterStatistics', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -247,7 +229,6 @@ export const GetContentDownloadUrl = async (player: Player, request: GetContentD
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetContentDownloadUrlResult>('/Client/GetContentDownloadUrl', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -260,7 +241,6 @@ export const GetFriendLeaderboard = async (player: Player, request: GetFriendLea
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetLeaderboardResult>('/Client/GetFriendLeaderboard', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -273,7 +253,6 @@ export const GetFriendLeaderboardAroundPlayer = async (player: Player, request: 
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetFriendLeaderboardAroundPlayerResult>('/Client/GetFriendLeaderboardAroundPlayer', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -286,7 +265,6 @@ export const GetFriendsList = async (player: Player, request: GetFriendsListRequ
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetFriendsListResult>('/Client/GetFriendsList', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -298,7 +276,6 @@ export const GetLeaderboard = async (player: Player, request: GetLeaderboardRequ
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetLeaderboardResult>('/Client/GetLeaderboard', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -310,7 +287,6 @@ export const GetLeaderboardAroundCharacter = async (player: Player, request: Get
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetLeaderboardAroundCharacterResult>('/Client/GetLeaderboardAroundCharacter', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -323,7 +299,6 @@ export const GetLeaderboardAroundPlayer = async (player: Player, request: GetLea
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetLeaderboardAroundPlayerResult>('/Client/GetLeaderboardAroundPlayer', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -335,7 +310,6 @@ export const GetPlayerCombinedInfo = async (player: Player, request: GetPlayerCo
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetPlayerCombinedInfoResult>('/Client/GetPlayerCombinedInfo', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -347,7 +321,6 @@ export const GetPlayerProfile = async (player: Player, request: GetPlayerProfile
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetPlayerProfileResult>('/Client/GetPlayerProfile', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -359,7 +332,6 @@ export const GetPlayerSegments = async (player: Player, request: GetPlayerSegmen
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetPlayerSegmentsResult>('/Client/GetPlayerSegments', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -372,7 +344,6 @@ export const GetPlayerStatistics = async (player: Player, request: GetPlayerStat
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetPlayerStatisticsResult>('/Client/GetPlayerStatistics', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -384,7 +355,6 @@ export const GetPlayerStatisticVersions = async (player: Player, request: GetPla
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetPlayerStatisticVersionsResult>('/Client/GetPlayerStatisticVersions', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -396,7 +366,6 @@ export const GetPlayerTags = async (player: Player, request: GetPlayerTagsReques
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetPlayerTagsResult>('/Client/GetPlayerTags', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -408,7 +377,6 @@ export const GetPlayerTrades = async (player: Player, request: GetPlayerTradesRe
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetPlayerTradesResponse>('/Client/GetPlayerTrades', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -422,7 +390,6 @@ export const GetPlayFabIDsFromGenericIDs = async (player: Player, request: GetPl
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetPlayFabIDsFromGenericIDsResult>('/Client/GetPlayFabIDsFromGenericIDs', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -434,7 +401,6 @@ export const GetPublisherData = async (player: Player, request: GetPublisherData
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetPublisherDataResult>('/Client/GetPublisherData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -447,7 +413,6 @@ export const GetPurchase = async (player: Player, request: GetPurchaseRequest) =
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetPurchaseResult>('/Client/GetPurchase', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -462,7 +427,6 @@ export const GetSharedGroupData = async (player: Player, request: GetSharedGroup
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetSharedGroupDataResult>('/Client/GetSharedGroupData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -474,7 +438,6 @@ export const GetStoreItems = async (player: Player, request: GetStoreItemsReques
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetStoreItemsResult>('/Client/GetStoreItems', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -486,7 +449,6 @@ export const GetTime = async (player: Player, request: GetTimeRequest) => {
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetTimeResult>('/Client/GetTime', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -498,7 +460,6 @@ export const GetTitleData = async (player: Player, request: GetTitleDataRequest)
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetTitleDataResult>('/Client/GetTitleData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -510,7 +471,6 @@ export const GetTitleNews = async (player: Player, request: GetTitleNewsRequest)
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetTitleNewsResult>('/Client/GetTitleNews', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -522,7 +482,6 @@ export const GetTitlePublicKey = async (player: Player, request: GetTitlePublicK
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetTitlePublicKeyResult>('/Client/GetTitlePublicKey', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -534,7 +493,6 @@ export const GetTradeStatus = async (player: Player, request: GetTradeStatusRequ
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetTradeStatusResponse>('/Client/GetTradeStatus', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -546,7 +504,6 @@ export const GetUserData = async (player: Player, request: GetUserDataRequest) =
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetUserDataResult>('/Client/GetUserData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -558,7 +515,6 @@ export const GetUserInventory = async (player: Player, request: GetUserInventory
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetUserInventoryResult>('/Client/GetUserInventory', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -570,7 +526,6 @@ export const GetUserPublisherData = async (player: Player, request: GetUserDataR
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetUserDataResult>('/Client/GetUserPublisherData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -582,7 +537,6 @@ export const GetUserPublisherReadOnlyData = async (player: Player, request: GetU
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetUserDataResult>('/Client/GetUserPublisherReadOnlyData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -594,7 +548,6 @@ export const GetUserReadOnlyData = async (player: Player, request: GetUserDataRe
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetUserDataResult>('/Client/GetUserReadOnlyData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -607,7 +560,6 @@ export const GrantCharacterToUser = async (player: Player, request: GrantCharact
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GrantCharacterToUserResult>('/Client/GrantCharacterToUser', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -619,7 +571,6 @@ export const LinkCustomID = async (player: Player, request: LinkCustomIDRequest)
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<LinkCustomIDResult>('/Client/LinkCustomID', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -635,7 +586,7 @@ export const LoginWithCustomID = async (player: Player, request: LoginWithCustom
     const result = await MakeRequest<LoginResult>(
         '/Client/LoginWithCustomID',
         request
-    ).catch((e: string) => { throw e })
+    )
 
     if (!result.SessionTicket) throw 'No session ticket'
     if (!result.EntityToken || !result.EntityToken.EntityToken || !result.EntityToken.TokenExpiration) throw 'No entity token'
@@ -660,7 +611,6 @@ export const Matchmake = async (player: Player, request: MatchmakeRequest) => {
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<MatchmakeResult>('/Client/Matchmake', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -672,7 +622,6 @@ export const OpenTrade = async (player: Player, request: OpenTradeRequest) => {
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<OpenTradeResponse>('/Client/OpenTrade', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -684,7 +633,6 @@ export const PayForPurchase = async (player: Player, request: PayForPurchaseRequ
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<PayForPurchaseResult>('/Client/PayForPurchase', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -697,7 +645,6 @@ export const PurchaseItem = async (player: Player, request: PurchaseItemRequest)
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<PurchaseItemResult>('/Client/PurchaseItem', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -710,7 +657,6 @@ export const RedeemCoupon = async (player: Player, request: RedeemCouponRequest)
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<RedeemCouponResult>('/Client/RedeemCoupon', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -722,7 +668,6 @@ export const RemoveFriend = async (player: Player, request: RemoveFriendRequest)
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<RemoveFriendResult>('/Client/RemoveFriend', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -734,7 +679,6 @@ export const RemoveGenericID = async (player: Player, request: RemoveGenericIDRe
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<RemoveGenericIDResult>('/Client/RemoveGenericID', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -749,7 +693,6 @@ export const RemoveSharedGroupMembers = async (player: Player, request: RemoveSh
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<RemoveSharedGroupMembersResult>('/Client/RemoveSharedGroupMembers', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -762,7 +705,6 @@ export const ReportPlayer = async (player: Player, request: ReportPlayerClientRe
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ReportPlayerClientResult>('/Client/ReportPlayer', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -774,7 +716,6 @@ export const SetFriendTags = async (player: Player, request: SetFriendTagsReques
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<SetFriendTagsResult>('/Client/SetFriendTags', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -787,7 +728,6 @@ export const SetPlayerSecret = async (player: Player, request: SetPlayerSecretRe
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<SetPlayerSecretResult>('/Client/SetPlayerSecret', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -799,7 +739,6 @@ export const StartPurchase = async (player: Player, request: StartPurchaseReques
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<StartPurchaseResult>('/Client/StartPurchase', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -812,7 +751,6 @@ export const SubtractUserVirtualCurrency = async (player: Player, request: Subtr
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ModifyUserVirtualCurrencyResult>('/Client/SubtractUserVirtualCurrency', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -824,7 +762,6 @@ export const UnlinkCustomID = async (player: Player, request: UnlinkCustomIDRequ
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UnlinkCustomIDResult>('/Client/UnlinkCustomID', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -838,7 +775,6 @@ export const UnlockContainerInstance = async (player: Player, request: UnlockCon
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UnlockContainerItemResult>('/Client/UnlockContainerInstance', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -852,7 +788,6 @@ export const UnlockContainerItem = async (player: Player, request: UnlockContain
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UnlockContainerItemResult>('/Client/UnlockContainerItem', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -864,7 +799,6 @@ export const UpdateAvatarUrl = async (player: Player, request: UpdateAvatarUrlRe
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Client/UpdateAvatarUrl', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -876,7 +810,6 @@ export const UpdateCharacterData = async (player: Player, request: UpdateCharact
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UpdateCharacterDataResult>('/Client/UpdateCharacterData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -889,7 +822,6 @@ export const UpdateCharacterStatistics = async (player: Player, request: UpdateC
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UpdateCharacterStatisticsResult>('/Client/UpdateCharacterStatistics', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -902,7 +834,6 @@ export const UpdatePlayerStatistics = async (player: Player, request: UpdatePlay
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UpdatePlayerStatisticsResult>('/Client/UpdatePlayerStatistics', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -918,7 +849,6 @@ export const UpdateSharedGroupData = async (player: Player, request: UpdateShare
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UpdateSharedGroupDataResult>('/Client/UpdateSharedGroupData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -930,7 +860,6 @@ export const UpdateUserData = async (player: Player, request: UpdateUserDataRequ
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UpdateUserDataResult>('/Client/UpdateUserData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -942,7 +871,6 @@ export const UpdateUserPublisherData = async (player: Player, request: UpdateUse
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UpdateUserDataResult>('/Client/UpdateUserPublisherData', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -954,7 +882,6 @@ export const UpdateUserTitleDisplayName = async (player: Player, request: Update
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UpdateUserTitleDisplayNameResult>('/Client/UpdateUserTitleDisplayName', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -966,7 +893,6 @@ export const WriteCharacterEvent = async (player: Player, request: WriteClientCh
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<WriteEventResponse>('/Client/WriteCharacterEvent', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -978,7 +904,6 @@ export const WritePlayerEvent = async (player: Player, request: WriteClientPlaye
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<WriteEventResponse>('/Client/WritePlayerEvent', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -990,6 +915,5 @@ export const WriteTitleEvent = async (player: Player, request: WriteTitleEventRe
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<WriteEventResponse>('/Client/WriteTitleEvent', request, 'X-Authorization', data.SessionTicket)
-        .catch((e: string) => { throw e })
     return result
 }

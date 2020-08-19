@@ -10,7 +10,6 @@ import Settings from './Settings'
 export const GetObjects = async (request: GetObjectsRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetObjectsResponse>('/Object/GetObjects', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -21,6 +20,5 @@ export const GetObjects = async (request: GetObjectsRequest) => {
 export const SetObjects = async (request: SetObjectsRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<SetObjectsResponse>('/Object/SetObjects', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }

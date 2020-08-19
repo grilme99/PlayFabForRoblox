@@ -22,6 +22,5 @@ export const GetEntityToken = async (request: GetEntityTokenRequest, player?: Pl
     }
 
     const result = await MakeRequest<GetEntityTokenResponse>('/Authentication/GetEntityToken', request, authKey as 'X-EntityToken', authValue)
-        .catch((e: string) => { throw e })
     return result
 }

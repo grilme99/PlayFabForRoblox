@@ -11,7 +11,6 @@ export const WriteEvents = async (player: Player, request: WriteEventsRequest) =
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<WriteEventsResponse>('/Event/WriteEvents', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -24,6 +23,5 @@ export const WriteTelemetryEvents = async (player: Player, request: WriteEventsR
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<WriteEventsResponse>('/Event/WriteTelemetryEvents', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }

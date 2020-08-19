@@ -10,7 +10,6 @@ import Settings from './Settings'
 export const CreateExperiment = async (request: CreateExperimentRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<CreateExperimentResult>('/Experimentation/CreateExperiment', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -21,7 +20,6 @@ export const CreateExperiment = async (request: CreateExperimentRequest) => {
 export const DeleteExperiment = async (request: DeleteExperimentRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<EmptyResponse>('/Experimentation/DeleteExperiment', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -32,7 +30,6 @@ export const DeleteExperiment = async (request: DeleteExperimentRequest) => {
 export const GetExperiments = async (request: GetExperimentsRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetExperimentsResult>('/Experimentation/GetExperiments', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -43,7 +40,6 @@ export const GetExperiments = async (request: GetExperimentsRequest) => {
 export const GetLatestScorecard = async (request: GetLatestScorecardRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetLatestScorecardResult>('/Experimentation/GetLatestScorecard', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -54,7 +50,6 @@ export const GetLatestScorecard = async (request: GetLatestScorecardRequest) => 
 export const GetTreatmentAssignment = async (request: GetTreatmentAssignmentRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<GetTreatmentAssignmentResult>('/Experimentation/GetTreatmentAssignment', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -65,7 +60,6 @@ export const GetTreatmentAssignment = async (request: GetTreatmentAssignmentRequ
 export const StartExperiment = async (request: StartExperimentRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<EmptyResponse>('/Experimentation/StartExperiment', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -76,7 +70,6 @@ export const StartExperiment = async (request: StartExperimentRequest) => {
 export const StopExperiment = async (request: StopExperimentRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<EmptyResponse>('/Experimentation/StopExperiment', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -87,6 +80,5 @@ export const StopExperiment = async (request: StopExperimentRequest) => {
 export const UpdateExperiment = async (request: UpdateExperimentRequest) => {
     if (Settings.settings.entityToken === '') throw 'Must have Settings.settings.entityToken set to call this method'
     const result = await MakeRequest<EmptyResponse>('/Experimentation/UpdateExperiment', request, 'X-EntityToken', Settings.settings.entityToken)
-        .catch((e: string) => { throw e })
     return result
 }

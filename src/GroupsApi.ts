@@ -11,7 +11,6 @@ export const AcceptGroupApplication = async (player: Player, request: AcceptGrou
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Group/AcceptGroupApplication', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -23,7 +22,6 @@ export const AcceptGroupInvitation = async (player: Player, request: AcceptGroup
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Group/AcceptGroupInvitation', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -35,7 +33,6 @@ export const AddMembers = async (player: Player, request: AddMembersRequest) => 
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Group/AddMembers', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -47,7 +44,6 @@ export const ApplyToGroup = async (player: Player, request: ApplyToGroupRequest)
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ApplyToGroupResponse>('/Group/ApplyToGroup', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -59,7 +55,6 @@ export const BlockEntity = async (player: Player, request: BlockEntityRequest) =
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Group/BlockEntity', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -71,7 +66,6 @@ export const ChangeMemberRole = async (player: Player, request: ChangeMemberRole
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Group/ChangeMemberRole', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -83,7 +77,6 @@ export const CreateGroup = async (player: Player, request: CreateGroupRequest) =
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<CreateGroupResponse>('/Group/CreateGroup', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -95,7 +88,6 @@ export const CreateRole = async (player: Player, request: CreateGroupRoleRequest
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<CreateGroupRoleResponse>('/Group/CreateRole', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -107,7 +99,6 @@ export const DeleteGroup = async (player: Player, request: DeleteGroupRequest) =
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Group/DeleteGroup', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -119,7 +110,6 @@ export const GetGroup = async (player: Player, request: GetGroupRequest) => {
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<GetGroupResponse>('/Group/GetGroup', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -131,7 +121,6 @@ export const InviteToGroup = async (player: Player, request: InviteToGroupReques
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<InviteToGroupResponse>('/Group/InviteToGroup', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -143,7 +132,6 @@ export const IsMember = async (player: Player, request: IsMemberRequest) => {
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<IsMemberResponse>('/Group/IsMember', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -155,7 +143,6 @@ export const ListGroupApplications = async (player: Player, request: ListGroupAp
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ListGroupApplicationsResponse>('/Group/ListGroupApplications', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -167,7 +154,6 @@ export const ListGroupMembers = async (player: Player, request: ListGroupMembers
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ListGroupMembersResponse>('/Group/ListGroupMembers', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -179,7 +165,6 @@ export const ListMembership = async (player: Player, request: ListMembershipRequ
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ListMembershipResponse>('/Group/ListMembership', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -191,7 +176,6 @@ export const ListMembershipOpportunities = async (player: Player, request: ListM
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<ListMembershipOpportunitiesResponse>('/Group/ListMembershipOpportunities', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -203,7 +187,6 @@ export const RemoveGroupApplication = async (player: Player, request: RemoveGrou
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Group/RemoveGroupApplication', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -215,7 +198,6 @@ export const RemoveGroupInvitation = async (player: Player, request: RemoveGroup
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Group/RemoveGroupInvitation', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -227,7 +209,6 @@ export const RemoveMembers = async (player: Player, request: RemoveMembersReques
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Group/RemoveMembers', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -239,7 +220,6 @@ export const UnblockEntity = async (player: Player, request: UnblockEntityReques
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<EmptyResponse>('/Group/UnblockEntity', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -251,7 +231,6 @@ export const UpdateGroup = async (player: Player, request: UpdateGroupRequest) =
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UpdateGroupResponse>('/Group/UpdateGroup', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
 
@@ -263,6 +242,5 @@ export const UpdateRole = async (player: Player, request: UpdateGroupRoleRequest
     const data = PlayerData.get(player)
     if ((!IsClientLoggedIn(player)) || (!data)) throw 'Must be logged in to call this method'
     const result = await MakeRequest<UpdateGroupRoleResponse>('/Group/UpdateRole', request, 'X-EntityToken', data.EntityToken)
-        .catch((e: string) => { throw e })
     return result
 }
