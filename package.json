@@ -14,8 +14,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "@rbxts/services": "^1.1.0"
+  },
   "devDependencies": {
-    "@rbxts/services": "^1.1.0",
     "@rbxts/types": "^1.0.389"
   }
 }
