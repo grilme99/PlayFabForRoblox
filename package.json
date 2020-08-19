@@ -12,8 +12,7 @@
   "author": "Jacob Rhodes",
   "license": "MIT",
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "dependencies": {
     "@rbxts/services": "^1.1.0"
