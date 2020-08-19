@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		// required
 		"allowSyntheticDefaultImports": true,
-		"isolatedModules": false,
+		"isolatedModules": true,
 		"downlevelIteration": true,
 		"module": "commonjs",
 		"noLib": true,
@@ -15,7 +15,7 @@
 		"outDir": "out",
 
 		// optional
-		"declaration": true,
+		"declaration": false,
 
 		// optional, non-configurable
 		"jsx": "react",
