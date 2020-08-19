@@ -1,18 +1,18 @@
 {
   "name": "@rbxts/playfab",
   "version": "1.0.0",
-  "description": "",
+  "description": "PlayFab SDK for Roblox written in TypeScript",
   "main": "out/init.lua",
+  "homepage": "https://github.com/grilme99/RobloxPlayFabSDK",
   "scripts": {
     "prepublishOnly": "rbxtsc"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Jacob Rhodes",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
-  "types": "out/index.d.ts",
   "devDependencies": {
     "@rbxts/services": "^1.1.0",
     "@rbxts/types": "^1.0.389"
