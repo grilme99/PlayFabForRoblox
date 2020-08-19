@@ -20,15 +20,15 @@ export const GetFullUrl = (urlPath: string) => {
 
     const getParams = settings._internalSettings.requestGetParams
     let firstParam = true
-    Object.keys(getParams).forEach(key => {
-        const value = getParams[key]
+
+    for (const [key, value] of Object.entries(getParams)) {
         if (firstParam) {
             fullUrl += '?'
             firstParam = false
         } else fullUrl += '&'
 
         fullUrl += key + '=' + value
-    })
+    }
 
     return fullUrl
 }
