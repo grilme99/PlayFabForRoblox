@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/playfab",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "PlayFab SDK for Roblox written in TypeScript",
   "main": "out/init.lua",
   "types": "src",
