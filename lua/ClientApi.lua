@@ -485,6 +485,7 @@ local LoginWithCustomID = Promise.promisify(function(player, request)
 		SessionTicket = result.SessionTicket,
 		EntityToken = result.EntityToken.EntityToken,
 		TokenExpiration = result.EntityToken.TokenExpiration,
+		PlayFabId = result.PlayFabId
 	}
 end)
 

@@ -6,6 +6,7 @@ interface IPlayFabPlayerData {
     SessionTicket: string
     EntityToken: string
     TokenExpiration: string
+    PlayFabId: string
 }
 
 export const PlayerData = new Map<Player, IPlayFabPlayerData>()

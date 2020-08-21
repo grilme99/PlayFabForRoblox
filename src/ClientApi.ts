@@ -594,7 +594,8 @@ export const LoginWithCustomID = async (player: Player, request: LoginWithCustom
     PlayerData.set(player, {
         SessionTicket: result.SessionTicket,
         EntityToken: result.EntityToken.EntityToken,
-        TokenExpiration: result.EntityToken.TokenExpiration
+        TokenExpiration: result.EntityToken.TokenExpiration,
+        PlayFabId: result.PlayFabId!
     })
 }
 
