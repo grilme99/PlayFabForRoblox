@@ -597,6 +597,8 @@ export const LoginWithCustomID = async (player: Player, request: LoginWithCustom
         TokenExpiration: result.EntityToken.TokenExpiration,
         PlayFabId: result.PlayFabId!
     })
+
+    return result
 }
 
 /**

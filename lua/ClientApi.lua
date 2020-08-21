@@ -487,6 +487,8 @@ local LoginWithCustomID = Promise.promisify(function(player, request)
 		TokenExpiration = result.EntityToken.TokenExpiration,
 		PlayFabId = result.PlayFabId
 	}
+
+	return result
 end)
 
 local Matchmake = Promise.promisify(function(player, request)
