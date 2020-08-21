@@ -1,4 +1,4 @@
-/// <reference path="MultiplayerApi.d.ts" />
+/// <reference path="MultiplayerApiTypes.d.ts" />
 
 import MakeRequest from './HTTP'
 import Settings from './Settings'

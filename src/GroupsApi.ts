@@ -1,4 +1,4 @@
-/// <reference path="GroupsApi.d.ts" />
+/// <reference path="GroupsApiTypes.d.ts" />
 
 import MakeRequest from './HTTP'
 import { PlayerData, IsClientLoggedIn } from './PlayFab'

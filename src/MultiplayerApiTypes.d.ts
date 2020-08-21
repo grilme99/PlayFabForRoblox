@@ -1,4 +1,4 @@
-/// <reference path="PlayFab.d.ts" />
+/// <reference path="PlayFabTypes.d.ts" />
 
 interface AssetReference {
     // The asset's file name. This is a filename with the .zip, .tar, or .tar.gz extension.

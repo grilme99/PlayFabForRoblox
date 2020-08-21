@@ -1,4 +1,4 @@
-/// <reference path="EventsApi.d.ts" />
+/// <reference path="EventsApiTypes.d.ts" />
 
 import MakeRequest from './HTTP'
 import { PlayerData, IsClientLoggedIn } from './PlayFab'

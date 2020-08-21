@@ -1,3 +1,5 @@
+/// <reference path="PlayFabTypes.d.ts" />
+
 interface AdCampaignAttribution {
     // UTC time stamp of attribution
     AttributedAt: string;

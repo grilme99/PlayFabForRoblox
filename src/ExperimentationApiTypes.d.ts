@@ -1,4 +1,4 @@
-/// <reference path="PlayFab.d.ts" />
+/// <reference path="PlayFabTypes.d.ts" />
 
 type AnalysisTaskState = "Waiting"
     | "ReadyForSubmission"

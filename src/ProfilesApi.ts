@@ -1,4 +1,4 @@
-/// <reference path="ProfilesApi.d.ts" />
+/// <reference path="ProfilesApiTypes.d.ts" />
 
 import MakeRequest from './HTTP'
 import Settings from './Settings'

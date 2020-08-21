@@ -1,4 +1,4 @@
-/// <reference path="PlayFab.d.ts" />
+/// <reference path="PlayFabTypes.d.ts" />
 
 interface EntityDataObject {
     // Un-escaped JSON object, if DataAsObject is true.

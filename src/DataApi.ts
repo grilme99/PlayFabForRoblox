@@ -1,4 +1,4 @@
-/// <reference path="DataApi.d.ts" />
+/// <reference path="DataApiTypes.d.ts" />
 
 import MakeRequest from './HTTP'
 import Settings from './Settings'

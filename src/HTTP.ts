@@ -1,4 +1,4 @@
-/// <reference path="PlayFab.d.ts" />
+/// <reference path="PlayFabTypes.d.ts" />
 
 /**
  * Handles sending HTTP requests to PlayFab

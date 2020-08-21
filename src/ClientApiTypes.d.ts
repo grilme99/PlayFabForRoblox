@@ -1,3 +1,5 @@
+/// <reference path="PlayFabTypes.d.ts" />
+
 interface AcceptTradeRequest extends PlayFabModule.IPlayFabRequestCommon {
     // Items from the accepting player's inventory in exchange for the offered items in the trade. In the case of a gift, this
     // will be null.

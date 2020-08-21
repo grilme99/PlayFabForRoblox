@@ -1,3 +1,5 @@
+/// <reference path="PlayFabTypes.d.ts" />
+
 interface EntityKey {
     // Unique ID of the entity.
     Id: string;

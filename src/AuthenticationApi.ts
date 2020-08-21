@@ -1,4 +1,4 @@
-/// <reference path="AuthenticationApi.d.ts" />
+/// <reference path="AuthenticationApiTypes.d.ts" />
 
 import MakeRequest from './HTTP'
 import Settings from './Settings'

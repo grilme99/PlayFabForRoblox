@@ -1,4 +1,4 @@
-/// <reference path="ExperimentationApi.d.ts" />
+/// <reference path="ExperimentationApiTypes.d.ts" />
 
 import MakeRequest from './HTTP'
 import Settings from './Settings'

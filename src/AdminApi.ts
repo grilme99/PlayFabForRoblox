@@ -1,4 +1,4 @@
-/// <reference path="AdminApi.d.ts" />
+/// <reference path="AdminApiTypes.d.ts" />
 
 import MakeRequest from './HTTP'
 import Settings from './Settings'

@@ -1,4 +1,4 @@
-/// <reference path="ServerApi.d.ts" />
+/// <reference path="ServerApiTypes.d.ts" />
 
 import MakeRequest from './HTTP'
 import Settings from './Settings'
