@@ -1,0 +1,5 @@
+[package]
+name = "PlayFabSDK"
+author = "grilme99"
+content_root = "lua"
+version = "0.1.0"
