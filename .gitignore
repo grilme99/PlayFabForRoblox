@@ -1,5 +1,4 @@
-node_modules
-include
-out
-dist
-lualib
+.vscode/
+include/
+node_modules/
+out/
