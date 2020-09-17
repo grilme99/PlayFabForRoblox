@@ -1,5 +1,5 @@
 site_name: PlayFab SDK
-site_description: 'A complete PlayFab SDK for Roblox'
+site_description: 'A PlayFab SDK for Roblox. PlayFab is a complete backend platform for live games with managed game services, real-time analytics, and LiveOps.'
 site_author: 'Brooke Rhodes'
 docs_dir: docs/
 repo_name: 'grilme99/RobloxPlayFabSDK'
