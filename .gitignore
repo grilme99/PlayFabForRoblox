@@ -2,3 +2,4 @@
 include/
 node_modules/
 out/
+docs/
