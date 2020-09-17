@@ -27,3 +27,70 @@ Here are installation instructions for both Typescript and Lua. You will find th
     The SDK has no dependencies so you can easily include it as a Git submodule, syncing it in with Rojo. There should be no need to edit the actual SDK module itself (unless contributing).
     </p>
 </details>
+
+---
+
+## Basic usage
+The following is examples of basic API usage with both Lua and TypeScript.
+
+### **TypeScript**
+```typescript
+import { Players } from '@rbxts/services'
+import { Settings, PlayFabClient } from '@rbxts/playfab'
+
+Settings.devSecretKey = ''
+Settings.titleId = '' // Put the title ID that you copied from the above section here
+
+Players.PlayerAdded.Connect(async player => {
+    // Log client in
+    // This must be async and no "client-side" methods can be used until this has returned.
+    PlayFabClient.LoginWithCustomID({
+        CreateAccount: true,
+        CustomId: tostring(player.UserId) // You can use your own CustomId scheme
+    }).then(async loginResult => {
+        const token = loginResult.EntityToken!.EntityToken!
+        const ticket = loginResult.SessionTicket!
+
+        // You are ready to go!
+        const profile = await PlayFabClient.GetPlayerProfile(ticket)
+        print(profile)
+    })
+})
+```
+
+### **Lua**
+```lua
+local PlayFab = require(path.to.PlayFab)
+local Settings = PlayFab.Settings
+local Client = PlayFab.PlayFabClient
+
+Settings.devSecretKey = ''
+Settings.titleId = '' -- Put the title ID that you copied from the above section here
+
+game.Players.PlayerAdded:Connect(function(player)
+    -- Log client in
+    -- This must be async and no "client-side" methods can be used until this has returned.
+    Client.LoginWithCustomID({
+        CreateAccount = true, -- Create an account if one doesn't already exist
+        CustomId = tostring(player.UserId) -- You can use your own CustomId scheme
+    }):andThen(function(loginResult)
+        local entityToken = loginResult.EntityToken.EntityToken
+        local sessionTicket = loginResult.SessionTicket
+
+        -- You are ready to go!
+        Client.GetPlayerProfile(sessionTicket):andThen(function(profile)
+            print(profile)
+        end):catch(function(err)
+            print(err)
+        end)
+    end)
+end)
+```
+
+---
+## Notes and Best Practices
+
+- Make sure you have `HttpEnabled` toggled on in `HttpService`! This SDK relies on HTTP requests.
+- This SDK should **not** be used from the client. "Client-side" APIs should still run on the server but should have the clients `SessionTicket` or `EntityToken` passed to them.
+- A `SessionTicket` and `EntityToken` can expire after a period of time. You should design your system with this in mind and be able to log the client back in, should one expire.
+- You should store each players `SessionTicket` and `EntityToken` in a centralized store, like [Rodux](https://roblox.github.io/rodux), so that they can be accessed by any script that needs them.
