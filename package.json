@@ -5,7 +5,6 @@
   "main": "out/init.lua",
   "scripts": {
     "build": "rbxtsc-dev build --type=package && cp src/*.d.ts out/",
-    "eslint": "eslint \"src/**/*.ts\" --max-warnings 0",
     "test": "npm run build && npm run test-rojo && npm run test-run",
     "test-rojo": "rojo build tests -o ./tests/test.rbxlx",
     "test-run": "run-in-roblox --place ./tests/test.rbxlx --script ./tests/spec.lua"

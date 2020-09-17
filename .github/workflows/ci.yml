@@ -1,0 +1,43 @@
+name: CI
+on:
+  push:
+    branches:
+      - refactor
+
+jobs:
+  unit-tests:
+    name: Unit Testing
+    runs-on: windows-latest
+    steps:
+      # checkout + npm install
+      - uses: actions/checkout@v1
+        with:
+          submodules: recursive
+      - uses: bahmutov/npm-install@v1.1.0
+
+      # install roblox-ts dev
+      - run: |
+          pushd ..
+          git clone -b refactor https://github.com/roblox-ts/roblox-ts.git
+          pushd roblox-ts
+          npm ci
+          npm run build
+          npm run devlink
+          popd
+          popd
+      # install Roblox Studio
+      - run: pip install wget psutil
+      - run: |
+          if (![string]::IsNullOrEmpty("${{ secrets.ROBLOSECURITY }}")) {
+            python tests/scripts/install.py "${{ secrets.ROBLOSECURITY }}"
+          } else {
+            python tests/scripts/install.py "_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|_EDD08FAE3B0363C017C0A3D71AE5C71D8477640C7B0532DB0B6DD37601A134B6E842F4C08B6367AC12251018C7F80F0DB29B504757FE8EF95D7CB8739A1C1A2A0F27C6A3B12A3060F9B74DE911AC5B8229957D13C220F184140FE9FB709C4F145C68BD183E1C424643DCF0396086B99D8DD4D44CABE42E2771532C1B11077FE3F9FE7AF871E82096978A6ECE303B23748C74EF56E74B6FF0DF87BE711508EC1BD52A0B3C1FAD9D12A507A9A18A94973DE9DB43CDCBB84EB14C9BFFD08D0512F4108372296EB2BBC8821F792F17F81F9D7E5463E9A9E476A05F37E40B10EC6B9EE022B679864F9157E4BFE906E1ECB959B5304423EA938E628C4A68C570FAFD7099BEE5D55CC8A382596FDFA7871FF38C705C5599163D9FC05E580F863C6BC93A7402FF03EC0ADD3760F31CD89020EF72D32239698FCA0BE76CC59BBFD9262EFB7A7E96C2"
+          }
+      # install rojo + run-in-roblox
+      - uses: rojo-rbx/setup-foreman@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: foreman install
+
+      # compile and run tests
+      - run: npm test
