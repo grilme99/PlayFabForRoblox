@@ -2,7 +2,15 @@
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
-local Promise = require(script.Parent.Promise)
+-- Check if the roblox-ts promise implementation exists for Typescript users
+local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
+local Promise
+if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
+    Promise = require(rbxts_include.Promise)
+else
+    Promise = require(script.Parent.Promise)
+end
+
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
