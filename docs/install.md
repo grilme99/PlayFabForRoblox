@@ -31,9 +31,7 @@ Here are installation instructions for both Typescript and Lua. You will find th
 ---
 
 ## Basic usage
-The following is examples of basic API usage with both Lua and TypeScript.
-
-### **TypeScript**
+#### TypeScript
 ```typescript
 import { Players } from '@rbxts/services'
 import { Settings, PlayFabClient } from '@rbxts/playfab'
@@ -58,7 +56,7 @@ Players.PlayerAdded.Connect(async player => {
 })
 ```
 
-### **Lua**
+#### Lua
 ```lua
 local PlayFab = require(path.to.PlayFab)
 local Settings = PlayFab.Settings
