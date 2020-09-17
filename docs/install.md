@@ -29,6 +29,11 @@ Here are installation instructions for both Typescript and Lua. You will find th
 </details>
 
 ---
+## Getting credentials
+Getting your PlayFab title's credentials is simple! You should refer to [this](https://docs.microsoft.com/en-us/gaming/playfab/personas/developer) guide for the Title ID and [this](https://docs.microsoft.com/en-us/gaming/playfab/gamemanager/secret-key-management) for your Secret Key!
+
+
+---
 
 ## Basic usage
 #### TypeScript
@@ -36,7 +41,7 @@ Here are installation instructions for both Typescript and Lua. You will find th
 import { Players } from '@rbxts/services'
 import { Settings, PlayFabClient } from '@rbxts/playfab'
 
-Settings.devSecretKey = ''
+Settings.devSecretKey = '' // Put the secret key that you copied from the above section here
 Settings.titleId = '' // Put the title ID that you copied from the above section here
 
 Players.PlayerAdded.Connect(async player => {
@@ -62,7 +67,7 @@ local PlayFab = require(path.to.PlayFab)
 local Settings = PlayFab.Settings
 local Client = PlayFab.PlayFabClient
 
-Settings.devSecretKey = ''
+Settings.devSecretKey = '' -- Put the secret key that you copied from the above section here
 Settings.titleId = '' -- Put the title ID that you copied from the above section here
 
 game.Players.PlayerAdded:Connect(function(player)
@@ -92,3 +97,4 @@ end)
 - This SDK should **not** be used from the client. "Client-side" APIs should still run on the server but should have the clients `SessionTicket` or `EntityToken` passed to them.
 - A `SessionTicket` and `EntityToken` can expire after a period of time. You should design your system with this in mind and be able to log the client back in, should one expire.
 - You should store each players `SessionTicket` and `EntityToken` in a centralized store, like [Rodux](https://roblox.github.io/rodux), so that they can be accessed by any script that needs them.
+- Almost all PlayFab SDK documentation applies here as well. It would be best if you referred to the official PlayFab documentation and forums *before* making an issue for this SDK.
