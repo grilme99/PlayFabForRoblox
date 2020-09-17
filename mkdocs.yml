@@ -7,6 +7,7 @@ repo_url: 'https://github.com/grilme99/RobloxPlayFabSDK'
 
 nav:
     - Home: index.md
+    - Getting started: install.md
 
 theme:
   logo: "img/logo_64.png"
