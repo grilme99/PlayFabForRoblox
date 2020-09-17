@@ -1,7 +1,7 @@
 {
   "name": "@rbxts/playfab",
   "version": "2.0.1",
-  "description": "PlayFab SDK for Roblox, written in TypeScript.",
+  "description": "PlayFab SDK for Roblox.",
   "main": "out/init.lua",
   "scripts": {
     "build": "rbxtsc-dev build --type=package && cp src/*.d.ts out/",
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/grilme99/RobloxPlayFabSDK/issues"
   },
-  "homepage": "https://github.com/grilme99/RobloxPlayFabSDK#readme",
+  "homepage": "https://gril.me/RobloxPlayFabSDK/",
   "publishConfig": {
     "access": "public"
   },
