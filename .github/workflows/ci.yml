@@ -43,6 +43,8 @@ jobs:
       - run: npm test
   
   npm-publish:
+    needs: [unit-tests]
+
     name: npm-publish
     runs-on: ubuntu-latest
     steps:
