@@ -5,7 +5,7 @@
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
 			"PlayFab": {
-				"$path": "../out"
+				"$path": ".."
 			},
 			"$path": "./src"
 		}
