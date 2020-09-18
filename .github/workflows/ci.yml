@@ -50,6 +50,17 @@ jobs:
       with:
         node-version: 10.0.0
     
+    # install roblox-ts dev
+    - run: |
+        pushd ..
+        git clone -b refactor https://github.com/roblox-ts/roblox-ts.git
+        pushd roblox-ts
+        npm ci
+        npm run build
+        npm run devlink
+        popd
+        popd
+
     # build
     - run: npm install
     - run: npm run build
