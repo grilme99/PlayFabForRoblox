@@ -55,7 +55,6 @@ jobs:
         pushd ..
         git clone -b refactor https://github.com/roblox-ts/roblox-ts.git
         pushd roblox-ts
-        npm ci
         npm run build
         npm run devlink
         popd
