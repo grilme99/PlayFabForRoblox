@@ -1,3 +1,9 @@
+-- If roblox-ts is detected then return the roblox-ts promise implementation instead
+local TS = _G[script.Parent]
+if TS then
+  return TS.Promise
+end
+
 --[[
 	An implementation of Promises similar to Promise/A+.
 ]]
