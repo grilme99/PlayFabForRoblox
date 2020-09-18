@@ -11,7 +11,7 @@ Here are installation instructions for both Typescript and Lua. You will find th
 <details>
     <summary>Typescript</summary>
     <p>
-    Usage with Typescript is straightforward. All you need to do is install the package via NPM with <code>npm install @rbxts/playfab</code>. The SDK can then be used from anywhere in your game (if it is on the server)! Please continue down for Basic Usage.
+    Usage with Typescript is straightforward. All you need to do is install the package via NPM with <code>npm install @rbxts/playfab</code>. The SDK can then be used from anywhere in your game (if it is on the server!) Please continue down for Basic Usage.
     </p>
 </details>
 
@@ -24,7 +24,7 @@ Here are installation instructions for both Typescript and Lua. You will find th
     <br><br>
     <b>Advanced</b>
     <br>
-    The SDK has no dependencies so you can easily include it as a Git submodule, syncing it in with Rojo. There should be no need to edit the actual SDK module itself (unless contributing).
+    The SDK has no dependencies so you can easily include it as a Git submodule, syncing it in with Rojo. There should be no need to edit the actual SDK module itself (unless contributing.)
     </p>
 </details>
 
@@ -73,7 +73,7 @@ Settings.titleId = '' -- Put the title ID that you copied from the above section
 game.Players.PlayerAdded:Connect(function(player)
     -- Log client in
     -- This must be async and no "client-side" methods can be used until this has returned.
-    Client.LoginWithCustomID({
+    Client:LoginWithCustomID({
         CreateAccount = true, -- Create an account if one doesn't already exist
         CustomId = tostring(player.UserId) -- You can use your own CustomId scheme
     }):andThen(function(loginResult)
@@ -81,10 +81,8 @@ game.Players.PlayerAdded:Connect(function(player)
         local sessionTicket = loginResult.SessionTicket
 
         -- You are ready to go!
-        Client.GetPlayerProfile(sessionTicket):andThen(function(profile)
+        Client:GetPlayerProfile(sessionTicket):andThen(function(profile)
             print(profile)
-        end):catch(function(err)
-            print(err)
         end)
     end)
 end)
