@@ -5,7 +5,1848 @@
     </Properties>
     <Item class="ModuleScript" referent="1">
       <Properties>
-        <string name="Name">TS</string>
+        <string name="Name">TestEZ</string>
+        <string name="Source">local Expectation = require(script.Expectation)
+local TestBootstrap = require(script.TestBootstrap)
+local TestEnum = require(script.TestEnum)
+local TestPlan = require(script.TestPlan)
+local TestPlanner = require(script.TestPlanner)
+local TestResults = require(script.TestResults)
+local TestRunner = require(script.TestRunner)
+local TestSession = require(script.TestSession)
+local TextReporter = require(script.Reporters.TextReporter)
+local TextReporterQuiet = require(script.Reporters.TextReporterQuiet)
+local TeamCityReporter = require(script.Reporters.TeamCityReporter)
+
+local function run(testRoot, callback)
+	local modules = TestBootstrap:getModules(testRoot)
+	local plan = TestPlanner.createPlan(modules)
+	local results = TestRunner.runPlan(plan)
+
+	callback(results)
+end
+
+local TestEZ = {
+	run = run,
+
+	Expectation = Expectation,
+	TestBootstrap = TestBootstrap,
+	TestEnum = TestEnum,
+	TestPlan = TestPlan,
+	TestPlanner = TestPlanner,
+	TestResults = TestResults,
+	TestRunner = TestRunner,
+	TestSession = TestSession,
+
+	Reporters = {
+		TextReporter = TextReporter,
+		TextReporterQuiet = TextReporterQuiet,
+		TeamCityReporter = TeamCityReporter,
+	},
+}
+
+return TestEZ</string>
+      </Properties>
+      <Item class="ModuleScript" referent="2">
+        <Properties>
+          <string name="Name">Context</string>
+          <string name="Source"><![CDATA[--[[
+	The Context object implements a write-once key-value store. It also allows
+	for a new Context object to inherit the entries from an existing one.
+]]
+local Context = {}
+
+function Context.new(parent)
+	local meta = {}
+	local index = {}
+	meta.__index = index
+
+	if parent then
+		for key, value in pairs(getmetatable(parent).__index) do
+			index[key] = value
+		end
+	end
+
+	function meta.__newindex(_obj, key, value)
+		assert(index[key] == nil, string.format("Cannot reassign %s in context", tostring(key)))
+		index[key] = value
+	end
+
+	return setmetatable({}, meta)
+end
+
+return Context
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="3">
+        <Properties>
+          <string name="Name">Expectation</string>
+          <string name="Source">--[[
+	Allows creation of expectation statements designed for behavior-driven
+	testing (BDD). See Chai (JS) or RSpec (Ruby) for examples of other BDD
+	frameworks.
+
+	The Expectation class is exposed to tests as a function called `expect`:
+
+		expect(5).to.equal(5)
+		expect(foo()).to.be.ok()
+
+	Expectations can be negated using .never:
+
+		expect(true).never.to.equal(false)
+
+	Expectations throw errors when their conditions are not met.
+]]
+
+local Expectation = {}
+
+--[[
+	These keys don't do anything except make expectations read more cleanly
+]]
+local SELF_KEYS = {
+	to = true,
+	be = true,
+	been = true,
+	have = true,
+	was = true,
+	at = true,
+}
+
+--[[
+	These keys invert the condition expressed by the Expectation.
+]]
+local NEGATION_KEYS = {
+	never = true,
+}
+
+--[[
+	Extension of Lua's 'assert' that lets you specify an error level.
+]]
+local function assertLevel(condition, message, level)
+	message = message or "Assertion failed!"
+	level = level or 1
+
+	if not condition then
+		error(message, level + 1)
+	end
+end
+
+--[[
+	Returns a version of the given method that can be called with either . or :
+]]
+local function bindSelf(self, method)
+	return function(firstArg, ...)
+		if firstArg == self then
+			return method(self, ...)
+		else
+			return method(self, firstArg, ...)
+		end
+	end
+end
+
+local function formatMessage(result, trueMessage, falseMessage)
+	if result then
+		return trueMessage
+	else
+		return falseMessage
+	end
+end
+
+--[[
+	Create a new expectation
+]]
+function Expectation.new(value)
+	local self = {
+		value = value,
+		successCondition = true,
+		condition = false
+	}
+
+	setmetatable(self, Expectation)
+
+	self.a = bindSelf(self, self.a)
+	self.an = self.a
+	self.ok = bindSelf(self, self.ok)
+	self.equal = bindSelf(self, self.equal)
+	self.throw = bindSelf(self, self.throw)
+	self.near = bindSelf(self, self.near)
+
+	return self
+end
+
+function Expectation.__index(self, key)
+	-- Keys that don't do anything except improve readability
+	if SELF_KEYS[key] then
+		return self
+	end
+
+	-- Invert your assertion
+	if NEGATION_KEYS[key] then
+		local newExpectation = Expectation.new(self.value)
+		newExpectation.successCondition = not self.successCondition
+
+		return newExpectation
+	end
+
+	-- Fall back to methods provided by Expectation
+	return Expectation[key]
+end
+
+--[[
+	Called by expectation terminators to reset modifiers in a statement.
+
+	This makes chains like:
+
+		expect(5)
+			.never.to.equal(6)
+			.to.equal(5)
+
+	Work as expected.
+]]
+function Expectation:_resetModifiers()
+	self.successCondition = true
+end
+
+--[[
+	Assert that the expectation value is the given type.
+
+	expect(5).to.be.a("number")
+]]
+function Expectation:a(typeName)
+	local result = (type(self.value) == typeName) == self.successCondition
+
+	local message = formatMessage(self.successCondition,
+		("Expected value of type %q, got value %q of type %s"):format(
+			typeName,
+			tostring(self.value),
+			type(self.value)
+		),
+		("Expected value not of type %q, got value %q of type %s"):format(
+			typeName,
+			tostring(self.value),
+			type(self.value)
+		)
+	)
+
+	assertLevel(result, message, 3)
+	self:_resetModifiers()
+
+	return self
+end
+
+--[[
+	Assert that our expectation value is truthy
+]]
+function Expectation:ok()
+	local result = (self.value ~= nil) == self.successCondition
+
+	local message = formatMessage(self.successCondition,
+		("Expected value %q to be non-nil"):format(
+			tostring(self.value)
+		),
+		("Expected value %q to be nil"):format(
+			tostring(self.value)
+		)
+	)
+
+	assertLevel(result, message, 3)
+	self:_resetModifiers()
+
+	return self
+end
+
+--[[
+	Assert that our expectation value is equal to another value
+]]
+function Expectation:equal(otherValue)
+	local result = (self.value == otherValue) == self.successCondition
+
+	local message = formatMessage(self.successCondition,
+		("Expected value %q (%s), got %q (%s) instead"):format(
+			tostring(otherValue),
+			type(otherValue),
+			tostring(self.value),
+			type(self.value)
+		),
+		("Expected anything but value %q (%s)"):format(
+			tostring(otherValue),
+			type(otherValue)
+		)
+	)
+
+	assertLevel(result, message, 3)
+	self:_resetModifiers()
+
+	return self
+end
+
+--[[
+	Assert that our expectation value is equal to another value within some
+	inclusive limit.
+]]
+function Expectation:near(otherValue, limit)
+	assert(type(self.value) == "number", "Expectation value must be a number to use 'near'")
+	assert(type(otherValue) == "number", "otherValue must be a number")
+	assert(type(limit) == "number" or limit == nil, "limit must be a number or nil")
+
+	limit = limit or 1e-7
+
+	local result = (math.abs(self.value - otherValue) &lt;= limit) == self.successCondition
+
+	local message = formatMessage(self.successCondition,
+		("Expected value to be near %f (within %f) but got %f instead"):format(
+			otherValue,
+			limit,
+			self.value
+		),
+		("Expected value to not be near %f (within %f) but got %f instead"):format(
+			otherValue,
+			limit,
+			self.value
+		)
+	)
+
+	assertLevel(result, message, 3)
+	self:_resetModifiers()
+
+	return self
+end
+
+--[[
+	Assert that our functoid expectation value throws an error when called.
+	An optional error message can be passed to assert that the error message
+	contains the given value.
+]]
+function Expectation:throw(messageSubstring)
+	local ok, err = pcall(self.value)
+	local result = ok ~= self.successCondition
+
+	if messageSubstring and not ok then
+		if self.successCondition then
+			result = err:find(messageSubstring, 1, true) ~= nil
+		else
+			result = err:find(messageSubstring, 1, true) == nil
+		end
+	end
+
+	local message
+
+	if messageSubstring then
+		message = formatMessage(self.successCondition,
+			("Expected function to throw an error containing %q, but it %s"):format(
+				messageSubstring,
+				err and ("threw: %s"):format(err) or "did not throw."
+			),
+			("Expected function to never throw an error containing %q, but it threw: %s"):format(
+				messageSubstring,
+				tostring(err)
+			)
+		)
+	else
+		message = formatMessage(self.successCondition,
+			"Expected function to throw an error, but it did not throw.",
+			("Expected function to succeed, but it threw an error: %s"):format(
+				tostring(err)
+			)
+		)
+	end
+
+	assertLevel(result, message, 3)
+	self:_resetModifiers()
+
+	return self
+end
+
+return Expectation</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="4">
+        <Properties>
+          <string name="Name">LifecycleHooks</string>
+          <string name="Source"><![CDATA[local TestEnum = require(script.Parent.TestEnum)
+
+local LifecycleHooks = {}
+LifecycleHooks.__index = LifecycleHooks
+
+function LifecycleHooks.new()
+	local self = {
+		_stack = {},
+	}
+	return setmetatable(self, LifecycleHooks)
+end
+
+--[[
+	Returns an array of `beforeEach` hooks in FIFO order
+]]
+function LifecycleHooks:getBeforeEachHooks()
+	local key = TestEnum.NodeType.BeforeEach
+	local hooks = {}
+
+	for _, level in ipairs(self._stack) do
+		for _, hook in ipairs(level[key]) do
+			table.insert(hooks, hook)
+		end
+	end
+
+	return hooks
+end
+
+--[[
+	Returns an array of `afterEach` hooks in FILO order
+]]
+function LifecycleHooks:getAfterEachHooks()
+	local key = TestEnum.NodeType.AfterEach
+	local hooks = {}
+
+	for _, level in ipairs(self._stack) do
+		for _, hook in ipairs(level[key]) do
+			table.insert(hooks, 1, hook)
+		end
+	end
+
+	return hooks
+end
+
+--[[
+	Pushes uncalled beforeAll and afterAll hooks back up the stack
+]]
+function LifecycleHooks:popHooks()
+	table.remove(self._stack, #self._stack)
+end
+
+function LifecycleHooks:pushHooksFrom(planNode)
+	assert(planNode ~= nil)
+
+	table.insert(self._stack, {
+		[TestEnum.NodeType.BeforeAll] = self:_getHooksOfType(planNode.children, TestEnum.NodeType.BeforeAll),
+		[TestEnum.NodeType.AfterAll] = self:_getHooksOfType(planNode.children, TestEnum.NodeType.AfterAll),
+		[TestEnum.NodeType.BeforeEach] = self:_getHooksOfType(planNode.children, TestEnum.NodeType.BeforeEach),
+		[TestEnum.NodeType.AfterEach] = self:_getHooksOfType(planNode.children, TestEnum.NodeType.AfterEach),
+	})
+end
+
+--[[
+	Get the beforeAll hooks from the current level.
+]]
+function LifecycleHooks:getBeforeAllHooks()
+	return self._stack[#self._stack][TestEnum.NodeType.BeforeAll]
+end
+
+--[[
+	Get the afterAll hooks from the current level.
+]]
+function LifecycleHooks:getAfterAllHooks()
+	return self._stack[#self._stack][TestEnum.NodeType.AfterAll]
+end
+
+function LifecycleHooks:_getHooksOfType(nodes, key)
+	local hooks = {}
+
+	for _, node in ipairs(nodes) do
+		if node.type == key then
+			table.insert(hooks, node.callback)
+		end
+	end
+
+	return hooks
+end
+
+return LifecycleHooks
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="Folder" referent="5">
+        <Properties>
+          <string name="Name">Reporters</string>
+        </Properties>
+        <Item class="ModuleScript" referent="6">
+          <Properties>
+            <string name="Name">TeamCityReporter</string>
+            <string name="Source">local TestService = game:GetService("TestService")
+
+local TestEnum = require(script.Parent.Parent.TestEnum)
+
+local TeamCityReporter = {}
+
+local function teamCityEscape(str)
+	str = string.gsub(str, "([]|'[])","|%1")
+	str = string.gsub(str, "\r", "|r")
+	str = string.gsub(str, "\n", "|n")
+	return str
+end
+
+local function teamCityEnterSuite(suiteName)
+	return string.format("##teamcity[testSuiteStarted name='%s']", teamCityEscape(suiteName))
+end
+
+local function teamCityLeaveSuite(suiteName)
+	return string.format("##teamcity[testSuiteFinished name='%s']", teamCityEscape(suiteName))
+end
+
+local function teamCityEnterCase(caseName)
+	return string.format("##teamcity[testStarted name='%s']", teamCityEscape(caseName))
+end
+
+local function teamCityLeaveCase(caseName)
+	return string.format("##teamcity[testFinished name='%s']", teamCityEscape(caseName))
+end
+
+local function teamCityFailCase(caseName, errorMessage)
+	return string.format("##teamcity[testFailed name='%s' message='%s']",
+		teamCityEscape(caseName), teamCityEscape(errorMessage))
+end
+
+local function reportNode(node, buffer, level)
+	buffer = buffer or {}
+	level = level or 0
+	if node.status == TestEnum.TestStatus.Skipped then
+		return buffer
+	end
+	if node.planNode.type == TestEnum.NodeType.Describe then
+		table.insert(buffer, teamCityEnterSuite(node.planNode.phrase))
+		for _, child in ipairs(node.children) do
+			reportNode(child, buffer, level + 1)
+		end
+		table.insert(buffer, teamCityLeaveSuite(node.planNode.phrase))
+	else
+		table.insert(buffer, teamCityEnterCase(node.planNode.phrase))
+		if node.status == TestEnum.TestStatus.Failure then
+			table.insert(buffer, teamCityFailCase(node.planNode.phrase, table.concat(node.errors,"\n")))
+		end
+		table.insert(buffer, teamCityLeaveCase(node.planNode.phrase))
+	end
+end
+
+local function reportRoot(node)
+	local buffer = {}
+
+	for _, child in ipairs(node.children) do
+		reportNode(child, buffer, 0)
+	end
+
+	return buffer
+end
+
+local function report(root)
+	local buffer = reportRoot(root)
+
+	return table.concat(buffer, "\n")
+end
+
+function TeamCityReporter.report(results)
+	local resultBuffer = {
+		"Test results:",
+		report(results),
+		("%d passed, %d failed, %d skipped"):format(
+			results.successCount,
+			results.failureCount,
+			results.skippedCount
+		)
+	}
+
+	print(table.concat(resultBuffer, "\n"))
+
+	if results.failureCount > 0 then
+		print(("%d test nodes reported failures."):format(results.failureCount))
+	end
+
+	if #results.errors > 0 then
+		print("Errors reported by tests:")
+		print("")
+
+		for _, message in ipairs(results.errors) do
+			TestService:Error(message)
+
+			-- Insert a blank line after each error
+			print("")
+		end
+	end
+end
+
+return TeamCityReporter</string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="7">
+          <Properties>
+            <string name="Name">TextReporter</string>
+            <string name="Source">--[[
+	The TextReporter uses the results from a completed test to output text to
+	standard output and TestService.
+]]
+
+local TestService = game:GetService("TestService")
+
+local TestEnum = require(script.Parent.Parent.TestEnum)
+
+local INDENT = (" "):rep(3)
+local STATUS_SYMBOLS = {
+	[TestEnum.TestStatus.Success] = "+",
+	[TestEnum.TestStatus.Failure] = "-",
+	[TestEnum.TestStatus.Skipped] = "~"
+}
+local UNKNOWN_STATUS_SYMBOL = "?"
+
+local TextReporter = {}
+
+local function compareNodes(a, b)
+	return a.planNode.phrase:lower() &lt; b.planNode.phrase:lower()
+end
+
+local function reportNode(node, buffer, level)
+	buffer = buffer or {}
+	level = level or 0
+
+	if node.status == TestEnum.TestStatus.Skipped then
+		return buffer
+	end
+
+	local line
+
+	if node.status then
+		local symbol = STATUS_SYMBOLS[node.status] or UNKNOWN_STATUS_SYMBOL
+
+		line = ("%s[%s] %s"):format(
+			INDENT:rep(level),
+			symbol,
+			node.planNode.phrase
+		)
+	else
+		line = ("%s%s"):format(
+			INDENT:rep(level),
+			node.planNode.phrase
+		)
+	end
+
+	table.insert(buffer, line)
+	table.sort(node.children, compareNodes)
+
+	for _, child in ipairs(node.children) do
+		reportNode(child, buffer, level + 1)
+	end
+
+	return buffer
+end
+
+local function reportRoot(node)
+	local buffer = {}
+	table.sort(node.children, compareNodes)
+
+	for _, child in ipairs(node.children) do
+		reportNode(child, buffer, 0)
+	end
+
+	return buffer
+end
+
+local function report(root)
+	local buffer = reportRoot(root)
+
+	return table.concat(buffer, "\n")
+end
+
+function TextReporter.report(results)
+	local resultBuffer = {
+		"Test results:",
+		report(results),
+		("%d passed, %d failed, %d skipped"):format(
+			results.successCount,
+			results.failureCount,
+			results.skippedCount
+		)
+	}
+
+	print(table.concat(resultBuffer, "\n"))
+
+	if results.failureCount > 0 then
+		print(("%d test nodes reported failures."):format(results.failureCount))
+	end
+
+	if #results.errors > 0 then
+		print("Errors reported by tests:")
+		print("")
+
+		for _, message in ipairs(results.errors) do
+			TestService:Error(message)
+
+			-- Insert a blank line after each error
+			print("")
+		end
+	end
+end
+
+return TextReporter</string>
+          </Properties>
+        </Item>
+        <Item class="ModuleScript" referent="8">
+          <Properties>
+            <string name="Name">TextReporterQuiet</string>
+            <string name="Source">--[[
+	Copy of TextReporter that doesn't output successful tests.
+
+	This should be temporary, it's just a workaround to make CI environments
+	happy in the short-term.
+]]
+
+local TestService = game:GetService("TestService")
+
+local TestEnum = require(script.Parent.Parent.TestEnum)
+
+local INDENT = (" "):rep(3)
+local STATUS_SYMBOLS = {
+	[TestEnum.TestStatus.Success] = "+",
+	[TestEnum.TestStatus.Failure] = "-",
+	[TestEnum.TestStatus.Skipped] = "~"
+}
+local UNKNOWN_STATUS_SYMBOL = "?"
+
+local TextReporterQuiet = {}
+
+local function reportNode(node, buffer, level)
+	buffer = buffer or {}
+	level = level or 0
+
+	if node.status == TestEnum.TestStatus.Skipped then
+		return buffer
+	end
+
+	local line
+
+	if node.status ~= TestEnum.TestStatus.Success then
+		local symbol = STATUS_SYMBOLS[node.status] or UNKNOWN_STATUS_SYMBOL
+
+		line = ("%s[%s] %s"):format(
+			INDENT:rep(level),
+			symbol,
+			node.planNode.phrase
+		)
+	end
+
+	table.insert(buffer, line)
+
+	for _, child in ipairs(node.children) do
+		reportNode(child, buffer, level + 1)
+	end
+
+	return buffer
+end
+
+local function reportRoot(node)
+	local buffer = {}
+
+	for _, child in ipairs(node.children) do
+		reportNode(child, buffer, 0)
+	end
+
+	return buffer
+end
+
+local function report(root)
+	local buffer = reportRoot(root)
+
+	return table.concat(buffer, "\n")
+end
+
+function TextReporterQuiet.report(results)
+	local resultBuffer = {
+		"Test results:",
+		report(results),
+		("%d passed, %d failed, %d skipped"):format(
+			results.successCount,
+			results.failureCount,
+			results.skippedCount
+		)
+	}
+
+	print(table.concat(resultBuffer, "\n"))
+
+	if results.failureCount > 0 then
+		print(("%d test nodes reported failures."):format(results.failureCount))
+	end
+
+	if #results.errors > 0 then
+		print("Errors reported by tests:")
+		print("")
+
+		for _, message in ipairs(results.errors) do
+			TestService:Error(message)
+
+			-- Insert a blank line after each error
+			print("")
+		end
+	end
+end
+
+return TextReporterQuiet</string>
+          </Properties>
+        </Item>
+      </Item>
+      <Item class="ModuleScript" referent="9">
+        <Properties>
+          <string name="Name">TestBootstrap</string>
+          <string name="Source">--[[
+	Provides an interface to quickly run and report tests from a given object.
+]]
+
+local TestPlanner = require(script.Parent.TestPlanner)
+local TestRunner = require(script.Parent.TestRunner)
+local TextReporter = require(script.Parent.Reporters.TextReporter)
+
+local TestBootstrap = {}
+
+local function stripSpecSuffix(name)
+	return (name:gsub("%.spec$", ""))
+end
+local function isSpecScript(aScript)
+	return aScript:IsA("ModuleScript") and aScript.Name:match("%.spec$")
+end
+
+local function getPath(module, root)
+	root = root or game
+
+	local path = {}
+	local last = module
+
+	if last.Name == "init.spec" then
+		-- Use the directory's node for init.spec files.
+		last = last.Parent
+	end
+
+	while last ~= nil and last ~= root do
+		table.insert(path, stripSpecSuffix(last.Name))
+		last = last.Parent
+	end
+	table.insert(path, stripSpecSuffix(root.Name))
+
+	return path
+end
+
+local function toStringPath(tablePath)
+	local stringPath = ""
+	local first = true
+	for _, element in ipairs(tablePath) do
+		if first then
+			stringPath = element
+			first = false
+		else
+			stringPath = element .. " " .. stringPath
+		end
+	end
+	return stringPath
+end
+
+function TestBootstrap:getModulesImpl(root, modules, current)
+	modules = modules or {}
+	current = current or root
+
+	if isSpecScript(current) then
+		local method = require(current)
+		local path = getPath(current, root)
+		local pathString = toStringPath(path)
+
+		table.insert(modules, {
+			method = method,
+			path = path,
+			pathStringForSorting = pathString:lower()
+		})
+	end
+end
+
+--[[
+	Find all the ModuleScripts in this tree that are tests.
+]]
+function TestBootstrap:getModules(root)
+	local modules = {}
+
+	self:getModulesImpl(root, modules)
+
+	for _, child in ipairs(root:GetDescendants()) do
+		self:getModulesImpl(root, modules, child)
+	end
+
+	return modules
+end
+
+--[[
+	Runs all test and reports the results using the given test reporter.
+
+	If no reporter is specified, a reasonable default is provided.
+
+	This function demonstrates the expected workflow with this testing system:
+	1. Locate test modules
+	2. Generate test plan
+	3. Run test plan
+	4. Report test results
+
+	This means we could hypothetically present a GUI to the developer that shows
+	the test plan before we execute it, allowing them to toggle specific tests
+	before they're run, but after they've been identified!
+]]
+function TestBootstrap:run(roots, reporter, otherOptions)
+	reporter = reporter or TextReporter
+
+	otherOptions = otherOptions or {}
+	local showTimingInfo = otherOptions["showTimingInfo"] or false
+	local testNamePattern = otherOptions["testNamePattern"]
+	local extraEnvironment = otherOptions["extraEnvironment"] or {}
+
+	if type(roots) ~= "table" then
+		error(("Bad argument #1 to TestBootstrap:run. Expected table, got %s"):format(typeof(roots)), 2)
+	end
+
+	local startTime = tick()
+
+	local modules = {}
+	for _, subRoot in ipairs(roots) do
+		local newModules = self:getModules(subRoot)
+
+		for _, newModule in ipairs(newModules) do
+			table.insert(modules, newModule)
+		end
+	end
+
+	local afterModules = tick()
+
+	local plan = TestPlanner.createPlan(modules, testNamePattern, extraEnvironment)
+	local afterPlan = tick()
+
+	local results = TestRunner.runPlan(plan)
+	local afterRun = tick()
+
+	reporter.report(results)
+	local afterReport = tick()
+
+	if showTimingInfo then
+		local timing = {
+			("Took %f seconds to locate test modules"):format(afterModules - startTime),
+			("Took %f seconds to create test plan"):format(afterPlan - afterModules),
+			("Took %f seconds to run tests"):format(afterRun - afterPlan),
+			("Took %f seconds to report tests"):format(afterReport - afterRun),
+		}
+
+		print(table.concat(timing, "\n"))
+	end
+
+	return results
+end
+
+return TestBootstrap</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="10">
+        <Properties>
+          <string name="Name">TestEnum</string>
+          <string name="Source">--[[
+	Constants used throughout the testing framework.
+]]
+
+local TestEnum = {}
+
+TestEnum.TestStatus = {
+	Success = "Success",
+	Failure = "Failure",
+	Skipped = "Skipped"
+}
+
+TestEnum.NodeType = {
+	Describe = "Describe",
+	It = "It",
+	BeforeAll = "BeforeAll",
+	AfterAll = "AfterAll",
+	BeforeEach = "BeforeEach",
+	AfterEach = "AfterEach"
+}
+
+TestEnum.NodeModifier = {
+	None = "None",
+	Skip = "Skip",
+	Focus = "Focus"
+}
+
+return TestEnum</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="11">
+        <Properties>
+          <string name="Name">TestPlan</string>
+          <string name="Source"><![CDATA[--[[
+	Represents a tree of tests that have been loaded but not necessarily
+	executed yet.
+
+	TestPlan objects are produced by TestPlanner.
+]]
+
+local TestEnum = require(script.Parent.TestEnum)
+local Expectation = require(script.Parent.Expectation)
+
+local function newEnvironment(currentNode, extraEnvironment)
+	local env = {}
+
+	if extraEnvironment then
+		if type(extraEnvironment) ~= "table" then
+			error(("Bad argument #2 to newEnvironment. Expected table, got %s"):format(
+				typeof(extraEnvironment)), 2)
+		end
+
+		for key, value in pairs(extraEnvironment) do
+			env[key] = value
+		end
+	end
+
+	local function addChild(phrase, callback, nodeType, nodeModifier)
+		local node = currentNode:addChild(phrase, nodeType, nodeModifier)
+		node.callback = callback
+		if nodeType == TestEnum.NodeType.Describe then
+			node:expand()
+		end
+		return node
+	end
+
+	function env.describeFOCUS(phrase, callback)
+		addChild(phrase, callback, TestEnum.NodeType.Describe, TestEnum.NodeModifier.Focus)
+	end
+
+	function env.describeSKIP(phrase, callback)
+		addChild(phrase, callback, TestEnum.NodeType.Describe, TestEnum.NodeModifier.Skip)
+	end
+
+	function env.describe(phrase, callback, nodeModifier)
+		addChild(phrase, callback, TestEnum.NodeType.Describe, TestEnum.NodeModifier.None)
+	end
+
+	function env.itFOCUS(phrase, callback)
+		addChild(phrase, callback, TestEnum.NodeType.It, TestEnum.NodeModifier.Focus)
+	end
+
+	function env.itSKIP(phrase, callback)
+		addChild(phrase, callback, TestEnum.NodeType.It, TestEnum.NodeModifier.Skip)
+	end
+
+	function env.itFIXME(phrase, callback)
+		local node = addChild(phrase, callback, TestEnum.NodeType.It, TestEnum.NodeModifier.Skip)
+		warn("FIXME: broken test", node:getFullName())
+	end
+
+	function env.it(phrase, callback, nodeModifier)
+		addChild(phrase, callback, TestEnum.NodeType.It, TestEnum.NodeModifier.None)
+	end
+
+	-- Incrementing counter used to ensure that beforeAll, afterAll, beforeEach, afterEach have unique phrases
+	local lifecyclePhaseId = 0
+
+	local lifecycleHooks = {
+		[TestEnum.NodeType.BeforeAll] = "beforeAll",
+		[TestEnum.NodeType.AfterAll] = "afterAll",
+		[TestEnum.NodeType.BeforeEach] = "beforeEach",
+		[TestEnum.NodeType.AfterEach] = "afterEach"
+	}
+
+	for nodeType, name in pairs(lifecycleHooks) do
+		env[name] = function(callback)
+			addChild(name .. "_" .. tostring(lifecyclePhaseId), callback, nodeType, TestEnum.NodeModifier.None)
+			lifecyclePhaseId = lifecyclePhaseId + 1
+		end
+	end
+
+	function env.FIXME(optionalMessage)
+		warn("FIXME: broken test", currentNode:getFullName(), optionalMessage or "")
+
+		currentNode.modifier = TestEnum.NodeModifier.Skip
+	end
+
+	function env.FOCUS()
+		currentNode.modifier = TestEnum.NodeModifier.Focus
+	end
+
+	function env.SKIP()
+		currentNode.modifier = TestEnum.NodeModifier.Skip
+	end
+
+	--[[
+		This function is deprecated. Calling it is a no-op beyond generating a
+		warning.
+	]]
+	function env.HACK_NO_XPCALL()
+		warn("HACK_NO_XPCALL is deprecated. It is now safe to yield in an " ..
+			"xpcall, so this is no longer necessary. It can be safely deleted.")
+	end
+
+	env.fit = env.itFOCUS
+	env.xit = env.itSKIP
+	env.fdescribe = env.describeFOCUS
+	env.xdescribe = env.describeSKIP
+
+	env.expect = Expectation.new
+
+	return env
+end
+
+local TestNode = {}
+TestNode.__index = TestNode
+
+--[[
+	Create a new test node. A pointer to the test plan, a phrase to describe it
+	and the type of node it is are required. The modifier is optional and will
+	be None if left blank.
+]]
+function TestNode.new(plan, phrase, nodeType, nodeModifier)
+	nodeModifier = nodeModifier or TestEnum.NodeModifier.None
+
+	local node = {
+		plan = plan,
+		phrase = phrase,
+		type = nodeType,
+		modifier = nodeModifier,
+		children = {},
+		callback = nil,
+		parent = nil,
+	}
+
+	node.environment = newEnvironment(node, plan.extraEnvironment)
+	return setmetatable(node, TestNode)
+end
+
+local function getModifier(name, pattern, modifier)
+	if pattern and (modifier == nil or modifier == TestEnum.NodeModifier.None) then
+		if name:match(pattern) then
+			return TestEnum.NodeModifier.Focus
+		else
+			return TestEnum.NodeModifier.Skip
+		end
+	end
+	return modifier
+end
+
+function TestNode:addChild(phrase, nodeType, nodeModifier)
+	if nodeType == TestEnum.NodeType.It then
+		for _, child in pairs(self.children) do
+			if child.phrase == phrase then
+				error("Duplicate it block found: " .. child:getFullName())
+			end
+		end
+	end
+
+	local childName = self:getFullName() .. " " .. phrase
+	nodeModifier = getModifier(childName, self.plan.testNamePattern, nodeModifier)
+	local child = TestNode.new(self.plan, phrase, nodeType, nodeModifier)
+	child.parent = self
+	table.insert(self.children, child)
+	return child
+end
+
+--[[
+	Join the names of all the nodes back to the parent.
+]]
+function TestNode:getFullName()
+	if self.parent then
+		local parentPhrase = self.parent:getFullName()
+		if parentPhrase then
+			return parentPhrase .. " " .. self.phrase
+		end
+	end
+	return self.phrase
+end
+
+--[[
+	Expand a node by setting its callback environment and then calling it. Any
+	further it and describe calls within the callback will be added to the tree.
+]]
+function TestNode:expand()
+	local originalEnv = getfenv(self.callback)
+	local callbackEnv = setmetatable({}, { __index = originalEnv })
+	for key, value in pairs(self.environment) do
+		callbackEnv[key] = value
+	end
+	setfenv(self.callback, callbackEnv)
+
+	local success, result = xpcall(self.callback, debug.traceback)
+
+	if not success then
+		self.loadError = result
+	end
+end
+
+local TestPlan = {}
+TestPlan.__index = TestPlan
+
+--[[
+	Create a new, empty TestPlan.
+]]
+function TestPlan.new(testNamePattern, extraEnvironment)
+	local plan = {
+		children = {},
+		testNamePattern = testNamePattern,
+		extraEnvironment = extraEnvironment,
+	}
+
+	return setmetatable(plan, TestPlan)
+end
+
+--[[
+	Add a new child under the test plan's root node.
+]]
+function TestPlan:addChild(phrase, nodeType, nodeModifier)
+	nodeModifier = getModifier(phrase, self.testNamePattern, nodeModifier)
+	local child = TestNode.new(self, phrase, nodeType, nodeModifier)
+	table.insert(self.children, child)
+	return child
+end
+
+--[[
+	Add a new describe node with the given method as a callback. Generates or
+	reuses all the describe nodes along the path.
+]]
+function TestPlan:addRoot(path, method)
+	local curNode = self
+	for i = #path, 1, -1 do
+		local nextNode = nil
+
+		for _, child in ipairs(curNode.children) do
+			if child.phrase == path[i] then
+				nextNode = child
+				break
+			end
+		end
+
+		if nextNode == nil then
+			nextNode = curNode:addChild(path[i], TestEnum.NodeType.Describe)
+		end
+
+		curNode = nextNode
+	end
+
+	curNode.callback = method
+	curNode:expand()
+end
+
+--[[
+	Calls the given callback on all nodes in the tree, traversed depth-first.
+]]
+function TestPlan:visitAllNodes(callback, root, level)
+	root = root or self
+	level = level or 0
+
+	for _, child in ipairs(root.children) do
+		callback(child, level)
+
+		self:visitAllNodes(callback, child, level + 1)
+	end
+end
+
+--[[
+	Visualizes the test plan in a simple format, suitable for debugging the test
+	plan's structure.
+]]
+function TestPlan:visualize()
+	local buffer = {}
+	self:visitAllNodes(function(node, level)
+		table.insert(buffer, (" "):rep(3 * level) .. node.phrase)
+	end)
+	return table.concat(buffer, "\n")
+end
+
+--[[
+	Gets a list of all nodes in the tree for which the given callback returns
+	true.
+]]
+function TestPlan:findNodes(callback)
+	local results = {}
+	self:visitAllNodes(function(node)
+		if callback(node) then
+			table.insert(results, node)
+		end
+	end)
+	return results
+end
+
+return TestPlan
+]]></string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="12">
+        <Properties>
+          <string name="Name">TestPlanner</string>
+          <string name="Source">--[[
+	Turns a series of specification functions into a test plan.
+
+	Uses a TestPlanBuilder to keep track of the state of the tree being built.
+]]
+local TestPlan = require(script.Parent.TestPlan)
+
+local TestPlanner = {}
+
+--[[
+	Create a new TestPlan from a list of specification functions.
+
+	These functions should call a combination of `describe` and `it` (and their
+	variants), which will be turned into a test plan to be executed.
+
+	Parameters:
+		- modulesList - list of tables describing test modules {
+			method, -- specification function described above
+			path, -- array of parent entires, first element is the leaf that owns `method`
+			pathStringForSorting -- a string representation of `path`, used for sorting of the test plan
+		}
+		- testNamePattern - Only tests matching this Lua pattern string will run. Pass empty or nil to run all tests
+		- extraEnvironment - Lua table holding additional functions and variables to be injected into the specification
+							function during execution
+]]
+function TestPlanner.createPlan(modulesList, testNamePattern, extraEnvironment)
+	local plan = TestPlan.new(testNamePattern, extraEnvironment)
+
+	table.sort(modulesList, function(a, b)
+		return a.pathStringForSorting &lt; b.pathStringForSorting
+	end)
+
+	for _, module in ipairs(modulesList) do
+		plan:addRoot(module.path, module.method)
+	end
+
+	return plan
+end
+
+return TestPlanner</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="13">
+        <Properties>
+          <string name="Name">TestResults</string>
+          <string name="Source">--[[
+	Represents a tree of test results.
+
+	Each node in the tree corresponds directly to a node in a corresponding
+	TestPlan, accessible via the 'planNode' field.
+
+	TestResults objects are produced by TestRunner using TestSession as state.
+]]
+
+local TestEnum = require(script.Parent.TestEnum)
+
+local STATUS_SYMBOLS = {
+	[TestEnum.TestStatus.Success] = "+",
+	[TestEnum.TestStatus.Failure] = "-",
+	[TestEnum.TestStatus.Skipped] = "~"
+}
+
+local TestResults = {}
+
+TestResults.__index = TestResults
+
+--[[
+	Create a new TestResults tree that's linked to the given TestPlan.
+]]
+function TestResults.new(plan)
+	local self = {
+		successCount = 0,
+		failureCount = 0,
+		skippedCount = 0,
+		planNode = plan,
+		children = {},
+		errors = {}
+	}
+
+	setmetatable(self, TestResults)
+
+	return self
+end
+
+--[[
+	Create a new result node that can be inserted into a TestResult tree.
+]]
+function TestResults.createNode(planNode)
+	local node = {
+		planNode = planNode,
+		children = {},
+		errors = {},
+		status = nil
+	}
+
+	return node
+end
+
+--[[
+	Visit all test result nodes, depth-first.
+]]
+function TestResults:visitAllNodes(callback, root)
+	root = root or self
+
+	for _, child in ipairs(root.children) do
+		callback(child)
+
+		self:visitAllNodes(callback, child)
+	end
+end
+
+--[[
+	Creates a debug visualization of the test results.
+]]
+function TestResults:visualize(root, level)
+	root = root or self
+	level = level or 0
+
+	local buffer = {}
+
+	for _, child in ipairs(root.children) do
+		if child.planNode.type == TestEnum.NodeType.It then
+			local symbol = STATUS_SYMBOLS[child.status] or "?"
+			local str = ("%s[%s] %s"):format(
+				(" "):rep(3 * level),
+				symbol,
+				child.planNode.phrase
+			)
+
+			if child.messages and #child.messages > 0 then
+				str = str .. "\n " .. (" "):rep(3 * level) .. table.concat(child.messages, "\n " .. (" "):rep(3 * level))
+			end
+
+			table.insert(buffer, str)
+		else
+			local str = ("%s%s"):format(
+				(" "):rep(3 * level),
+				child.planNode.phrase or ""
+			)
+
+			if child.status then
+				str = str .. (" (%s)"):format(child.status)
+			end
+
+			table.insert(buffer, str)
+
+			if #child.children > 0 then
+				local text = self:visualize(child, level + 1)
+				table.insert(buffer, text)
+			end
+		end
+	end
+
+	return table.concat(buffer, "\n")
+end
+
+return TestResults</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="14">
+        <Properties>
+          <string name="Name">TestRunner</string>
+          <string name="Source">--[[
+	Contains the logic to run a test plan and gather test results from it.
+
+	TestRunner accepts a TestPlan object, executes the planned tests, and
+	produces a TestResults object. While the tests are running, the system's
+	state is contained inside a TestSession object.
+]]
+
+local Expectation = require(script.Parent.Expectation)
+local TestEnum = require(script.Parent.TestEnum)
+local TestSession = require(script.Parent.TestSession)
+local LifecycleHooks = require(script.Parent.LifecycleHooks)
+
+local RUNNING_GLOBAL = "__TESTEZ_RUNNING_TEST__"
+
+local TestRunner = {
+	environment = {}
+}
+
+function TestRunner.environment.expect(...)
+	return Expectation.new(...)
+end
+
+--[[
+	Runs the given TestPlan and returns a TestResults object representing the
+	results of the run.
+]]
+function TestRunner.runPlan(plan)
+	local session = TestSession.new(plan)
+	local lifecycleHooks = LifecycleHooks.new()
+
+	local exclusiveNodes = plan:findNodes(function(node)
+		return node.modifier == TestEnum.NodeModifier.Focus
+	end)
+
+	session.hasFocusNodes = #exclusiveNodes > 0
+
+	TestRunner.runPlanNode(session, plan, lifecycleHooks)
+
+	return session:finalize()
+end
+
+--[[
+	Run the given test plan node and its descendants, using the given test
+	session to store all of the results.
+]]
+function TestRunner.runPlanNode(session, planNode, lifecycleHooks)
+	local function runCallback(callback, messagePrefix)
+		local success = true
+		local errorMessage
+		-- Any code can check RUNNING_GLOBAL to fork behavior based on
+		-- whether a test is running. We use this to avoid accessing
+		-- protected APIs; it's a workaround that will go away someday.
+		_G[RUNNING_GLOBAL] = true
+
+		messagePrefix = messagePrefix or ""
+
+		local testEnvironment = getfenv(callback)
+
+		for key, value in pairs(TestRunner.environment) do
+			testEnvironment[key] = value
+		end
+
+		testEnvironment.fail = function(message)
+			if message == nil then
+				message = "fail() was called."
+			end
+
+			success = false
+			errorMessage = messagePrefix .. message .. "\n" .. debug.traceback()
+		end
+
+		local context = session:getContext()
+
+		local nodeSuccess, nodeResult = xpcall(
+			function()
+				callback(context)
+			end,
+			function(message)
+				return messagePrefix .. message .. "\n" .. debug.traceback()
+			end
+		)
+
+		-- If a node threw an error, we prefer to use that message over
+		-- one created by fail() if it was set.
+		if not nodeSuccess then
+			success = false
+			errorMessage = nodeResult
+		end
+
+		_G[RUNNING_GLOBAL] = nil
+
+		return success, errorMessage
+	end
+
+	local function runNode(childPlanNode)
+		-- Errors can be set either via `error` propagating upwards or
+		-- by a test calling fail([message]).
+
+		for _, hook in ipairs(lifecycleHooks:getBeforeEachHooks()) do
+			local success, errorMessage = runCallback(hook, "beforeEach hook: ")
+			if not success then
+				return false, errorMessage
+			end
+		end
+
+		do
+			local success, errorMessage = runCallback(childPlanNode.callback)
+			if not success then
+				return false, errorMessage
+			end
+		end
+
+		for _, hook in ipairs(lifecycleHooks:getAfterEachHooks()) do
+			local success, errorMessage = runCallback(hook, "afterEach hook: ")
+			if not success then
+				return false, errorMessage
+			end
+		end
+
+		return true, nil
+	end
+
+	lifecycleHooks:pushHooksFrom(planNode)
+
+	local halt = false
+	for _, hook in ipairs(lifecycleHooks:getBeforeAllHooks()) do
+		local success, errorMessage = runCallback(hook, "beforeAll hook: ")
+		if not success then
+			session:addDummyError("beforeAll", errorMessage)
+			halt = true
+		end
+	end
+
+	if not halt then
+		for _, childPlanNode in ipairs(planNode.children) do
+			if childPlanNode.type == TestEnum.NodeType.It then
+				session:pushNode(childPlanNode)
+				if session:shouldSkip() then
+					session:setSkipped()
+				else
+					local success, errorMessage = runNode(childPlanNode)
+
+					if success then
+						session:setSuccess()
+					else
+						session:setError(errorMessage)
+					end
+				end
+				session:popNode()
+			elseif childPlanNode.type == TestEnum.NodeType.Describe then
+				session:pushNode(childPlanNode)
+				TestRunner.runPlanNode(session, childPlanNode, lifecycleHooks)
+
+				-- Did we have an error trying build a test plan?
+				if childPlanNode.loadError then
+					local message = "Error during planning: " .. childPlanNode.loadError
+					session:setError(message)
+				else
+					session:setStatusFromChildren()
+				end
+				session:popNode()
+			end
+		end
+	end
+
+	for _, hook in ipairs(lifecycleHooks:getAfterAllHooks()) do
+		local success, errorMessage = runCallback(hook, "afterAll hook: ")
+		if not success then
+			session:addDummyError("afterAll", errorMessage)
+		end
+	end
+
+	lifecycleHooks:popHooks()
+end
+
+return TestRunner</string>
+        </Properties>
+      </Item>
+      <Item class="ModuleScript" referent="15">
+        <Properties>
+          <string name="Name">TestSession</string>
+          <string name="Source"><![CDATA[--[[
+	Represents the state relevant while executing a test plan.
+
+	Used by TestRunner to produce a TestResults object.
+
+	Uses the same tree building structure as TestPlanBuilder; TestSession keeps
+	track of a stack of nodes that represent the current path through the tree.
+]]
+
+local TestEnum = require(script.Parent.TestEnum)
+local TestResults = require(script.Parent.TestResults)
+local Context = require(script.Parent.Context)
+
+local TestSession = {}
+
+TestSession.__index = TestSession
+
+--[[
+	Create a TestSession related to the given TestPlan.
+
+	The resulting TestResults object will be linked to this TestPlan.
+]]
+function TestSession.new(plan)
+	local self = {
+		results = TestResults.new(plan),
+		nodeStack = {},
+		contextStack = {},
+		hasFocusNodes = false
+	}
+
+	setmetatable(self, TestSession)
+
+	return self
+end
+
+--[[
+	Calculate success, failure, and skipped test counts in the tree at the
+	current point in the execution.
+]]
+function TestSession:calculateTotals()
+	local results = self.results
+
+	results.successCount = 0
+	results.failureCount = 0
+	results.skippedCount = 0
+
+	results:visitAllNodes(function(node)
+		local status = node.status
+		local nodeType = node.planNode.type
+
+		if nodeType == TestEnum.NodeType.It then
+			if status == TestEnum.TestStatus.Success then
+				results.successCount = results.successCount + 1
+			elseif status == TestEnum.TestStatus.Failure then
+				results.failureCount = results.failureCount + 1
+			elseif status == TestEnum.TestStatus.Skipped then
+				results.skippedCount = results.skippedCount + 1
+			end
+		end
+	end)
+end
+
+--[[
+	Gathers all of the errors reported by tests and puts them at the top level
+	of the TestResults object.
+]]
+function TestSession:gatherErrors()
+	local results = self.results
+
+	results.errors = {}
+
+	results:visitAllNodes(function(node)
+		if #node.errors > 0 then
+			for _, message in ipairs(node.errors) do
+				table.insert(results.errors, message)
+			end
+		end
+	end)
+end
+
+--[[
+	Calculates test totals, verifies the tree is valid, and returns results.
+]]
+function TestSession:finalize()
+	if #self.nodeStack ~= 0 then
+		error("Cannot finalize TestResults with nodes still on the stack!", 2)
+	end
+
+	self:calculateTotals()
+	self:gatherErrors()
+
+	return self.results
+end
+
+--[[
+	Create a new test result node and push it onto the navigation stack.
+]]
+function TestSession:pushNode(planNode)
+	local node = TestResults.createNode(planNode)
+	local lastNode = self.nodeStack[#self.nodeStack] or self.results
+	local lastContext = self.contextStack[#self.contextStack]
+	local context = Context.new(lastContext)
+
+	table.insert(lastNode.children, node)
+	table.insert(self.nodeStack, node)
+	table.insert(self.contextStack, context)
+end
+
+--[[
+	Pops a node off of the navigation stack.
+]]
+function TestSession:popNode()
+	assert(#self.nodeStack > 0, "Tried to pop from an empty node stack!")
+	table.remove(self.nodeStack, #self.nodeStack)
+	table.remove(self.contextStack, #self.contextStack)
+end
+
+--[[
+	Gets the Context object for the current node.
+]]
+function TestSession:getContext()
+	assert(#self.contextStack > 0, "Tried to get context from an empty stack!")
+	return self.contextStack[#self.contextStack]
+end
+
+--[[
+	Tells whether the current test we're in should be skipped.
+]]
+function TestSession:shouldSkip()
+	-- If our test tree had any exclusive tests, then normal tests are skipped!
+	if self.hasFocusNodes then
+		for i = #self.nodeStack, 1, -1 do
+			local node = self.nodeStack[i]
+
+			-- Skipped tests are still skipped
+			if node.planNode.modifier == TestEnum.NodeModifier.Skip then
+				return true
+			end
+
+			-- Focused tests are the only ones that aren't skipped
+			if node.planNode.modifier == TestEnum.NodeModifier.Focus then
+				return false
+			end
+		end
+
+		return true
+	else
+		for i = #self.nodeStack, 1, -1 do
+			local node = self.nodeStack[i]
+
+			if node.planNode.modifier == TestEnum.NodeModifier.Skip then
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
+--[[
+	Set the current node's status to Success.
+]]
+function TestSession:setSuccess()
+	assert(#self.nodeStack > 0, "Attempting to set success status on empty stack")
+	self.nodeStack[#self.nodeStack].status = TestEnum.TestStatus.Success
+end
+
+--[[
+	Set the current node's status to Skipped.
+]]
+function TestSession:setSkipped()
+	assert(#self.nodeStack > 0, "Attempting to set skipped status on empty stack")
+	self.nodeStack[#self.nodeStack].status = TestEnum.TestStatus.Skipped
+end
+
+--[[
+	Set the current node's status to Failure and adds a message to its list of
+	errors.
+]]
+function TestSession:setError(message)
+	assert(#self.nodeStack > 0, "Attempting to set error status on empty stack")
+	local last = self.nodeStack[#self.nodeStack]
+	last.status = TestEnum.TestStatus.Failure
+	table.insert(last.errors, message)
+end
+
+--[[
+	Add a dummy child node to the current node to hold the given error. This
+	allows an otherwise empty describe node to report an error in a more natural
+	way.
+]]
+function TestSession:addDummyError(phrase, message)
+	self:pushNode({type = TestEnum.NodeType.It, phrase = phrase})
+	self:setError(message)
+	self:popNode()
+	self.nodeStack[#self.nodeStack].status = TestEnum.TestStatus.Failure
+end
+
+--[[
+	Set the current node's status based on that of its children. If all children
+	are skipped, mark it as skipped. If any are fails, mark it as failed.
+	Otherwise, mark it as success.
+]]
+function TestSession:setStatusFromChildren()
+	assert(#self.nodeStack > 0, "Attempting to set status from children on empty stack")
+
+	local last = self.nodeStack[#self.nodeStack]
+	local status = TestEnum.TestStatus.Success
+	local skipped = true
+
+	-- If all children were skipped, then we were skipped
+	-- If any child failed, then we failed!
+	for _, child in ipairs(last.children) do
+		if child.status ~= TestEnum.TestStatus.Skipped then
+			skipped = false
+
+			if child.status == TestEnum.TestStatus.Failure then
+				status = TestEnum.TestStatus.Failure
+			end
+		end
+	end
+
+	if skipped then
+		status = TestEnum.TestStatus.Skipped
+	end
+
+	last.status = status
+end
+
+return TestSession
+]]></string>
+        </Properties>
+      </Item>
+    </Item>
+    <Item class="ModuleScript" referent="16">
+      <Properties>
+        <string name="Name">PlayFab</string>
         <string name="Source">local Settings = require(script.PlayFabSettings);
 
 local PlayFabAdmin = require(script.PlayFabAdmin);
@@ -41,7 +1882,7 @@ return {
     Settings = Settings.settings
 };</string>
       </Properties>
-      <Item class="ModuleScript" referent="2">
+      <Item class="ModuleScript" referent="17">
         <Properties>
           <string name="Name">IPlayFabHttps</string>
           <string name="Source">local HttpService = game:GetService("HttpService")
@@ -107,22 +1948,14 @@ end
 return IPlayFabHttps</string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="3">
+      <Item class="ModuleScript" referent="18">
         <Properties>
           <string name="Name">PlayFabAdmin</string>
           <string name="Source"><![CDATA[-- PlayFab Admin API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -1625,22 +3458,14 @@ return PlayFabAdminApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="4">
+      <Item class="ModuleScript" referent="19">
         <Properties>
           <string name="Name">PlayFabAuthentication</string>
           <string name="Source"><![CDATA[-- PlayFab Authentication API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -1688,22 +3513,14 @@ return PlayFabAuthenticationApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="5">
+      <Item class="ModuleScript" referent="20">
         <Properties>
           <string name="Name">PlayFabClient</string>
           <string name="Source"><![CDATA[-- PlayFab Client API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -3624,22 +5441,14 @@ return PlayFabClientApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="6">
+      <Item class="ModuleScript" referent="21">
         <Properties>
           <string name="Name">PlayFabCloudScript</string>
           <string name="Source"><![CDATA[-- PlayFab CloudScript API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -3785,22 +5594,14 @@ return PlayFabCloudScriptApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="7">
+      <Item class="ModuleScript" referent="22">
         <Properties>
           <string name="Name">PlayFabData</string>
           <string name="Source"><![CDATA[-- PlayFab Data API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -3889,22 +5690,14 @@ return PlayFabDataApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="8">
+      <Item class="ModuleScript" referent="23">
         <Properties>
           <string name="Name">PlayFabEvents</string>
           <string name="Source"><![CDATA[-- PlayFab Events API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -3939,22 +5732,14 @@ return PlayFabEventsApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="9">
+      <Item class="ModuleScript" referent="24">
         <Properties>
           <string name="Name">PlayFabExperimentation</string>
           <string name="Source"><![CDATA[-- PlayFab Experimentation API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -4054,22 +5839,14 @@ return PlayFabExperimentationApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="10">
+      <Item class="ModuleScript" referent="25">
         <Properties>
           <string name="Name">PlayFabGroups</string>
           <string name="Source"><![CDATA[-- PlayFab Groups API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -4356,22 +6133,14 @@ return PlayFabGroupsApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="11">
+      <Item class="ModuleScript" referent="26">
         <Properties>
           <string name="Name">PlayFabInsights</string>
           <string name="Source"><![CDATA[-- PlayFab Insights API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -4451,22 +6220,14 @@ return PlayFabInsightsApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="12">
+      <Item class="ModuleScript" referent="27">
         <Properties>
           <string name="Name">PlayFabLocalization</string>
           <string name="Source"><![CDATA[-- PlayFab Localization API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -4489,22 +6250,14 @@ return PlayFabLocalizationApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="13">
+      <Item class="ModuleScript" referent="28">
         <Properties>
           <string name="Name">PlayFabMatchmaker</string>
           <string name="Source"><![CDATA[-- PlayFab Matchmaker API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -4582,22 +6335,14 @@ return PlayFabMatchmakerApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="14">
+      <Item class="ModuleScript" referent="29">
         <Properties>
           <string name="Name">PlayFabMultiplayer</string>
           <string name="Source"><![CDATA[-- PlayFab Multiplayer API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -5275,22 +7020,14 @@ return PlayFabMultiplayerApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="15">
+      <Item class="ModuleScript" referent="30">
         <Properties>
           <string name="Name">PlayFabProfiles</string>
           <string name="Source"><![CDATA[-- PlayFab Profiles API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -5380,22 +7117,14 @@ return PlayFabProfilesApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="16">
+      <Item class="ModuleScript" referent="31">
         <Properties>
           <string name="Name">PlayFabServer</string>
           <string name="Source"><![CDATA[-- PlayFab Server API
 -- You should not require this file directly
 -- All api calls are documented here: https://docs.microsoft.com/gaming/playfab/api-references/
 
--- Check if the roblox-ts promise implementation exists for Typescript users
-local rbxts_include = game.ReplicatedStorage:FindFirstChild('rbxts_include')
-local Promise
-if (rbxts_include and rbxts_include:FindFirstChild('Promise')) then
-    Promise = require(rbxts_include.Promise)
-else
-    Promise = require(script.Parent.Promise)
-end
-
+local Promise = require(script.Parent.Promise)
 local IPlayFabHttps = require(script.Parent.IPlayFabHttps)
 local PlayFabSettings = require(script.Parent.PlayFabSettings)
 
@@ -7179,7 +8908,7 @@ return PlayFabServerApi
 ]]></string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="17">
+      <Item class="ModuleScript" referent="32">
         <Properties>
           <string name="Name">PlayFabSettings</string>
           <string name="Source">-- Holds the basic settings for PlayFab
@@ -7206,10 +8935,16 @@ local PlayFabSettings = {
 return PlayFabSettings</string>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="18">
+      <Item class="ModuleScript" referent="33">
         <Properties>
           <string name="Name">Promise</string>
-          <string name="Source"><![CDATA[--[[
+          <string name="Source"><![CDATA[-- If roblox-ts is detected then return the roblox-ts promise implementation instead
+local TS = _G[script.Parent]
+if TS then
+  return TS.Promise
+end
+
+--[[
 	An implementation of Promises similar to Promise/A+.
 ]]
 
@@ -8601,3621 +10336,6 @@ end
 return Promise
 ]]></string>
         </Properties>
-      </Item>
-    </Item>
-    <Item class="Folder" referent="19">
-      <Properties>
-        <string name="Name">rbxts_include</string>
-      </Properties>
-      <Item class="ModuleScript" referent="20">
-        <Properties>
-          <string name="Name">Promise</string>
-          <string name="Source"><![CDATA[--[[
-	An implementation of Promises similar to Promise/A+.
-	Forked from LPGhatguy/roblox-lua-promise, modified for roblox-ts.
-]]
-
-local PROMISE_DEBUG = false
-
---[[
-	Packs a number of arguments into a table and returns its length.
-
-	Used to cajole varargs without dropping sparse values.
-]]
-local function pack(...)
-	local len = select("#", ...)
-
-	return len, { ... }
-end
-
---[[
-	wpcallPacked is a version of xpcall that:
-	* Returns the length of the result first
-	* Returns the result packed into a table
-	* Passes extra arguments through to the passed function; xpcall doesn't
-	* Issues a warning if PROMISE_DEBUG is enabled
-]]
-local function wpcallPacked(f, ...)
-	local argsLength, args = pack(...)
-
-	local body = function()
-		return f(unpack(args, 1, argsLength))
-	end
-
-	local resultLength, result = pack(xpcall(body, debug.traceback))
-
-	-- If promise debugging is on, warn whenever a pcall fails.
-	-- This is useful for debugging issues within the Promise implementation
-	-- itself.
-	if PROMISE_DEBUG and not result[1] then
-		warn(result[2])
-	end
-
-	return resultLength, result
-end
-
---[[
-	Creates a function that invokes a callback with correct error handling and
-	resolution mechanisms.
-]]
-local function createAdvancer(callback, resolve, reject)
-	return function(...)
-		local resultLength, result = wpcallPacked(callback, ...)
-		local ok = result[1]
-
-		if ok then
-			resolve(unpack(result, 2, resultLength))
-		else
-			reject(unpack(result, 2, resultLength))
-		end
-	end
-end
-
-local function isEmpty(t)
-	return next(t) == nil
-end
-
-local function createSymbol(name)
-	assert(type(name) == "string", "createSymbol requires `name` to be a string.")
-
-	local symbol = newproxy(true)
-
-	getmetatable(symbol).__tostring = function()
-		return ("Symbol(%s)"):format(name)
-	end
-
-	return symbol
-end
-
-local PromiseMarker = createSymbol("PromiseMarker")
-
-local Promise = {}
-Promise.prototype = {}
-Promise.__index = Promise.prototype
-
-Promise.Status = {
-	Started = createSymbol("Started"),
-	Resolved = createSymbol("Resolved"),
-	Rejected = createSymbol("Rejected"),
-	Cancelled = createSymbol("Cancelled"),
-}
-
---[[
-	Constructs a new Promise with the given initializing callback.
-
-	This is generally only called when directly wrapping a non-promise API into
-	a promise-based version.
-
-	The callback will receive 'resolve' and 'reject' methods, used to start
-	invoking the promise chain.
-
-	For example:
-
-		local function get(url)
-			return Promise.new(function(resolve, reject)
-				spawn(function()
-					resolve(HttpService:GetAsync(url))
-				end)
-			end)
-		end
-
-		get("https://google.com")
-			:andThen(function(stuff)
-				print("Got some stuff!", stuff)
-			end)
-
-	Second parameter, parent, is used internally for tracking the "parent" in a
-	promise chain. External code shouldn't need to worry about this.
-]]
-function Promise.new(callback, parent)
-	if parent ~= nil and not Promise.is(parent) then
-		error("Argument #2 to Promise.new must be a promise or nil", 2)
-	end
-
-	local self = {
-		-- Used to locate where a promise was created
-		_source = debug.traceback(),
-
-		-- A tag to identify us as a promise
-		[PromiseMarker] = true,
-
-		_status = Promise.Status.Started,
-
-		-- A table containing a list of all results, whether success or failure.
-		-- Only valid if _status is set to something besides Started
-		_values = nil,
-
-		-- Lua doesn't like sparse arrays very much, so we explicitly store the
-		-- length of _values to handle middle nils.
-		_valuesLength = -1,
-
-		-- If an error occurs with no observers, this will be set.
-		_unhandledRejection = false,
-
-		-- Queues representing functions we should invoke when we update!
-		_queuedResolve = {},
-		_queuedReject = {},
-		_queuedFinally = {},
-
-		-- The function to run when/if this promise is cancelled.
-		_cancellationHook = nil,
-
-		-- The "parent" of this promise in a promise chain. Required for
-		-- cancellation propagation.
-		_parent = parent,
-
-		-- The number of consumers attached to this promise. This is needed so that
-		-- we don't propagate promise cancellations when there are still uncancelled
-		-- consumers.
-		_numConsumers = 0,
-	}
-
-	setmetatable(self, Promise)
-
-	local function resolve(...)
-		self:_resolve(...)
-	end
-
-	local function reject(...)
-		self:_reject(...)
-	end
-
-	local function onCancel(cancellationHook)
-		assert(type(cancellationHook) == "function", "onCancel must be called with a function as its first argument.")
-
-		if self._status == Promise.Status.Cancelled then
-			cancellationHook()
-		else
-			self._cancellationHook = cancellationHook
-		end
-	end
-
-	local _, result = wpcallPacked(callback, resolve, reject, onCancel)
-	local ok = result[1]
-	local err = result[2]
-
-	if not ok and self._status == Promise.Status.Started then
-		reject(err)
-	end
-
-	return self
-end
-
---[[
-	Fast spawn: Spawns a thread with predictable timing.
-	Runs immediately instead of first cycle being deferred.
-]]
-function Promise.spawn(callback, ...)
-	local spawnBindable = Instance.new("BindableEvent")
-	local args = { ... }
-	local length = select("#", ...)
-	spawnBindable.Event:Connect(function()
-		callback(unpack(args, 1, length))
-	end)
-	spawnBindable:Fire()
-	spawnBindable:Destroy()
-end
-
---[[
-	Create a promise that represents the immediately resolved value.
-]]
-function Promise.resolve(value)
-	return Promise.new(function(resolve)
-		resolve(value)
-	end)
-end
-
---[[
-	Create a promise that represents the immediately rejected value.
-]]
-function Promise.reject(value)
-	return Promise.new(function(_, reject)
-		reject(value)
-	end)
-end
-
---[[
-	Returns a new promise that:
-		* is resolved when all input promises resolve
-		* is rejected if ANY input promises reject
-]]
-function Promise.all(promises)
-	if type(promises) ~= "table" then
-		error("Please pass a list of promises to Promise.all", 2)
-	end
-
-	-- If there are no values then return an already resolved promise.
-	if #promises == 0 then
-		return Promise.resolve({})
-	end
-
-	-- We need to check that each value is a promise here so that we can produce
-	-- a proper error rather than a rejected promise with our error.
-	for i = 1, #promises do
-		if not Promise.is(promises[i]) then
-			error(("Non-promise value passed into Promise.all at index #%d"):format(i), 2)
-		end
-	end
-
-	return Promise.new(function(resolve, reject)
-		-- An array to contain our resolved values from the given promises.
-		local resolvedValues = {}
-
-		-- Keep a count of resolved promises because just checking the resolved
-		-- values length wouldn't account for promises that resolve with nil.
-		local resolvedCount = 0
-
-		-- Called when a single value is resolved and resolves if all are done.
-		local function resolveOne(i, ...)
-			resolvedValues[i] = ...
-			resolvedCount = resolvedCount + 1
-
-			if resolvedCount == #promises then
-				resolve(resolvedValues)
-			end
-		end
-
-		-- We can assume the values inside `promises` are all promises since we
-		-- checked above.
-		for i = 1, #promises do
-			promises[i]:andThen(
-				function(...)
-					resolveOne(i, ...)
-				end,
-				function(...)
-					reject(...)
-				end
-			)
-		end
-	end)
-end
-
---[[
-	Is the given object a Promise instance?
-]]
-function Promise.is(object)
-	if type(object) ~= "table" then
-		return false
-	end
-
-	return object[PromiseMarker] == true
-end
-
-function Promise.prototype:getStatus()
-	return self._status
-end
-
-function Promise.prototype:isRejected()
-	return self._status == Promise.Status.Rejected
-end
-
-function Promise.prototype:isResolved()
-	return self._status == Promise.Status.Resolved
-end
-
-function Promise.prototype:isPending()
-	return self._status == Promise.Status.Started
-end
-
-function Promise.prototype:isCancelled()
-	return self._status == Promise.Status.Cancelled
-end
-
---[[
-	Creates a new promise that receives the result of this promise.
-
-	The given callbacks are invoked depending on that result.
-]]
-function Promise.prototype:andThen(successHandler, failureHandler)
-	self._unhandledRejection = false
-	self._numConsumers = self._numConsumers + 1
-
-	-- Create a new promise to follow this part of the chain
-	return Promise.new(function(resolve, reject)
-		-- Our default callbacks just pass values onto the next promise.
-		-- This lets success and failure cascade correctly!
-
-		local successCallback = resolve
-		if successHandler then
-			successCallback = createAdvancer(successHandler, resolve, reject)
-		end
-
-		local failureCallback = reject
-		if failureHandler then
-			failureCallback = createAdvancer(failureHandler, resolve, reject)
-		end
-
-		if self._status == Promise.Status.Started then
-			-- If we haven't resolved yet, put ourselves into the queue
-			table.insert(self._queuedResolve, successCallback)
-			table.insert(self._queuedReject, failureCallback)
-		elseif self._status == Promise.Status.Resolved then
-			-- This promise has already resolved! Trigger success immediately.
-			successCallback(unpack(self._values, 1, self._valuesLength))
-		elseif self._status == Promise.Status.Rejected then
-			-- This promise died a terrible death! Trigger failure immediately.
-			failureCallback(unpack(self._values, 1, self._valuesLength))
-		elseif self._status == Promise.Status.Cancelled then
-			-- We don't want to call the success handler or the failure handler,
-			-- we just reject this promise outright.
-			reject("Promise is cancelled")
-		end
-	end, self)
-end
-
---[[
-	Used to catch any errors that may have occurred in the promise.
-]]
-function Promise.prototype:catch(failureCallback)
-	return self:andThen(nil, failureCallback)
-end
-
---[[
-	Cancels the promise, disallowing it from rejecting or resolving, and calls
-	the cancellation hook if provided.
-]]
-function Promise.prototype:cancel()
-	if self._status ~= Promise.Status.Started then
-		return
-	end
-
-	self._status = Promise.Status.Cancelled
-
-	if self._cancellationHook then
-		self._cancellationHook()
-	end
-
-	if self._parent then
-		self._parent:_consumerCancelled()
-	end
-
-	self:_finalize()
-end
-
---[[
-	Used to decrease the number of consumers by 1, and if there are no more,
-	cancel this promise.
-]]
-function Promise.prototype:_consumerCancelled()
-	self._numConsumers = self._numConsumers - 1
-
-	if self._numConsumers <= 0 then
-		self:cancel()
-	end
-end
-
---[[
-	Used to set a handler for when the promise resolves, rejects, or is
-	cancelled. Returns a new promise chained from this promise.
-]]
-function Promise.prototype:finally(finallyHandler)
-	self._numConsumers = self._numConsumers + 1
-
-	-- Return a promise chained off of this promise
-	return Promise.new(function(resolve, reject)
-		local finallyCallback = resolve
-		if finallyHandler then
-			finallyCallback = createAdvancer(finallyHandler, resolve, reject)
-		end
-
-		if self._status == Promise.Status.Started then
-			-- The promise is not settled, so queue this.
-			table.insert(self._queuedFinally, finallyCallback)
-		else
-			-- The promise already settled or was cancelled, run the callback now.
-			finallyCallback()
-		end
-	end, self)
-end
-
---[[
-	Yield until the promise is completed.
-
-	This matches the execution model of normal Roblox functions.
-]]
-function Promise.prototype:await()
-	self._unhandledRejection = false
-
-	if self._status == Promise.Status.Started then
-		local result
-		local resultLength
-		local bindable = Instance.new("BindableEvent")
-
-		self:andThen(
-			function(...)
-				resultLength, result = pack(...)
-				bindable:Fire(true)
-			end,
-			function(...)
-				resultLength, result = pack(...)
-				bindable:Fire(false)
-			end
-		)
-		self:finally(function()
-			bindable:Fire(nil)
-		end)
-
-		local ok = bindable.Event:Wait()
-		bindable:Destroy()
-
-		if ok == nil then
-			-- If cancelled, we return nil.
-			return nil
-		end
-
-		return ok, unpack(result, 1, resultLength)
-	elseif self._status == Promise.Status.Resolved then
-		return true, unpack(self._values, 1, self._valuesLength)
-	elseif self._status == Promise.Status.Rejected then
-		return false, unpack(self._values, 1, self._valuesLength)
-	end
-
-	-- If the promise is cancelled, fall through to nil.
-	return nil
-end
-
---[[
-	Intended for use in tests.
-
-	Similar to await(), but instead of yielding if the promise is unresolved,
-	_unwrap will throw. This indicates an assumption that a promise has
-	resolved.
-]]
-function Promise.prototype:_unwrap()
-	if self._status == Promise.Status.Started then
-		error("Promise has not resolved or rejected.", 2)
-	end
-
-	local success = self._status == Promise.Status.Resolved
-
-	return success, unpack(self._values, 1, self._valuesLength)
-end
-
-function Promise.prototype:_resolve(...)
-	if self._status ~= Promise.Status.Started then
-		return
-	end
-
-	-- If the resolved value was a Promise, we chain onto it!
-	if Promise.is((...)) then
-		-- Without this warning, arguments sometimes mysteriously disappear
-		if select("#", ...) > 1 then
-			local message = (
-				"When returning a Promise from andThen, extra arguments are " ..
-				"discarded! See:\n\n%s"
-			):format(
-				self._source
-			)
-			warn(message)
-		end
-
-		(...):andThen(
-			function(...)
-				self:_resolve(...)
-			end,
-			function(...)
-				self:_reject(...)
-			end
-		)
-
-		return
-	end
-
-	self._status = Promise.Status.Resolved
-	self._valuesLength, self._values = pack(...)
-
-	-- We assume that these callbacks will not throw errors.
-	for _, callback in ipairs(self._queuedResolve) do
-		callback(...)
-	end
-
-	self:_finalize()
-end
-
-function Promise.prototype:_reject(...)
-	if self._status ~= Promise.Status.Started then
-		return
-	end
-
-	self._status = Promise.Status.Rejected
-	self._valuesLength, self._values = pack(...)
-
-	-- If there are any rejection handlers, call those!
-	if not isEmpty(self._queuedReject) then
-		-- We assume that these callbacks will not throw errors.
-		for _, callback in ipairs(self._queuedReject) do
-			callback(...)
-		end
-	else
-		-- At this point, no one was able to observe the error.
-		-- An error handler might still be attached if the error occurred
-		-- synchronously. We'll wait one tick, and if there are still no
-		-- observers, then we should put a message in the console.
-
-		self._unhandledRejection = true
-		local err = tostring((...))
-
-		spawn(function()
-			-- Someone observed the error, hooray!
-			if not self._unhandledRejection then
-				return
-			end
-
-			-- Build a reasonable message
-			local message = ("Unhandled promise rejection:\n\n%s\n\n%s"):format(
-				err,
-				self._source
-			)
-			warn(message)
-		end)
-	end
-
-	self:_finalize()
-end
-
---[[
-	Calls any :finally handlers. We need this to be a separate method and
-	queue because we must call all of the finally callbacks upon a success,
-	failure, *and* cancellation.
-]]
-function Promise.prototype:_finalize()
-	for _, callback in ipairs(self._queuedFinally) do
-		-- Purposefully not passing values to callbacks here, as it could be the
-		-- resolved values, or rejected errors. If the developer needs the values,
-		-- they should use :andThen or :catch explicitly.
-		callback()
-	end
-end
-
-return Promise
-]]></string>
-        </Properties>
-      </Item>
-      <Item class="ModuleScript" referent="21">
-        <Properties>
-          <string name="Name">RuntimeLib</string>
-          <string name="Source"><![CDATA[local Promise = require(script.Parent.Promise)
-
-local RunService = game:GetService("RunService")
-local ReplicatedFirst = game:GetService("ReplicatedFirst")
-
-local TS = {}
-
--- runtime classes
-TS.Promise = Promise
-
-local Symbol do
-	Symbol = {}
-	Symbol.__index = Symbol
-	setmetatable(Symbol, {
-		__call = function(_, description)
-			local self = setmetatable({}, Symbol)
-			self.description = "Symbol(" .. (description or "") .. ")"
-			return self
-		end
-	})
-
-	local symbolRegistry = setmetatable({}, {
-		__index = function(self, k)
-			self[k] = Symbol(k)
-			return self[k]
-		end
-	})
-
-	function Symbol:toString()
-		return self.description
-	end
-
-	Symbol.__tostring = Symbol.toString
-
-	-- Symbol.for
-	function Symbol.getFor(key)
-		return symbolRegistry[key]
-	end
-
-	function Symbol.keyFor(goalSymbol)
-		for key, symbol in pairs(symbolRegistry) do
-			if symbol == goalSymbol then
-				return key
-			end
-		end
-	end
-end
-
-TS.Symbol = Symbol
-TS.Symbol_iterator = Symbol("Symbol.iterator")
-
-local function isPlugin(object)
-	return RunService:IsStudio() and object:FindFirstAncestorWhichIsA("Plugin") ~= nil
-end
-
--- module resolution
-function TS.getModule(object, moduleName)
-	if RunService:IsRunning() and object:IsDescendantOf(ReplicatedFirst) then
-		warn("roblox-ts packages should not be used from ReplicatedFirst!")
-	end
-
-	-- ensure modules have fully replicated
-	if RunService:IsRunning() and RunService:IsClient() and not isPlugin(object) and not game:IsLoaded() then
-		game.Loaded:Wait()
-	end
-
-	local globalModules = script.Parent:FindFirstChild("node_modules")
-	if not globalModules then
-		error("Could not find any modules!", 2)
-	end
-
-	repeat
-		local modules = object:FindFirstChild("node_modules")
-		if modules then
-			local module = modules:FindFirstChild(moduleName)
-			if module then
-				return module
-			end
-		end
-		object = object.Parent
-	until object == nil or object == globalModules
-
-	return globalModules:FindFirstChild(moduleName) or error("Could not find module: " .. moduleName, 2)
-end
-
--- This is a hash which TS.import uses as a kind of linked-list-like history of [Script who Loaded] -> Library
-local currentlyLoading = {}
-local registeredLibraries = {}
-
-function TS.import(caller, module, ...)
-	for i = 1, select("#", ...) do
-		module = module:WaitForChild((select(i, ...)))
-	end
-
-	if module.ClassName ~= "ModuleScript" then
-		error("Failed to import! Expected ModuleScript, got " .. module.ClassName, 2)
-	end
-
-	currentlyLoading[caller] = module
-
-	-- Check to see if a case like this occurs:
-	-- module -> Module1 -> Module2 -> module
-
-	-- WHERE currentlyLoading[module] is Module1
-	-- and currentlyLoading[Module1] is Module2
-	-- and currentlyLoading[Module2] is module
-
-	local currentModule = module
-	local depth = 0
-
-	while currentModule do
-		depth = depth + 1
-		currentModule = currentlyLoading[currentModule]
-
-		if currentModule == module then
-			local str = currentModule.Name -- Get the string traceback
-
-			for _ = 1, depth do
-				currentModule = currentlyLoading[currentModule]
-				str = str .. "  ⇒ " .. currentModule.Name
-			end
-
-			error("Failed to import! Detected a circular dependency chain: " .. str, 2)
-		end
-	end
-
-	if not registeredLibraries[module] then
-		if _G[module] then
-			error("Invalid module access! Do you have two TS runtimes trying to import this? " .. module:GetFullName(), 2)
-		end
-
-		_G[module] = TS
-		registeredLibraries[module] = true -- register as already loaded for subsequent calls
-	end
-
-	local data = require(module)
-
-	if currentlyLoading[caller] == module then -- Thread-safe cleanup!
-		currentlyLoading[caller] = nil
-	end
-
-	return data
-end
-
-function TS.exportNamespace(module, ancestor)
-	for key, value in pairs(module) do
-		ancestor[key] = value
-	end
-end
-
--- general utility functions
-function TS.instanceof(obj, class)
-	-- custom Class.instanceof() check
-	if type(class) == "table" and type(class.instanceof) == "function" then
-		return class.instanceof(obj)
-	end
-
-	-- metatable check
-	if type(obj) == "table" then
-		obj = getmetatable(obj)
-		while obj ~= nil do
-			if obj == class then
-				return true
-			end
-			local mt = getmetatable(obj)
-			if mt then
-				obj = mt.__index
-			else
-				obj = nil
-			end
-		end
-	end
-
-	return false
-end
-
-function TS.async(callback)
-	return function(...)
-		local n = select("#", ...)
-		local args = { ... }
-		return Promise.new(function(resolve, reject)
-			coroutine.wrap(function()
-				local ok, result = pcall(callback, unpack(args, 1, n))
-				if ok then
-					resolve(result)
-				else
-					reject(result)
-				end
-			end)()
-		end)
-	end
-end
-
-local function package(...)
-	return select("#", ...), {...}
-end
-
-function TS.await(promise)
-	if not Promise.is(promise) then
-		return promise
-	end
-
-	local size, result = package(promise:await())
-	local ok = table.remove(result, 1)
-	if ok then
-		if size > 2 then
-			return result
-		else
-			return result[1]
-		end
-	else
-		error(ok == nil and "The awaited Promise was cancelled" or (size > 2 and result[1] or result), 2)
-	end
-end
-
-function TS.add(a, b)
-	if type(a) == "string" or type(b) == "string" then
-		return a .. b
-	else
-		return a + b
-	end
-end
-
-function TS.bit_lrsh(a, b)
-	local absA = math.abs(a)
-	local result = bit32.rshift(absA, b)
-	if a == absA then
-		return result
-	else
-		return -result - 1
-	end
-end
-
-TS.TRY_RETURN = 1
-TS.TRY_BREAK = 2
-TS.TRY_CONTINUE = 3
-
-function TS.try(func, catch, finally)
-	local err, traceback
-	local success, exitType, returns = xpcall(
-		func,
-		function(errInner)
-			err = errInner
-			traceback = debug.traceback()
-		end
-	)
-	if not success and catch then
-		local newExitType, newReturns = catch(err, traceback)
-		if newExitType then
-			exitType, returns = newExitType, newReturns
-		end
-	end
-	if finally then
-		local newExitType, newReturns = finally()
-		if newExitType then
-			exitType, returns = newExitType, newReturns
-		end
-	end
-	return exitType, returns
-end
-
--- LEGACY RUNTIME FUNCTIONS
-
-local HttpService = game:GetService("HttpService")
-
-function TS.generator(c)
-	c = coroutine.create(c)
-
-	local o = {
-		next = function(...)
-			if coroutine.status(c) == "dead" then
-				return { done = true }
-			else
-				local success, value = coroutine.resume(c, ...)
-				if success == false then error(value, 2) end
-				return { value = value, done = coroutine.status(c) == "dead" }
-			end
-		end
-	}
-
-	o[TS.Symbol_iterator] = function() return o end
-
-	return o
-end
-
--- utility functions
-local function copy(object)
-	local result = {}
-	for k, v in pairs(object) do
-		result[k] = v
-	end
-	return result
-end
-
-local function deepCopyHelper(object, encountered)
-	local result = {}
-	encountered[object] = result
-
-	for k, v in pairs(object) do
-		if type(k) == "table" then
-			k = encountered[k] or deepCopyHelper(k, encountered)
-		end
-
-		if type(v) == "table" then
-			v = encountered[v] or deepCopyHelper(v, encountered)
-		end
-
-		result[k] = v
-	end
-
-	return result
-end
-
-local function deepCopy(object)
-	return deepCopyHelper(object, {})
-end
-
-local function deepEquals(a, b)
-	-- a[k] == b[k]
-	for k in pairs(a) do
-		local av = a[k]
-		local bv = b[k]
-		if type(av) == "table" and type(bv) == "table" then
-			local result = deepEquals(av, bv)
-			if not result then
-				return false
-			end
-		elseif av ~= bv then
-			return false
-		end
-	end
-
-	-- extra keys in b
-	for k in pairs(b) do
-		if a[k] == nil then
-			return false
-		end
-	end
-
-	return true
-end
-
--- Object static functions
-
-function TS.Object_keys(object)
-	local result = {}
-	for key in pairs(object) do
-		result[#result + 1] = key
-	end
-	return result
-end
-
-function TS.Object_values(object)
-	local result = {}
-	for _, value in pairs(object) do
-		result[#result + 1] = value
-	end
-	return result
-end
-
-function TS.Object_entries(object)
-	local result = {}
-	for key, value in pairs(object) do
-		result[#result + 1] = { key, value }
-	end
-	return result
-end
-
-function TS.Object_assign(toObj, ...)
-	for i = 1, select("#", ...) do
-		local arg = select(i, ...)
-		if type(arg) == "table" then
-			for key, value in pairs(arg) do
-				toObj[key] = value
-			end
-		end
-	end
-	return toObj
-end
-
-TS.Object_copy = copy
-
-TS.Object_deepCopy = deepCopy
-
-TS.Object_deepEquals = deepEquals
-
-local function toString(data)
-	return HttpService:JSONEncode(data)
-end
-
-TS.Object_toString = toString
-
--- string macro functions
-function TS.string_find_wrap(a, b, ...)
-	if a then
-		return a - 1, b - 1, ...
-	end
-end
-
--- array macro functions
-local function array_copy(list)
-	local result = {}
-	for i = 1, #list do
-		result[i] = list[i]
-	end
-	return result
-end
-
-TS.array_copy = array_copy
-
-function TS.array_entries(list)
-	local result = {}
-	for key = 1, #list do
-		result[key] = { key - 1, list[key] }
-	end
-	return result
-end
-
-function TS.array_forEach(list, callback)
-	for i = 1, #list do
-		callback(list[i], i - 1, list)
-	end
-end
-
-local function array_map(list, callback)
-	local result = {}
-	for i = 1, #list do
-		result[i] = callback(list[i], i - 1, list)
-	end
-	return result
-end
-
-TS.array_map = array_map
-
-function TS.array_mapFiltered(list, callback)
-    local new = {}
-    local index = 1
-
-    for i = 1, #list do
-        local result = callback(list[i], i - 1, list)
-
-        if result ~= nil then
-            new[index] = result
-            index = index + 1
-        end
-    end
-
-    return new
-end
-
-local function getArraySizeSlow(list)
-    local result = 0
-    for index in pairs(list) do
-        if index > result then
-            result = index
-        end
-    end
-    return result
-end
-
-function TS.array_filterUndefined(list)
-	local length = 0
-	local result = {}
-	for i = 1, getArraySizeSlow(list) do
-		local value = list[i]
-		if value ~= nil then
-			length = length + 1
-			result[length] = value
-		end
-	end
-	return result
-end
-
-function TS.array_filter(list, callback)
-	local result = {}
-	for i = 1, #list do
-		local v = list[i]
-		if callback(v, i - 1, list) == true then
-			result[#result + 1] = v
-		end
-	end
-	return result
-end
-
-function TS.array_sort(list, callback)
-	table.sort(list, callback)
-	return list
-end
-
-TS.array_toString = toString
-
-function TS.array_slice(list, startI, endI)
-	local length = #list
-
-	if startI == nil then startI = 0 end
-	if endI == nil then endI = length end
-
-	if startI < 0 then startI = length + startI end
-	if endI < 0 then endI = length + endI end
-
-	local result = {}
-
-	for i = startI + 1, endI do
-		result[i - startI] = list[i]
-	end
-
-	return result
-end
-
-function TS.array_splice(list, start, deleteCount, ...)
-	local len = #list
-	local actualStart
-	if start < 0 then
-		actualStart = len + start
-		if actualStart < 0 then
-			actualStart = 0
-		end
-	else
-		if start < len then
-			actualStart = start
-		else
-			actualStart = len
-		end
-	end
-	local items = { ... }
-	local itemCount = #items
-	local actualDeleteCount
-	if start == nil then
-		actualDeleteCount = 0
-	elseif deleteCount == nil then
-		actualDeleteCount = len - actualStart
-	else
-		if deleteCount < 0 then
-			deleteCount = 0
-		end
-		actualDeleteCount = len - actualStart
-		if deleteCount < actualDeleteCount then
-			actualDeleteCount = deleteCount
-		end
-	end
-	local out = {}
-	local k = 0
-	while k < actualDeleteCount do
-		local from = actualStart + k
-		if list[from + 1] then
-			out[k + 1] = list[from + 1]
-		end
-		k = k + 1
-	end
-	if itemCount < actualDeleteCount then
-		k = actualStart
-		while k < len - actualDeleteCount do
-			local from = k + actualDeleteCount
-			local to = k + itemCount
-			if list[from + 1] then
-				list[to + 1] = list[from + 1]
-			else
-				list[to + 1] = nil
-			end
-			k = k + 1
-		end
-		k = len
-		while k > len - actualDeleteCount + itemCount do
-			list[k] = nil
-			k = k - 1
-		end
-	elseif itemCount > actualDeleteCount then
-		k = len - actualDeleteCount
-		while k > actualStart do
-			local from = k + actualDeleteCount
-			local to = k + itemCount
-			if list[from] then
-				list[to] = list[from]
-			else
-				list[to] = nil
-			end
-			k = k - 1
-		end
-	end
-	k = actualStart
-	for i = 1, #items do
-		list[k + 1] = items[i]
-		k = k + 1
-	end
-	k = #list
-	while k > len - actualDeleteCount + itemCount do
-		list[k] = nil
-		k = k - 1
-	end
-	return out
-end
-
-function TS.array_some(list, callback)
-	for i = 1, #list do
-		if callback(list[i], i - 1, list) == true then
-			return true
-		end
-	end
-	return false
-end
-
-function TS.array_every(list, callback)
-	for i = 1, #list do
-		if not callback(list[i], i - 1, list) then
-			return false
-		end
-	end
-	return true
-end
-
-function TS.array_includes(list, item, startingIndex)
-	for i = (startingIndex or 0) + 1, #list do
-		if list[i] == item then
-			return true
-		end
-	end
-	return false
-end
-
-function TS.array_indexOf(list, value, fromIndex)
-	for i = (fromIndex or 0) + 1, #list do
-		if value == list[i] then
-			return i - 1
-		end
-	end
-	return -1
-end
-
-function TS.array_lastIndexOf(list, value, fromIndex)
-	for i = (fromIndex or #list - 1) + 1, 1, -1 do
-		if value == list[i] then
-			return i - 1
-		end
-	end
-	return -1
-end
-
-function TS.array_reverse(list)
-	local result = {}
-	local length = #list
-	local n = length + 1
-	for i = 1, length do
-		result[i] = list[n - i]
-	end
-	return result
-end
-
-function TS.array_reduce(list, callback, ...)
-	local first = 1
-	local last = #list
-	local accumulator
-	-- support `nil` initialValues
-	if select("#", ...) == 0 then
-		if last == 0 then
-			error("Reduce of empty array with no initial value at Array.reduce", 2)
-		end
-		accumulator = list[first]
-		first = first + 1
-	else
-		accumulator = ...
-	end
-	for i = first, last do
-		accumulator = callback(accumulator, list[i], i - 1, list)
-	end
-	return accumulator
-end
-
-function TS.array_reduceRight(list, callback, ...)
-	local first = #list
-	local last = 1
-	local accumulator
-	-- support `nil` initialValues
-	if select("#", ...) == 0 then
-		if first == 0 then
-			error("Reduce of empty array with no initial value at Array.reduceRight", 2)
-		end
-		accumulator = list[first]
-		first = first - 1
-	else
-		accumulator = ...
-	end
-	for i = first, last, -1 do
-		accumulator = callback(accumulator, list[i], i - 1, list)
-	end
-	return accumulator
-end
-
-function TS.array_unshift(list, ...)
-	local n = #list
-	local argsLength = select("#", ...)
-	for i = n, 1, -1 do
-		list[i + argsLength] = list[i]
-	end
-	for i = 1, argsLength do
-		list[i] = select(i, ...)
-	end
-	return n + argsLength
-end
-
-local function array_push_apply(list, ...)
-	local len = #list
-	for i = 1, select("#", ...) do
-		local list2 = select(i, ...)
-		local len2 = #list2
-		for j = 1, len2 do
-			list[len + j] = list2[j]
-		end
-		len = len + len2
-	end
-	return len
-end
-
-TS.array_push_apply = array_push_apply
-
-function TS.array_push_stack(list, ...)
-	local len = #list
-	local len2 = select("#", ...)
-	for i = 1, len2 do
-		list[len + i] = select(i, ...)
-	end
-	return len + len2
-end
-
-function TS.array_concat(...)
-	local result = {}
-	array_push_apply(result, ...)
-	return result
-end
-
-function TS.array_join(list, separator)
-	return table.concat(array_map(list, tostring), separator or ",")
-end
-
-function TS.array_find(list, callback)
-	for i = 1, #list do
-		local v = list[i]
-		if callback(v, i - 1, list) == true then
-			return v
-		end
-	end
-end
-
-function TS.array_findIndex(list, callback)
-	for i = 0, #list - 1 do
-		if callback(list[i + 1], i, list) == true then
-			return i
-		end
-	end
-	return -1
-end
-
-local function array_flat_helper(list, depth, count, result)
-	for i = 1, #list do
-		local v = list[i]
-
-		if type(v) == "table" and depth ~= 0 then
-			count = array_flat_helper(v, depth - 1, count, result)
-		else
-			count = count + 1
-			result[count] = v
-		end
-	end
-
-	return count
-end
-
-function TS.array_flat(list, depth)
-	local result = {}
-	array_flat_helper(list, depth or 1, 0, result)
-	return result
-end
-
-function TS.array_fill(list, value, from, to)
-	local length = #list
-
-	if from == nil then
-		from = 0
-	elseif from < 0 then
-		from = from + length
-	end
-
-	if to == nil or to > length then
-		to = length
-	elseif to < 0 then
-		to = to + length
-	end
-
-	for i = from + 1, to do
-		list[i] = value
-	end
-
-	return list
-end
-
-function TS.array_copyWithin(list, target, from, to)
-	local length = #list
-
-	if target < 0 then
-		target = target + length
-	end
-
-	if from == nil then
-		from = 0
-	elseif from < 0 then
-		from = from + length
-	end
-
-	if to == nil or to > length then
-		to = length
-	elseif to < 0 then
-		to = to + length
-	end
-
-	local tf = target - from
-	local overshoot = to + tf - length
-
-	if overshoot > 0 then
-		to = from + length - target
-	end
-
-	for i = to, from + 1, -1 do
-		list[i + tf] = list[i]
-	end
-
-	return list
-end
-
-TS.array_deepCopy = deepCopy
-
-TS.array_deepEquals = deepEquals
-
--- map macro functions
-
-function TS.map_new(pairs)
-	local result = {}
-	if pairs then
-		for i = 1, #pairs do
-			local pair = pairs[i]
-			result[pair[1]] = pair[2]
-		end
-	end
-	return result
-end
-
-TS.Object_fromEntries = TS.map_new
-
-function TS.map_clear(map)
-	for key in pairs(map) do
-		map[key] = nil
-	end
-end
-
-local function getNumKeys(map)
-	local result = 0
-	for _ in pairs(map) do
-		result = result + 1
-	end
-	return result
-end
-
-TS.map_size = getNumKeys
-TS.map_entries = TS.Object_entries
-
-function TS.map_forEach(map, callback)
-	for key, value in pairs(map) do
-		callback(value, key, map)
-	end
-end
-
-TS.map_keys = TS.Object_keys
-
-TS.map_values = TS.Object_values
-TS.map_toString = toString
-
--- set macro functions
-
-function TS.set_new(values)
-	local result = {}
-	if values then
-		for i = 1, #values do
-			result[values[i]] = true
-		end
-	end
-	return result
-end
-
-TS.set_clear = TS.map_clear
-
-function TS.set_forEach(set, callback)
-	for key in pairs(set) do
-		callback(key, key, set)
-	end
-end
-
-function TS.set_union(set1, set2)
-	local result = {}
-
-	for value in pairs(set1) do
-		result[value] = true
-	end
-
-	for value in pairs(set2) do
-		result[value] = true
-	end
-
-	return result
-end
-
-function TS.set_intersect(set1, set2)
-	local result = {}
-
-	for value in pairs(set1) do
-		if set2[value] then
-			result[value] = true
-		end
-	end
-
-	return result
-end
-
-function TS.set_isDisjointWith(set1, set2)
-	for value in pairs(set1) do
-		if set2[value] then
-			return false
-		end
-	end
-	return true
-end
-
-function TS.set_isSubsetOf(set1, set2)
-	for value in pairs(set1) do
-		if set2[value] == nil then
-			return false
-		end
-	end
-
-	return true
-end
-
-function TS.set_difference(set1, set2)
-	local result = {}
-	for value in pairs(set1) do
-		if set2[value] == nil then
-			result[value] = true
-		end
-	end
-	return result
-end
-
-TS.set_values = TS.Object_keys
-
-TS.set_size = getNumKeys
-
-TS.set_toString = toString
-
-function TS.string_startsWith(str1, str2, pos)
-	local n1 = #str1
-	local n2 = #str2
-
-	if pos == nil or pos ~= pos then
-		pos = 0
-	else
-		pos = math.clamp(pos, 0, n1)
-	end
-
-	local last = pos + n2;
-	return last <= n1 and string.sub(str1, pos + 1, last) == str2
-end
-
-function TS.string_endsWith(str1, str2, pos)
-	local n1 = #str1
-	local n2 = #str2
-
-	if pos == nil then
-		pos = n1
-	elseif pos ~= pos then
-		pos = 0
-	else
-		pos = math.clamp(pos, 0, n1)
-	end
-
-	local start = pos - n2 + 1;
-	return start > 0 and string.sub(str1, start, pos) == str2
-end
-
--- spread cache functions
-function TS.string_spread(str)
-	local results = {}
-	local count = 0
-	for char in string.gmatch(str, "[%z\1-\127\194-\244][\128-\191]*") do
-		count = count + 1
-		results[count] = char
-	end
-	return results
-end
-
-function TS.iterableCache(iter)
-	local results = {}
-	local count = 0
-	for _0 in iter.next do
-		if _0.done then break end
-		count = count + 1
-		results[count] = _0.value
-	end
-	return results
-end
-
-function TS.iterableFunctionCache(iter)
-	local results = {}
-	local count = 0
-
-	while true do
-		local size, t = package(iter());
-		if size == 0 then break end
-		count = count + 1
-		results[count] = t
-	end
-
-	return results
-end
-
--- roact functions
-
-function TS.Roact_combine(...)
-	local args = { ... }
-	local result = {}
-	for i = 1, #args do
-		for key, value in pairs(args[i]) do
-			if (type(key) == "number") then
-				table.insert(result, value)
-			else
-				result[key] = value
-			end
-		end
-	end
-	return result
-end
-
--- opcall
-
-function TS.opcall(func, ...)
-	local success, valueOrErr = pcall(func, ...)
-	if success then
-		return {
-			success = true,
-			value = valueOrErr,
-		}
-	else
-		return {
-			success = false,
-			error = valueOrErr,
-		}
-	end
-end
-
-return TS
-]]></string>
-        </Properties>
-      </Item>
-      <Item class="Folder" referent="22">
-        <Properties>
-          <string name="Name">node_modules</string>
-        </Properties>
-        <Item class="Folder" referent="23">
-          <Properties>
-            <string name="Name">testez</string>
-          </Properties>
-          <Item class="ModuleScript" referent="24">
-            <Properties>
-              <string name="Name">package</string>
-              <string name="Source">return {
-	_from = "@rbxts/testez@^0.3.1-ts.6",
-	_id = "@rbxts/testez@0.3.1-ts.6",
-	_inBundle = false,
-	_integrity = "sha512-WiiRmYF1bvq4rgiXpzAgvgajZ+Iq49b+d0ki+WrqflUMuDTpUfBduqEWg1bS5t1KAZ22OHfH2pjeqwXwlaif8w==",
-	_location = "/@rbxts/testez",
-	_phantomChildren = {
-	},
-	_requested = {
-		escapedName = "@rbxts%2ftestez",
-		fetchSpec = "^0.3.1-ts.6",
-		name = "@rbxts/testez",
-		raw = "@rbxts/testez@^0.3.1-ts.6",
-		rawSpec = "^0.3.1-ts.6",
-		registry = true,
-		saveSpec = nil,
-		scope = "@rbxts",
-		type = "range",
-	},
-	_requiredBy = {"#DEV:/", "#USER"},
-	_resolved = "https://registry.npmjs.org/@rbxts/testez/-/testez-0.3.1-ts.6.tgz",
-	_shasum = "455c59c9e165164fb4c7d2ceb6a1229541e984f2",
-	_spec = "@rbxts/testez@^0.3.1-ts.6",
-	_where = "C:\Users\Brooke\Documents\Projects\PlayFab\Refactor",
-	author = {
-		name = "Roblox",
-	},
-	bugs = {
-		url = "https://github.com/roblox-ts/testez/issues",
-	},
-	bundleDependencies = false,
-	dependencies = {
-	},
-	deprecated = false,
-	description = "A fork of TestEZ with TypeScript typings",
-	devDependencies = {
-		["@rbxts/types"] = "^1.0.350",
-		["@typescript-eslint/eslint-plugin"] = "^2.17.0",
-		["@typescript-eslint/parser"] = "^2.17.0",
-		eslint = "^6.8.0",
-		["eslint-config-prettier"] = "^6.9.0",
-		["eslint-plugin-prettier"] = "^3.1.2",
-		["eslint-plugin-roblox-ts"] = "0.0.7",
-		prettier = "^1.19.1",
-	},
-	files = {"src", "globals.d.ts"},
-	homepage = "https://github.com/roblox-ts/testez#readme",
-	keywords = {},
-	license = "Apache 2.0",
-	main = "src/init.lua",
-	name = "@rbxts/testez",
-	publishConfig = {
-		access = "public",
-	},
-	repository = {
-		type = "git",
-		url = "git+https://github.com/roblox-ts/testez.git",
-	},
-	scripts = {
-	},
-	types = "src/index.d.ts",
-	version = "0.3.1-ts.6",
-}</string>
-            </Properties>
-          </Item>
-          <Item class="ModuleScript" referent="25">
-            <Properties>
-              <string name="Name">src</string>
-              <string name="Source">local Expectation = require(script.Expectation)
-local TestBootstrap = require(script.TestBootstrap)
-local TestEnum = require(script.TestEnum)
-local TestPlan = require(script.TestPlan)
-local TestPlanner = require(script.TestPlanner)
-local TestResults = require(script.TestResults)
-local TestRunner = require(script.TestRunner)
-local TestSession = require(script.TestSession)
-local TextReporter = require(script.Reporters.TextReporter)
-local TextReporterQuiet = require(script.Reporters.TextReporterQuiet)
-local TeamCityReporter = require(script.Reporters.TeamCityReporter)
-
-local function run(testRoot, callback)
-	local modules = TestBootstrap:getModules(testRoot)
-	local plan = TestPlanner.createPlan(modules)
-	local results = TestRunner.runPlan(plan)
-
-	callback(results)
-end
-
-local TestEZ = {
-	run = run,
-
-	Expectation = Expectation,
-	TestBootstrap = TestBootstrap,
-	TestEnum = TestEnum,
-	TestPlan = TestPlan,
-	TestPlanner = TestPlanner,
-	TestResults = TestResults,
-	TestRunner = TestRunner,
-	TestSession = TestSession,
-
-	Reporters = {
-		TextReporter = TextReporter,
-		TextReporterQuiet = TextReporterQuiet,
-		TeamCityReporter = TeamCityReporter,
-	},
-}
-
-return TestEZ</string>
-            </Properties>
-            <Item class="ModuleScript" referent="26">
-              <Properties>
-                <string name="Name">Context</string>
-                <string name="Source"><![CDATA[--[[
-	The Context object implements a write-once key-value store. It also allows
-	for a new Context object to inherit the entries from an existing one.
-]]
-local Context = {}
-
-function Context.new(parent)
-	local meta = {}
-	local index = {}
-	meta.__index = index
-
-	if parent then
-		for key, value in pairs(getmetatable(parent).__index) do
-			index[key] = value
-		end
-	end
-
-	function meta.__newindex(_obj, key, value)
-		assert(index[key] == nil, string.format("Cannot reassign %s in context", tostring(key)))
-		index[key] = value
-	end
-
-	return setmetatable({}, meta)
-end
-
-return Context
-]]></string>
-              </Properties>
-            </Item>
-            <Item class="ModuleScript" referent="27">
-              <Properties>
-                <string name="Name">Expectation</string>
-                <string name="Source">--[[
-	Allows creation of expectation statements designed for behavior-driven
-	testing (BDD). See Chai (JS) or RSpec (Ruby) for examples of other BDD
-	frameworks.
-
-	The Expectation class is exposed to tests as a function called `expect`:
-
-		expect(5).to.equal(5)
-		expect(foo()).to.be.ok()
-
-	Expectations can be negated using .never:
-
-		expect(true).never.to.equal(false)
-
-	Expectations throw errors when their conditions are not met.
-]]
-
-local Expectation = {}
-
---[[
-	These keys don't do anything except make expectations read more cleanly
-]]
-local SELF_KEYS = {
-	to = true,
-	be = true,
-	been = true,
-	have = true,
-	was = true,
-	at = true,
-}
-
---[[
-	These keys invert the condition expressed by the Expectation.
-]]
-local NEGATION_KEYS = {
-	never = true,
-}
-
---[[
-	Extension of Lua's 'assert' that lets you specify an error level.
-]]
-local function assertLevel(condition, message, level)
-	message = message or "Assertion failed!"
-	level = level or 1
-
-	if not condition then
-		error(message, level + 1)
-	end
-end
-
---[[
-	Returns a version of the given method that can be called with either . or :
-]]
-local function bindSelf(self, method)
-	return function(firstArg, ...)
-		if firstArg == self then
-			return method(self, ...)
-		else
-			return method(self, firstArg, ...)
-		end
-	end
-end
-
-local function formatMessage(result, trueMessage, falseMessage)
-	if result then
-		return trueMessage
-	else
-		return falseMessage
-	end
-end
-
---[[
-	Create a new expectation
-]]
-function Expectation.new(value)
-	local self = {
-		value = value,
-		successCondition = true,
-		condition = false
-	}
-
-	setmetatable(self, Expectation)
-
-	self.a = bindSelf(self, self.a)
-	self.an = self.a
-	self.ok = bindSelf(self, self.ok)
-	self.equal = bindSelf(self, self.equal)
-	self.throw = bindSelf(self, self.throw)
-	self.near = bindSelf(self, self.near)
-
-	return self
-end
-
-function Expectation.__index(self, key)
-	-- Keys that don't do anything except improve readability
-	if SELF_KEYS[key] then
-		return self
-	end
-
-	-- Invert your assertion
-	if NEGATION_KEYS[key] then
-		local newExpectation = Expectation.new(self.value)
-		newExpectation.successCondition = not self.successCondition
-
-		return newExpectation
-	end
-
-	-- Fall back to methods provided by Expectation
-	return Expectation[key]
-end
-
---[[
-	Called by expectation terminators to reset modifiers in a statement.
-
-	This makes chains like:
-
-		expect(5)
-			.never.to.equal(6)
-			.to.equal(5)
-
-	Work as expected.
-]]
-function Expectation:_resetModifiers()
-	self.successCondition = true
-end
-
---[[
-	Assert that the expectation value is the given type.
-
-	expect(5).to.be.a("number")
-]]
-function Expectation:a(typeName)
-	local result = (type(self.value) == typeName) == self.successCondition
-
-	local message = formatMessage(self.successCondition,
-		("Expected value of type %q, got value %q of type %s"):format(
-			typeName,
-			tostring(self.value),
-			type(self.value)
-		),
-		("Expected value not of type %q, got value %q of type %s"):format(
-			typeName,
-			tostring(self.value),
-			type(self.value)
-		)
-	)
-
-	assertLevel(result, message, 3)
-	self:_resetModifiers()
-
-	return self
-end
-
---[[
-	Assert that our expectation value is truthy
-]]
-function Expectation:ok()
-	local result = (self.value ~= nil) == self.successCondition
-
-	local message = formatMessage(self.successCondition,
-		("Expected value %q to be non-nil"):format(
-			tostring(self.value)
-		),
-		("Expected value %q to be nil"):format(
-			tostring(self.value)
-		)
-	)
-
-	assertLevel(result, message, 3)
-	self:_resetModifiers()
-
-	return self
-end
-
---[[
-	Assert that our expectation value is equal to another value
-]]
-function Expectation:equal(otherValue)
-	local result = (self.value == otherValue) == self.successCondition
-
-	local message = formatMessage(self.successCondition,
-		("Expected value %q (%s), got %q (%s) instead"):format(
-			tostring(otherValue),
-			type(otherValue),
-			tostring(self.value),
-			type(self.value)
-		),
-		("Expected anything but value %q (%s)"):format(
-			tostring(otherValue),
-			type(otherValue)
-		)
-	)
-
-	assertLevel(result, message, 3)
-	self:_resetModifiers()
-
-	return self
-end
-
---[[
-	Assert that our expectation value is equal to another value within some
-	inclusive limit.
-]]
-function Expectation:near(otherValue, limit)
-	assert(type(self.value) == "number", "Expectation value must be a number to use 'near'")
-	assert(type(otherValue) == "number", "otherValue must be a number")
-	assert(type(limit) == "number" or limit == nil, "limit must be a number or nil")
-
-	limit = limit or 1e-7
-
-	local result = (math.abs(self.value - otherValue) &lt;= limit) == self.successCondition
-
-	local message = formatMessage(self.successCondition,
-		("Expected value to be near %f (within %f) but got %f instead"):format(
-			otherValue,
-			limit,
-			self.value
-		),
-		("Expected value to not be near %f (within %f) but got %f instead"):format(
-			otherValue,
-			limit,
-			self.value
-		)
-	)
-
-	assertLevel(result, message, 3)
-	self:_resetModifiers()
-
-	return self
-end
-
---[[
-	Assert that our functoid expectation value throws an error when called
-]]
-function Expectation:throw()
-	local ok, err = pcall(self.value)
-	local result = ok ~= self.successCondition
-
-	local message = formatMessage(self.successCondition,
-		"Expected function to throw an error, but it did not.",
-		("Expected function to succeed, but it threw an error: %s"):format(
-			tostring(err)
-		)
-	)
-
-	assertLevel(result, message, 3)
-	self:_resetModifiers()
-
-	return self
-end
-
-return Expectation</string>
-              </Properties>
-            </Item>
-            <Item class="ModuleScript" referent="28">
-              <Properties>
-                <string name="Name">LifecycleHooks</string>
-                <string name="Source"><![CDATA[local TestEnum = require(script.Parent.TestEnum)
-
-local LifecycleHooks = {}
-LifecycleHooks.__index = LifecycleHooks
-
-function LifecycleHooks.new()
-	local self = {
-		_stack = {},
-	}
-	return setmetatable(self, LifecycleHooks)
-end
-
---[[
-	Returns an array of `beforeEach` hooks in FIFO order
-]]
-function LifecycleHooks:getBeforeEachHooks()
-	local key = TestEnum.NodeType.BeforeEach
-	local hooks = {}
-
-	for _, level in ipairs(self._stack) do
-		for _, hook in ipairs(level[key]) do
-			table.insert(hooks, hook)
-		end
-	end
-
-	return hooks
-end
-
---[[
-	Returns an array of `afterEach` hooks in FILO order
-]]
-function LifecycleHooks:getAfterEachHooks()
-	local key = TestEnum.NodeType.AfterEach
-	local hooks = {}
-
-	for _, level in ipairs(self._stack) do
-		for _, hook in ipairs(level[key]) do
-			table.insert(hooks, 1, hook)
-		end
-	end
-
-	return hooks
-end
-
---[[
-	Pushes uncalled beforeAll and afterAll hooks back up the stack
-]]
-function LifecycleHooks:popHooks()
-	table.remove(self._stack, #self._stack)
-end
-
-function LifecycleHooks:pushHooksFrom(planNode)
-	assert(planNode ~= nil)
-
-	table.insert(self._stack, {
-		[TestEnum.NodeType.BeforeAll] = self:_getHooksOfType(planNode.children, TestEnum.NodeType.BeforeAll),
-		[TestEnum.NodeType.AfterAll] = self:_getHooksOfType(planNode.children, TestEnum.NodeType.AfterAll),
-		[TestEnum.NodeType.BeforeEach] = self:_getHooksOfType(planNode.children, TestEnum.NodeType.BeforeEach),
-		[TestEnum.NodeType.AfterEach] = self:_getHooksOfType(planNode.children, TestEnum.NodeType.AfterEach),
-	})
-end
-
---[[
-	Get the beforeAll hooks from the current level.
-]]
-function LifecycleHooks:getBeforeAllHooks()
-	return self._stack[#self._stack][TestEnum.NodeType.BeforeAll]
-end
-
---[[
-	Get the afterAll hooks from the current level.
-]]
-function LifecycleHooks:getAfterAllHooks()
-	return self._stack[#self._stack][TestEnum.NodeType.AfterAll]
-end
-
-function LifecycleHooks:_getHooksOfType(nodes, key)
-	local hooks = {}
-
-	for _, node in ipairs(nodes) do
-		if node.type == key then
-			table.insert(hooks, node.callback)
-		end
-	end
-
-	return hooks
-end
-
-return LifecycleHooks
-]]></string>
-              </Properties>
-            </Item>
-            <Item class="Folder" referent="29">
-              <Properties>
-                <string name="Name">Reporters</string>
-              </Properties>
-              <Item class="ModuleScript" referent="30">
-                <Properties>
-                  <string name="Name">TeamCityReporter</string>
-                  <string name="Source">local TestService = game:GetService("TestService")
-
-local TestEnum = require(script.Parent.Parent.TestEnum)
-
-local TeamCityReporter = {}
-
-local function teamCityEscape(str)
-	str = string.gsub(str, "([]|'[])","|%1")
-	str = string.gsub(str, "\r", "|r")
-	str = string.gsub(str, "\n", "|n")
-	return str
-end
-
-local function teamCityEnterSuite(suiteName)
-	return string.format("##teamcity[testSuiteStarted name='%s']", teamCityEscape(suiteName))
-end
-
-local function teamCityLeaveSuite(suiteName)
-	return string.format("##teamcity[testSuiteFinished name='%s']", teamCityEscape(suiteName))
-end
-
-local function teamCityEnterCase(caseName)
-	return string.format("##teamcity[testStarted name='%s']", teamCityEscape(caseName))
-end
-
-local function teamCityLeaveCase(caseName)
-	return string.format("##teamcity[testFinished name='%s']", teamCityEscape(caseName))
-end
-
-local function teamCityFailCase(caseName, errorMessage)
-	return string.format("##teamcity[testFailed name='%s' message='%s']",
-		teamCityEscape(caseName), teamCityEscape(errorMessage))
-end
-
-local function reportNode(node, buffer, level)
-	buffer = buffer or {}
-	level = level or 0
-	if node.status == TestEnum.TestStatus.Skipped then
-		return buffer
-	end
-	if node.planNode.type == TestEnum.NodeType.Describe then
-		table.insert(buffer, teamCityEnterSuite(node.planNode.phrase))
-		for _, child in ipairs(node.children) do
-			reportNode(child, buffer, level + 1)
-		end
-		table.insert(buffer, teamCityLeaveSuite(node.planNode.phrase))
-	else
-		table.insert(buffer, teamCityEnterCase(node.planNode.phrase))
-		if node.status == TestEnum.TestStatus.Failure then
-			table.insert(buffer, teamCityFailCase(node.planNode.phrase, table.concat(node.errors,"\n")))
-		end
-		table.insert(buffer, teamCityLeaveCase(node.planNode.phrase))
-	end
-end
-
-local function reportRoot(node)
-	local buffer = {}
-
-	for _, child in ipairs(node.children) do
-		reportNode(child, buffer, 0)
-	end
-
-	return buffer
-end
-
-local function report(root)
-	local buffer = reportRoot(root)
-
-	return table.concat(buffer, "\n")
-end
-
-function TeamCityReporter.report(results)
-	local resultBuffer = {
-		"Test results:",
-		report(results),
-		("%d passed, %d failed, %d skipped"):format(
-			results.successCount,
-			results.failureCount,
-			results.skippedCount
-		)
-	}
-
-	print(table.concat(resultBuffer, "\n"))
-
-	if results.failureCount > 0 then
-		print(("%d test nodes reported failures."):format(results.failureCount))
-	end
-
-	if #results.errors > 0 then
-		print("Errors reported by tests:")
-		print("")
-
-		for _, message in ipairs(results.errors) do
-			TestService:Error(message)
-
-			-- Insert a blank line after each error
-			print("")
-		end
-	end
-end
-
-return TeamCityReporter</string>
-                </Properties>
-              </Item>
-              <Item class="ModuleScript" referent="31">
-                <Properties>
-                  <string name="Name">TextReporter</string>
-                  <string name="Source">--[[
-	The TextReporter uses the results from a completed test to output text to
-	standard output and TestService.
-]]
-
-local TestService = game:GetService("TestService")
-
-local TestEnum = require(script.Parent.Parent.TestEnum)
-
-local INDENT = (" "):rep(3)
-local STATUS_SYMBOLS = {
-	[TestEnum.TestStatus.Success] = "+",
-	[TestEnum.TestStatus.Failure] = "-",
-	[TestEnum.TestStatus.Skipped] = "~"
-}
-local UNKNOWN_STATUS_SYMBOL = "?"
-
-local TextReporter = {}
-
-local function compareNodes(a, b)
-	return a.planNode.phrase:lower() &lt; b.planNode.phrase:lower()
-end
-
-local function reportNode(node, buffer, level)
-	buffer = buffer or {}
-	level = level or 0
-
-	if node.status == TestEnum.TestStatus.Skipped then
-		return buffer
-	end
-
-	local line
-
-	if node.status then
-		local symbol = STATUS_SYMBOLS[node.status] or UNKNOWN_STATUS_SYMBOL
-
-		line = ("%s[%s] %s"):format(
-			INDENT:rep(level),
-			symbol,
-			node.planNode.phrase
-		)
-	else
-		line = ("%s%s"):format(
-			INDENT:rep(level),
-			node.planNode.phrase
-		)
-	end
-
-	table.insert(buffer, line)
-	table.sort(node.children, compareNodes)
-
-	for _, child in ipairs(node.children) do
-		reportNode(child, buffer, level + 1)
-	end
-
-	return buffer
-end
-
-local function reportRoot(node)
-	local buffer = {}
-	table.sort(node.children, compareNodes)
-
-	for _, child in ipairs(node.children) do
-		reportNode(child, buffer, 0)
-	end
-
-	return buffer
-end
-
-local function report(root)
-	local buffer = reportRoot(root)
-
-	return table.concat(buffer, "\n")
-end
-
-function TextReporter.report(results)
-	local resultBuffer = {
-		"Test results:",
-		report(results),
-		("%d passed, %d failed, %d skipped"):format(
-			results.successCount,
-			results.failureCount,
-			results.skippedCount
-		)
-	}
-
-	print(table.concat(resultBuffer, "\n"))
-
-	if results.failureCount > 0 then
-		print(("%d test nodes reported failures."):format(results.failureCount))
-	end
-
-	if #results.errors > 0 then
-		print("Errors reported by tests:")
-		print("")
-
-		for _, message in ipairs(results.errors) do
-			TestService:Error(message)
-
-			-- Insert a blank line after each error
-			print("")
-		end
-	end
-end
-
-return TextReporter</string>
-                </Properties>
-              </Item>
-              <Item class="ModuleScript" referent="32">
-                <Properties>
-                  <string name="Name">TextReporterQuiet</string>
-                  <string name="Source">--[[
-	Copy of TextReporter that doesn't output successful tests.
-
-	This should be temporary, it's just a workaround to make CI environments
-	happy in the short-term.
-]]
-
-local TestService = game:GetService("TestService")
-
-local TestEnum = require(script.Parent.Parent.TestEnum)
-
-local INDENT = (" "):rep(3)
-local STATUS_SYMBOLS = {
-	[TestEnum.TestStatus.Success] = "+",
-	[TestEnum.TestStatus.Failure] = "-",
-	[TestEnum.TestStatus.Skipped] = "~"
-}
-local UNKNOWN_STATUS_SYMBOL = "?"
-
-local TextReporterQuiet = {}
-
-local function reportNode(node, buffer, level)
-	buffer = buffer or {}
-	level = level or 0
-
-	if node.status == TestEnum.TestStatus.Skipped then
-		return buffer
-	end
-
-	local line
-
-	if node.status ~= TestEnum.TestStatus.Success then
-		local symbol = STATUS_SYMBOLS[node.status] or UNKNOWN_STATUS_SYMBOL
-
-		line = ("%s[%s] %s"):format(
-			INDENT:rep(level),
-			symbol,
-			node.planNode.phrase
-		)
-	end
-
-	table.insert(buffer, line)
-
-	for _, child in ipairs(node.children) do
-		reportNode(child, buffer, level + 1)
-	end
-
-	return buffer
-end
-
-local function reportRoot(node)
-	local buffer = {}
-
-	for _, child in ipairs(node.children) do
-		reportNode(child, buffer, 0)
-	end
-
-	return buffer
-end
-
-local function report(root)
-	local buffer = reportRoot(root)
-
-	return table.concat(buffer, "\n")
-end
-
-function TextReporterQuiet.report(results)
-	local resultBuffer = {
-		"Test results:",
-		report(results),
-		("%d passed, %d failed, %d skipped"):format(
-			results.successCount,
-			results.failureCount,
-			results.skippedCount
-		)
-	}
-
-	print(table.concat(resultBuffer, "\n"))
-
-	if results.failureCount > 0 then
-		print(("%d test nodes reported failures."):format(results.failureCount))
-	end
-
-	if #results.errors > 0 then
-		print("Errors reported by tests:")
-		print("")
-
-		for _, message in ipairs(results.errors) do
-			TestService:Error(message)
-
-			-- Insert a blank line after each error
-			print("")
-		end
-	end
-end
-
-return TextReporterQuiet</string>
-                </Properties>
-              </Item>
-            </Item>
-            <Item class="ModuleScript" referent="33">
-              <Properties>
-                <string name="Name">TestBootstrap</string>
-                <string name="Source">--[[
-	Provides an interface to quickly run and report tests from a given object.
-]]
-
-local TestPlanner = require(script.Parent.TestPlanner)
-local TestRunner = require(script.Parent.TestRunner)
-local TextReporter = require(script.Parent.Reporters.TextReporter)
-
-local TestBootstrap = {}
-
-local function stripSpecSuffix(name)
-	return (name:gsub("%.spec$", ""))
-end
-local function isSpecScript(aScript)
-	return aScript:IsA("ModuleScript") and aScript.Name:match("%.spec$")
-end
-
-local function getPath(module, root)
-	root = root or game
-
-	local path = {}
-	local last = module
-
-	if last.Name == "init.spec" then
-		-- Use the directory's node for init.spec files.
-		last = last.Parent
-	end
-
-	while last ~= nil and last ~= root do
-		table.insert(path, stripSpecSuffix(last.Name))
-		last = last.Parent
-	end
-	table.insert(path, stripSpecSuffix(root.Name))
-
-	return path
-end
-
-local function toStringPath(tablePath)
-	local stringPath = ""
-	local first = true
-	for _, element in ipairs(tablePath) do
-		if first then
-			stringPath = element
-			first = false
-		else
-			stringPath = element .. " " .. stringPath
-		end
-	end
-	return stringPath
-end
-
-function TestBootstrap:getModulesImpl(root, modules, current)
-	modules = modules or {}
-	current = current or root
-
-	if isSpecScript(current) then
-		local method = require(current)
-		local path = getPath(current, root)
-		local pathString = toStringPath(path)
-
-		table.insert(modules, {
-			method = method,
-			path = path,
-			pathStringForSorting = pathString:lower()
-		})
-	end
-end
-
---[[
-	Find all the ModuleScripts in this tree that are tests.
-]]
-function TestBootstrap:getModules(root)
-	local modules = {}
-
-	self:getModulesImpl(root, modules)
-
-	for _, child in ipairs(root:GetDescendants()) do
-		self:getModulesImpl(root, modules, child)
-	end
-
-	return modules
-end
-
---[[
-	Runs all test and reports the results using the given test reporter.
-
-	If no reporter is specified, a reasonable default is provided.
-
-	This function demonstrates the expected workflow with this testing system:
-	1. Locate test modules
-	2. Generate test plan
-	3. Run test plan
-	4. Report test results
-
-	This means we could hypothetically present a GUI to the developer that shows
-	the test plan before we execute it, allowing them to toggle specific tests
-	before they're run, but after they've been identified!
-]]
-function TestBootstrap:run(roots, reporter, otherOptions)
-	reporter = reporter or TextReporter
-
-	otherOptions = otherOptions or {}
-	local showTimingInfo = otherOptions["showTimingInfo"] or false
-	local testNamePattern = otherOptions["testNamePattern"]
-	local extraEnvironment = otherOptions["extraEnvironment"] or {}
-
-	if type(roots) ~= "table" then
-		error(("Bad argument #1 to TestBootstrap:run. Expected table, got %s"):format(typeof(roots)), 2)
-	end
-
-	local startTime = tick()
-
-	local modules = {}
-	for _, subRoot in ipairs(roots) do
-		local newModules = self:getModules(subRoot)
-
-		for _, newModule in ipairs(newModules) do
-			table.insert(modules, newModule)
-		end
-	end
-
-	local afterModules = tick()
-
-	local plan = TestPlanner.createPlan(modules, testNamePattern, extraEnvironment)
-	local afterPlan = tick()
-
-	local results = TestRunner.runPlan(plan)
-	local afterRun = tick()
-
-	reporter.report(results)
-	local afterReport = tick()
-
-	if showTimingInfo then
-		local timing = {
-			("Took %f seconds to locate test modules"):format(afterModules - startTime),
-			("Took %f seconds to create test plan"):format(afterPlan - afterModules),
-			("Took %f seconds to run tests"):format(afterRun - afterPlan),
-			("Took %f seconds to report tests"):format(afterReport - afterRun),
-		}
-
-		print(table.concat(timing, "\n"))
-	end
-
-	return results
-end
-
-return TestBootstrap</string>
-              </Properties>
-            </Item>
-            <Item class="ModuleScript" referent="34">
-              <Properties>
-                <string name="Name">TestEnum</string>
-                <string name="Source">--[[
-	Constants used throughout the testing framework.
-]]
-
-local TestEnum = {}
-
-TestEnum.TestStatus = {
-	Success = "Success",
-	Failure = "Failure",
-	Skipped = "Skipped"
-}
-
-TestEnum.NodeType = {
-	Describe = "Describe",
-	It = "It",
-	BeforeAll = "BeforeAll",
-	AfterAll = "AfterAll",
-	BeforeEach = "BeforeEach",
-	AfterEach = "AfterEach"
-}
-
-TestEnum.NodeModifier = {
-	None = "None",
-	Skip = "Skip",
-	Focus = "Focus"
-}
-
-return TestEnum</string>
-              </Properties>
-            </Item>
-            <Item class="ModuleScript" referent="35">
-              <Properties>
-                <string name="Name">TestPlan</string>
-                <string name="Source"><![CDATA[--[[
-	Represents a tree of tests that have been loaded but not necessarily
-	executed yet.
-
-	TestPlan objects are produced by TestPlanner.
-]]
-
-local TestEnum = require(script.Parent.TestEnum)
-local Expectation = require(script.Parent.Expectation)
-
-local function newEnvironment(currentNode, extraEnvironment)
-	local env = {}
-
-	if extraEnvironment then
-		if type(extraEnvironment) ~= "table" then
-			error(("Bad argument #2 to newEnvironment. Expected table, got %s"):format(
-				typeof(extraEnvironment)), 2)
-		end
-
-		for key, value in pairs(extraEnvironment) do
-			env[key] = value
-		end
-	end
-
-	local function addChild(phrase, callback, nodeType, nodeModifier)
-		local node = currentNode:addChild(phrase, nodeType, nodeModifier)
-		node.callback = callback
-		if nodeType == TestEnum.NodeType.Describe then
-			node:expand()
-		end
-		return node
-	end
-
-	function env.describeFOCUS(phrase, callback)
-		addChild(phrase, callback, TestEnum.NodeType.Describe, TestEnum.NodeModifier.Focus)
-	end
-
-	function env.describeSKIP(phrase, callback)
-		addChild(phrase, callback, TestEnum.NodeType.Describe, TestEnum.NodeModifier.Skip)
-	end
-
-	function env.describe(phrase, callback, nodeModifier)
-		addChild(phrase, callback, TestEnum.NodeType.Describe, TestEnum.NodeModifier.None)
-	end
-
-	function env.itFOCUS(phrase, callback)
-		addChild(phrase, callback, TestEnum.NodeType.It, TestEnum.NodeModifier.Focus)
-	end
-
-	function env.itSKIP(phrase, callback)
-		addChild(phrase, callback, TestEnum.NodeType.It, TestEnum.NodeModifier.Skip)
-	end
-
-	function env.itFIXME(phrase, callback)
-		local node = addChild(phrase, callback, TestEnum.NodeType.It, TestEnum.NodeModifier.Skip)
-		warn("FIXME: broken test", node:getFullName())
-	end
-
-	function env.it(phrase, callback, nodeModifier)
-		addChild(phrase, callback, TestEnum.NodeType.It, TestEnum.NodeModifier.None)
-	end
-
-	-- Incrementing counter used to ensure that beforeAll, afterAll, beforeEach, afterEach have unique phrases
-	local lifecyclePhaseId = 0
-
-	local lifecycleHooks = {
-		[TestEnum.NodeType.BeforeAll] = "beforeAll",
-		[TestEnum.NodeType.AfterAll] = "afterAll",
-		[TestEnum.NodeType.BeforeEach] = "beforeEach",
-		[TestEnum.NodeType.AfterEach] = "afterEach"
-	}
-
-	for nodeType, name in pairs(lifecycleHooks) do
-		env[name] = function(callback)
-			addChild(name .. "_" .. tostring(lifecyclePhaseId), callback, nodeType, TestEnum.NodeModifier.None)
-			lifecyclePhaseId = lifecyclePhaseId + 1
-		end
-	end
-
-	function env.FIXME(optionalMessage)
-		warn("FIXME: broken test", currentNode:getFullName(), optionalMessage or "")
-
-		currentNode.modifier = TestEnum.NodeModifier.Skip
-	end
-
-	function env.FOCUS()
-		currentNode.modifier = TestEnum.NodeModifier.Focus
-	end
-
-	function env.SKIP()
-		currentNode.modifier = TestEnum.NodeModifier.Skip
-	end
-
-	--[[
-		This function is deprecated. Calling it is a no-op beyond generating a
-		warning.
-	]]
-	function env.HACK_NO_XPCALL()
-		warn("HACK_NO_XPCALL is deprecated. It is now safe to yield in an " ..
-			"xpcall, so this is no longer necessary. It can be safely deleted.")
-	end
-
-	env.fit = env.itFOCUS
-	env.xit = env.itSKIP
-	env.fdescribe = env.describeFOCUS
-	env.xdescribe = env.describeSKIP
-
-	env.expect = Expectation.new
-
-	return env
-end
-
-local TestNode = {}
-TestNode.__index = TestNode
-
---[[
-	Create a new test node. A pointer to the test plan, a phrase to describe it
-	and the type of node it is are required. The modifier is optional and will
-	be None if left blank.
-]]
-function TestNode.new(plan, phrase, nodeType, nodeModifier)
-	nodeModifier = nodeModifier or TestEnum.NodeModifier.None
-
-	local node = {
-		plan = plan,
-		phrase = phrase,
-		type = nodeType,
-		modifier = nodeModifier,
-		children = {},
-		callback = nil,
-		parent = nil,
-	}
-
-	node.environment = newEnvironment(node, plan.extraEnvironment)
-	return setmetatable(node, TestNode)
-end
-
-local function getModifier(name, pattern, modifier)
-	if pattern and (modifier == nil or modifier == TestEnum.NodeModifier.None) then
-		if name:match(pattern) then
-			return TestEnum.NodeModifier.Focus
-		else
-			return TestEnum.NodeModifier.Skip
-		end
-	end
-	return modifier
-end
-
-function TestNode:addChild(phrase, nodeType, nodeModifier)
-	if nodeType == TestEnum.NodeType.It then
-		for _, child in pairs(self.children) do
-			if child.phrase == phrase then
-				error("Duplicate it block found: " .. child:getFullName())
-			end
-		end
-	end
-
-	local childName = self:getFullName() .. " " .. phrase
-	nodeModifier = getModifier(childName, self.plan.testNamePattern, nodeModifier)
-	local child = TestNode.new(self.plan, phrase, nodeType, nodeModifier)
-	child.parent = self
-	table.insert(self.children, child)
-	return child
-end
-
---[[
-	Join the names of all the nodes back to the parent.
-]]
-function TestNode:getFullName()
-	if self.parent then
-		local parentPhrase = self.parent:getFullName()
-		if parentPhrase then
-			return parentPhrase .. " " .. self.phrase
-		end
-	end
-	return self.phrase
-end
-
---[[
-	Expand a node by setting its callback environment and then calling it. Any
-	further it and describe calls within the callback will be added to the tree.
-]]
-function TestNode:expand()
-	local originalEnv = getfenv(self.callback)
-	local callbackEnv = setmetatable({}, { __index = originalEnv })
-	for key, value in pairs(self.environment) do
-		callbackEnv[key] = value
-	end
-	setfenv(self.callback, callbackEnv)
-
-	local success, result = xpcall(self.callback, debug.traceback)
-
-	if not success then
-		self.loadError = result
-	end
-end
-
-local TestPlan = {}
-TestPlan.__index = TestPlan
-
---[[
-	Create a new, empty TestPlan.
-]]
-function TestPlan.new(testNamePattern, extraEnvironment)
-	local plan = {
-		children = {},
-		testNamePattern = testNamePattern,
-		extraEnvironment = extraEnvironment,
-	}
-
-	return setmetatable(plan, TestPlan)
-end
-
---[[
-	Add a new child under the test plan's root node.
-]]
-function TestPlan:addChild(phrase, nodeType, nodeModifier)
-	nodeModifier = getModifier(phrase, self.testNamePattern, nodeModifier)
-	local child = TestNode.new(self, phrase, nodeType, nodeModifier)
-	table.insert(self.children, child)
-	return child
-end
-
---[[
-	Add a new describe node with the given method as a callback. Generates or
-	reuses all the describe nodes along the path.
-]]
-function TestPlan:addRoot(path, method)
-	local curNode = self
-	for i = #path, 1, -1 do
-		local nextNode = nil
-
-		for _, child in ipairs(curNode.children) do
-			if child.phrase == path[i] then
-				nextNode = child
-				break
-			end
-		end
-
-		if nextNode == nil then
-			nextNode = curNode:addChild(path[i], TestEnum.NodeType.Describe)
-		end
-
-		curNode = nextNode
-	end
-
-	curNode.callback = method
-	curNode:expand()
-end
-
---[[
-	Calls the given callback on all nodes in the tree, traversed depth-first.
-]]
-function TestPlan:visitAllNodes(callback, root, level)
-	root = root or self
-	level = level or 0
-
-	for _, child in ipairs(root.children) do
-		callback(child, level)
-
-		self:visitAllNodes(callback, child, level + 1)
-	end
-end
-
---[[
-	Visualizes the test plan in a simple format, suitable for debugging the test
-	plan's structure.
-]]
-function TestPlan:visualize()
-	local buffer = {}
-	self:visitAllNodes(function(node, level)
-		table.insert(buffer, (" "):rep(3 * level) .. node.phrase)
-	end)
-	return table.concat(buffer, "\n")
-end
-
---[[
-	Gets a list of all nodes in the tree for which the given callback returns
-	true.
-]]
-function TestPlan:findNodes(callback)
-	local results = {}
-	self:visitAllNodes(function(node)
-		if callback(node) then
-			table.insert(results, node)
-		end
-	end)
-	return results
-end
-
-return TestPlan
-]]></string>
-              </Properties>
-            </Item>
-            <Item class="ModuleScript" referent="36">
-              <Properties>
-                <string name="Name">TestPlanner</string>
-                <string name="Source">--[[
-	Turns a series of specification functions into a test plan.
-
-	Uses a TestPlanBuilder to keep track of the state of the tree being built.
-]]
-local TestPlan = require(script.Parent.TestPlan)
-
-local TestPlanner = {}
-
---[[
-	Create a new TestPlan from a list of specification functions.
-
-	These functions should call a combination of `describe` and `it` (and their
-	variants), which will be turned into a test plan to be executed.
-
-	Parameters:
-		- modulesList - list of tables describing test modules {
-			method, -- specification function described above
-			path, -- array of parent entires, first element is the leaf that owns `method`
-			pathStringForSorting -- a string representation of `path`, used for sorting of the test plan
-		}
-		- testNamePattern - Only tests matching this Lua pattern string will run. Pass empty or nil to run all tests
-		- extraEnvironment - Lua table holding additional functions and variables to be injected into the specification
-							function during execution
-]]
-function TestPlanner.createPlan(modulesList, testNamePattern, extraEnvironment)
-	local plan = TestPlan.new(testNamePattern, extraEnvironment)
-
-	table.sort(modulesList, function(a, b)
-		return a.pathStringForSorting &lt; b.pathStringForSorting
-	end)
-
-	for _, module in ipairs(modulesList) do
-		plan:addRoot(module.path, module.method)
-	end
-
-	return plan
-end
-
-return TestPlanner</string>
-              </Properties>
-            </Item>
-            <Item class="ModuleScript" referent="37">
-              <Properties>
-                <string name="Name">TestResults</string>
-                <string name="Source">--[[
-	Represents a tree of test results.
-
-	Each node in the tree corresponds directly to a node in a corresponding
-	TestPlan, accessible via the 'planNode' field.
-
-	TestResults objects are produced by TestRunner using TestSession as state.
-]]
-
-local TestEnum = require(script.Parent.TestEnum)
-
-local STATUS_SYMBOLS = {
-	[TestEnum.TestStatus.Success] = "+",
-	[TestEnum.TestStatus.Failure] = "-",
-	[TestEnum.TestStatus.Skipped] = "~"
-}
-
-local TestResults = {}
-
-TestResults.__index = TestResults
-
---[[
-	Create a new TestResults tree that's linked to the given TestPlan.
-]]
-function TestResults.new(plan)
-	local self = {
-		successCount = 0,
-		failureCount = 0,
-		skippedCount = 0,
-		planNode = plan,
-		children = {},
-		errors = {}
-	}
-
-	setmetatable(self, TestResults)
-
-	return self
-end
-
---[[
-	Create a new result node that can be inserted into a TestResult tree.
-]]
-function TestResults.createNode(planNode)
-	local node = {
-		planNode = planNode,
-		children = {},
-		errors = {},
-		status = nil
-	}
-
-	return node
-end
-
---[[
-	Visit all test result nodes, depth-first.
-]]
-function TestResults:visitAllNodes(callback, root)
-	root = root or self
-
-	for _, child in ipairs(root.children) do
-		callback(child)
-
-		self:visitAllNodes(callback, child)
-	end
-end
-
---[[
-	Creates a debug visualization of the test results.
-]]
-function TestResults:visualize(root, level)
-	root = root or self
-	level = level or 0
-
-	local buffer = {}
-
-	for _, child in ipairs(root.children) do
-		if child.planNode.type == TestEnum.NodeType.It then
-			local symbol = STATUS_SYMBOLS[child.status] or "?"
-			local str = ("%s[%s] %s"):format(
-				(" "):rep(3 * level),
-				symbol,
-				child.planNode.phrase
-			)
-
-			if child.messages and #child.messages > 0 then
-				str = str .. "\n " .. (" "):rep(3 * level) .. table.concat(child.messages, "\n " .. (" "):rep(3 * level))
-			end
-
-			table.insert(buffer, str)
-		else
-			local str = ("%s%s"):format(
-				(" "):rep(3 * level),
-				child.planNode.phrase or ""
-			)
-
-			if child.status then
-				str = str .. (" (%s)"):format(child.status)
-			end
-
-			table.insert(buffer, str)
-
-			if #child.children > 0 then
-				local text = self:visualize(child, level + 1)
-				table.insert(buffer, text)
-			end
-		end
-	end
-
-	return table.concat(buffer, "\n")
-end
-
-return TestResults</string>
-              </Properties>
-            </Item>
-            <Item class="ModuleScript" referent="38">
-              <Properties>
-                <string name="Name">TestRunner</string>
-                <string name="Source">--[[
-	Contains the logic to run a test plan and gather test results from it.
-
-	TestRunner accepts a TestPlan object, executes the planned tests, and
-	produces a TestResults object. While the tests are running, the system's
-	state is contained inside a TestSession object.
-]]
-
-local Expectation = require(script.Parent.Expectation)
-local TestEnum = require(script.Parent.TestEnum)
-local TestSession = require(script.Parent.TestSession)
-local LifecycleHooks = require(script.Parent.LifecycleHooks)
-
-local RUNNING_GLOBAL = "__TESTEZ_RUNNING_TEST__"
-
-local TestRunner = {
-	environment = {}
-}
-
-function TestRunner.environment.expect(...)
-	return Expectation.new(...)
-end
-
---[[
-	Runs the given TestPlan and returns a TestResults object representing the
-	results of the run.
-]]
-function TestRunner.runPlan(plan)
-	local session = TestSession.new(plan)
-	local lifecycleHooks = LifecycleHooks.new()
-
-	local exclusiveNodes = plan:findNodes(function(node)
-		return node.modifier == TestEnum.NodeModifier.Focus
-	end)
-
-	session.hasFocusNodes = #exclusiveNodes > 0
-
-	TestRunner.runPlanNode(session, plan, lifecycleHooks)
-
-	return session:finalize()
-end
-
---[[
-	Run the given test plan node and its descendants, using the given test
-	session to store all of the results.
-]]
-function TestRunner.runPlanNode(session, planNode, lifecycleHooks)
-	local function runCallback(callback, messagePrefix)
-		local success = true
-		local errorMessage
-		-- Any code can check RUNNING_GLOBAL to fork behavior based on
-		-- whether a test is running. We use this to avoid accessing
-		-- protected APIs; it's a workaround that will go away someday.
-		_G[RUNNING_GLOBAL] = true
-
-		messagePrefix = messagePrefix or ""
-
-		local testEnvironment = getfenv(callback)
-
-		for key, value in pairs(TestRunner.environment) do
-			testEnvironment[key] = value
-		end
-
-		testEnvironment.fail = function(message)
-			if message == nil then
-				message = "fail() was called."
-			end
-
-			success = false
-			errorMessage = messagePrefix .. message .. "\n" .. debug.traceback()
-		end
-
-		local context = session:getContext()
-
-		local nodeSuccess, nodeResult = xpcall(
-			function()
-				callback(context)
-			end,
-			function(message)
-				return messagePrefix .. message .. "\n" .. debug.traceback()
-			end
-		)
-
-		-- If a node threw an error, we prefer to use that message over
-		-- one created by fail() if it was set.
-		if not nodeSuccess then
-			success = false
-			errorMessage = nodeResult
-		end
-
-		_G[RUNNING_GLOBAL] = nil
-
-		return success, errorMessage
-	end
-
-	local function runNode(childPlanNode)
-		-- Errors can be set either via `error` propagating upwards or
-		-- by a test calling fail([message]).
-
-		for _, hook in ipairs(lifecycleHooks:getBeforeEachHooks()) do
-			local success, errorMessage = runCallback(hook, "beforeEach hook: ")
-			if not success then
-				return false, errorMessage
-			end
-		end
-
-		do
-			local success, errorMessage = runCallback(childPlanNode.callback)
-			if not success then
-				return false, errorMessage
-			end
-		end
-
-		for _, hook in ipairs(lifecycleHooks:getAfterEachHooks()) do
-			local success, errorMessage = runCallback(hook, "afterEach hook: ")
-			if not success then
-				return false, errorMessage
-			end
-		end
-
-		return true, nil
-	end
-
-	lifecycleHooks:pushHooksFrom(planNode)
-
-	local halt = false
-	for _, hook in ipairs(lifecycleHooks:getBeforeAllHooks()) do
-		local success, errorMessage = runCallback(hook, "beforeAll hook: ")
-		if not success then
-			session:addDummyError("beforeAll", errorMessage)
-			halt = true
-		end
-	end
-
-	if not halt then
-		for _, childPlanNode in ipairs(planNode.children) do
-			session:pushNode(childPlanNode)
-
-			if childPlanNode.type == TestEnum.NodeType.It then
-				if session:shouldSkip() then
-					session:setSkipped()
-				else
-					local success, errorMessage = runNode(childPlanNode)
-
-					if success then
-						session:setSuccess()
-					else
-						session:setError(errorMessage)
-					end
-				end
-			elseif childPlanNode.type == TestEnum.NodeType.Describe then
-				TestRunner.runPlanNode(session, childPlanNode, lifecycleHooks)
-
-				-- Did we have an error trying build a test plan?
-				if childPlanNode.loadError then
-					local message = "Error during planning: " .. childPlanNode.loadError
-					session:setError(message)
-				else
-					session:setStatusFromChildren()
-				end
-			end
-
-			session:popNode()
-		end
-	end
-
-	for _, hook in ipairs(lifecycleHooks:getAfterAllHooks()) do
-		local success, errorMessage = runCallback(hook, "afterAll hook: ")
-		if not success then
-			session:addDummyError("afterAll", errorMessage)
-		end
-	end
-
-	lifecycleHooks:popHooks()
-end
-
-return TestRunner</string>
-              </Properties>
-            </Item>
-            <Item class="ModuleScript" referent="39">
-              <Properties>
-                <string name="Name">TestSession</string>
-                <string name="Source"><![CDATA[--[[
-	Represents the state relevant while executing a test plan.
-
-	Used by TestRunner to produce a TestResults object.
-
-	Uses the same tree building structure as TestPlanBuilder; TestSession keeps
-	track of a stack of nodes that represent the current path through the tree.
-]]
-
-local TestEnum = require(script.Parent.TestEnum)
-local TestResults = require(script.Parent.TestResults)
-local Context = require(script.Parent.Context)
-
-local TestSession = {}
-
-TestSession.__index = TestSession
-
---[[
-	Create a TestSession related to the given TestPlan.
-
-	The resulting TestResults object will be linked to this TestPlan.
-]]
-function TestSession.new(plan)
-	local self = {
-		results = TestResults.new(plan),
-		nodeStack = {},
-		contextStack = {},
-		hasFocusNodes = false
-	}
-
-	setmetatable(self, TestSession)
-
-	return self
-end
-
---[[
-	Calculate success, failure, and skipped test counts in the tree at the
-	current point in the execution.
-]]
-function TestSession:calculateTotals()
-	local results = self.results
-
-	results.successCount = 0
-	results.failureCount = 0
-	results.skippedCount = 0
-
-	results:visitAllNodes(function(node)
-		local status = node.status
-		local nodeType = node.planNode.type
-
-		if nodeType == TestEnum.NodeType.It then
-			if status == TestEnum.TestStatus.Success then
-				results.successCount = results.successCount + 1
-			elseif status == TestEnum.TestStatus.Failure then
-				results.failureCount = results.failureCount + 1
-			elseif status == TestEnum.TestStatus.Skipped then
-				results.skippedCount = results.skippedCount + 1
-			end
-		end
-	end)
-end
-
---[[
-	Gathers all of the errors reported by tests and puts them at the top level
-	of the TestResults object.
-]]
-function TestSession:gatherErrors()
-	local results = self.results
-
-	results.errors = {}
-
-	results:visitAllNodes(function(node)
-		if #node.errors > 0 then
-			for _, message in ipairs(node.errors) do
-				table.insert(results.errors, message)
-			end
-		end
-	end)
-end
-
---[[
-	Calculates test totals, verifies the tree is valid, and returns results.
-]]
-function TestSession:finalize()
-	if #self.nodeStack ~= 0 then
-		error("Cannot finalize TestResults with nodes still on the stack!", 2)
-	end
-
-	self:calculateTotals()
-	self:gatherErrors()
-
-	return self.results
-end
-
---[[
-	Create a new test result node and push it onto the navigation stack.
-]]
-function TestSession:pushNode(planNode)
-	local node = TestResults.createNode(planNode)
-	local lastNode = self.nodeStack[#self.nodeStack] or self.results
-	local lastContext = self.contextStack[#self.contextStack]
-	local context = Context.new(lastContext)
-
-	table.insert(lastNode.children, node)
-	table.insert(self.nodeStack, node)
-	table.insert(self.contextStack, context)
-end
-
---[[
-	Pops a node off of the navigation stack.
-]]
-function TestSession:popNode()
-	assert(#self.nodeStack > 0, "Tried to pop from an empty node stack!")
-	table.remove(self.nodeStack, #self.nodeStack)
-	table.remove(self.contextStack, #self.contextStack)
-end
-
---[[
-	Gets the Context object for the current node.
-]]
-function TestSession:getContext()
-	assert(#self.contextStack > 0, "Tried to get context from an empty stack!")
-	return self.contextStack[#self.contextStack]
-end
-
---[[
-	Tells whether the current test we're in should be skipped.
-]]
-function TestSession:shouldSkip()
-	-- If our test tree had any exclusive tests, then normal tests are skipped!
-	if self.hasFocusNodes then
-		for i = #self.nodeStack, 1, -1 do
-			local node = self.nodeStack[i]
-
-			-- Skipped tests are still skipped
-			if node.planNode.modifier == TestEnum.NodeModifier.Skip then
-				return true
-			end
-
-			-- Focused tests are the only ones that aren't skipped
-			if node.planNode.modifier == TestEnum.NodeModifier.Focus then
-				return false
-			end
-		end
-
-		return true
-	else
-		for i = #self.nodeStack, 1, -1 do
-			local node = self.nodeStack[i]
-
-			if node.planNode.modifier == TestEnum.NodeModifier.Skip then
-				return true
-			end
-		end
-	end
-
-	return false
-end
-
---[[
-	Set the current node's status to Success.
-]]
-function TestSession:setSuccess()
-	assert(#self.nodeStack > 0, "Attempting to set success status on empty stack")
-	self.nodeStack[#self.nodeStack].status = TestEnum.TestStatus.Success
-end
-
---[[
-	Set the current node's status to Skipped.
-]]
-function TestSession:setSkipped()
-	assert(#self.nodeStack > 0, "Attempting to set skipped status on empty stack")
-	self.nodeStack[#self.nodeStack].status = TestEnum.TestStatus.Skipped
-end
-
---[[
-	Set the current node's status to Failure and adds a message to its list of
-	errors.
-]]
-function TestSession:setError(message)
-	assert(#self.nodeStack > 0, "Attempting to set error status on empty stack")
-	local last = self.nodeStack[#self.nodeStack]
-	last.status = TestEnum.TestStatus.Failure
-	table.insert(last.errors, message)
-end
-
---[[
-	Add a dummy child node to the current node to hold the given error. This
-	allows an otherwise empty describe node to report an error in a more natural
-	way.
-]]
-function TestSession:addDummyError(phrase, message)
-	self:pushNode({type = TestEnum.NodeType.It, phrase = phrase})
-	self:setError(message)
-	self:popNode()
-	self.nodeStack[#self.nodeStack].status = TestEnum.TestStatus.Failure
-end
-
---[[
-	Set the current node's status based on that of its children. If all children
-	are skipped, mark it as skipped. If any are fails, mark it as failed.
-	Otherwise, mark it as success.
-]]
-function TestSession:setStatusFromChildren()
-	assert(#self.nodeStack > 0, "Attempting to set status from children on empty stack")
-
-	local last = self.nodeStack[#self.nodeStack]
-	local status = TestEnum.TestStatus.Success
-	local skipped = true
-
-	-- If all children were skipped, then we were skipped
-	-- If any child failed, then we failed!
-	for _, child in ipairs(last.children) do
-		if child.status ~= TestEnum.TestStatus.Skipped then
-			skipped = false
-
-			if child.status == TestEnum.TestStatus.Failure then
-				status = TestEnum.TestStatus.Failure
-			end
-		end
-	end
-
-	if skipped then
-		status = TestEnum.TestStatus.Skipped
-	end
-
-	last.status = status
-end
-
-return TestSession
-]]></string>
-              </Properties>
-            </Item>
-          </Item>
-        </Item>
-        <Item class="Folder" referent="40">
-          <Properties>
-            <string name="Name">types</string>
-          </Properties>
-          <Item class="Folder" referent="41">
-            <Properties>
-              <string name="Name">include</string>
-            </Properties>
-            <Item class="Folder" referent="42">
-              <Properties>
-                <string name="Name">generated</string>
-              </Properties>
-            </Item>
-          </Item>
-          <Item class="ModuleScript" referent="43">
-            <Properties>
-              <string name="Name">package</string>
-              <string name="Source">return {
-	_from = "@rbxts/types",
-	_id = "@rbxts/types@1.0.394",
-	_inBundle = false,
-	_integrity = "sha512-N3RJwd/1aXjBeLTEapYAV59noafLFqql07szK+fDASh70Wr8ye2OWWL8vqlgIRWw0DAwrCBHCXxtRqZdrwVjeg==",
-	_location = "/@rbxts/types",
-	_phantomChildren = {
-	},
-	_requested = {
-		escapedName = "@rbxts%2ftypes",
-		fetchSpec = "latest",
-		name = "@rbxts/types",
-		raw = "@rbxts/types",
-		rawSpec = "",
-		registry = true,
-		saveSpec = nil,
-		scope = "@rbxts",
-		type = "tag",
-	},
-	_requiredBy = {"#DEV:/", "#USER"},
-	_resolved = "https://registry.npmjs.org/@rbxts/types/-/types-1.0.394.tgz",
-	_shasum = "bb6702feaa07845b0a04bd79a947699a31255f75",
-	_spec = "@rbxts/types",
-	_where = "C:\Users\Brooke\Documents\Projects\PlayFab\Refactor",
-	author = {
-		name = "roblox-ts",
-	},
-	bugs = {
-		url = "https://github.com/roblox-ts/types/issues",
-	},
-	bundleDependencies = false,
-	deprecated = false,
-	description = "TypeScript typings for the Roblox platform. Partially handwritten and partially automatically generated.",
-	homepage = "https://github.com/roblox-ts/types#readme",
-	keywords = {"types", "Roblox", "typescript"},
-	license = "MIT",
-	main = "include/roblox.d.ts",
-	name = "@rbxts/types",
-	publishConfig = {
-		access = "public",
-	},
-	repository = {
-		type = "git",
-		url = "git+https://github.com/roblox-ts/types.git",
-	},
-	scripts = {
-	},
-	types = "include/roblox.d.ts",
-	version = "1.0.394",
-}</string>
-            </Properties>
-          </Item>
-        </Item>
       </Item>
     </Item>
   </Item>
