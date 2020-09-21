@@ -19,7 +19,7 @@ function PlayFabMatchmakerApi:AuthUser(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Matchmaker/AuthUser", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Matchmaker/AuthUser", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -32,7 +32,7 @@ function PlayFabMatchmakerApi:PlayerJoined(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Matchmaker/PlayerJoined", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Matchmaker/PlayerJoined", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -45,7 +45,7 @@ function PlayFabMatchmakerApi:PlayerLeft(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Matchmaker/PlayerLeft", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Matchmaker/PlayerLeft", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -58,7 +58,7 @@ function PlayFabMatchmakerApi:StartGame(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Matchmaker/StartGame", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Matchmaker/StartGame", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -72,7 +72,7 @@ function PlayFabMatchmakerApi:UserInfo(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Matchmaker/UserInfo", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Matchmaker/UserInfo", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 

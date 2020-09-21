@@ -19,7 +19,7 @@ function PlayFabAdminApi:AbortTaskInstance(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/AbortTaskInstance", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/AbortTaskInstance", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -32,7 +32,7 @@ function PlayFabAdminApi:AddLocalizedNews(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddLocalizedNews", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddLocalizedNews", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -45,7 +45,7 @@ function PlayFabAdminApi:AddNews(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddNews", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddNews", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -58,7 +58,7 @@ function PlayFabAdminApi:AddPlayerTag(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddPlayerTag", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddPlayerTag", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -72,7 +72,7 @@ function PlayFabAdminApi:AddServerBuild(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddServerBuild", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddServerBuild", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -85,7 +85,7 @@ function PlayFabAdminApi:AddUserVirtualCurrency(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddUserVirtualCurrency", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddUserVirtualCurrency", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -99,7 +99,7 @@ function PlayFabAdminApi:AddVirtualCurrencyTypes(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddVirtualCurrencyTypes", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/AddVirtualCurrencyTypes", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -112,7 +112,7 @@ function PlayFabAdminApi:BanUsers(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/BanUsers", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/BanUsers", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -125,7 +125,7 @@ function PlayFabAdminApi:CheckLimitedEditionItemAvailability(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/CheckLimitedEditionItemAvailability", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/CheckLimitedEditionItemAvailability", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -138,7 +138,7 @@ function PlayFabAdminApi:CreateActionsOnPlayersInSegmentTask(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreateActionsOnPlayersInSegmentTask", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreateActionsOnPlayersInSegmentTask", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -151,7 +151,7 @@ function PlayFabAdminApi:CreateCloudScriptTask(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreateCloudScriptTask", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreateCloudScriptTask", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -164,7 +164,7 @@ function PlayFabAdminApi:CreateInsightsScheduledScalingTask(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreateInsightsScheduledScalingTask", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreateInsightsScheduledScalingTask", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -177,7 +177,7 @@ function PlayFabAdminApi:CreateOpenIdConnection(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreateOpenIdConnection", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreateOpenIdConnection", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -191,7 +191,7 @@ function PlayFabAdminApi:CreatePlayerSharedSecret(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreatePlayerSharedSecret", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreatePlayerSharedSecret", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -205,7 +205,7 @@ function PlayFabAdminApi:CreatePlayerStatisticDefinition(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreatePlayerStatisticDefinition", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreatePlayerStatisticDefinition", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -218,7 +218,7 @@ function PlayFabAdminApi:DeleteContent(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteContent", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteContent", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -231,7 +231,7 @@ function PlayFabAdminApi:DeleteMasterPlayerAccount(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteMasterPlayerAccount", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteMasterPlayerAccount", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -244,7 +244,7 @@ function PlayFabAdminApi:DeleteOpenIdConnection(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteOpenIdConnection", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteOpenIdConnection", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -257,7 +257,7 @@ function PlayFabAdminApi:DeletePlayer(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeletePlayer", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeletePlayer", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -271,7 +271,7 @@ function PlayFabAdminApi:DeletePlayerSharedSecret(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeletePlayerSharedSecret", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeletePlayerSharedSecret", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -284,7 +284,7 @@ function PlayFabAdminApi:DeleteStore(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteStore", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteStore", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -297,7 +297,7 @@ function PlayFabAdminApi:DeleteTask(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteTask", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteTask", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -310,7 +310,7 @@ function PlayFabAdminApi:DeleteTitle(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteTitle", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteTitle", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -323,7 +323,7 @@ function PlayFabAdminApi:DeleteTitleDataOverride(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteTitleDataOverride", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteTitleDataOverride", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -336,7 +336,7 @@ function PlayFabAdminApi:ExportMasterPlayerData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/ExportMasterPlayerData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/ExportMasterPlayerData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -349,7 +349,7 @@ function PlayFabAdminApi:GetActionsOnPlayersInSegmentTaskInstance(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetActionsOnPlayersInSegmentTaskInstance", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetActionsOnPlayersInSegmentTaskInstance", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -363,7 +363,7 @@ function PlayFabAdminApi:GetAllSegments(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetAllSegments", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetAllSegments", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -376,7 +376,7 @@ function PlayFabAdminApi:GetCatalogItems(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetCatalogItems", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetCatalogItems", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -389,7 +389,7 @@ function PlayFabAdminApi:GetCloudScriptRevision(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetCloudScriptRevision", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetCloudScriptRevision", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -402,7 +402,7 @@ function PlayFabAdminApi:GetCloudScriptTaskInstance(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetCloudScriptTaskInstance", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetCloudScriptTaskInstance", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -416,7 +416,7 @@ function PlayFabAdminApi:GetCloudScriptVersions(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetCloudScriptVersions", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetCloudScriptVersions", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -429,7 +429,7 @@ function PlayFabAdminApi:GetContentList(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetContentList", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetContentList", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -444,7 +444,7 @@ function PlayFabAdminApi:GetContentUploadUrl(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetContentUploadUrl", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetContentUploadUrl", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -457,7 +457,7 @@ function PlayFabAdminApi:GetDataReport(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetDataReport", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetDataReport", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -470,7 +470,7 @@ function PlayFabAdminApi:GetMatchmakerGameInfo(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetMatchmakerGameInfo", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetMatchmakerGameInfo", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -483,7 +483,7 @@ function PlayFabAdminApi:GetMatchmakerGameModes(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetMatchmakerGameModes", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetMatchmakerGameModes", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -496,7 +496,7 @@ function PlayFabAdminApi:GetPlayedTitleList(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayedTitleList", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayedTitleList", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -509,7 +509,7 @@ function PlayFabAdminApi:GetPlayerIdFromAuthToken(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerIdFromAuthToken", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerIdFromAuthToken", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -522,7 +522,7 @@ function PlayFabAdminApi:GetPlayerProfile(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerProfile", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerProfile", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -535,7 +535,7 @@ function PlayFabAdminApi:GetPlayerSegments(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerSegments", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerSegments", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -548,7 +548,7 @@ function PlayFabAdminApi:GetPlayerSharedSecrets(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerSharedSecrets", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerSharedSecrets", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -565,7 +565,7 @@ function PlayFabAdminApi:GetPlayersInSegment(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayersInSegment", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayersInSegment", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -579,7 +579,7 @@ function PlayFabAdminApi:GetPlayerStatisticDefinitions(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerStatisticDefinitions", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerStatisticDefinitions", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -592,7 +592,7 @@ function PlayFabAdminApi:GetPlayerStatisticVersions(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerStatisticVersions", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerStatisticVersions", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -605,7 +605,7 @@ function PlayFabAdminApi:GetPlayerTags(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerTags", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPlayerTags", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -618,7 +618,7 @@ function PlayFabAdminApi:GetPolicy(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPolicy", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPolicy", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -631,7 +631,7 @@ function PlayFabAdminApi:GetPublisherData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPublisherData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetPublisherData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -644,7 +644,7 @@ function PlayFabAdminApi:GetRandomResultTables(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetRandomResultTables", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetRandomResultTables", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -657,7 +657,7 @@ function PlayFabAdminApi:GetServerBuildInfo(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetServerBuildInfo", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetServerBuildInfo", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -671,7 +671,7 @@ function PlayFabAdminApi:GetServerBuildUploadUrl(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetServerBuildUploadUrl", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetServerBuildUploadUrl", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -684,7 +684,7 @@ function PlayFabAdminApi:GetStoreItems(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetStoreItems", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetStoreItems", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -697,7 +697,7 @@ function PlayFabAdminApi:GetTaskInstances(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetTaskInstances", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetTaskInstances", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -710,7 +710,7 @@ function PlayFabAdminApi:GetTasks(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetTasks", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetTasks", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -723,7 +723,7 @@ function PlayFabAdminApi:GetTitleData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetTitleData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetTitleData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -736,7 +736,7 @@ function PlayFabAdminApi:GetTitleInternalData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetTitleInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetTitleInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -749,7 +749,7 @@ function PlayFabAdminApi:GetUserAccountInfo(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserAccountInfo", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserAccountInfo", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -762,7 +762,7 @@ function PlayFabAdminApi:GetUserBans(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserBans", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserBans", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -775,7 +775,7 @@ function PlayFabAdminApi:GetUserData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -788,7 +788,7 @@ function PlayFabAdminApi:GetUserInternalData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -801,7 +801,7 @@ function PlayFabAdminApi:GetUserInventory(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserInventory", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserInventory", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -814,7 +814,7 @@ function PlayFabAdminApi:GetUserPublisherData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserPublisherData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserPublisherData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -827,7 +827,7 @@ function PlayFabAdminApi:GetUserPublisherInternalData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserPublisherInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserPublisherInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -840,7 +840,7 @@ function PlayFabAdminApi:GetUserPublisherReadOnlyData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserPublisherReadOnlyData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserPublisherReadOnlyData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -853,7 +853,7 @@ function PlayFabAdminApi:GetUserReadOnlyData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserReadOnlyData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetUserReadOnlyData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -866,7 +866,7 @@ function PlayFabAdminApi:GrantItemsToUsers(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/GrantItemsToUsers", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GrantItemsToUsers", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -879,7 +879,7 @@ function PlayFabAdminApi:IncrementLimitedEditionItemAvailability(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/IncrementLimitedEditionItemAvailability", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/IncrementLimitedEditionItemAvailability", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -892,7 +892,7 @@ function PlayFabAdminApi:IncrementPlayerStatisticVersion(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/IncrementPlayerStatisticVersion", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/IncrementPlayerStatisticVersion", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -905,7 +905,7 @@ function PlayFabAdminApi:ListOpenIdConnection(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/ListOpenIdConnection", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/ListOpenIdConnection", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -918,7 +918,7 @@ function PlayFabAdminApi:ListServerBuilds(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/ListServerBuilds", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/ListServerBuilds", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -931,7 +931,7 @@ function PlayFabAdminApi:ListVirtualCurrencyTypes(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/ListVirtualCurrencyTypes", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/ListVirtualCurrencyTypes", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -944,7 +944,7 @@ function PlayFabAdminApi:ModifyMatchmakerGameModes(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/ModifyMatchmakerGameModes", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/ModifyMatchmakerGameModes", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -957,7 +957,7 @@ function PlayFabAdminApi:ModifyServerBuild(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/ModifyServerBuild", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/ModifyServerBuild", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -970,7 +970,7 @@ function PlayFabAdminApi:RefundPurchase(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/RefundPurchase", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/RefundPurchase", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -983,7 +983,7 @@ function PlayFabAdminApi:RemovePlayerTag(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/RemovePlayerTag", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/RemovePlayerTag", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -997,7 +997,7 @@ function PlayFabAdminApi:RemoveServerBuild(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/RemoveServerBuild", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/RemoveServerBuild", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1010,7 +1010,7 @@ function PlayFabAdminApi:RemoveVirtualCurrencyTypes(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/RemoveVirtualCurrencyTypes", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/RemoveVirtualCurrencyTypes", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1023,7 +1023,7 @@ function PlayFabAdminApi:ResetCharacterStatistics(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/ResetCharacterStatistics", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/ResetCharacterStatistics", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1036,7 +1036,7 @@ function PlayFabAdminApi:ResetPassword(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/ResetPassword", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/ResetPassword", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1049,7 +1049,7 @@ function PlayFabAdminApi:ResetUserStatistics(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/ResetUserStatistics", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/ResetUserStatistics", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1062,7 +1062,7 @@ function PlayFabAdminApi:ResolvePurchaseDispute(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/ResolvePurchaseDispute", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/ResolvePurchaseDispute", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1075,7 +1075,7 @@ function PlayFabAdminApi:RevokeAllBansForUser(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/RevokeAllBansForUser", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/RevokeAllBansForUser", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1088,7 +1088,7 @@ function PlayFabAdminApi:RevokeBans(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/RevokeBans", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/RevokeBans", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1101,7 +1101,7 @@ function PlayFabAdminApi:RevokeInventoryItem(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/RevokeInventoryItem", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/RevokeInventoryItem", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1114,7 +1114,7 @@ function PlayFabAdminApi:RevokeInventoryItems(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/RevokeInventoryItems", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/RevokeInventoryItems", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1127,7 +1127,7 @@ function PlayFabAdminApi:RunTask(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/RunTask", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/RunTask", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1142,7 +1142,7 @@ function PlayFabAdminApi:SendAccountRecoveryEmail(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SendAccountRecoveryEmail", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SendAccountRecoveryEmail", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1155,7 +1155,7 @@ function PlayFabAdminApi:SetCatalogItems(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetCatalogItems", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetCatalogItems", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1168,7 +1168,7 @@ function PlayFabAdminApi:SetPlayerSecret(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetPlayerSecret", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetPlayerSecret", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1181,7 +1181,7 @@ function PlayFabAdminApi:SetPublishedRevision(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetPublishedRevision", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetPublishedRevision", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1194,7 +1194,7 @@ function PlayFabAdminApi:SetPublisherData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetPublisherData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetPublisherData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1207,7 +1207,7 @@ function PlayFabAdminApi:SetStoreItems(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetStoreItems", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetStoreItems", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1220,7 +1220,7 @@ function PlayFabAdminApi:SetTitleData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetTitleData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetTitleData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1233,7 +1233,7 @@ function PlayFabAdminApi:SetTitleDataAndOverrides(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetTitleDataAndOverrides", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetTitleDataAndOverrides", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1246,7 +1246,7 @@ function PlayFabAdminApi:SetTitleInternalData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetTitleInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetTitleInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1261,7 +1261,7 @@ function PlayFabAdminApi:SetupPushNotification(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetupPushNotification", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SetupPushNotification", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1274,7 +1274,7 @@ function PlayFabAdminApi:SubtractUserVirtualCurrency(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/SubtractUserVirtualCurrency", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/SubtractUserVirtualCurrency", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1287,7 +1287,7 @@ function PlayFabAdminApi:UpdateBans(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateBans", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateBans", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1300,7 +1300,7 @@ function PlayFabAdminApi:UpdateCatalogItems(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateCatalogItems", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateCatalogItems", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1314,7 +1314,7 @@ function PlayFabAdminApi:UpdateCloudScript(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateCloudScript", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateCloudScript", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1327,7 +1327,7 @@ function PlayFabAdminApi:UpdateOpenIdConnection(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateOpenIdConnection", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateOpenIdConnection", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1341,7 +1341,7 @@ function PlayFabAdminApi:UpdatePlayerSharedSecret(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdatePlayerSharedSecret", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdatePlayerSharedSecret", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1354,7 +1354,7 @@ function PlayFabAdminApi:UpdatePlayerStatisticDefinition(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdatePlayerStatisticDefinition", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdatePlayerStatisticDefinition", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1367,7 +1367,7 @@ function PlayFabAdminApi:UpdatePolicy(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdatePolicy", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdatePolicy", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1380,7 +1380,7 @@ function PlayFabAdminApi:UpdateRandomResultTables(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateRandomResultTables", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateRandomResultTables", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1393,7 +1393,7 @@ function PlayFabAdminApi:UpdateStoreItems(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateStoreItems", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateStoreItems", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1406,7 +1406,7 @@ function PlayFabAdminApi:UpdateTask(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateTask", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateTask", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1419,7 +1419,7 @@ function PlayFabAdminApi:UpdateUserData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1432,7 +1432,7 @@ function PlayFabAdminApi:UpdateUserInternalData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1445,7 +1445,7 @@ function PlayFabAdminApi:UpdateUserPublisherData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserPublisherData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserPublisherData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1458,7 +1458,7 @@ function PlayFabAdminApi:UpdateUserPublisherInternalData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserPublisherInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserPublisherInternalData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1471,7 +1471,7 @@ function PlayFabAdminApi:UpdateUserPublisherReadOnlyData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserPublisherReadOnlyData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserPublisherReadOnlyData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1484,7 +1484,7 @@ function PlayFabAdminApi:UpdateUserReadOnlyData(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserReadOnlyData", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserReadOnlyData", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1497,7 +1497,7 @@ function PlayFabAdminApi:UpdateUserTitleDisplayName(request)
          if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
-        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserTitleDisplayName", request or {}, "X-SecretKey", PlayFabSettings.settings.developerSecretKey, resolve, reject)
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateUserTitleDisplayName", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
