@@ -18,6 +18,7 @@ jobs:
       - run: npm install
       - name: Run TypeDoc
         run : npx typedoc --out docs/typedoc --includeDeclarations --mode file --theme minimal --excludeNotExported --exclude '**/node_modules/**' src
+        # Runs TypeDoc and excludes node_modules so that the entire Roblox API doesn't have docs
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
