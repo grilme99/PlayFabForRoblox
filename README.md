@@ -3,6 +3,8 @@ This SDK provides complete access to the entire PlayFab API on Roblox. It suppor
 
 All SDK source files are generated automatically based on PlayFab's API schema, which makes updating to recent API updates incredibly fast and gives less room for human error.
 
+---
+
 ## What is PlayFab?
 PlayFab is a complete backend platform for live games with managed game services, real-time analytics, and LiveOps. 
 
@@ -108,6 +110,8 @@ end)
 - A `SessionTicket` and `EntityToken` can expire after a period of time. You should design your system with this in mind and be able to log the client back in, should one expire.
 - You should store each players `SessionTicket` and `EntityToken` in a centralized store, like [Rodux](https://roblox.github.io/rodux), so that they can be accessed by any script that needs them.
 - Almost all PlayFab SDK documentation applies here as well. It would be best if you referred to the official PlayFab documentation and forums *before* making an issue for this SDK.
+
+---
 
 ## Documentation
 Documentation for this SDK is available at [gril.me/RobloxPlayFabSDK](https://gril.me/RobloxPlayFabSDK/).
