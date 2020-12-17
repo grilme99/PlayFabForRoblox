@@ -154,6 +154,17 @@ function PlayFabClientApi:ConsumeItem(sessionTicket, request)
 end
 
 --[[
+    Grants the player's current entitlements from Microsoft Store's Collection API
+    https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/consumemicrosoftstoreentitlements
+--]]
+function PlayFabClientApi:ConsumeMicrosoftStoreEntitlements(sessionTicket, request)
+    return Promise.new(function(resolve, reject)
+         if (not sessionTicket) then reject("Must provide a sessionTicket to call this method") end
+        IPlayFabHttps.MakePlayFabApiCall("/Client/ConsumeMicrosoftStoreEntitlements", request or {}, "X-Authorization", sessionTicket, resolve, reject)
+    end)
+end
+
+--[[
     Checks for any new consumable entitlements. If any are found, they are consumed and added as PlayFab items
     https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/consumepsnentitlements
 --]]

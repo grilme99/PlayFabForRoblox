@@ -328,6 +328,15 @@ declare module PlayFabMultiplayerModule {
             request?: PlayFabMultiplayerModels.ListBuildSummariesRequest
         ): Promise<PlayFabMultiplayerModels.ListBuildSummariesResponse>;
         /**
+         * Lists summarized details of all multiplayer server builds for a title. Accepts tokens for title and if game client
+         * access is enabled, allows game client to request list of builds with player entity token.
+         * https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listbuildsummariesv2
+         */
+        ListBuildSummariesV2(
+            entityToken: string,
+            request?: PlayFabMultiplayerModels.ListBuildSummariesRequest
+        ): Promise<PlayFabMultiplayerModels.ListBuildSummariesResponse>;
+        /**
          * Lists multiplayer server game certificates for a title.
          * https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listcertificatesummaries
          */
@@ -552,7 +561,12 @@ declare module PlayFabMultiplayerModels {
         | "Dv3"
         | "F"
         | "Fsv2"
-        | "Dasv4";
+        | "Dasv4"
+        | "Dav4"
+        | "Eav4"
+        | "Easv4"
+        | "Ev4"
+        | "Esv4";
 
     type AzureVmSize = "Standard_A1"
         | "Standard_A2"
@@ -583,7 +597,11 @@ declare module PlayFabMultiplayerModels {
         | "Standard_D2as_v4"
         | "Standard_D4as_v4"
         | "Standard_D8as_v4"
-        | "Standard_D16as_v4";
+        | "Standard_D16as_v4"
+        | "Standard_D2a_v4"
+        | "Standard_D4a_v4"
+        | "Standard_D8a_v4"
+        | "Standard_D16a_v4";
 
     export interface BuildAliasDetailsResponse extends PlayFabModule.IPlayFabResultCommon {
         /** The guid string alias Id of the alias to be created or updated. */
@@ -960,6 +978,11 @@ declare module PlayFabMultiplayerModels {
         /** The instrumentation configuration for the build. */
         InstrumentationConfiguration?: InstrumentationConfiguration;
         /**
+         * Indicates whether this build will be created using the OS Preview versionPreview OS is recommended for dev builds to
+         * detect any breaking changes before they are released to retail. Retail builds should set this value to false.
+         */
+        IsOSPreview?: boolean;
+        /**
          * Metadata to tag the build. The keys are case insensitive. The build metadata is made available to the server through
          * Game Server SDK (GSDK).Constraints: Maximum number of keys: 30, Maximum key length: 50, Maximum value length: 100
          */
@@ -1011,6 +1034,11 @@ declare module PlayFabMultiplayerModels {
         GameWorkingDirectory?: string;
         /** The instrumentation configuration for this build. */
         InstrumentationConfiguration?: InstrumentationConfiguration;
+        /**
+         * Indicates whether this build will be created using the OS Preview versionPreview OS is recommended for dev builds to
+         * detect any breaking changes before they are released to retail. Retail builds should set this value to false.
+         */
+        IsOSPreview?: boolean;
         /** The metadata of the build. */
         Metadata?: { [key: string]: string | undefined };
         /** The number of multiplayer servers to host on a single VM of the build. */

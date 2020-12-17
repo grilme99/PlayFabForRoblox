@@ -11,6 +11,17 @@ local PlayFabExperimentationApi = {
 }
 
 --[[
+    Creates a new experiment exclusion group for a title.
+    https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/createexclusiongroup
+--]]
+function PlayFabExperimentationApi:CreateExclusionGroup(entityToken, request)
+    return Promise.new(function(resolve, reject)
+         if (not entityToken) then reject("Must provide an entityToken to call this method") end
+        IPlayFabHttps.MakePlayFabApiCall("/Experimentation/CreateExclusionGroup", request or {}, "X-EntityToken", entityToken, resolve, reject)
+    end)
+end
+
+--[[
     Creates a new experiment for a title.
     https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/createexperiment
 --]]
@@ -22,6 +33,17 @@ function PlayFabExperimentationApi:CreateExperiment(entityToken, request)
 end
 
 --[[
+    Deletes an existing exclusion group for a title.
+    https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/deleteexclusiongroup
+--]]
+function PlayFabExperimentationApi:DeleteExclusionGroup(entityToken, request)
+    return Promise.new(function(resolve, reject)
+         if (not entityToken) then reject("Must provide an entityToken to call this method") end
+        IPlayFabHttps.MakePlayFabApiCall("/Experimentation/DeleteExclusionGroup", request or {}, "X-EntityToken", entityToken, resolve, reject)
+    end)
+end
+
+--[[
     Deletes an existing experiment for a title.
     https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/deleteexperiment
 --]]
@@ -29,6 +51,28 @@ function PlayFabExperimentationApi:DeleteExperiment(entityToken, request)
     return Promise.new(function(resolve, reject)
          if (not entityToken) then reject("Must provide an entityToken to call this method") end
         IPlayFabHttps.MakePlayFabApiCall("/Experimentation/DeleteExperiment", request or {}, "X-EntityToken", entityToken, resolve, reject)
+    end)
+end
+
+--[[
+    Gets the details of all exclusion groups for a title.
+    https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/getexclusiongroups
+--]]
+function PlayFabExperimentationApi:GetExclusionGroups(entityToken, request)
+    return Promise.new(function(resolve, reject)
+         if (not entityToken) then reject("Must provide an entityToken to call this method") end
+        IPlayFabHttps.MakePlayFabApiCall("/Experimentation/GetExclusionGroups", request or {}, "X-EntityToken", entityToken, resolve, reject)
+    end)
+end
+
+--[[
+    Gets the details of all exclusion groups for a title.
+    https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/getexclusiongrouptraffic
+--]]
+function PlayFabExperimentationApi:GetExclusionGroupTraffic(entityToken, request)
+    return Promise.new(function(resolve, reject)
+         if (not entityToken) then reject("Must provide an entityToken to call this method") end
+        IPlayFabHttps.MakePlayFabApiCall("/Experimentation/GetExclusionGroupTraffic", request or {}, "X-EntityToken", entityToken, resolve, reject)
     end)
 end
 
@@ -84,6 +128,17 @@ function PlayFabExperimentationApi:StopExperiment(entityToken, request)
     return Promise.new(function(resolve, reject)
          if (not entityToken) then reject("Must provide an entityToken to call this method") end
         IPlayFabHttps.MakePlayFabApiCall("/Experimentation/StopExperiment", request or {}, "X-EntityToken", entityToken, resolve, reject)
+    end)
+end
+
+--[[
+    Updates an existing exclusion group for a title.
+    https://docs.microsoft.com/rest/api/playfab/experimentation/experimentation/updateexclusiongroup
+--]]
+function PlayFabExperimentationApi:UpdateExclusionGroup(entityToken, request)
+    return Promise.new(function(resolve, reject)
+         if (not entityToken) then reject("Must provide an entityToken to call this method") end
+        IPlayFabHttps.MakePlayFabApiCall("/Experimentation/UpdateExclusionGroup", request or {}, "X-EntityToken", entityToken, resolve, reject)
     end)
 end
 

@@ -119,6 +119,8 @@ declare module PlayFabDataModels {
         Entity: EntityKey;
         /** Names of the files to be finalized. Restricted to a-Z, 0-9, '(', ')', '_', '-' and '.' */
         FileNames: string[];
+        /** The current version of the profile, can be used for concurrency control during updates. */
+        ProfileVersion: number;
     }
 
     export interface FinalizeFileUploadsResponse extends PlayFabModule.IPlayFabResultCommon {

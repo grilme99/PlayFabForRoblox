@@ -127,6 +127,15 @@ declare module PlayFabAdminModule {
             request?: PlayFabAdminModels.CreatePlayerStatisticDefinitionRequest
         ): Promise<PlayFabAdminModels.CreatePlayerStatisticDefinitionResult>;
         /**
+         * Creates a new player segment by defining the conditions on player properties. Also, create actions to target the player
+         * segments for a title.
+         * https://docs.microsoft.com/rest/api/playfab/admin/segments/createsegment
+         */
+        CreateSegment(
+            
+            request?: PlayFabAdminModels.CreateSegmentRequest
+        ): Promise<PlayFabAdminModels.CreateSegmentResponse>;
+        /**
          * Delete a content file from the title. When deleting a file that does not exist, it returns success.
          * https://docs.microsoft.com/rest/api/playfab/admin/content/deletecontent
          */
@@ -167,6 +176,14 @@ declare module PlayFabAdminModule {
             
             request?: PlayFabAdminModels.DeletePlayerSharedSecretRequest
         ): Promise<PlayFabAdminModels.DeletePlayerSharedSecretResult>;
+        /**
+         * Deletes an existing player segment and its associated action(s) for a title.
+         * https://docs.microsoft.com/rest/api/playfab/admin/segments/deletesegment
+         */
+        DeleteSegment(
+            
+            request?: PlayFabAdminModels.DeleteSegmentRequest
+        ): Promise<PlayFabAdminModels.DeleteSegmentsResponse>;
         /**
          * Deletes an existing virtual item store
          * https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/deletestore
@@ -400,6 +417,14 @@ declare module PlayFabAdminModule {
             
             request?: PlayFabAdminModels.GetRandomResultTablesRequest
         ): Promise<PlayFabAdminModels.GetRandomResultTablesResult>;
+        /**
+         * Get detail information of a segment and its associated definition(s) and action(s) for a title.
+         * https://docs.microsoft.com/rest/api/playfab/admin/segments/getsegments
+         */
+        GetSegments(
+            
+            request?: PlayFabAdminModels.GetSegmentsRequest
+        ): Promise<PlayFabAdminModels.GetSegmentsResponse>;
         /**
          * Retrieves the build details for the specified game server executable
          * https://docs.microsoft.com/rest/api/playfab/admin/custom-server-management/getserverbuildinfo
@@ -857,6 +882,14 @@ declare module PlayFabAdminModule {
             request?: PlayFabAdminModels.UpdateRandomResultTablesRequest
         ): Promise<PlayFabAdminModels.UpdateRandomResultTablesResult>;
         /**
+         * Updates an existing player segment and its associated definition(s) and action(s) for a title.
+         * https://docs.microsoft.com/rest/api/playfab/admin/segments/updatesegment
+         */
+        UpdateSegment(
+            
+            request?: PlayFabAdminModels.UpdateSegmentRequest
+        ): Promise<PlayFabAdminModels.UpdateSegmentResponse>;
+        /**
          * Updates an existing virtual item store with new or modified items
          * https://docs.microsoft.com/rest/api/playfab/admin/title-wide-data-management/updatestoreitems
          */
@@ -992,6 +1025,15 @@ declare module PlayFabAdminModels {
         Platform?: string;
     }
 
+    export interface AdCampaignSegmentFilter {
+        /** Campaign id. */
+        CampaignId?: string;
+        /** Campaign source. */
+        CampaignSource?: string;
+        /** Campaign comparison. */
+        Comparison?: string;
+    }
+
     export interface AddLocalizedNewsRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** Localized body text of the news. */
         Body: string;
@@ -1107,6 +1149,8 @@ declare module PlayFabAdminModels {
         VirtualCurrencies: VirtualCurrencyData[];
     }
 
+    export interface AllPlayersSegmentFilter {}
+
     export interface ApiCondition {
         /** Require that API calls contain an RSA encrypted payload or signed headers. */
         HasSignatureOrEncryption?: string;
@@ -1131,6 +1175,13 @@ declare module PlayFabAdminModels {
         PlayFabId?: string;
         /** The reason why this ban was applied. */
         Reason?: string;
+    }
+
+    export interface BanPlayerSegmentAction {
+        /** Ban hours duration. */
+        BanHours?: number;
+        /** Reason for ban. */
+        ReasonForBan?: string;
     }
 
     export interface BanRequest {
@@ -1662,6 +1713,8 @@ declare module PlayFabAdminModels {
         ClientSecret: string;
         /** A name for the connection that identifies it within the title. */
         ConnectionId: string;
+        /** Ignore 'nonce' claim in identity tokens. */
+        IgnoreNonce?: boolean;
         /**
          * The discovery document URL to read issuer information from. This must be the absolute URL to the JSON OpenId
          * Configuration document and must be accessible from the internet. If you don't know it, try your issuer URL followed by
@@ -1697,6 +1750,18 @@ declare module PlayFabAdminModels {
     export interface CreatePlayerStatisticDefinitionResult extends PlayFabModule.IPlayFabResultCommon {
         /** created statistic definition */
         Statistic?: PlayerStatisticDefinition;
+    }
+
+    export interface CreateSegmentRequest extends PlayFabModule.IPlayFabRequestCommon {
+        /** Segment model with all of the segment properties data. */
+        SegmentModel: SegmentModel;
+    }
+
+    export interface CreateSegmentResponse extends PlayFabModule.IPlayFabResultCommon {
+        /** Error message. */
+        ErrorMessage?: string;
+        /** Segment id. */
+        SegmentId?: string;
     }
 
     export interface CreateTaskResult extends PlayFabModule.IPlayFabResultCommon {
@@ -1901,12 +1966,29 @@ declare module PlayFabAdminModels {
 
     export interface DeletePlayerResult extends PlayFabModule.IPlayFabResultCommon {}
 
+    export interface DeletePlayerSegmentAction {}
+
     export interface DeletePlayerSharedSecretRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** The shared secret key to delete */
         SecretKey?: string;
     }
 
     export interface DeletePlayerSharedSecretResult extends PlayFabModule.IPlayFabResultCommon {}
+
+    export interface DeletePlayerStatisticSegmentAction {
+        /** Statistic name. */
+        StatisticName?: string;
+    }
+
+    export interface DeleteSegmentRequest extends PlayFabModule.IPlayFabRequestCommon {
+        /** Segment id. */
+        SegmentId: string;
+    }
+
+    export interface DeleteSegmentsResponse extends PlayFabModule.IPlayFabResultCommon {
+        /** Error message. */
+        ErrorMessage?: string;
+    }
 
     export interface DeleteStoreRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** catalog version of the store to delete. If null, uses the default catalog. */
@@ -1938,6 +2020,13 @@ declare module PlayFabAdminModels {
     type EffectType = "Allow"
         | "Deny";
 
+    export interface EmailNotificationSegmentAction {
+        /** Email template id. */
+        EmailTemplateId?: string;
+        /** Email template name. */
+        EmailTemplateName?: string;
+    }
+
     type EmailVerificationStatus = "Unverified"
         | "Pending"
         | "Confirmed";
@@ -1949,6 +2038,15 @@ declare module PlayFabAdminModels {
         Id: string;
         /** Entity type. See https://docs.microsoft.com/gaming/playfab/features/data/entities/available-built-in-entity-types */
         Type?: string;
+    }
+
+    export interface ExecuteAzureFunctionSegmentAction {
+        /** Azure function. */
+        AzureFunction?: string;
+        /** Azure function parameter. */
+        FunctionParameter?: any;
+        /** Generate play stream event. */
+        GenerateFunctionExecutedEvents: boolean;
     }
 
     export interface ExecuteCloudScriptResult {
@@ -1988,6 +2086,17 @@ declare module PlayFabAdminModels {
         Revision: number;
     }
 
+    export interface ExecuteCloudScriptSegmentAction {
+        /** Cloud script function. */
+        CloudScriptFunction?: string;
+        /** Generate play stream event. */
+        CloudScriptPublishResultsToPlayStream: boolean;
+        /** Cloud script function parameter. */
+        FunctionParameter?: any;
+        /** Cloud script function parameter json text. */
+        FunctionParameterJson?: string;
+    }
+
     export interface ExportMasterPlayerDataRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** Unique PlayFab assigned ID of the user on whom the operation will be performed. */
         PlayFabId: string;
@@ -1999,6 +2108,20 @@ declare module PlayFabAdminModels {
          * address when the export is complete.
          */
         JobReceiptId?: string;
+    }
+
+    export interface FirstLoginDateSegmentFilter {
+        /** First player login date comparison. */
+        Comparison?: string;
+        /** First player login date. */
+        LogInDate: string;
+    }
+
+    export interface FirstLoginTimespanSegmentFilter {
+        /** First player login duration comparison. */
+        Comparison?: string;
+        /** First player login duration. */
+        DurationInMinutes: number;
     }
 
     type GameBuildStatus = "Available"
@@ -2519,6 +2642,7 @@ declare module PlayFabAdminModels {
         | "DuplicateKeys"
         | "WasNotCreatedWithCloudRoot"
         | "LegacyMultiplayerServersDeprecated"
+        | "VirtualCurrencyCurrentlyUnavailable"
         | "MatchmakingEntityInvalid"
         | "MatchmakingPlayerAttributesInvalid"
         | "MatchmakingQueueNotFound"
@@ -2553,7 +2677,6 @@ declare module PlayFabAdminModels {
         | "CatalogSearchParameterInvalid"
         | "CatalogFeatureDisabled"
         | "CatalogConfigInvalid"
-        | "CatalogUnauthorized"
         | "CatalogItemTypeInvalid"
         | "CatalogBadRequest"
         | "CatalogTooManyRequests"
@@ -2581,6 +2704,20 @@ declare module PlayFabAdminModels {
         | "ExportCannotParseQuery"
         | "ExportControlCommandsNotAllowed"
         | "ExportQueryMissingTableReference"
+        | "ExplorerBasicInvalidQueryName"
+        | "ExplorerBasicInvalidQueryDescription"
+        | "ExplorerBasicInvalidQueryConditions"
+        | "ExplorerBasicInvalidQueryStartDate"
+        | "ExplorerBasicInvalidQueryEndDate"
+        | "ExplorerBasicInvalidQueryGroupBy"
+        | "ExplorerBasicInvalidQueryAggregateType"
+        | "ExplorerBasicInvalidQueryAggregateProperty"
+        | "ExplorerBasicLoadQueriesError"
+        | "ExplorerBasicLoadQueryError"
+        | "ExplorerBasicCreateQueryError"
+        | "ExplorerBasicDeleteQueryError"
+        | "ExplorerBasicUpdateQueryError"
+        | "ExplorerBasicSavedQueriesLimit"
         | "TitleNotEnabledForParty"
         | "PartyVersionNotFound"
         | "MultiplayerServerBuildReferencedByMatchmakingQueue"
@@ -2599,6 +2736,13 @@ declare module PlayFabAdminModels {
         | "ExperimentationInvalidDuration"
         | "ExperimentationMaxExperimentsReached"
         | "ExperimentationExperimentSchedulingInProgress"
+        | "ExperimentationInvalidEndDate"
+        | "ExperimentationInvalidStartDate"
+        | "ExperimentationMaxDurationExceeded"
+        | "ExperimentationExclusionGroupNotFound"
+        | "ExperimentationExclusionGroupInsufficientCapacity"
+        | "ExperimentationExclusionGroupCannotDelete"
+        | "ExperimentationExclusionGroupInvalidTrafficAllocation"
         | "MaxActionDepthExceeded"
         | "TitleNotOnUpdatedPricingPlan"
         | "SegmentManagementTitleNotInFlight"
@@ -2606,6 +2750,12 @@ declare module PlayFabAdminModels {
         | "SegmentManagementTriggerActionCountOverLimit"
         | "SegmentManagementSegmentCountOverLimit"
         | "SegmentManagementInvalidSegmentId"
+        | "SegmentManagementInvalidInput"
+        | "SegmentManagementInvalidSegmentName"
+        | "DeleteSegmentRateLimitExceeded"
+        | "CreateSegmentRateLimitExceeded"
+        | "UpdateSegmentRateLimitExceeded"
+        | "GetSegmentsRateLimitExceeded"
         | "SnapshotNotFound";
 
     export interface GetActionsOnPlayersInSegmentTaskInstanceResult extends PlayFabModule.IPlayFabResultCommon {
@@ -2694,7 +2844,10 @@ declare module PlayFabAdminModels {
     }
 
     export interface GetContentUploadUrlResult extends PlayFabModule.IPlayFabResultCommon {
-        /** URL for uploading content via HTTP PUT method. The URL will expire in approximately one hour. */
+        /**
+         * URL for uploading content via HTTP PUT method. The URL requires the 'x-ms-blob-type' header to have the value
+         * 'BlockBlob'. The URL will expire in approximately one hour.
+         */
         URL?: string;
     }
 
@@ -2922,6 +3075,18 @@ declare module PlayFabAdminModels {
         Name?: string;
     }
 
+    export interface GetSegmentsRequest extends PlayFabModule.IPlayFabRequestCommon {
+        /** Segment ids to filter title segments. */
+        SegmentIds: string[];
+    }
+
+    export interface GetSegmentsResponse extends PlayFabModule.IPlayFabResultCommon {
+        /** Error message. */
+        ErrorMessage?: string;
+        /** List of title segments. */
+        Segments?: SegmentModel[];
+    }
+
     export interface GetServerBuildInfoRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** unique identifier of the previously uploaded build executable for which information is being requested */
         BuildId: string;
@@ -3026,8 +3191,8 @@ declare module PlayFabAdminModels {
         /** Specific keys to search for in the title data (leave null to get all keys) */
         Keys?: string[];
         /**
-         * Name of the override. This value is ignored when used by the game client; otherwise, the overrides are applied
-         * automatically to the title data.
+         * Optional field that specifies the name of an override. This value is ignored when used by the game client; otherwise,
+         * the overrides are applied automatically to the title data.
          */
         OverrideLabel?: string;
     }
@@ -3134,6 +3299,15 @@ declare module PlayFabAdminModels {
         UsesIncrementedBy?: number;
     }
 
+    export interface GrantItemSegmentAction {
+        /** Item catalog id. */
+        CatelogId?: string;
+        /** Item id. */
+        ItemId?: string;
+        /** Item quantity. */
+        Quantity: number;
+    }
+
     export interface GrantItemsToUsersRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** Catalog version from which items are to be granted. */
         CatalogVersion?: string;
@@ -3148,6 +3322,13 @@ declare module PlayFabAdminModels {
         ItemGrantResults?: GrantedItemInstance[];
     }
 
+    export interface GrantVirtualCurrencySegmentAction {
+        /** Virtual currency amount. */
+        Amount: number;
+        /** Virtual currency code. */
+        CurrencyCode?: string;
+    }
+
     export interface IncrementLimitedEditionItemAvailabilityRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** Amount to increase availability by. */
         Amount: number;
@@ -3160,6 +3341,13 @@ declare module PlayFabAdminModels {
     }
 
     export interface IncrementLimitedEditionItemAvailabilityResult extends PlayFabModule.IPlayFabResultCommon {}
+
+    export interface IncrementPlayerStatisticSegmentAction {
+        /** Increment value. */
+        IncrementValue: number;
+        /** Statistic name. */
+        StatisticName?: string;
+    }
 
     export interface IncrementPlayerStatisticVersionRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.). */
@@ -3238,6 +3426,20 @@ declare module PlayFabAdminModels {
         UsesIncrementedBy?: number;
     }
 
+    export interface LastLoginDateSegmentFilter {
+        /** Last player login date comparison. */
+        Comparison?: string;
+        /** Last player login date. */
+        LogInDate: string;
+    }
+
+    export interface LastLoginTimespanSegmentFilter {
+        /** Last player login duration comparison. */
+        Comparison?: string;
+        /** Last player login duration. */
+        DurationInMinutes: number;
+    }
+
     export interface LinkedPlatformAccountModel {
         /** Linked account email of the user on the platform, if available */
         Email?: string;
@@ -3247,6 +3449,20 @@ declare module PlayFabAdminModels {
         PlatformUserId?: string;
         /** Linked account username of the user on the platform, if available */
         Username?: string;
+    }
+
+    export interface LinkedUserAccountHasEmailSegmentFilter {
+        /** Login provider comparison. */
+        Comparison?: string;
+        /** Login provider. */
+        LoginProvider?: string;
+    }
+
+    export interface LinkedUserAccountSegmentFilter {
+        /** Login provider comparison. */
+        Comparison?: string;
+        /** Login provider. */
+        LoginProvider?: string;
     }
 
     export interface ListBuildsRequest extends PlayFabModule.IPlayFabRequestCommon {}
@@ -3281,6 +3497,11 @@ declare module PlayFabAdminModels {
         Latitude?: number;
         /** Longitude coordinate of the geographic location. */
         Longitude?: number;
+    }
+
+    export interface LocationSegmentFilter {
+        /** Segment country code. */
+        CountryCode?: string;
     }
 
     type LoginIdentityProvider = "Unknown"
@@ -3680,6 +3901,16 @@ declare module PlayFabAdminModels {
         Platform?: string;
     }
 
+    export interface PushNotificationSegmentAction {
+        /** Push notification template id. */
+        PushNotificationTemplateId?: string;
+    }
+
+    export interface PushNotificationSegmentFilter {
+        /** Push notification device platform. */
+        PushNotificationDevicePlatform?: string;
+    }
+
     type PushSetupPlatform = "GCM"
         | "APNS"
         | "APNS_SANDBOX";
@@ -3932,6 +4163,534 @@ declare module PlayFabAdminModels {
         StackTrace?: string;
     }
 
+    export interface SegmentAndDefinition {
+        /** Filter property for ad campaign filter. */
+        AdCampaignFilter?: AdCampaignSegmentFilter;
+        /** property for all player filter. */
+        AllPlayersFilter?: AllPlayersSegmentFilter;
+        /** Filter property for first login date. */
+        FirstLoginDateFilter?: FirstLoginDateSegmentFilter;
+        /** Filter property for first login timespan. */
+        FirstLoginFilter?: FirstLoginTimespanSegmentFilter;
+        /** Filter property for last login date. */
+        LastLoginDateFilter?: LastLoginDateSegmentFilter;
+        /** Filter property for last login timespan. */
+        LastLoginFilter?: LastLoginTimespanSegmentFilter;
+        /** Filter property for linked in user account. */
+        LinkedUserAccountFilter?: LinkedUserAccountSegmentFilter;
+        /** Filter property for linked in user account has email. */
+        LinkedUserAccountHasEmailFilter?: LinkedUserAccountHasEmailSegmentFilter;
+        /** Filter property for location. */
+        LocationFilter?: LocationSegmentFilter;
+        /** Filter property for push notification. */
+        PushNotificationFilter?: PushNotificationSegmentFilter;
+        /** Filter property for statistics. */
+        StatisticFilter?: StatisticSegmentFilter;
+        /** Filter property for tags. */
+        TagFilter?: TagSegmentFilter;
+        /** Filter property for total value to date in USD. */
+        TotalValueToDateInUSDFilter?: TotalValueToDateInUSDSegmentFilter;
+        /** Filter property for user origination. */
+        UserOriginationFilter?: UserOriginationSegmentFilter;
+        /** Filter property for value to date. */
+        ValueToDateFilter?: ValueToDateSegmentFilter;
+        /** Filter property for virtual currency. */
+        VirtualCurrencyBalanceFilter?: VirtualCurrencyBalanceSegmentFilter;
+    }
+
+    type SegmentCountryCode = "AF"
+        | "AX"
+        | "AL"
+        | "DZ"
+        | "AS"
+        | "AD"
+        | "AO"
+        | "AI"
+        | "AQ"
+        | "AG"
+        | "AR"
+        | "AM"
+        | "AW"
+        | "AU"
+        | "AT"
+        | "AZ"
+        | "BS"
+        | "BH"
+        | "BD"
+        | "BB"
+        | "BY"
+        | "BE"
+        | "BZ"
+        | "BJ"
+        | "BM"
+        | "BT"
+        | "BO"
+        | "BQ"
+        | "BA"
+        | "BW"
+        | "BV"
+        | "BR"
+        | "IO"
+        | "BN"
+        | "BG"
+        | "BF"
+        | "BI"
+        | "KH"
+        | "CM"
+        | "CA"
+        | "CV"
+        | "KY"
+        | "CF"
+        | "TD"
+        | "CL"
+        | "CN"
+        | "CX"
+        | "CC"
+        | "CO"
+        | "KM"
+        | "CG"
+        | "CD"
+        | "CK"
+        | "CR"
+        | "CI"
+        | "HR"
+        | "CU"
+        | "CW"
+        | "CY"
+        | "CZ"
+        | "DK"
+        | "DJ"
+        | "DM"
+        | "DO"
+        | "EC"
+        | "EG"
+        | "SV"
+        | "GQ"
+        | "ER"
+        | "EE"
+        | "ET"
+        | "FK"
+        | "FO"
+        | "FJ"
+        | "FI"
+        | "FR"
+        | "GF"
+        | "PF"
+        | "TF"
+        | "GA"
+        | "GM"
+        | "GE"
+        | "DE"
+        | "GH"
+        | "GI"
+        | "GR"
+        | "GL"
+        | "GD"
+        | "GP"
+        | "GU"
+        | "GT"
+        | "GG"
+        | "GN"
+        | "GW"
+        | "GY"
+        | "HT"
+        | "HM"
+        | "VA"
+        | "HN"
+        | "HK"
+        | "HU"
+        | "IS"
+        | "IN"
+        | "ID"
+        | "IR"
+        | "IQ"
+        | "IE"
+        | "IM"
+        | "IL"
+        | "IT"
+        | "JM"
+        | "JP"
+        | "JE"
+        | "JO"
+        | "KZ"
+        | "KE"
+        | "KI"
+        | "KP"
+        | "KR"
+        | "KW"
+        | "KG"
+        | "LA"
+        | "LV"
+        | "LB"
+        | "LS"
+        | "LR"
+        | "LY"
+        | "LI"
+        | "LT"
+        | "LU"
+        | "MO"
+        | "MK"
+        | "MG"
+        | "MW"
+        | "MY"
+        | "MV"
+        | "ML"
+        | "MT"
+        | "MH"
+        | "MQ"
+        | "MR"
+        | "MU"
+        | "YT"
+        | "MX"
+        | "FM"
+        | "MD"
+        | "MC"
+        | "MN"
+        | "ME"
+        | "MS"
+        | "MA"
+        | "MZ"
+        | "MM"
+        | "NA"
+        | "NR"
+        | "NP"
+        | "NL"
+        | "NC"
+        | "NZ"
+        | "NI"
+        | "NE"
+        | "NG"
+        | "NU"
+        | "NF"
+        | "MP"
+        | "NO"
+        | "OM"
+        | "PK"
+        | "PW"
+        | "PS"
+        | "PA"
+        | "PG"
+        | "PY"
+        | "PE"
+        | "PH"
+        | "PN"
+        | "PL"
+        | "PT"
+        | "PR"
+        | "QA"
+        | "RE"
+        | "RO"
+        | "RU"
+        | "RW"
+        | "BL"
+        | "SH"
+        | "KN"
+        | "LC"
+        | "MF"
+        | "PM"
+        | "VC"
+        | "WS"
+        | "SM"
+        | "ST"
+        | "SA"
+        | "SN"
+        | "RS"
+        | "SC"
+        | "SL"
+        | "SG"
+        | "SX"
+        | "SK"
+        | "SI"
+        | "SB"
+        | "SO"
+        | "ZA"
+        | "GS"
+        | "SS"
+        | "ES"
+        | "LK"
+        | "SD"
+        | "SR"
+        | "SJ"
+        | "SZ"
+        | "SE"
+        | "CH"
+        | "SY"
+        | "TW"
+        | "TJ"
+        | "TZ"
+        | "TH"
+        | "TL"
+        | "TG"
+        | "TK"
+        | "TO"
+        | "TT"
+        | "TN"
+        | "TR"
+        | "TM"
+        | "TC"
+        | "TV"
+        | "UG"
+        | "UA"
+        | "AE"
+        | "GB"
+        | "US"
+        | "UM"
+        | "UY"
+        | "UZ"
+        | "VU"
+        | "VE"
+        | "VN"
+        | "VG"
+        | "VI"
+        | "WF"
+        | "EH"
+        | "YE"
+        | "ZM"
+        | "ZW";
+
+    type SegmentCurrency = "AED"
+        | "AFN"
+        | "ALL"
+        | "AMD"
+        | "ANG"
+        | "AOA"
+        | "ARS"
+        | "AUD"
+        | "AWG"
+        | "AZN"
+        | "BAM"
+        | "BBD"
+        | "BDT"
+        | "BGN"
+        | "BHD"
+        | "BIF"
+        | "BMD"
+        | "BND"
+        | "BOB"
+        | "BRL"
+        | "BSD"
+        | "BTN"
+        | "BWP"
+        | "BYR"
+        | "BZD"
+        | "CAD"
+        | "CDF"
+        | "CHF"
+        | "CLP"
+        | "CNY"
+        | "COP"
+        | "CRC"
+        | "CUC"
+        | "CUP"
+        | "CVE"
+        | "CZK"
+        | "DJF"
+        | "DKK"
+        | "DOP"
+        | "DZD"
+        | "EGP"
+        | "ERN"
+        | "ETB"
+        | "EUR"
+        | "FJD"
+        | "FKP"
+        | "GBP"
+        | "GEL"
+        | "GGP"
+        | "GHS"
+        | "GIP"
+        | "GMD"
+        | "GNF"
+        | "GTQ"
+        | "GYD"
+        | "HKD"
+        | "HNL"
+        | "HRK"
+        | "HTG"
+        | "HUF"
+        | "IDR"
+        | "ILS"
+        | "IMP"
+        | "INR"
+        | "IQD"
+        | "IRR"
+        | "ISK"
+        | "JEP"
+        | "JMD"
+        | "JOD"
+        | "JPY"
+        | "KES"
+        | "KGS"
+        | "KHR"
+        | "KMF"
+        | "KPW"
+        | "KRW"
+        | "KWD"
+        | "KYD"
+        | "KZT"
+        | "LAK"
+        | "LBP"
+        | "LKR"
+        | "LRD"
+        | "LSL"
+        | "LYD"
+        | "MAD"
+        | "MDL"
+        | "MGA"
+        | "MKD"
+        | "MMK"
+        | "MNT"
+        | "MOP"
+        | "MRO"
+        | "MUR"
+        | "MVR"
+        | "MWK"
+        | "MXN"
+        | "MYR"
+        | "MZN"
+        | "NAD"
+        | "NGN"
+        | "NIO"
+        | "NOK"
+        | "NPR"
+        | "NZD"
+        | "OMR"
+        | "PAB"
+        | "PEN"
+        | "PGK"
+        | "PHP"
+        | "PKR"
+        | "PLN"
+        | "PYG"
+        | "QAR"
+        | "RON"
+        | "RSD"
+        | "RUB"
+        | "RWF"
+        | "SAR"
+        | "SBD"
+        | "SCR"
+        | "SDG"
+        | "SEK"
+        | "SGD"
+        | "SHP"
+        | "SLL"
+        | "SOS"
+        | "SPL"
+        | "SRD"
+        | "STD"
+        | "SVC"
+        | "SYP"
+        | "SZL"
+        | "THB"
+        | "TJS"
+        | "TMT"
+        | "TND"
+        | "TOP"
+        | "TRY"
+        | "TTD"
+        | "TVD"
+        | "TWD"
+        | "TZS"
+        | "UAH"
+        | "UGX"
+        | "USD"
+        | "UYU"
+        | "UZS"
+        | "VEF"
+        | "VND"
+        | "VUV"
+        | "WST"
+        | "XAF"
+        | "XCD"
+        | "XDR"
+        | "XOF"
+        | "XPF"
+        | "YER"
+        | "ZAR"
+        | "ZMW"
+        | "ZWD";
+
+    type SegmentFilterComparison = "GreaterThan"
+        | "LessThan"
+        | "EqualTo"
+        | "NotEqualTo"
+        | "GreaterThanOrEqual"
+        | "LessThanOrEqual"
+        | "Exists"
+        | "Contains"
+        | "NotContains";
+
+    type SegmentLoginIdentityProvider = "Unknown"
+        | "PlayFab"
+        | "Custom"
+        | "GameCenter"
+        | "GooglePlay"
+        | "Steam"
+        | "XBoxLive"
+        | "PSN"
+        | "Kongregate"
+        | "Facebook"
+        | "IOSDevice"
+        | "AndroidDevice"
+        | "Twitch"
+        | "WindowsHello"
+        | "GameServer"
+        | "CustomServer"
+        | "NintendoSwitch"
+        | "FacebookInstantGames"
+        | "OpenIdConnect"
+        | "Apple"
+        | "NintendoSwitchAccount";
+
+    export interface SegmentModel {
+        /** Segment description. */
+        Description?: string;
+        /** Segment actions for current entered segment players. */
+        EnteredSegmentActions?: SegmentTrigger[];
+        /** Segment last updated date time. */
+        LastUpdateTime: string;
+        /** Segment actions for current left segment players. */
+        LeftSegmentActions?: SegmentTrigger[];
+        /** Segment name. */
+        Name?: string;
+        /** Segment id in hex. */
+        SegmentId?: string;
+        /** Segment or definitions. This includes segment and definitions and filters. */
+        SegmentOrDefinitions?: SegmentOrDefinition[];
+    }
+
+    export interface SegmentOrDefinition {
+        /** List of segment and definitions. */
+        SegmentAndDefinitions?: SegmentAndDefinition[];
+    }
+
+    type SegmentPushNotificationDevicePlatform = "ApplePushNotificationService"
+        | "GoogleCloudMessaging";
+
+    export interface SegmentTrigger {
+        /** Ban player segment trigger action. */
+        BanPlayerAction?: BanPlayerSegmentAction;
+        /** Delete player segment trigger action. */
+        DeletePlayerAction?: DeletePlayerSegmentAction;
+        /** Delete player statistic segment trigger action. */
+        DeletePlayerStatisticAction?: DeletePlayerStatisticSegmentAction;
+        /** Email notification segment trigger action. */
+        EmailNotificationAction?: EmailNotificationSegmentAction;
+        /** Execute azure function segment trigger action. */
+        ExecuteAzureFunctionAction?: ExecuteAzureFunctionSegmentAction;
+        /** Execute cloud script segment trigger action. */
+        ExecuteCloudScriptAction?: ExecuteCloudScriptSegmentAction;
+        /** Grant item segment trigger action. */
+        GrantItemAction?: GrantItemSegmentAction;
+        /** Grant virtual currency segment trigger action. */
+        GrantVirtualCurrencyAction?: GrantVirtualCurrencySegmentAction;
+        /** Increment player statistic segment trigger action. */
+        IncrementPlayerStatisticAction?: IncrementPlayerStatisticSegmentAction;
+        /** Push notification segment trigger action. */
+        PushNotificationAction?: PushNotificationSegmentAction;
+    }
+
     export interface SendAccountRecoveryEmailRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.). */
         CustomTags?: { [key: string]: string | undefined };
@@ -4063,6 +4822,19 @@ declare module PlayFabAdminModels {
         | "Week"
         | "Month";
 
+    export interface StatisticSegmentFilter {
+        /** Statistic filter comparison. */
+        Comparison?: string;
+        /** Statistic filter value. */
+        FilterValue?: string;
+        /** Statistic name. */
+        Name?: string;
+        /** Use current version of statistic? */
+        UseCurrentVersion?: boolean;
+        /** Statistic version. */
+        Version?: number;
+    }
+
     type StatisticVersionArchivalStatus = "NotScheduled"
         | "Scheduled"
         | "Queued"
@@ -4142,6 +4914,13 @@ declare module PlayFabAdminModels {
         TagValue?: string;
     }
 
+    export interface TagSegmentFilter {
+        /** Tag comparison. */
+        Comparison?: string;
+        /** Tag value. */
+        TagValue?: string;
+    }
+
     export interface TaskInstanceBasicSummary {
         /** UTC timestamp when the task completed. */
         CompletedAt?: string;
@@ -4186,6 +4965,13 @@ declare module PlayFabAdminModels {
         Key?: string;
         /** New value to set. Set to null to remove a value */
         Value?: string;
+    }
+
+    export interface TotalValueToDateInUSDSegmentFilter {
+        /** Total value to date USD amount. */
+        Amount?: string;
+        /** Total value to date USD comparison. */
+        Comparison?: string;
     }
 
     export interface UpdateBanRequest {
@@ -4322,6 +5108,18 @@ declare module PlayFabAdminModels {
     }
 
     export interface UpdateRandomResultTablesResult extends PlayFabModule.IPlayFabResultCommon {}
+
+    export interface UpdateSegmentRequest extends PlayFabModule.IPlayFabRequestCommon {
+        /** Segment model with all of the segment properties data. */
+        SegmentModel: SegmentModel;
+    }
+
+    export interface UpdateSegmentResponse extends PlayFabModule.IPlayFabResultCommon {
+        /** Error message. */
+        ErrorMessage?: string;
+        /** Segment id. */
+        SegmentId?: string;
+    }
 
     export interface UpdateStoreItemsRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** Catalog version of the store to update. If null, uses the default catalog. */
@@ -4578,6 +5376,11 @@ declare module PlayFabAdminModels {
         | "Apple"
         | "NintendoSwitchAccount";
 
+    export interface UserOriginationSegmentFilter {
+        /** User login provider. */
+        LoginProvider?: string;
+    }
+
     export interface UserPrivateAccountInfo {
         /** user email address */
         Email?: string;
@@ -4660,6 +5463,24 @@ declare module PlayFabAdminModels {
          * dollars and ninety-nine cents when Currency is 'USD'.
          */
         TotalValueAsDecimal?: string;
+    }
+
+    export interface ValueToDateSegmentFilter {
+        /** Value to date amount. */
+        Amount?: string;
+        /** Value to date comparison. */
+        Comparison?: string;
+        /** Currency using for filter. */
+        Currency?: string;
+    }
+
+    export interface VirtualCurrencyBalanceSegmentFilter {
+        /** Total amount. */
+        Amount: number;
+        /** Amount comparison. */
+        Comparison?: string;
+        /** Currency code. */
+        CurrencyCode?: string;
     }
 
     export interface VirtualCurrencyData {

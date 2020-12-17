@@ -210,6 +210,20 @@ function PlayFabAdminApi:CreatePlayerStatisticDefinition(request)
 end
 
 --[[
+    Creates a new player segment by defining the conditions on player properties. Also, create actions to target the player
+    segments for a title.
+    https://docs.microsoft.com/rest/api/playfab/admin/segments/createsegment
+--]]
+function PlayFabAdminApi:CreateSegment(request)
+    return Promise.new(function(resolve, reject)
+         if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
+            reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
+        end
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/CreateSegment", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
+    end)
+end
+
+--[[
     Delete a content file from the title. When deleting a file that does not exist, it returns success.
     https://docs.microsoft.com/rest/api/playfab/admin/content/deletecontent
 --]]
@@ -272,6 +286,19 @@ function PlayFabAdminApi:DeletePlayerSharedSecret(request)
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
         IPlayFabHttps.MakePlayFabApiCall("/Admin/DeletePlayerSharedSecret", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
+    end)
+end
+
+--[[
+    Deletes an existing player segment and its associated action(s) for a title.
+    https://docs.microsoft.com/rest/api/playfab/admin/segments/deletesegment
+--]]
+function PlayFabAdminApi:DeleteSegment(request)
+    return Promise.new(function(resolve, reject)
+         if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
+            reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
+        end
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/DeleteSegment", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -645,6 +672,19 @@ function PlayFabAdminApi:GetRandomResultTables(request)
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
         IPlayFabHttps.MakePlayFabApiCall("/Admin/GetRandomResultTables", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
+    end)
+end
+
+--[[
+    Get detail information of a segment and its associated definition(s) and action(s) for a title.
+    https://docs.microsoft.com/rest/api/playfab/admin/segments/getsegments
+--]]
+function PlayFabAdminApi:GetSegments(request)
+    return Promise.new(function(resolve, reject)
+         if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
+            reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
+        end
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/GetSegments", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 
@@ -1381,6 +1421,19 @@ function PlayFabAdminApi:UpdateRandomResultTables(request)
             reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
         end
         IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateRandomResultTables", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
+    end)
+end
+
+--[[
+    Updates an existing player segment and its associated definition(s) and action(s) for a title.
+    https://docs.microsoft.com/rest/api/playfab/admin/segments/updatesegment
+--]]
+function PlayFabAdminApi:UpdateSegment(request)
+    return Promise.new(function(resolve, reject)
+         if (not PlayFabSettings.settings.titleId or not PlayFabSettings.settings.devSecretKey) then
+            reject("Must have PlayFabSettings.settings.devSecretKey set to call this method")
+        end
+        IPlayFabHttps.MakePlayFabApiCall("/Admin/UpdateSegment", request or {}, "X-SecretKey", PlayFabSettings.settings.devSecretKey, resolve, reject)
     end)
 end
 

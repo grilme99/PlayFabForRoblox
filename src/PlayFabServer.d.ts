@@ -1208,6 +1208,11 @@ declare module PlayFabServerModels {
     }
 
     export interface AdvancedPushPlatformMsg {
+        /**
+         * Stops GoogleCloudMessaging notifications from including both notification and data properties and instead only sends the
+         * data property.
+         */
+        GCMDataOnly?: boolean;
         /** The Json the platform should receive. */
         Json: string;
         /** The platform that should receive the Json. */
@@ -2582,6 +2587,7 @@ declare module PlayFabServerModels {
         | "DuplicateKeys"
         | "WasNotCreatedWithCloudRoot"
         | "LegacyMultiplayerServersDeprecated"
+        | "VirtualCurrencyCurrentlyUnavailable"
         | "MatchmakingEntityInvalid"
         | "MatchmakingPlayerAttributesInvalid"
         | "MatchmakingQueueNotFound"
@@ -2616,7 +2622,6 @@ declare module PlayFabServerModels {
         | "CatalogSearchParameterInvalid"
         | "CatalogFeatureDisabled"
         | "CatalogConfigInvalid"
-        | "CatalogUnauthorized"
         | "CatalogItemTypeInvalid"
         | "CatalogBadRequest"
         | "CatalogTooManyRequests"
@@ -2644,6 +2649,20 @@ declare module PlayFabServerModels {
         | "ExportCannotParseQuery"
         | "ExportControlCommandsNotAllowed"
         | "ExportQueryMissingTableReference"
+        | "ExplorerBasicInvalidQueryName"
+        | "ExplorerBasicInvalidQueryDescription"
+        | "ExplorerBasicInvalidQueryConditions"
+        | "ExplorerBasicInvalidQueryStartDate"
+        | "ExplorerBasicInvalidQueryEndDate"
+        | "ExplorerBasicInvalidQueryGroupBy"
+        | "ExplorerBasicInvalidQueryAggregateType"
+        | "ExplorerBasicInvalidQueryAggregateProperty"
+        | "ExplorerBasicLoadQueriesError"
+        | "ExplorerBasicLoadQueryError"
+        | "ExplorerBasicCreateQueryError"
+        | "ExplorerBasicDeleteQueryError"
+        | "ExplorerBasicUpdateQueryError"
+        | "ExplorerBasicSavedQueriesLimit"
         | "TitleNotEnabledForParty"
         | "PartyVersionNotFound"
         | "MultiplayerServerBuildReferencedByMatchmakingQueue"
@@ -2662,6 +2681,13 @@ declare module PlayFabServerModels {
         | "ExperimentationInvalidDuration"
         | "ExperimentationMaxExperimentsReached"
         | "ExperimentationExperimentSchedulingInProgress"
+        | "ExperimentationInvalidEndDate"
+        | "ExperimentationInvalidStartDate"
+        | "ExperimentationMaxDurationExceeded"
+        | "ExperimentationExclusionGroupNotFound"
+        | "ExperimentationExclusionGroupInsufficientCapacity"
+        | "ExperimentationExclusionGroupCannotDelete"
+        | "ExperimentationExclusionGroupInvalidTrafficAllocation"
         | "MaxActionDepthExceeded"
         | "TitleNotOnUpdatedPricingPlan"
         | "SegmentManagementTitleNotInFlight"
@@ -2669,6 +2695,12 @@ declare module PlayFabServerModels {
         | "SegmentManagementTriggerActionCountOverLimit"
         | "SegmentManagementSegmentCountOverLimit"
         | "SegmentManagementInvalidSegmentId"
+        | "SegmentManagementInvalidInput"
+        | "SegmentManagementInvalidSegmentName"
+        | "DeleteSegmentRateLimitExceeded"
+        | "CreateSegmentRateLimitExceeded"
+        | "UpdateSegmentRateLimitExceeded"
+        | "GetSegmentsRateLimitExceeded"
         | "SnapshotNotFound";
 
     export interface GenericPlayFabIdPair {
@@ -3314,8 +3346,8 @@ declare module PlayFabServerModels {
         /** Specific keys to search for in the title data (leave null to get all keys) */
         Keys?: string[];
         /**
-         * Name of the override. This value is ignored when used by the game client; otherwise, the overrides are applied
-         * automatically to the title data.
+         * Optional field that specifies the name of an override. This value is ignored when used by the game client; otherwise,
+         * the overrides are applied automatically to the title data.
          */
         OverrideLabel?: string;
     }

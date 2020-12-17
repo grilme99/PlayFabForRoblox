@@ -456,6 +456,18 @@ function PlayFabMultiplayerApi:ListBuildSummaries(entityToken, request)
 end
 
 --[[
+    Lists summarized details of all multiplayer server builds for a title. Accepts tokens for title and if game client
+    access is enabled, allows game client to request list of builds with player entity token.
+    https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listbuildsummariesv2
+--]]
+function PlayFabMultiplayerApi:ListBuildSummariesV2(entityToken, request)
+    return Promise.new(function(resolve, reject)
+         if (not entityToken) then reject("Must provide an entityToken to call this method") end
+        IPlayFabHttps.MakePlayFabApiCall("/MultiplayerServer/ListBuildSummariesV2", request or {}, "X-EntityToken", entityToken, resolve, reject)
+    end)
+end
+
+--[[
     Lists multiplayer server game certificates for a title.
     https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listcertificatesummaries
 --]]

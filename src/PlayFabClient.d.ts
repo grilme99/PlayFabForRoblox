@@ -110,6 +110,14 @@ declare module PlayFabClientModule {
             request?: PlayFabClientModels.ConsumeItemRequest
         ): Promise<PlayFabClientModels.ConsumeItemResult>;
         /**
+         * Grants the player's current entitlements from Microsoft Store's Collection API
+         * https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/consumemicrosoftstoreentitlements
+         */
+        ConsumeMicrosoftStoreEntitlements(
+            sessionTicket: string,
+            request?: PlayFabClientModels.ConsumeMicrosoftStoreEntitlementsRequest
+        ): Promise<PlayFabClientModels.ConsumeMicrosoftStoreEntitlementsResponse>;
+        /**
          * Checks for any new consumable entitlements. If any are found, they are consumed and added as PlayFab items
          * https://docs.microsoft.com/rest/api/playfab/client/platform-specific-methods/consumepsnentitlements
          */
@@ -1795,6 +1803,20 @@ declare module PlayFabClientModels {
         RemainingUses: number;
     }
 
+    export interface ConsumeMicrosoftStoreEntitlementsRequest extends PlayFabModule.IPlayFabRequestCommon {
+        /** Catalog version to use */
+        CatalogVersion?: string;
+        /** The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.). */
+        CustomTags?: { [key: string]: string | undefined };
+        /** Marketplace specific payload containing details to fetch in app purchase transactions */
+        MarketplaceSpecificData: MicrosoftStorePayload;
+    }
+
+    export interface ConsumeMicrosoftStoreEntitlementsResponse extends PlayFabModule.IPlayFabResultCommon {
+        /** Details for the items purchased. */
+        Items?: ItemInstance[];
+    }
+
     export interface ConsumePSNEntitlementsRequest extends PlayFabModule.IPlayFabRequestCommon {
         /** Which catalog to match granted entitlements against. If null, defaults to title default catalog */
         CatalogVersion?: string;
@@ -3182,8 +3204,8 @@ declare module PlayFabClientModels {
         /** Specific keys to search for in the title data (leave null to get all keys) */
         Keys?: string[];
         /**
-         * Name of the override. This value is ignored when used by the game client; otherwise, the overrides are applied
-         * automatically to the title data.
+         * Optional field that specifies the name of an override. This value is ignored when used by the game client; otherwise,
+         * the overrides are applied automatically to the title data.
          */
         OverrideLabel?: string;
     }
@@ -4153,6 +4175,18 @@ declare module PlayFabClientModels {
         OverrideExpiration?: string;
         /** The list of subscriptions that this player has for this membership */
         Subscriptions?: SubscriptionModel[];
+    }
+
+    export interface MicrosoftStorePayload {
+        /** Microsoft store ID key. This is optional. Alternatively you can use XboxToken */
+        CollectionsMsIdKey?: string;
+        /** If collectionsMsIdKey is provided, this will verify the user id in the collectionsMsIdKey is the same. */
+        UserId?: string;
+        /**
+         * Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com/", ""). This is
+         * optional. Alternatively can use CollectionsMsIdKey
+         */
+        XboxToken?: string;
     }
 
     export interface ModifyUserVirtualCurrencyResult extends PlayFabModule.IPlayFabResultCommon {
