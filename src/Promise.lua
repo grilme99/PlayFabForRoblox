@@ -7,6 +7,7 @@ local ERROR_NON_LIST = "Please pass a list of promises to %s"
 local ERROR_NON_FUNCTION = "Please pass a handler function to %s!"
 local MODE_KEY_METATABLE = {__mode = "k"}
 
+
 --[[
 	Creates an enum dictionary with some metamethods to prevent common mistakes.
 ]]
