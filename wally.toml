@@ -1,7 +1,0 @@
-[package]
-name = "roblox/playfab"
-version = "2.1.9"
-registry = "https://github.com/UpliftGames/wally-index"
-realm = "shared"
-
-[dependencies]

@@ -1,4 +1,2 @@
 [tools]
-rojo = { source = "Roblox/rojo", version = "6.0.0-rc.1" }
-run-in-roblox = { source = "rojo-rbx/run-in-roblox", version = "0.3.0" }
-wally = { source = "UpliftGames/wally", version = "0.1.0" }
+rojo = { source = "Roblox/rojo", version = "=7.2.1" }
