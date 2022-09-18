@@ -5,7 +5,9 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use anyhow::Context;
+use console::style;
 use convert_case::{Case, Casing};
+use duct::cmd;
 
 use crate::domain::{APIWallyConfig, APIWallyPackage, PlayFabAPI};
 use crate::playfab_api::SwaggerSpec;
@@ -17,6 +19,7 @@ pub struct ApiGenerator<'a> {
     api_name: PlayFabAPI,
     swagger_spec: SwaggerSpec,
     modules_path: ModulesPath<'a>,
+    publish_packages: bool,
 }
 
 impl<'a> ApiGenerator<'a> {
@@ -24,11 +27,13 @@ impl<'a> ApiGenerator<'a> {
         api_name: PlayFabAPI,
         swagger_spec: SwaggerSpec,
         modules_path: ModulesPath<'a>,
+        publish_packages: bool,
     ) -> Self {
         Self {
             api_name,
             swagger_spec,
             modules_path,
+            publish_packages,
         }
     }
 
@@ -62,7 +67,14 @@ impl<'a> ApiGenerator<'a> {
         self.create_readme(module_root, &name, &version)
             .context("Failed to create README.md")?;
 
-        self.create_source_file(module_root).context("Failed to create init.lua")?;
+        self.create_source_file(module_root)
+            .context("Failed to create init.lua")?;
+
+        if self.publish_packages {
+            // Done everything, let's publish the package!
+            self.publish_package(module_root, &version)
+                .context("Failed to publish the package")?;
+        }
 
         Ok(())
     }
@@ -148,8 +160,26 @@ impl<'a> ApiGenerator<'a> {
     }
 
     fn create_source_file(&self, module_root: &PathBuf) -> anyhow::Result<()> {
-        fs::write(module_root.join("init.lua"), "-- TODO: Actually implement codegen\n")
-            .context("Failed to write init.lua file")?;
+        fs::write(
+            module_root.join("init.lua"),
+            "-- TODO: Actually implement codegen\n",
+        )
+        .context("Failed to write init.lua file")?;
+
+        Ok(())
+    }
+
+    fn publish_package(&self, module_root: &PathBuf, version: &str) -> anyhow::Result<()> {
+        cmd!("wally", "publish", "--project-path", module_root)
+            .reader()
+            .context("Failed to publish package")?;
+
+        let name = self.api_name.to_case(Case::Pascal);
+        log::info!(
+            "Published package {} at version {}",
+            style(name).cyan(),
+            style(version).cyan().italic()
+        );
 
         Ok(())
     }

@@ -28,6 +28,9 @@ pub struct Options {
 
     #[clap(long, takes_value = true)]
     pub codegen_path: PathBuf,
+
+    #[clap(long)]
+    pub publish_packages: bool,
 }
 
 #[tokio::main]
@@ -50,6 +53,7 @@ async fn main() -> anyhow::Result<()> {
         .init();
 
     let path = resolve_path(&options.codegen_path);
+    let publish_packages: &bool = &options.publish_packages;
 
     let api_specs = playfab_api::collect_api_specs()
         .await
@@ -61,7 +65,7 @@ async fn main() -> anyhow::Result<()> {
             .context("Failed to get API spec")?;
 
         let name = PlayFabAPI(clean_api_name(api.name));
-        let generator = ApiGenerator::new(name, api_spec, &path);
+        let generator = ApiGenerator::new(name, api_spec, &path, publish_packages.to_owned());
 
         generator
             .create_module()
