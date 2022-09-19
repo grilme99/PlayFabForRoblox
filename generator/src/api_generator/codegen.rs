@@ -99,12 +99,30 @@ fn write_type_object(
             let prop_type = match def_type.as_str() {
                 "array" => {
                     if let Some(items) = &property.items {
-                        handle_prop_ref(&items.def_ref, false)
+                        if let Some(prop_ref) = &items.def_ref {
+                            if let Some(parsed_ref) = parse_ref(prop_ref) {
+                                format!("{{{parsed_ref}}}")
+                            } else {
+                                "{any}".into()
+                            }
+                        } else {
+                            "{any}".into()
+                        }
                     } else {
-                        "{unknown}".into()
+                        "{any}".into()
                     }
                 }
-                "object" => handle_prop_ref(&property.def_ref, true),
+                "object" => {
+                    if let Some(prop_ref) = &property.def_ref {
+                        if let Some(parsed_ref) = parse_ref(prop_ref) {
+                            parsed_ref
+                        } else {
+                            "{[any]: any}".into()
+                        }
+                    } else {
+                        "{[any]: any}".into()
+                    }
+                }
                 "integer" => "number".into(),
                 _ => def_type.into(),
             };
@@ -169,22 +187,6 @@ fn write_module_footer(w: &mut dyn Write, api_name: &str) -> anyhow::Result<()> 
     writeln!(w, "")?;
 
     Ok(())
-}
-
-fn handle_prop_ref(prop_ref: &Option<String>, is_object: bool) -> String {
-    if let Some(prop_ref) = prop_ref {
-        if let Some(parsed_ref) = parse_ref(prop_ref) {
-            if is_object {
-                parsed_ref
-            } else {
-                format!("{{{parsed_ref}}}")
-            }
-        } else {
-            "{}".into()
-        }
-    } else {
-        "{}".into()
-    }
 }
 
 fn parse_ref(prop_ref: &str) -> Option<String> {

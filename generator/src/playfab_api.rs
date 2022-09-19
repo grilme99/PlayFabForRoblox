@@ -60,7 +60,7 @@ pub struct SwaggerTypeDefinition {
     pub properties: Option<BTreeMap<String, SwaggerDefinitionProperty>>,
     pub required: Option<Vec<String>>,
     #[serde(rename = "enum")]
-    pub def_enum: Option<Vec<String>>
+    pub def_enum: Option<Vec<String>>,
 }
 
 #[derive(Deserialize, Debug)]
