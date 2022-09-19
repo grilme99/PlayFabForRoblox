@@ -1,5 +1,3 @@
-use std::collections::BTreeMap;
-
 use derive_more::Deref;
 use serde::Serialize;
 
@@ -10,7 +8,7 @@ pub struct PlayFabAPI(pub String);
 #[derive(Debug, Serialize)]
 pub struct APIWallyConfig {
     pub package: APIWallyPackage,
-    pub dependencies: BTreeMap<String, String>,
+    pub dependencies: ApiWallyDependencies,
 }
 
 #[derive(Debug, Serialize)]
@@ -22,4 +20,10 @@ pub struct APIWallyPackage {
     pub authors: Vec<String>,
     pub registry: String,
     pub realm: String,
+}
+
+#[derive(Debug, Serialize)]
+#[serde(rename_all = "PascalCase")]
+pub struct ApiWallyDependencies {
+    pub play_fab_internal: String,
 }

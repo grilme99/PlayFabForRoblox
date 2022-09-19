@@ -11,7 +11,7 @@ use console::style;
 use convert_case::{Case, Casing};
 use duct::cmd;
 
-use crate::domain::{APIWallyConfig, APIWallyPackage, PlayFabAPI};
+use crate::domain::{APIWallyConfig, APIWallyPackage, ApiWallyDependencies, PlayFabAPI};
 use crate::playfab_api::SwaggerSpec;
 
 type ModulesPath<'a> = &'a Cow<'a, Path>;
@@ -110,7 +110,9 @@ impl<'a> ApiGenerator<'a> {
                 registry: "https://github.com/UpliftGames/wally-index".into(),
                 realm: "shared".into(),
             },
-            dependencies: Default::default(),
+            dependencies: ApiWallyDependencies {
+                play_fab_internal: "grilme99/playfab-internal@^1".into(),
+            },
         };
 
         let toml =
