@@ -1,5 +1,7 @@
 //! Handles generation for a specific PlayFab API (e.g. matchmaking, admin, etc).
 
+mod codegen;
+
 use std::borrow::Cow;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -40,12 +42,13 @@ impl<'a> ApiGenerator<'a> {
     /// Main tasks which creates the Wally module, parses API specs, and does codegen.
     pub async fn create_module(&self) -> anyhow::Result<()> {
         self.create_module_files()
+            .await
             .context("Failed to create module files")?;
 
         Ok(())
     }
 
-    fn create_module_files(&self) -> anyhow::Result<()> {
+    async fn create_module_files(&self) -> anyhow::Result<()> {
         let module_name = &self.api_name.to_case(Case::Snake);
         let module_root = &self.modules_path.join(module_name);
 
@@ -53,6 +56,11 @@ impl<'a> ApiGenerator<'a> {
         if module_root.exists() {
             log::warn!("Module {module_name} already exists. This will be overwritten.");
             fs::remove_dir_all(module_root).context("Failed to remove existing directory")?;
+        }
+
+        let mut api_description = self.swagger_spec.info.description.to_owned();
+        if !api_description.ends_with(".") {
+            api_description.push('.');
         }
 
         log::debug!("Creating module {module_name:?}");
@@ -64,10 +72,11 @@ impl<'a> ApiGenerator<'a> {
         self.create_wally_config(module_root, &name, &version)
             .context("Failed to create Wally config")?;
 
-        self.create_readme(module_root, &name, &version)
+        self.create_readme(module_root, &api_description, &name, &version)
             .context("Failed to create README.md")?;
 
-        self.create_source_file(module_root)
+        self.create_source_file(module_root, &api_description)
+            .await
             .context("Failed to create init.lua")?;
 
         if self.publish_packages {
@@ -116,22 +125,18 @@ impl<'a> ApiGenerator<'a> {
     fn create_readme(
         &self,
         module_root: &PathBuf,
+        api_description: &str,
         wally_name: &str,
         version: &str,
     ) -> anyhow::Result<()> {
         let name_pascal = self.api_name.to_case(Case::Pascal);
         let module_name = format!("PlayFab{}Api", name_pascal);
 
-        let mut api_description = self.swagger_spec.info.description.to_owned();
-        if !api_description.ends_with(".") {
-            api_description.push('.');
-        }
-
         let mut contents = String::new();
         contents.push_str(&format!("# PlayFab {} API\n", name_pascal));
         contents.push_str("\n");
 
-        contents.push_str(&api_description);
+        contents.push_str(api_description);
         contents.push_str("\n\n");
 
         contents.push_str("All PlayFab APIs are separated into their own Wally and NPM packages to help prevent redundant code.\n");
@@ -159,12 +164,20 @@ impl<'a> ApiGenerator<'a> {
         Ok(())
     }
 
-    fn create_source_file(&self, module_root: &PathBuf) -> anyhow::Result<()> {
-        fs::write(
-            module_root.join("init.lua"),
-            "-- TODO: Actually implement codegen\n",
-        )
-        .context("Failed to write init.lua file")?;
+    async fn create_source_file(
+        &self,
+        module_root: &PathBuf,
+        api_description: &str,
+    ) -> anyhow::Result<()> {
+        let file_name = module_root.join("init.lua");
+        let api_name = self.api_name.to_case(Case::Pascal);
+
+        // Creates and writes to a file internally
+        codegen::generate_source(file_name, &api_name, api_description, &self.swagger_spec)
+            .await
+            .context("Failed to generate source")?;
+
+        log::info!("Generated source for module {}", style(api_name).cyan());
 
         Ok(())
     }

@@ -1,6 +1,6 @@
 //! Handles interaction with the PlayFab API
 
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 
 use serde::Deserialize;
 
@@ -22,7 +22,8 @@ pub struct APiDocument {
 #[derive(Deserialize, Debug)]
 pub struct SwaggerSpec {
     pub info: SwaggerInfo,
-    pub paths: HashMap<String, SwaggerPath>,
+    pub paths: BTreeMap<String, SwaggerPath>,
+    pub definitions: BTreeMap<String, SwaggerTypeDefinition>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -49,6 +50,33 @@ pub struct SwaggerPathPost {
 #[derive(Deserialize, Debug)]
 pub struct ExternalDocs {
     pub url: String,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct SwaggerTypeDefinition {
+    pub description: Option<String>,
+    #[serde(rename = "type")]
+    pub def_type: String,
+    pub properties: Option<BTreeMap<String, SwaggerDefinitionProperty>>,
+    pub required: Option<Vec<String>>,
+    #[serde(rename = "enum")]
+    pub def_enum: Option<Vec<String>>
+}
+
+#[derive(Deserialize, Debug)]
+pub struct SwaggerDefinitionProperty {
+    pub description: Option<String>,
+    #[serde(rename = "type")]
+    pub def_type: String,
+    #[serde(rename = "$ref")]
+    pub def_ref: Option<String>,
+    pub items: Option<SwaggerDefinitionItems>,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct SwaggerDefinitionItems {
+    #[serde(rename = "$ref")]
+    pub def_ref: Option<String>,
 }
 
 pub async fn collect_api_specs() -> anyhow::Result<Vec<APiDocument>> {
