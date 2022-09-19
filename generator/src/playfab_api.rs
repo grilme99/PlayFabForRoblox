@@ -45,11 +45,22 @@ pub struct SwaggerPathPost {
     pub tags: Vec<String>,
     pub description: String,
     pub external_docs: ExternalDocs,
+    #[serde(rename = "x-requestDetails")]
+    pub request_details: Option<String>,
+    pub security: Vec<BTreeMap<String, Vec<()>>>,
+    pub parameters: Vec<BTreeMap<String, String>>,
+    pub responses: BTreeMap<String, SwaggerResponse>,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct ExternalDocs {
     pub url: String,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct SwaggerResponse {
+    #[serde(rename = "$ref")]
+    pub def_ref: String,
 }
 
 #[derive(Deserialize, Debug)]
