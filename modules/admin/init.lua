@@ -10,6 +10,10 @@ local PlayFabInternal = require(script.Parent.PlayFabInternal)
 
 local AdminApi = {}
 
+function AdminApi.SetSettings(settings: PlayFabInternal.ISettings)
+	PlayFabInternal.SetSettings(settings)
+end
+
 --- If the task instance has already completed, there will be no-op. 
 export type AbortTaskInstanceRequest = {
 	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).

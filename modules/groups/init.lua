@@ -12,6 +12,10 @@ local PlayFabInternal = require(script.Parent.PlayFabInternal)
 
 local GroupsApi = {}
 
+function GroupsApi.SetSettings(settings: PlayFabInternal.ISettings)
+	PlayFabInternal.SetSettings(settings)
+end
+
 --- Accepts an outstanding invitation to to join a group if the invited entity is 
 --- not blocked by the group. Nothing is returned in the case of success. 
 export type AcceptGroupApplicationRequest = {

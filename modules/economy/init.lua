@@ -10,6 +10,10 @@ local PlayFabInternal = require(script.Parent.PlayFabInternal)
 
 local EconomyApi = {}
 
+function EconomyApi.SetSettings(settings: PlayFabInternal.ISettings)
+	PlayFabInternal.SetSettings(settings)
+end
+
 export type AddInventoryItemsOperation = {
 	Amount: number, --- The amount to add to the current item amount.
 	Item: InventoryItemReference?, --- The inventory item the operation applies to.

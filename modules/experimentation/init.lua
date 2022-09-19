@@ -9,6 +9,10 @@ local PlayFabInternal = require(script.Parent.PlayFabInternal)
 
 local ExperimentationApi = {}
 
+function ExperimentationApi.SetSettings(settings: PlayFabInternal.ISettings)
+	PlayFabInternal.SetSettings(settings)
+end
+
 export type AnalysisTaskState = 
 	"Waiting"
 	| "ReadyForSubmission"

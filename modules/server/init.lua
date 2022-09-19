@@ -11,6 +11,10 @@ local PlayFabInternal = require(script.Parent.PlayFabInternal)
 
 local ServerApi = {}
 
+function ServerApi.SetSettings(settings: PlayFabInternal.ISettings)
+	PlayFabInternal.SetSettings(settings)
+end
+
 export type AdCampaignAttribution = {
 	AttributedAt: string, --- UTC time stamp of attribution
 	CampaignId: string?, --- Attribution campaign identifier

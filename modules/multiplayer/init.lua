@@ -11,6 +11,10 @@ local PlayFabInternal = require(script.Parent.PlayFabInternal)
 
 local MultiplayerApi = {}
 
+function MultiplayerApi.SetSettings(settings: PlayFabInternal.ISettings)
+	PlayFabInternal.SetSettings(settings)
+end
+
 export type AccessPolicy = 
 	"Public"
 	| "Friends"

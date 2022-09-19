@@ -65,6 +65,11 @@ fn write_module_header(
     writeln!(w, "local {api_name}Api = {{}}")?;
     writeln!(w, "")?;
 
+    writeln!(w, "function {api_name}Api.SetSettings(settings: PlayFabInternal.ISettings)")?;
+    writeln!(w, "\tPlayFabInternal.SetSettings(settings)")?;
+    writeln!(w, "end")?;
+    writeln!(w, "")?;
+
     Ok(())
 }
 

@@ -14,6 +14,10 @@ local PlayFabInternal = require(script.Parent.PlayFabInternal)
 
 local DataApi = {}
 
+function DataApi.SetSettings(settings: PlayFabInternal.ISettings)
+	PlayFabInternal.SetSettings(settings)
+end
+
 --- Aborts the pending upload of the requested files. 
 export type AbortFileUploadsRequest = {
 	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).

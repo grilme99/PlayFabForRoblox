@@ -11,6 +11,10 @@ local PlayFabInternal = require(script.Parent.PlayFabInternal)
 
 local ClientApi = {}
 
+function ClientApi.SetSettings(settings: PlayFabInternal.ISettings)
+	PlayFabInternal.SetSettings(settings)
+end
+
 export type AcceptTradeRequest = {
 	AcceptedInventoryInstanceIds: {any}?, --- Items from the accepting player's inventory in exchange for the offered items in the trade. In the case of a gift, this will be null.
 	OfferingPlayerId: string, --- Player who opened the trade.

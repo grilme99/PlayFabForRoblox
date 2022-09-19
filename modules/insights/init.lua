@@ -9,6 +9,10 @@ local PlayFabInternal = require(script.Parent.PlayFabInternal)
 
 local InsightsApi = {}
 
+function InsightsApi.SetSettings(settings: PlayFabInternal.ISettings)
+	PlayFabInternal.SetSettings(settings)
+end
+
 --- The basic wrapper around every failed API response 
 export type ApiErrorWrapper = {
 	code: number, --- Numerical HTTP code
