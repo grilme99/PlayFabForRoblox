@@ -2,7 +2,7 @@ use derive_more::Deref;
 use serde::Serialize;
 
 /// Represents a specific PlayFab API (e.g. matchmaking, admin, etc).
-#[derive(Debug, Deref)]
+#[derive(Debug, Deref, Eq, Hash, PartialEq)]
 pub struct PlayFabAPI(pub String);
 
 #[derive(Debug, Serialize)]

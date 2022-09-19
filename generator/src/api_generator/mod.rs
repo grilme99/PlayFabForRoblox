@@ -2,9 +2,8 @@
 
 mod codegen;
 
-use std::borrow::Cow;
 use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 use anyhow::Context;
 use console::style;
@@ -14,21 +13,19 @@ use duct::cmd;
 use crate::domain::{APIWallyConfig, APIWallyPackage, ApiWallyDependencies, PlayFabAPI};
 use crate::playfab_api::SwaggerSpec;
 
-type ModulesPath<'a> = &'a Cow<'a, Path>;
-
 #[derive(Debug)]
 pub struct ApiGenerator<'a> {
-    api_name: PlayFabAPI,
-    swagger_spec: SwaggerSpec,
-    modules_path: ModulesPath<'a>,
+    api_name: &'a PlayFabAPI,
+    swagger_spec: &'a SwaggerSpec,
+    modules_path: &'a PathBuf,
     publish_packages: bool,
 }
 
 impl<'a> ApiGenerator<'a> {
     pub fn new(
-        api_name: PlayFabAPI,
-        swagger_spec: SwaggerSpec,
-        modules_path: ModulesPath<'a>,
+        api_name: &'a PlayFabAPI,
+        swagger_spec: &'a SwaggerSpec,
+        modules_path: &'a PathBuf,
         publish_packages: bool,
     ) -> Self {
         Self {
@@ -72,7 +69,7 @@ impl<'a> ApiGenerator<'a> {
         self.create_wally_config(module_root, &name, &version)
             .context("Failed to create Wally config")?;
 
-        self.create_readme(module_root, &api_description, &name, &version)
+        self.create_module_readme(module_root, &api_description, &name, &version)
             .context("Failed to create README.md")?;
 
         self.create_source_file(module_root, &api_description)
@@ -124,7 +121,7 @@ impl<'a> ApiGenerator<'a> {
         Ok(())
     }
 
-    fn create_readme(
+    fn create_module_readme(
         &self,
         module_root: &PathBuf,
         api_description: &str,

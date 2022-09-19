@@ -3,9 +3,12 @@
 mod api_generator;
 mod domain;
 mod playfab_api;
+mod util;
 
 use std::borrow::Cow;
+use std::collections::HashMap;
 use std::env;
+use std::fs::File;
 use std::io::Write;
 use std::path::{Path, PathBuf};
 
@@ -13,10 +16,20 @@ use anyhow::Context;
 use clap::Parser;
 use clap_verbosity_flag::{InfoLevel, Verbosity};
 use console::style;
+use convert_case::{Case, Casing};
 use log::Level;
 
 use crate::api_generator::ApiGenerator;
 use crate::domain::PlayFabAPI;
+use crate::playfab_api::SwaggerSpec;
+
+const README_CONTENTS: [&str; 2] = [
+    "PlayFab is a complete backend platform for live games with managed game services, real-time analytics, and \
+    LiveOps. This SDK provides complete access to the entire PlayFab API on Roblox.",
+
+    "Each API scope (client, server, admin, matchmaking, etc) is split into its own Wally package to help reduce the \
+    overall bundle size (see reference below). PlayFab APIs are **big**, so only import the packages you actually need."
+];
 
 #[derive(Parser, Debug)]
 #[clap(version, about, trailing_var_arg = true)]
@@ -59,19 +72,28 @@ async fn main() -> anyhow::Result<()> {
         .await
         .context("Failed to collect API specs")?;
 
+    let mut actual_specs: HashMap<PlayFabAPI, SwaggerSpec> = HashMap::new();
+
     for api in api_specs {
         let api_spec = playfab_api::get_api_spec(&api)
             .await
             .context("Failed to get API spec")?;
 
         let name = PlayFabAPI(clean_api_name(api.name));
-        let generator = ApiGenerator::new(name, api_spec, &path, publish_packages.to_owned());
+
+        let modules_path = path.join("modules");
+        let generator =
+            ApiGenerator::new(&name, &api_spec, &modules_path, publish_packages.to_owned());
 
         generator
             .create_module()
             .await
             .context("Failed to create module for PlayFab API")?;
+
+        actual_specs.insert(name, api_spec);
     }
+
+    generate_readme(&path, actual_specs).context("Failed to generate README.md")?;
 
     Ok(())
 }
@@ -90,4 +112,50 @@ fn resolve_path(path: &Path) -> Cow<'_, Path> {
     } else {
         Cow::Owned(env::current_dir().unwrap().join(path))
     }
+}
+
+fn generate_readme(
+    codegen_path: &Cow<Path>,
+    api_specs: HashMap<PlayFabAPI, SwaggerSpec>,
+) -> anyhow::Result<()> {
+    let mut w = File::create(codegen_path.join("README.md"))?;
+
+    for line in README_CONTENTS {
+        let lines = util::truncate_string(line);
+        for part in lines {
+            writeln!(w, "{part}")?;
+        }
+
+        writeln!(w, "")?;
+    }
+
+    writeln!(w, "-----")?;
+    writeln!(w, "")?;
+
+    // Packages table
+    writeln!(w, "| API | Wally Package | Description |")?;
+    writeln!(w, "| --- | ------------- | ----------- |")?;
+
+    for (name, api) in api_specs {
+        let info = &api.info;
+
+        let docs = format!(
+            "https://learn.microsoft.com/en-gb/rest/api/playfab/{}",
+            name.0.to_ascii_lowercase()
+        );
+        let api_name = format!("[{}]({docs})", *name);
+
+        let name = name.to_case(Case::Kebab);
+        let version = format!("1.{}.0", info.version);
+        let wally_package = format!("`grilme99/playfab-{name}@{version}`");
+
+        let description = &info.description;
+
+        writeln!(w, "| {api_name} | {wally_package} | {description} |")?;
+    }
+
+    writeln!(w, "")?;
+
+    log::info!("Created README.md");
+    Ok(())
 }
