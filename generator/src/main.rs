@@ -23,12 +23,17 @@ use crate::api_generator::ApiGenerator;
 use crate::domain::PlayFabAPI;
 use crate::playfab_api::SwaggerSpec;
 
-const README_CONTENTS: [&str; 2] = [
+const README_CONTENTS: [&str; 5] = [
     "PlayFab is a complete backend platform for live games with managed game services, real-time analytics, and \
     LiveOps. This SDK provides complete access to the entire PlayFab API on Roblox.",
 
     "Each API scope (client, server, admin, matchmaking, etc) is split into its own Wally package to help reduce the \
-    overall bundle size (see reference below). PlayFab APIs are **big**, so only import the packages you actually need."
+    overall bundle size (see reference below). PlayFab APIs are **big**, so only import the packages you actually need.",
+
+    "-----",
+
+    "# API Reference",
+    "Documentation for all PlayFab APIs are available on the Microsoft website (linked for each package below)."
 ];
 
 #[derive(Parser, Debug)]
@@ -128,9 +133,6 @@ fn generate_readme(
 
         writeln!(w, "")?;
     }
-
-    writeln!(w, "-----")?;
-    writeln!(w, "")?;
 
     // Packages table
     writeln!(w, "| API | Wally Package | Description |")?;
