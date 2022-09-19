@@ -28,7 +28,7 @@ fn write_module_header(
     api_description: &str,
 ) -> anyhow::Result<()> {
     writeln!(w, "--[=[")?;
-    writeln!(w, "\t@class {api_name}Api")?;
+    writeln!(w, "\t# {api_name}Api")?;
     writeln!(w, "")?;
 
     let description_parts = truncate_string(api_description);
@@ -36,7 +36,7 @@ fn write_module_header(
         writeln!(w, "\t{part}")?;
     }
 
-    writeln!(w, "--]=]")?;
+    writeln!(w, "]=]")?;
     writeln!(w, "")?;
 
     writeln!(w, "local {api_name}Api = {{}}")?;
@@ -73,21 +73,6 @@ fn write_type_object(
         Some(required) => required,
         None => Vec::new(),
     };
-
-    writeln!(w, "--- @interface I{name}")?;
-    writeln!(w, "--- @within {api_name}Api")?;
-
-    if let Some(properties) = &definition.properties {
-        for (name, property) in properties {
-            write!(w, "--- .{name}")?;
-
-            if let Some(description) = &property.description {
-                writeln!(w, " -- {description}")?;
-            } else {
-                write!(w, "\n")?;
-            }
-        }
-    }
 
     write_description(w, &definition.description)?;
 
@@ -133,7 +118,12 @@ fn write_type_object(
                 "?"
             };
 
-            writeln!(w, "\t{name}: {}{required},", prop_type)?;
+            let line = format!("\t{name}: {}{required},", prop_type);
+            if let Some(description) = &property.description {
+                writeln!(w, "{line} --- {description}")?;
+            } else {
+                writeln!(w, "{line}")?;
+            }
         }
     }
 
@@ -149,9 +139,6 @@ fn write_type_string(
     definition: &SwaggerTypeDefinition,
     api_name: &str,
 ) -> anyhow::Result<()> {
-    writeln!(w, "--- @type I{name}")?;
-    writeln!(w, "--- @within {api_name}Api")?;
-
     write_description(w, &definition.description)?;
 
     writeln!(w, "export type I{name} = ")?;
@@ -172,7 +159,6 @@ fn write_type_string(
 
 fn write_description(w: &mut dyn Write, description: &Option<String>) -> anyhow::Result<()> {
     if let Some(description) = description {
-        writeln!(w, "---")?;
         let description_parts = truncate_string(description);
         for part in description_parts {
             writeln!(w, "--- {part}")?;
