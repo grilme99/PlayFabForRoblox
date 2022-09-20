@@ -12,6 +12,7 @@ use duct::cmd;
 
 use crate::domain::{APIWallyConfig, APIWallyPackage, ApiWallyDependencies, PlayFabAPI};
 use crate::playfab_api::SwaggerSpec;
+use crate::util::get_package_version;
 
 #[derive(Debug)]
 pub struct ApiGenerator<'a> {
@@ -64,7 +65,7 @@ impl<'a> ApiGenerator<'a> {
         fs::create_dir(module_root).context("Failed to create directory")?;
 
         let name = format!("grilme99/playfab-{}", self.api_name.to_case(Case::Kebab));
-        let version = format!("1.{}.0", self.swagger_spec.info.version);
+        let version = get_package_version(&self.swagger_spec);
 
         self.create_wally_config(module_root, &name, &version)
             .context("Failed to create Wally config")?;

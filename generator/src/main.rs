@@ -148,7 +148,7 @@ fn generate_readme(
         let api_name = format!("[{}]({docs})", *name);
 
         let name = name.to_case(Case::Kebab);
-        let version = format!("1.{}.0", info.version);
+        let version = util::get_package_version(&api);
         let wally_package = format!("`grilme99/playfab-{name}@{version}`");
 
         let description = &info.description;
