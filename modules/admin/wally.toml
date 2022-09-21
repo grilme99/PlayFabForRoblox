@@ -1,0 +1,11 @@
+[package]
+name = "grilme99/playfab-admin"
+description = "APIs for managing title configurations, uploaded Game Server code executables, and user data. For more info, see: https://github.com/grilme99/RobloxPlayFabSDK"
+version = "1.220908.1"
+license = "MIT"
+authors = ["Brooke Rhodes <brooke@gril.me>"]
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
+PlayFabInternal = "grilme99/playfab-internal@^1"

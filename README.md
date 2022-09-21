@@ -1,117 +1,34 @@
-## About
-This SDK provides complete access to the entire PlayFab API on Roblox. It supports both Lua and TypeScript (for [roblox-ts](http://roblox-ts.com/) users), using type declaration files.  I highly recommend using TypeScript with this project if you can. The entire PlayFab API is fully typed, and it makes working with the API a *lot* easier.
+PlayFab is a complete backend platform for live games with managed game services, 
+real-time analytics, and LiveOps. This SDK provides complete access to the entire 
+PlayFab API on Roblox. 
 
-All SDK source files are generated automatically based on PlayFab's API schema, which makes updating to recent API updates incredibly fast and gives less room for human error.
+Each API scope (client, server, admin, matchmaking, etc) is split into its own 
+Wally package to help reduce the overall bundle size (see reference below). 
+PlayFab APIs are **big**, so only import the packages you actually need. 
 
----
+----- 
 
-## What is PlayFab?
-PlayFab is a complete backend platform for live games with managed game services, real-time analytics, and LiveOps. 
+# API Reference 
 
-PlayFab's backend services reduce the barriers to launch for game developers, offering both large and small studios cost-effective development solutions that scale with their games and help them engage, retain and monetize players. PlayFab enables developers to use the intelligent cloud to build and operate games, analyze gaming data and improve overall gaming experiences.
+Documentation for all PlayFab APIs are available on the Microsoft website (linked 
+for each package below). 
 
-To use PlayFab features, you must sign up for a [PlayFab account](https://developer.playfab.com/en-us/sign-up). The PlayFab documentation is available [here](https://docs.microsoft.com/en-us/gaming/playfab/).
+| API | Wally Package | Description |
+| --- | ------------- | ----------- |
+| [Experimentation](https://learn.microsoft.com/en-gb/rest/api/playfab/experimentation) | `grilme99/playfab-experimentation@1.220908.1` | APIs for managing experiments. |
+| [Insights](https://learn.microsoft.com/en-gb/rest/api/playfab/insights) | `grilme99/playfab-insights@1.220908.1` | Manage the Insights performance level and data storage retention settings. |
+| [CloudScript](https://learn.microsoft.com/en-gb/rest/api/playfab/cloudscript) | `grilme99/playfab-cloud-script@1.220908.1` | API methods for executing CloudScript using an Entity Profile |
+| [Leaderboards](https://learn.microsoft.com/en-gb/rest/api/playfab/leaderboards) | `grilme99/playfab-leaderboards@1.220907.0` | Manage entity statistics Manage entity statistics |
+| [Multiplayer](https://learn.microsoft.com/en-gb/rest/api/playfab/multiplayer) | `grilme99/playfab-multiplayer@1.220908.1` | API methods for managing multiplayer servers. API methods for managing parties. The lobby service helps players group together to play multiplayer games. It is often used as a rendezvous point for players to share connection information. |
+| [Admin](https://learn.microsoft.com/en-gb/rest/api/playfab/admin) | `grilme99/playfab-admin@1.220908.1` | APIs for managing title configurations, uploaded Game Server code executables, and user data |
+| [Authentication](https://learn.microsoft.com/en-gb/rest/api/playfab/authentication) | `grilme99/playfab-authentication@1.220908.1` | The Authentication APIs provide a convenient way to convert classic authentication responses into entity authentication models. These APIs will provide you with the entity authentication token needed for subsequent Entity API calls. Manage API keys for authenticating any entity. The game_server API is designed to create uniquely identifiable game_server entities. The game_server Entity token can be used to call Matchmaking Lobby and Pubsub for server scenarios. |
+| [Matchmaker](https://learn.microsoft.com/en-gb/rest/api/playfab/matchmaker) | `grilme99/playfab-matchmaker@1.220908.1` | Enables the use of an external match-making service in conjunction with PlayFab hosted Game Server instances |
+| [Server](https://learn.microsoft.com/en-gb/rest/api/playfab/server) | `grilme99/playfab-server@1.220908.1` | Provides functionality to allow external (developer-controlled) servers to interact with user inventories and data in a trusted manner, and to handle matchmaking and client connection orchestration |
+| [Economy](https://learn.microsoft.com/en-gb/rest/api/playfab/economy) | `grilme99/playfab-economy@1.220908.1` | API methods for managing the catalog. Inventory manages in-game assets for any given entity. |
+| [Client](https://learn.microsoft.com/en-gb/rest/api/playfab/client) | `grilme99/playfab-client@1.220908.1` | APIs which provide the full range of PlayFab features available to the client - authentication, account and data management, inventory, friends, matchmaking, reporting, and platform-specific functionality |
+| [Events](https://learn.microsoft.com/en-gb/rest/api/playfab/events) | `grilme99/playfab-events@1.220908.1` | Write custom PlayStream and Telemetry events for any PlayFab entity. Telemetry events can be used for analytic, reporting, or debugging. PlayStream events can do all of that and also trigger custom actions in near real-time. |
+| [Localization](https://learn.microsoft.com/en-gb/rest/api/playfab/localization) | `grilme99/playfab-localization@1.220908.1` | The Localization APIs give you the tools needed to manage language setup in your title. |
+| [Groups](https://learn.microsoft.com/en-gb/rest/api/playfab/groups) | `grilme99/playfab-groups@1.220908.1` | The Groups API is designed for any permanent or semi-permanent collections of Entities (players, or non-players). If you want to make Guilds/Clans/Corporations/etc., then you should use groups. Groups can also be used to make chatrooms, parties, or any other persistent collection of entities. |
+| [Profiles](https://learn.microsoft.com/en-gb/rest/api/playfab/profiles) | `grilme99/playfab-profiles@1.220908.1` | All PlayFab entities have profiles, which hold top-level properties about the entity. These APIs give you the tools needed to manage entity profiles. The Master Player APIs allow you to perform operations on a master player account |
+| [Data](https://learn.microsoft.com/en-gb/rest/api/playfab/data) | `grilme99/playfab-data@1.220908.1` | Store arbitrary data associated with an entity. Objects are small (~1KB) JSON-compatible objects which are stored directly on the entity profile. Objects are made available for use in other PlayFab contexts, such as PlayStream events and CloudScript functions. Files can efficiently store data of any size or format. Both objects and files support a flexible permissions system to control read and write access by other entities. |
 
----
-
-## Installation
-The preferred way to use this SDK is via [roblox-ts](https://roblox-ts.com) and [Rojo](https://rojo.space). However, it still has first-class support for Lua, should you be using it. For those using Typescript, the *entire* PlayFab API is fully typed and documented, supporting powerful IntelliSense in your favourite editor.
-
-People not using Rojo can download the latest model file form the [releases section](https://github.com/grilme99/RobloxPlayFabSDK/releases), but this might not always be the most up-to-date version.
-
-Here are installation instructions for both Typescript and Lua. You will find that each section which involves code will have this.
-    
-
-<details>
-    <summary>Typescript</summary>
-    <p>
-    Usage with Typescript is straightforward. All you need to do is install the package via NPM with <code>npm install @rbxts/playfab</code>. The SDK can then be used from anywhere in your game (if it is on the server!) Please continue down for Basic Usage.
-    </p>
-</details>
-
-<details>
-    <summary>Lua</summary>
-    <p>
-    <b>Manual</b>
-    <br>
-    You can download the latest model file release from the <a href="https://github.com/grilme99/RobloxPlayFabSDK/releases">releases section</a>, but this may not always be the most up-to-date version. You'll want to put this is a server directory, like <code>ServerScriptService</code> or <code>ServerStorage</code>.
-    <br><br>
-    <b>Advanced</b>
-    <br>
-    The SDK has no dependencies so you can easily include it as a Git submodule, syncing it in with Rojo. There should be no need to edit the actual SDK module itself (unless contributing.)
-    </p>
-</details>
-
----
-## Getting credentials
-Getting your PlayFab title's credentials is simple! You should refer to [this](https://docs.microsoft.com/en-us/gaming/playfab/personas/developer) guide for the Title ID and [this](https://docs.microsoft.com/en-us/gaming/playfab/gamemanager/secret-key-management) for your Secret Key!
-
-
----
-
-## Basic usage
-#### TypeScript
-```typescript
-import { Players } from '@rbxts/services'
-import { Settings, PlayFabClient } from '@rbxts/playfab'
-
-Settings.devSecretKey = '' // Put the secret key that you copied from the above section here
-Settings.titleId = '' // Put the title ID that you copied from the above section here
-
-Players.PlayerAdded.Connect(async player => {
-    // Log client in
-    // This must be async and no "client-side" methods can be used until this has returned.
-    PlayFabClient.LoginWithCustomID({
-        CreateAccount: true,
-        CustomId: tostring(player.UserId) // You can use your own CustomId scheme
-    }).then(async loginResult => {
-        const token = loginResult.EntityToken!.EntityToken!
-        const ticket = loginResult.SessionTicket!
-
-        // You are ready to go!
-        const profile = await PlayFabClient.GetPlayerProfile(ticket)
-        print(profile)
-    })
-})
-```
-
-#### Lua
-```lua
-local PlayFab = require(path.to.PlayFab)
-local Settings = PlayFab.Settings
-local Client = PlayFab.PlayFabClient
-
-Settings.devSecretKey = '' -- Put the secret key that you copied from the above section here
-Settings.titleId = '' -- Put the title ID that you copied from the above section here
-
-game.Players.PlayerAdded:Connect(function(player)
-    -- Log client in
-    -- This must be async and no "client-side" methods can be used until this has returned.
-    Client:LoginWithCustomID({
-        CreateAccount = true, -- Create an account if one doesn't already exist
-        CustomId = tostring(player.UserId) -- You can use your own CustomId scheme
-    }):andThen(function(loginResult)
-        local entityToken = loginResult.EntityToken.EntityToken
-        local sessionTicket = loginResult.SessionTicket
-
-        -- You are ready to go!
-        Client:GetPlayerProfile(sessionTicket):andThen(function(profile)
-            print(profile)
-        end)
-    end)
-end)
-```
-
----
-## Notes and Best Practices
-
-- Make sure you have `HttpEnabled` toggled on in `HttpService`! This SDK relies on HTTP requests.
-- This SDK should **not** be used from the client. "Client-side" APIs should still run on the server but should have the clients `SessionTicket` or `EntityToken` passed to them.
-- A `SessionTicket` and `EntityToken` can expire after a period of time. You should design your system with this in mind and be able to log the client back in, should one expire.
-- You should store each players `SessionTicket` and `EntityToken` in a centralized store, like [Rodux](https://roblox.github.io/rodux), so that they can be accessed by any script that needs them.
-- Almost all PlayFab SDK documentation applies here as well. It would be best if you referred to the official PlayFab documentation and forums *before* making an issue for this SDK.
-
----
-
-## Documentation
-Documentation for this SDK is available at [gril.me/RobloxPlayFabSDK](https://gril.me/RobloxPlayFabSDK/).
