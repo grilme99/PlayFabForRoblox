@@ -64,8 +64,6 @@ export type EntityLineage = {
 	MasterPlayerAccountId: string?,
 	--- The Namespace Id of the associated entity. 
 	NamespaceId: string?,
-	--- The Title Id of the associated entity. 
-	TitleId: string?,
 	--- The Title Player Account Id of the associated entity. 
 	TitlePlayerAccountId: string?,
 }
@@ -226,13 +224,9 @@ export type GetTitlePlayersFromMasterPlayerAccountIdsRequest = {
 	CustomTags: {[any]: any}?,
 	--- Master player account ids. 
 	MasterPlayerAccountIds: {any},
-	--- Id of title to get players from. 
-	TitleId: string?,
 }
 
 export type GetTitlePlayersFromMasterPlayerAccountIdsResponse = {
-	--- Optional id of title to get players from, required if calling using a master_player_account. 
-	TitleId: string?,
 	--- Dictionary of master player ids mapped to title player entity keys and id pairs 
 	TitlePlayerAccounts: EntityKey?,
 }

@@ -113,6 +113,11 @@ fn write_type_object(
 
     if let Some(properties) = &definition.properties {
         for (name, property) in properties {
+            // We automatically set the TitleId prop when sending the request, users can ignore this here
+            if name == "TitleId" {
+                continue;
+            }
+
             let def_type = &property.def_type;
             let prop_type = match def_type.as_str() {
                 "array" => {

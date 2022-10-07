@@ -1180,9 +1180,6 @@ export type GameInstanceState =
 export type GameServerRegionsRequest = {
 	--- version of game server for which stats are being requested 
 	BuildVersion: string,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string?,
 }
 
 export type GameServerRegionsResult = {
@@ -2092,9 +2089,6 @@ export type GetTitleNewsResult = {
 --- request. 4) Client receives authentication token as normal. Future requests 
 --- to LoginWithCustomId will require the X-PlayFab-Signature header. 
 export type GetTitlePublicKeyRequest = {
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 	--- The shared secret key for this title 
 	TitleSharedSecret: string,
 }
@@ -2680,9 +2674,6 @@ export type LoginWithAndroidDeviceIDRequest = {
 	OS: string?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 export type LoginWithAppleRequest = {
@@ -2705,9 +2696,6 @@ export type LoginWithAppleRequest = {
 	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- It is highly recommended that developers ensure that it is extremely unlikely 
@@ -2734,9 +2722,6 @@ export type LoginWithCustomIDRequest = {
 	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- Email address and password lengths are provided for information purposes. The 
@@ -2753,9 +2738,6 @@ export type LoginWithEmailAddressRequest = {
 	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
 	--- Password for the PlayFab account (6-100 characters) 
 	Password: string,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 export type LoginWithFacebookInstantGamesIdRequest = {
@@ -2774,9 +2756,6 @@ export type LoginWithFacebookInstantGamesIdRequest = {
 	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- Facebook sign-in is accomplished using the Facebook User Access Token. More 
@@ -2811,9 +2790,6 @@ export type LoginWithFacebookRequest = {
 	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- The Game Center player identifier (https://developer.apple.com/library/ios/documentation/Accounts/Reference/ACAccountClassRef/index.html#//apple_ref/occ/instp/ACAccount/identifier) 
@@ -2852,9 +2828,6 @@ export type LoginWithGameCenterRequest = {
 	--- PlayFab will reject authentication signatures not within 10 minutes of the server's 
 	--- current time. 
 	Timestamp: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- Google sign-in is accomplished by obtaining a Google OAuth 2.0 credential using 
@@ -2894,9 +2867,6 @@ export type LoginWithGoogleAccountRequest = {
 	--- (https://developers.google.com/identity/sign-in/android/offline-access) Google 
 	--- client API. 
 	ServerAuthCode: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- Google Play Games sign-in is accomplished by obtaining a Google OAuth 2.0 credential 
@@ -2933,9 +2903,6 @@ export type LoginWithGooglePlayGamesServicesRequest = {
 	--- (https://developers.google.com/games/services/android/signin) Google Play Games 
 	--- client API. 
 	ServerAuthCode: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- On iOS devices, the identifierForVendor (https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/index.html#//apple_ref/occ/instp/UIDevice/identifierForVendor) 
@@ -2971,9 +2938,6 @@ export type LoginWithIOSDeviceIDRequest = {
 	OS: string?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- More details regarding Kongregate and their game authentication system can be 
@@ -3004,9 +2968,6 @@ export type LoginWithKongregateRequest = {
 	KongregateId: string?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 export type LoginWithNintendoServiceAccountRequest = {
@@ -3025,9 +2986,6 @@ export type LoginWithNintendoServiceAccountRequest = {
 	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 export type LoginWithNintendoSwitchDeviceIdRequest = {
@@ -3046,9 +3004,6 @@ export type LoginWithNintendoSwitchDeviceIdRequest = {
 	NintendoSwitchDeviceId: string?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 export type LoginWithOpenIdConnectRequest = {
@@ -3071,9 +3026,6 @@ export type LoginWithOpenIdConnectRequest = {
 	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- If this is the first time a user has signed in with the PlayStation :tm: Network 
@@ -3104,9 +3056,6 @@ export type LoginWithPSNRequest = {
 	PlayerSecret: string?,
 	--- Redirect URI supplied to PlayStation :tm: Network when requesting an auth code 
 	RedirectUri: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- Username and password lengths are provided for information purposes. The server 
@@ -3122,9 +3071,6 @@ export type LoginWithPlayFabRequest = {
 	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
 	--- Password for the PlayFab account (6-100 characters) 
 	Password: string,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 	--- PlayFab username for the account. 
 	Username: string,
 }
@@ -3158,9 +3104,6 @@ export type LoginWithSteamRequest = {
 	--- Authentication token for the user, returned as a byte array from Steam, and 
 	--- converted to a string (for example, the byte 0x08 should become "08"). 
 	SteamTicket: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- More details regarding Twitch and their authentication system can be found at 
@@ -3189,9 +3132,6 @@ export type LoginWithTwitchRequest = {
 	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 --- If this is the first time a user has signed in with the Xbox Live account and 
@@ -3214,9 +3154,6 @@ export type LoginWithXboxRequest = {
 	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
 	--- Player secret that is used to verify API request signatures (Enterprise Only). 
 	PlayerSecret: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 	--- Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", 
 	--- "https://playfabapi.com/", ""). 
 	XboxToken: string?,
@@ -3481,8 +3418,6 @@ export type PlayerProfileModel = {
 	Statistics: {StatisticModel}?,
 	--- List of player's tags for segmentation 
 	Tags: {TagModel}?,
-	--- Title ID this player profile applies to 
-	TitleId: string?,
 	--- Sum of the player's purchases made with real-money currencies, converted to 
 	--- US dollars equivalent and represented as a whole number of cents (1/100 USD). 
 	--- For example, 999 indicates nine dollars and ninety-nine cents. 
@@ -3687,9 +3622,6 @@ export type RegisterPlayFabUserRequest = {
 	--- are required. If true, both parameters are required; if false, the user must 
 	--- supply either the username or email parameter. The default value is true. 
 	RequireBothUsernameAndEmail: boolean?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 	--- PlayFab username for the account (3-20 characters) 
 	Username: string?,
 }
@@ -3862,9 +3794,6 @@ export type SendAccountRecoveryEmailRequest = {
 	Email: string,
 	--- The email template id of the account recovery email template to send. 
 	EmailTemplateId: string?,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string,
 }
 
 export type SendAccountRecoveryEmailResult = {

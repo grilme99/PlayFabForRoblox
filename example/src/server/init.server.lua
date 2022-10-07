@@ -6,7 +6,9 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Packages = ReplicatedStorage.Packages
 local PlayFabClient = require(Packages.PlayFabClient)
 
-local TITLE_ID = "1234"
+-- Title ID is stored in a git-ignored module. Create one yourself and return a string with
+-- your PlayFab title ID.
+local TITLE_ID = require(script.titleId)
 
 PlayFabClient.SetSettings({
 	titleId = TITLE_ID,

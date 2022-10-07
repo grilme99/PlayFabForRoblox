@@ -34,7 +34,7 @@ pub fn get_package_version(swagger_spec: &SwaggerSpec) -> String {
     //  change. Select a minor version here.
     let minor_version = match api_version.as_str() {
         "220908" => 1,
-        "220926" => 4,
+        "220926" => 5,
         _ => 0,
     };
 

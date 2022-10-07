@@ -2154,8 +2154,6 @@ export type GetMatchmakerGameInfoResult = {
 	ServerPublicDNSName: string?,
 	--- time when the Game Server Instance was created 
 	StartTime: string,
-	--- unique identifier of the Game Server Instance for this lobby 
-	TitleId: string?,
 }
 
 --- These details are used by the PlayFab matchmaking service to determine if an 
@@ -2985,9 +2983,6 @@ export type ModifyServerBuildResult = {
 	--- time this build was last modified (or uploaded, if this build has never been 
 	--- modified) 
 	Timestamp: string,
-	--- Unique identifier for the title, found in the Settings > Game Properties section 
-	--- of the PlayFab developer site when a title has been selected. 
-	TitleId: string?,
 }
 
 export type ModifyUserVirtualCurrencyResult = {
@@ -3136,8 +3131,6 @@ export type PlayerProfile = {
 	Statistics: {[any]: any}?,
 	--- List of player's tags for segmentation. 
 	Tags: {any}?,
-	--- Title ID this profile applies to 
-	TitleId: string?,
 	--- A sum of player's total purchases in USD across all currencies. 
 	TotalValueToDateInUSD: number?,
 	--- Dictionary of player's total purchases by currency. 
@@ -3184,8 +3177,6 @@ export type PlayerProfileModel = {
 	Statistics: {StatisticModel}?,
 	--- List of player's tags for segmentation 
 	Tags: {TagModel}?,
-	--- Title ID this player profile applies to 
-	TitleId: string?,
 	--- Sum of the player's purchases made with real-money currencies, converted to 
 	--- US dollars equivalent and represented as a whole number of cents (1/100 USD). 
 	--- For example, 999 indicates nine dollars and ninety-nine cents. 

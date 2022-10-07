@@ -84,8 +84,6 @@ export type EntityLineage = {
 	MasterPlayerAccountId: string?,
 	--- The Namespace Id of the associated entity. 
 	NamespaceId: string?,
-	--- The Title Id of the associated entity. 
-	TitleId: string?,
 	--- The Title Player Account Id of the associated entity. 
 	TitlePlayerAccountId: string?,
 }

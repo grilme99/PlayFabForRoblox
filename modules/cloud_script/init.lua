@@ -629,8 +629,6 @@ export type PlayerProfileModel = {
 	Statistics: {StatisticModel}?,
 	--- List of player's tags for segmentation 
 	Tags: {TagModel}?,
-	--- Title ID this player profile applies to 
-	TitleId: string?,
 	--- Sum of the player's purchases made with real-money currencies, converted to 
 	--- US dollars equivalent and represented as a whole number of cents (1/100 USD). 
 	--- For example, 999 indicates nine dollars and ninety-nine cents. 
