@@ -159,7 +159,7 @@ export type InsightsSetStorageRetentionRequest = {
 function InsightsApi.GetDetailsAsync(
 	entityToken: string, 
 	request: InsightsEmptyRequest
-): InsightsGetDetailsResponse | ApiErrorWrapper
+): InsightsGetDetailsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Insights/GetDetails",
 		request,
@@ -172,7 +172,7 @@ end
 function InsightsApi.GetLimitsAsync(
 	entityToken: string, 
 	request: InsightsEmptyRequest
-): InsightsGetLimitsResponse | ApiErrorWrapper
+): InsightsGetLimitsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Insights/GetLimits",
 		request,
@@ -185,7 +185,7 @@ end
 function InsightsApi.GetOperationStatusAsync(
 	entityToken: string, 
 	request: InsightsGetOperationStatusRequest
-): InsightsGetOperationStatusResponse | ApiErrorWrapper
+): InsightsGetOperationStatusResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Insights/GetOperationStatus",
 		request,
@@ -198,7 +198,7 @@ end
 function InsightsApi.GetPendingOperationsAsync(
 	entityToken: string, 
 	request: InsightsGetPendingOperationsRequest
-): InsightsGetPendingOperationsResponse | ApiErrorWrapper
+): InsightsGetPendingOperationsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Insights/GetPendingOperations",
 		request,
@@ -211,7 +211,7 @@ end
 function InsightsApi.SetPerformanceAsync(
 	entityToken: string, 
 	request: InsightsSetPerformanceRequest
-): InsightsOperationResponse | ApiErrorWrapper
+): InsightsOperationResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Insights/SetPerformance",
 		request,
@@ -224,7 +224,7 @@ end
 function InsightsApi.SetStorageRetentionAsync(
 	entityToken: string, 
 	request: InsightsSetStorageRetentionRequest
-): InsightsOperationResponse | ApiErrorWrapper
+): InsightsOperationResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Insights/SetStorageRetention",
 		request,

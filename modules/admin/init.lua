@@ -5109,7 +5109,7 @@ export type VirtualCurrencyRechargeTime = {
 function AdminApi.AbortTaskInstanceAsync(
 	secretKey: string, 
 	request: AbortTaskInstanceRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/AbortTaskInstance",
 		request,
@@ -5122,7 +5122,7 @@ end
 function AdminApi.AddLocalizedNewsAsync(
 	secretKey: string, 
 	request: AddLocalizedNewsRequest
-): AddLocalizedNewsResult | ApiErrorWrapper
+): AddLocalizedNewsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/AddLocalizedNews",
 		request,
@@ -5135,7 +5135,7 @@ end
 function AdminApi.AddNewsAsync(
 	secretKey: string, 
 	request: AddNewsRequest
-): AddNewsResult | ApiErrorWrapper
+): AddNewsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/AddNews",
 		request,
@@ -5153,7 +5153,7 @@ end
 function AdminApi.AddPlayerTagAsync(
 	secretKey: string, 
 	request: AddPlayerTagRequest
-): AddPlayerTagResult | ApiErrorWrapper
+): AddPlayerTagResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/AddPlayerTag",
 		request,
@@ -5166,7 +5166,7 @@ end
 function AdminApi.AddUserVirtualCurrencyAsync(
 	secretKey: string, 
 	request: AddUserVirtualCurrencyRequest
-): ModifyUserVirtualCurrencyResult | ApiErrorWrapper
+): ModifyUserVirtualCurrencyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/AddUserVirtualCurrency",
 		request,
@@ -5183,7 +5183,7 @@ end
 function AdminApi.AddVirtualCurrencyTypesAsync(
 	secretKey: string, 
 	request: AddVirtualCurrencyTypesRequest
-): BlankResult | ApiErrorWrapper
+): BlankResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/AddVirtualCurrencyTypes",
 		request,
@@ -5200,7 +5200,7 @@ end
 function AdminApi.BanUsersAsync(
 	secretKey: string, 
 	request: BanUsersRequest
-): BanUsersResult | ApiErrorWrapper
+): BanUsersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/BanUsers",
 		request,
@@ -5215,7 +5215,7 @@ end
 function AdminApi.CheckLimitedEditionItemAvailabilityAsync(
 	secretKey: string, 
 	request: CheckLimitedEditionItemAvailabilityRequest
-): CheckLimitedEditionItemAvailabilityResult | ApiErrorWrapper
+): CheckLimitedEditionItemAvailabilityResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/CheckLimitedEditionItemAvailability",
 		request,
@@ -5232,7 +5232,7 @@ end
 function AdminApi.CreateActionsOnPlayersInSegmentTaskAsync(
 	secretKey: string, 
 	request: CreateActionsOnPlayerSegmentTaskRequest
-): CreateTaskResult | ApiErrorWrapper
+): CreateTaskResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/CreateActionsOnPlayersInSegmentTask",
 		request,
@@ -5249,7 +5249,7 @@ end
 function AdminApi.CreateCloudScriptTaskAsync(
 	secretKey: string, 
 	request: CreateCloudScriptTaskRequest
-): CreateTaskResult | ApiErrorWrapper
+): CreateTaskResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/CreateCloudScriptTask",
 		request,
@@ -5266,7 +5266,7 @@ end
 function AdminApi.CreateInsightsScheduledScalingTaskAsync(
 	secretKey: string, 
 	request: CreateInsightsScheduledScalingTaskRequest
-): CreateTaskResult | ApiErrorWrapper
+): CreateTaskResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/CreateInsightsScheduledScalingTask",
 		request,
@@ -5279,7 +5279,7 @@ end
 function AdminApi.CreateOpenIdConnectionAsync(
 	secretKey: string, 
 	request: CreateOpenIdConnectionRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/CreateOpenIdConnection",
 		request,
@@ -5297,7 +5297,7 @@ end
 function AdminApi.CreatePlayerSharedSecretAsync(
 	secretKey: string, 
 	request: CreatePlayerSharedSecretRequest
-): CreatePlayerSharedSecretResult | ApiErrorWrapper
+): CreatePlayerSharedSecretResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/CreatePlayerSharedSecret",
 		request,
@@ -5328,7 +5328,7 @@ end
 function AdminApi.CreatePlayerStatisticDefinitionAsync(
 	secretKey: string, 
 	request: CreatePlayerStatisticDefinitionRequest
-): CreatePlayerStatisticDefinitionResult | ApiErrorWrapper
+): CreatePlayerStatisticDefinitionResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/CreatePlayerStatisticDefinition",
 		request,
@@ -5343,7 +5343,7 @@ end
 function AdminApi.CreateSegmentAsync(
 	secretKey: string, 
 	request: CreateSegmentRequest
-): CreateSegmentResponse | ApiErrorWrapper
+): CreateSegmentResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/CreateSegment",
 		request,
@@ -5356,7 +5356,7 @@ end
 function AdminApi.DeleteContentAsync(
 	secretKey: string, 
 	request: DeleteContentRequest
-): BlankResult | ApiErrorWrapper
+): BlankResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeleteContent",
 		request,
@@ -5383,7 +5383,7 @@ end
 function AdminApi.DeleteMasterPlayerAccountAsync(
 	secretKey: string, 
 	request: DeleteMasterPlayerAccountRequest
-): DeleteMasterPlayerAccountResult | ApiErrorWrapper
+): DeleteMasterPlayerAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeleteMasterPlayerAccount",
 		request,
@@ -5398,7 +5398,7 @@ end
 function AdminApi.DeleteMembershipSubscriptionAsync(
 	secretKey: string, 
 	request: DeleteMembershipSubscriptionRequest
-): DeleteMembershipSubscriptionResult | ApiErrorWrapper
+): DeleteMembershipSubscriptionResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeleteMembershipSubscription",
 		request,
@@ -5411,7 +5411,7 @@ end
 function AdminApi.DeleteOpenIdConnectionAsync(
 	secretKey: string, 
 	request: DeleteOpenIdConnectionRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeleteOpenIdConnection",
 		request,
@@ -5436,7 +5436,7 @@ end
 function AdminApi.DeletePlayerAsync(
 	secretKey: string, 
 	request: DeletePlayerRequest
-): DeletePlayerResult | ApiErrorWrapper
+): DeletePlayerResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeletePlayer",
 		request,
@@ -5454,7 +5454,7 @@ end
 function AdminApi.DeletePlayerSharedSecretAsync(
 	secretKey: string, 
 	request: DeletePlayerSharedSecretRequest
-): DeletePlayerSharedSecretResult | ApiErrorWrapper
+): DeletePlayerSharedSecretResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeletePlayerSharedSecret",
 		request,
@@ -5469,7 +5469,7 @@ end
 function AdminApi.DeleteSegmentAsync(
 	secretKey: string, 
 	request: DeleteSegmentRequest
-): DeleteSegmentsResponse | ApiErrorWrapper
+): DeleteSegmentsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeleteSegment",
 		request,
@@ -5484,7 +5484,7 @@ end
 function AdminApi.DeleteStoreAsync(
 	secretKey: string, 
 	request: DeleteStoreRequest
-): DeleteStoreResult | ApiErrorWrapper
+): DeleteStoreResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeleteStore",
 		request,
@@ -5502,7 +5502,7 @@ end
 function AdminApi.DeleteTaskAsync(
 	secretKey: string, 
 	request: DeleteTaskRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeleteTask",
 		request,
@@ -5527,7 +5527,7 @@ end
 function AdminApi.DeleteTitleAsync(
 	secretKey: string, 
 	request: DeleteTitleRequest
-): DeleteTitleResult | ApiErrorWrapper
+): DeleteTitleResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeleteTitle",
 		request,
@@ -5543,7 +5543,7 @@ end
 function AdminApi.DeleteTitleDataOverrideAsync(
 	secretKey: string, 
 	request: DeleteTitleDataOverrideRequest
-): DeleteTitleDataOverrideResult | ApiErrorWrapper
+): DeleteTitleDataOverrideResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/DeleteTitleDataOverride",
 		request,
@@ -5566,7 +5566,7 @@ end
 function AdminApi.ExportMasterPlayerDataAsync(
 	secretKey: string, 
 	request: ExportMasterPlayerDataRequest
-): ExportMasterPlayerDataResult | ApiErrorWrapper
+): ExportMasterPlayerDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/ExportMasterPlayerData",
 		request,
@@ -5581,7 +5581,7 @@ end
 function AdminApi.ExportPlayersInSegmentAsync(
 	secretKey: string, 
 	request: ExportPlayersInSegmentRequest
-): ExportPlayersInSegmentResult | ApiErrorWrapper
+): ExportPlayersInSegmentResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/ExportPlayersInSegment",
 		request,
@@ -5597,7 +5597,7 @@ end
 function AdminApi.GetActionsOnPlayersInSegmentTaskInstanceAsync(
 	secretKey: string, 
 	request: GetTaskInstanceRequest
-): GetActionsOnPlayersInSegmentTaskInstanceResult | ApiErrorWrapper
+): GetActionsOnPlayersInSegmentTaskInstanceResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetActionsOnPlayersInSegmentTaskInstance",
 		request,
@@ -5612,7 +5612,7 @@ end
 function AdminApi.GetAllSegmentsAsync(
 	secretKey: string, 
 	request: GetAllSegmentsRequest
-): GetAllSegmentsResult | ApiErrorWrapper
+): GetAllSegmentsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetAllSegments",
 		request,
@@ -5625,7 +5625,7 @@ end
 function AdminApi.GetCatalogItemsAsync(
 	secretKey: string, 
 	request: GetCatalogItemsRequest
-): GetCatalogItemsResult | ApiErrorWrapper
+): GetCatalogItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetCatalogItems",
 		request,
@@ -5638,7 +5638,7 @@ end
 function AdminApi.GetCloudScriptRevisionAsync(
 	secretKey: string, 
 	request: GetCloudScriptRevisionRequest
-): GetCloudScriptRevisionResult | ApiErrorWrapper
+): GetCloudScriptRevisionResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetCloudScriptRevision",
 		request,
@@ -5656,7 +5656,7 @@ end
 function AdminApi.GetCloudScriptTaskInstanceAsync(
 	secretKey: string, 
 	request: GetTaskInstanceRequest
-): GetCloudScriptTaskInstanceResult | ApiErrorWrapper
+): GetCloudScriptTaskInstanceResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetCloudScriptTaskInstance",
 		request,
@@ -5669,7 +5669,7 @@ end
 function AdminApi.GetCloudScriptVersionsAsync(
 	secretKey: string, 
 	request: GetCloudScriptVersionsRequest
-): GetCloudScriptVersionsResult | ApiErrorWrapper
+): GetCloudScriptVersionsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetCloudScriptVersions",
 		request,
@@ -5682,7 +5682,7 @@ end
 function AdminApi.GetContentListAsync(
 	secretKey: string, 
 	request: GetContentListRequest
-): GetContentListResult | ApiErrorWrapper
+): GetContentListResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetContentList",
 		request,
@@ -5695,7 +5695,7 @@ end
 function AdminApi.GetContentUploadUrlAsync(
 	secretKey: string, 
 	request: GetContentUploadUrlRequest
-): GetContentUploadUrlResult | ApiErrorWrapper
+): GetContentUploadUrlResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetContentUploadUrl",
 		request,
@@ -5712,7 +5712,7 @@ end
 function AdminApi.GetDataReportAsync(
 	secretKey: string, 
 	request: GetDataReportRequest
-): GetDataReportResult | ApiErrorWrapper
+): GetDataReportResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetDataReport",
 		request,
@@ -5725,7 +5725,7 @@ end
 function AdminApi.GetMatchmakerGameInfoAsync(
 	secretKey: string, 
 	request: GetMatchmakerGameInfoRequest
-): GetMatchmakerGameInfoResult | ApiErrorWrapper
+): GetMatchmakerGameInfoResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetMatchmakerGameInfo",
 		request,
@@ -5743,7 +5743,7 @@ end
 function AdminApi.GetMatchmakerGameModesAsync(
 	secretKey: string, 
 	request: GetMatchmakerGameModesRequest
-): GetMatchmakerGameModesResult | ApiErrorWrapper
+): GetMatchmakerGameModesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetMatchmakerGameModes",
 		request,
@@ -5759,7 +5759,7 @@ end
 function AdminApi.GetPlayedTitleListAsync(
 	secretKey: string, 
 	request: GetPlayedTitleListRequest
-): GetPlayedTitleListResult | ApiErrorWrapper
+): GetPlayedTitleListResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPlayedTitleList",
 		request,
@@ -5775,7 +5775,7 @@ end
 function AdminApi.GetPlayerIdFromAuthTokenAsync(
 	secretKey: string, 
 	request: GetPlayerIdFromAuthTokenRequest
-): GetPlayerIdFromAuthTokenResult | ApiErrorWrapper
+): GetPlayerIdFromAuthTokenResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPlayerIdFromAuthToken",
 		request,
@@ -5795,7 +5795,7 @@ end
 function AdminApi.GetPlayerProfileAsync(
 	secretKey: string, 
 	request: GetPlayerProfileRequest
-): GetPlayerProfileResult | ApiErrorWrapper
+): GetPlayerProfileResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPlayerProfile",
 		request,
@@ -5808,7 +5808,7 @@ end
 function AdminApi.GetPlayerSegmentsAsync(
 	secretKey: string, 
 	request: GetPlayersSegmentsRequest
-): GetPlayerSegmentsResult | ApiErrorWrapper
+): GetPlayerSegmentsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPlayerSegments",
 		request,
@@ -5826,7 +5826,7 @@ end
 function AdminApi.GetPlayerSharedSecretsAsync(
 	secretKey: string, 
 	request: GetPlayerSharedSecretsRequest
-): GetPlayerSharedSecretsResult | ApiErrorWrapper
+): GetPlayerSharedSecretsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPlayerSharedSecrets",
 		request,
@@ -5839,7 +5839,7 @@ end
 function AdminApi.GetPlayerStatisticDefinitionsAsync(
 	secretKey: string, 
 	request: GetPlayerStatisticDefinitionsRequest
-): GetPlayerStatisticDefinitionsResult | ApiErrorWrapper
+): GetPlayerStatisticDefinitionsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPlayerStatisticDefinitions",
 		request,
@@ -5852,7 +5852,7 @@ end
 function AdminApi.GetPlayerStatisticVersionsAsync(
 	secretKey: string, 
 	request: GetPlayerStatisticVersionsRequest
-): GetPlayerStatisticVersionsResult | ApiErrorWrapper
+): GetPlayerStatisticVersionsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPlayerStatisticVersions",
 		request,
@@ -5869,7 +5869,7 @@ end
 function AdminApi.GetPlayerTagsAsync(
 	secretKey: string, 
 	request: GetPlayerTagsRequest
-): GetPlayerTagsResult | ApiErrorWrapper
+): GetPlayerTagsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPlayerTags",
 		request,
@@ -5893,7 +5893,7 @@ end
 function AdminApi.GetPlayersInSegmentAsync(
 	secretKey: string, 
 	request: GetPlayersInSegmentRequest
-): GetPlayersInSegmentResult | ApiErrorWrapper
+): GetPlayersInSegmentResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPlayersInSegment",
 		request,
@@ -5908,7 +5908,7 @@ end
 function AdminApi.GetPolicyAsync(
 	secretKey: string, 
 	request: GetPolicyRequest
-): GetPolicyResponse | ApiErrorWrapper
+): GetPolicyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPolicy",
 		request,
@@ -5928,7 +5928,7 @@ end
 function AdminApi.GetPublisherDataAsync(
 	secretKey: string, 
 	request: GetPublisherDataRequest
-): GetPublisherDataResult | ApiErrorWrapper
+): GetPublisherDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetPublisherData",
 		request,
@@ -5941,7 +5941,7 @@ end
 function AdminApi.GetRandomResultTablesAsync(
 	secretKey: string, 
 	request: GetRandomResultTablesRequest
-): GetRandomResultTablesResult | ApiErrorWrapper
+): GetRandomResultTablesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetRandomResultTables",
 		request,
@@ -5956,7 +5956,7 @@ end
 function AdminApi.GetSegmentExportAsync(
 	secretKey: string, 
 	request: GetPlayersInSegmentExportRequest
-): GetPlayersInSegmentExportResponse | ApiErrorWrapper
+): GetPlayersInSegmentExportResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetSegmentExport",
 		request,
@@ -5971,7 +5971,7 @@ end
 function AdminApi.GetSegmentsAsync(
 	secretKey: string, 
 	request: GetSegmentsRequest
-): GetSegmentsResponse | ApiErrorWrapper
+): GetSegmentsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetSegments",
 		request,
@@ -5997,7 +5997,7 @@ end
 function AdminApi.GetStoreItemsAsync(
 	secretKey: string, 
 	request: GetStoreItemsRequest
-): GetStoreItemsResult | ApiErrorWrapper
+): GetStoreItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetStoreItems",
 		request,
@@ -6015,7 +6015,7 @@ end
 function AdminApi.GetTaskInstancesAsync(
 	secretKey: string, 
 	request: GetTaskInstancesRequest
-): GetTaskInstancesResult | ApiErrorWrapper
+): GetTaskInstancesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetTaskInstances",
 		request,
@@ -6028,7 +6028,7 @@ end
 function AdminApi.GetTasksAsync(
 	secretKey: string, 
 	request: GetTasksRequest
-): GetTasksResult | ApiErrorWrapper
+): GetTasksResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetTasks",
 		request,
@@ -6050,7 +6050,7 @@ end
 function AdminApi.GetTitleDataAsync(
 	secretKey: string, 
 	request: GetTitleDataRequest
-): GetTitleDataResult | ApiErrorWrapper
+): GetTitleDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetTitleData",
 		request,
@@ -6069,7 +6069,7 @@ end
 function AdminApi.GetTitleInternalDataAsync(
 	secretKey: string, 
 	request: GetTitleDataRequest
-): GetTitleDataResult | ApiErrorWrapper
+): GetTitleDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetTitleInternalData",
 		request,
@@ -6089,7 +6089,7 @@ end
 function AdminApi.GetUserAccountInfoAsync(
 	secretKey: string, 
 	request: LookupUserAccountInfoRequest
-): LookupUserAccountInfoResult | ApiErrorWrapper
+): LookupUserAccountInfoResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetUserAccountInfo",
 		request,
@@ -6104,7 +6104,7 @@ end
 function AdminApi.GetUserBansAsync(
 	secretKey: string, 
 	request: GetUserBansRequest
-): GetUserBansResult | ApiErrorWrapper
+): GetUserBansResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetUserBans",
 		request,
@@ -6121,7 +6121,7 @@ end
 function AdminApi.GetUserDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetUserData",
 		request,
@@ -6138,7 +6138,7 @@ end
 function AdminApi.GetUserInternalDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetUserInternalData",
 		request,
@@ -6158,7 +6158,7 @@ end
 function AdminApi.GetUserInventoryAsync(
 	secretKey: string, 
 	request: GetUserInventoryRequest
-): GetUserInventoryResult | ApiErrorWrapper
+): GetUserInventoryResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetUserInventory",
 		request,
@@ -6175,7 +6175,7 @@ end
 function AdminApi.GetUserPublisherDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetUserPublisherData",
 		request,
@@ -6192,7 +6192,7 @@ end
 function AdminApi.GetUserPublisherInternalDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetUserPublisherInternalData",
 		request,
@@ -6209,7 +6209,7 @@ end
 function AdminApi.GetUserPublisherReadOnlyDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetUserPublisherReadOnlyData",
 		request,
@@ -6226,7 +6226,7 @@ end
 function AdminApi.GetUserReadOnlyDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GetUserReadOnlyData",
 		request,
@@ -6245,7 +6245,7 @@ end
 function AdminApi.GrantItemsToUsersAsync(
 	secretKey: string, 
 	request: GrantItemsToUsersRequest
-): GrantItemsToUsersResult | ApiErrorWrapper
+): GrantItemsToUsersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/GrantItemsToUsers",
 		request,
@@ -6261,7 +6261,7 @@ end
 function AdminApi.IncrementLimitedEditionItemAvailabilityAsync(
 	secretKey: string, 
 	request: IncrementLimitedEditionItemAvailabilityRequest
-): IncrementLimitedEditionItemAvailabilityResult | ApiErrorWrapper
+): IncrementLimitedEditionItemAvailabilityResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/IncrementLimitedEditionItemAvailability",
 		request,
@@ -6289,7 +6289,7 @@ end
 function AdminApi.IncrementPlayerStatisticVersionAsync(
 	secretKey: string, 
 	request: IncrementPlayerStatisticVersionRequest
-): IncrementPlayerStatisticVersionResult | ApiErrorWrapper
+): IncrementPlayerStatisticVersionResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/IncrementPlayerStatisticVersion",
 		request,
@@ -6302,7 +6302,7 @@ end
 function AdminApi.ListOpenIdConnectionAsync(
 	secretKey: string, 
 	request: ListOpenIdConnectionRequest
-): ListOpenIdConnectionResponse | ApiErrorWrapper
+): ListOpenIdConnectionResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/ListOpenIdConnection",
 		request,
@@ -6315,7 +6315,7 @@ end
 function AdminApi.ListVirtualCurrencyTypesAsync(
 	secretKey: string, 
 	request: ListVirtualCurrencyTypesRequest
-): ListVirtualCurrencyTypesResult | ApiErrorWrapper
+): ListVirtualCurrencyTypesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/ListVirtualCurrencyTypes",
 		request,
@@ -6328,7 +6328,7 @@ end
 function AdminApi.ModifyServerBuildAsync(
 	secretKey: string, 
 	request: ModifyServerBuildRequest
-): ModifyServerBuildResult | ApiErrorWrapper
+): ModifyServerBuildResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/ModifyServerBuild",
 		request,
@@ -6341,7 +6341,7 @@ end
 function AdminApi.RefundPurchaseAsync(
 	secretKey: string, 
 	request: RefundPurchaseRequest
-): RefundPurchaseResponse | ApiErrorWrapper
+): RefundPurchaseResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/RefundPurchase",
 		request,
@@ -6358,7 +6358,7 @@ end
 function AdminApi.RemovePlayerTagAsync(
 	secretKey: string, 
 	request: RemovePlayerTagRequest
-): RemovePlayerTagResult | ApiErrorWrapper
+): RemovePlayerTagResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/RemovePlayerTag",
 		request,
@@ -6376,7 +6376,7 @@ end
 function AdminApi.RemoveVirtualCurrencyTypesAsync(
 	secretKey: string, 
 	request: RemoveVirtualCurrencyTypesRequest
-): BlankResult | ApiErrorWrapper
+): BlankResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/RemoveVirtualCurrencyTypes",
 		request,
@@ -6392,7 +6392,7 @@ end
 function AdminApi.ResetCharacterStatisticsAsync(
 	secretKey: string, 
 	request: ResetCharacterStatisticsRequest
-): ResetCharacterStatisticsResult | ApiErrorWrapper
+): ResetCharacterStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/ResetCharacterStatistics",
 		request,
@@ -6409,7 +6409,7 @@ end
 function AdminApi.ResetPasswordAsync(
 	secretKey: string, 
 	request: ResetPasswordRequest
-): ResetPasswordResult | ApiErrorWrapper
+): ResetPasswordResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/ResetPassword",
 		request,
@@ -6425,7 +6425,7 @@ end
 function AdminApi.ResetUserStatisticsAsync(
 	secretKey: string, 
 	request: ResetUserStatisticsRequest
-): ResetUserStatisticsResult | ApiErrorWrapper
+): ResetUserStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/ResetUserStatistics",
 		request,
@@ -6438,7 +6438,7 @@ end
 function AdminApi.ResolvePurchaseDisputeAsync(
 	secretKey: string, 
 	request: ResolvePurchaseDisputeRequest
-): ResolvePurchaseDisputeResponse | ApiErrorWrapper
+): ResolvePurchaseDisputeResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/ResolvePurchaseDispute",
 		request,
@@ -6455,7 +6455,7 @@ end
 function AdminApi.RevokeAllBansForUserAsync(
 	secretKey: string, 
 	request: RevokeAllBansForUserRequest
-): RevokeAllBansForUserResult | ApiErrorWrapper
+): RevokeAllBansForUserResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/RevokeAllBansForUser",
 		request,
@@ -6472,7 +6472,7 @@ end
 function AdminApi.RevokeBansAsync(
 	secretKey: string, 
 	request: RevokeBansRequest
-): RevokeBansResult | ApiErrorWrapper
+): RevokeBansResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/RevokeBans",
 		request,
@@ -6489,7 +6489,7 @@ end
 function AdminApi.RevokeInventoryItemAsync(
 	secretKey: string, 
 	request: RevokeInventoryItemRequest
-): RevokeInventoryResult | ApiErrorWrapper
+): RevokeInventoryResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/RevokeInventoryItem",
 		request,
@@ -6506,7 +6506,7 @@ end
 function AdminApi.RevokeInventoryItemsAsync(
 	secretKey: string, 
 	request: RevokeInventoryItemsRequest
-): RevokeInventoryItemsResult | ApiErrorWrapper
+): RevokeInventoryItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/RevokeInventoryItems",
 		request,
@@ -6521,7 +6521,7 @@ end
 function AdminApi.RunTaskAsync(
 	secretKey: string, 
 	request: RunTaskRequest
-): RunTaskResult | ApiErrorWrapper
+): RunTaskResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/RunTask",
 		request,
@@ -6539,7 +6539,7 @@ end
 function AdminApi.SendAccountRecoveryEmailAsync(
 	secretKey: string, 
 	request: SendAccountRecoveryEmailRequest
-): SendAccountRecoveryEmailResult | ApiErrorWrapper
+): SendAccountRecoveryEmailResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SendAccountRecoveryEmail",
 		request,
@@ -6560,7 +6560,7 @@ end
 function AdminApi.SetCatalogItemsAsync(
 	secretKey: string, 
 	request: UpdateCatalogItemsRequest
-): UpdateCatalogItemsResult | ApiErrorWrapper
+): UpdateCatalogItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SetCatalogItems",
 		request,
@@ -6576,7 +6576,7 @@ end
 function AdminApi.SetMembershipOverrideAsync(
 	secretKey: string, 
 	request: SetMembershipOverrideRequest
-): SetMembershipOverrideResult | ApiErrorWrapper
+): SetMembershipOverrideResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SetMembershipOverride",
 		request,
@@ -6598,7 +6598,7 @@ end
 function AdminApi.SetPlayerSecretAsync(
 	secretKey: string, 
 	request: SetPlayerSecretRequest
-): SetPlayerSecretResult | ApiErrorWrapper
+): SetPlayerSecretResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SetPlayerSecret",
 		request,
@@ -6611,7 +6611,7 @@ end
 function AdminApi.SetPublishedRevisionAsync(
 	secretKey: string, 
 	request: SetPublishedRevisionRequest
-): SetPublishedRevisionResult | ApiErrorWrapper
+): SetPublishedRevisionResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SetPublishedRevision",
 		request,
@@ -6632,7 +6632,7 @@ end
 function AdminApi.SetPublisherDataAsync(
 	secretKey: string, 
 	request: SetPublisherDataRequest
-): SetPublisherDataResult | ApiErrorWrapper
+): SetPublisherDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SetPublisherData",
 		request,
@@ -6665,7 +6665,7 @@ end
 function AdminApi.SetStoreItemsAsync(
 	secretKey: string, 
 	request: UpdateStoreItemsRequest
-): UpdateStoreItemsResult | ApiErrorWrapper
+): UpdateStoreItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SetStoreItems",
 		request,
@@ -6686,7 +6686,7 @@ end
 function AdminApi.SetTitleDataAsync(
 	secretKey: string, 
 	request: SetTitleDataRequest
-): SetTitleDataResult | ApiErrorWrapper
+): SetTitleDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SetTitleData",
 		request,
@@ -6704,7 +6704,7 @@ end
 function AdminApi.SetTitleDataAndOverridesAsync(
 	secretKey: string, 
 	request: SetTitleDataAndOverridesRequest
-): SetTitleDataAndOverridesResult | ApiErrorWrapper
+): SetTitleDataAndOverridesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SetTitleDataAndOverrides",
 		request,
@@ -6724,7 +6724,7 @@ end
 function AdminApi.SetTitleInternalDataAsync(
 	secretKey: string, 
 	request: SetTitleDataRequest
-): SetTitleDataResult | ApiErrorWrapper
+): SetTitleDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SetTitleInternalData",
 		request,
@@ -6743,7 +6743,7 @@ end
 function AdminApi.SetupPushNotificationAsync(
 	secretKey: string, 
 	request: SetupPushNotificationRequest
-): SetupPushNotificationResult | ApiErrorWrapper
+): SetupPushNotificationResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SetupPushNotification",
 		request,
@@ -6756,7 +6756,7 @@ end
 function AdminApi.SubtractUserVirtualCurrencyAsync(
 	secretKey: string, 
 	request: SubtractUserVirtualCurrencyRequest
-): ModifyUserVirtualCurrencyResult | ApiErrorWrapper
+): ModifyUserVirtualCurrencyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/SubtractUserVirtualCurrency",
 		request,
@@ -6773,7 +6773,7 @@ end
 function AdminApi.UpdateBansAsync(
 	secretKey: string, 
 	request: UpdateBansRequest
-): UpdateBansResult | ApiErrorWrapper
+): UpdateBansResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateBans",
 		request,
@@ -6794,7 +6794,7 @@ end
 function AdminApi.UpdateCatalogItemsAsync(
 	secretKey: string, 
 	request: UpdateCatalogItemsRequest
-): UpdateCatalogItemsResult | ApiErrorWrapper
+): UpdateCatalogItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateCatalogItems",
 		request,
@@ -6807,7 +6807,7 @@ end
 function AdminApi.UpdateCloudScriptAsync(
 	secretKey: string, 
 	request: UpdateCloudScriptRequest
-): UpdateCloudScriptResult | ApiErrorWrapper
+): UpdateCloudScriptResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateCloudScript",
 		request,
@@ -6820,7 +6820,7 @@ end
 function AdminApi.UpdateOpenIdConnectionAsync(
 	secretKey: string, 
 	request: UpdateOpenIdConnectionRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateOpenIdConnection",
 		request,
@@ -6838,7 +6838,7 @@ end
 function AdminApi.UpdatePlayerSharedSecretAsync(
 	secretKey: string, 
 	request: UpdatePlayerSharedSecretRequest
-): UpdatePlayerSharedSecretResult | ApiErrorWrapper
+): UpdatePlayerSharedSecretResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdatePlayerSharedSecret",
 		request,
@@ -6869,7 +6869,7 @@ end
 function AdminApi.UpdatePlayerStatisticDefinitionAsync(
 	secretKey: string, 
 	request: UpdatePlayerStatisticDefinitionRequest
-): UpdatePlayerStatisticDefinitionResult | ApiErrorWrapper
+): UpdatePlayerStatisticDefinitionResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdatePlayerStatisticDefinition",
 		request,
@@ -6891,7 +6891,7 @@ end
 function AdminApi.UpdatePolicyAsync(
 	secretKey: string, 
 	request: UpdatePolicyRequest
-): UpdatePolicyResponse | ApiErrorWrapper
+): UpdatePolicyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdatePolicy",
 		request,
@@ -6908,7 +6908,7 @@ end
 function AdminApi.UpdateRandomResultTablesAsync(
 	secretKey: string, 
 	request: UpdateRandomResultTablesRequest
-): UpdateRandomResultTablesResult | ApiErrorWrapper
+): UpdateRandomResultTablesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateRandomResultTables",
 		request,
@@ -6923,7 +6923,7 @@ end
 function AdminApi.UpdateSegmentAsync(
 	secretKey: string, 
 	request: UpdateSegmentRequest
-): UpdateSegmentResponse | ApiErrorWrapper
+): UpdateSegmentResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateSegment",
 		request,
@@ -6956,7 +6956,7 @@ end
 function AdminApi.UpdateStoreItemsAsync(
 	secretKey: string, 
 	request: UpdateStoreItemsRequest
-): UpdateStoreItemsResult | ApiErrorWrapper
+): UpdateStoreItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateStoreItems",
 		request,
@@ -6976,7 +6976,7 @@ end
 function AdminApi.UpdateTaskAsync(
 	secretKey: string, 
 	request: UpdateTaskRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateTask",
 		request,
@@ -6995,7 +6995,7 @@ end
 function AdminApi.UpdateUserDataAsync(
 	secretKey: string, 
 	request: UpdateUserDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateUserData",
 		request,
@@ -7014,7 +7014,7 @@ end
 function AdminApi.UpdateUserInternalDataAsync(
 	secretKey: string, 
 	request: UpdateUserInternalDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateUserInternalData",
 		request,
@@ -7035,7 +7035,7 @@ end
 function AdminApi.UpdateUserPublisherDataAsync(
 	secretKey: string, 
 	request: UpdateUserDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateUserPublisherData",
 		request,
@@ -7056,7 +7056,7 @@ end
 function AdminApi.UpdateUserPublisherInternalDataAsync(
 	secretKey: string, 
 	request: UpdateUserInternalDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateUserPublisherInternalData",
 		request,
@@ -7077,7 +7077,7 @@ end
 function AdminApi.UpdateUserPublisherReadOnlyDataAsync(
 	secretKey: string, 
 	request: UpdateUserDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateUserPublisherReadOnlyData",
 		request,
@@ -7096,7 +7096,7 @@ end
 function AdminApi.UpdateUserReadOnlyDataAsync(
 	secretKey: string, 
 	request: UpdateUserDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateUserReadOnlyData",
 		request,
@@ -7115,7 +7115,7 @@ end
 function AdminApi.UpdateUserTitleDisplayNameAsync(
 	secretKey: string, 
 	request: UpdateUserTitleDisplayNameRequest
-): UpdateUserTitleDisplayNameResult | ApiErrorWrapper
+): UpdateUserTitleDisplayNameResult
 	return PlayFabInternal.MakeApiCall(
 		"/Admin/UpdateUserTitleDisplayName",
 		request,

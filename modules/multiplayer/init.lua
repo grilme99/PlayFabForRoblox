@@ -2978,7 +2978,7 @@ export type WindowsCrashDumpConfiguration = {
 function MultiplayerApi.CreateLobbyAsync(
 	entityToken: string, 
 	request: CreateLobbyRequest
-): CreateLobbyResult | ApiErrorWrapper
+): CreateLobbyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CreateLobby",
 		request,
@@ -2993,7 +2993,7 @@ end
 function MultiplayerApi.DeleteLobbyAsync(
 	entityToken: string, 
 	request: DeleteLobbyRequest
-): LobbyEmptyResult | ApiErrorWrapper
+): LobbyEmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/DeleteLobby",
 		request,
@@ -3010,7 +3010,7 @@ end
 function MultiplayerApi.FindFriendLobbiesAsync(
 	entityToken: string, 
 	request: FindFriendLobbiesRequest
-): FindFriendLobbiesResult | ApiErrorWrapper
+): FindFriendLobbiesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/FindFriendLobbies",
 		request,
@@ -3026,7 +3026,7 @@ end
 function MultiplayerApi.FindLobbiesAsync(
 	entityToken: string, 
 	request: FindLobbiesRequest
-): FindLobbiesResult | ApiErrorWrapper
+): FindLobbiesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/FindLobbies",
 		request,
@@ -3039,7 +3039,7 @@ end
 function MultiplayerApi.GetLobbyAsync(
 	entityToken: string, 
 	request: GetLobbyRequest
-): GetLobbyResult | ApiErrorWrapper
+): GetLobbyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetLobby",
 		request,
@@ -3055,7 +3055,7 @@ end
 function MultiplayerApi.InviteToLobbyAsync(
 	entityToken: string, 
 	request: InviteToLobbyRequest
-): LobbyEmptyResult | ApiErrorWrapper
+): LobbyEmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/InviteToLobby",
 		request,
@@ -3068,7 +3068,7 @@ end
 function MultiplayerApi.JoinArrangedLobbyAsync(
 	entityToken: string, 
 	request: JoinArrangedLobbyRequest
-): JoinLobbyResult | ApiErrorWrapper
+): JoinLobbyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/JoinArrangedLobby",
 		request,
@@ -3081,7 +3081,7 @@ end
 function MultiplayerApi.JoinLobbyAsync(
 	entityToken: string, 
 	request: JoinLobbyRequest
-): JoinLobbyResult | ApiErrorWrapper
+): JoinLobbyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/JoinLobby",
 		request,
@@ -3096,7 +3096,7 @@ end
 function MultiplayerApi.LeaveLobbyAsync(
 	entityToken: string, 
 	request: LeaveLobbyRequest
-): LobbyEmptyResult | ApiErrorWrapper
+): LobbyEmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/LeaveLobby",
 		request,
@@ -3113,7 +3113,7 @@ end
 function MultiplayerApi.RemoveMemberAsync(
 	entityToken: string, 
 	request: RemoveMemberFromLobbyRequest
-): LobbyEmptyResult | ApiErrorWrapper
+): LobbyEmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/RemoveMember",
 		request,
@@ -3129,7 +3129,7 @@ end
 function MultiplayerApi.SubscribeToLobbyResourceAsync(
 	entityToken: string, 
 	request: SubscribeToLobbyResourceRequest
-): SubscribeToLobbyResourceResult | ApiErrorWrapper
+): SubscribeToLobbyResourceResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/SubscribeToLobbyResource",
 		request,
@@ -3144,7 +3144,7 @@ end
 function MultiplayerApi.UnsubscribeFromLobbyResourceAsync(
 	entityToken: string, 
 	request: UnsubscribeFromLobbyResourceRequest
-): LobbyEmptyResult | ApiErrorWrapper
+): LobbyEmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/UnsubscribeFromLobbyResource",
 		request,
@@ -3157,7 +3157,7 @@ end
 function MultiplayerApi.UpdateLobbyAsync(
 	entityToken: string, 
 	request: UpdateLobbyRequest
-): LobbyEmptyResult | ApiErrorWrapper
+): LobbyEmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/UpdateLobby",
 		request,
@@ -3177,7 +3177,7 @@ end
 function MultiplayerApi.CancelAllMatchmakingTicketsForPlayerAsync(
 	entityToken: string, 
 	request: CancelAllMatchmakingTicketsForPlayerRequest
-): CancelAllMatchmakingTicketsForPlayerResult | ApiErrorWrapper
+): CancelAllMatchmakingTicketsForPlayerResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CancelAllMatchmakingTicketsForPlayer",
 		request,
@@ -3195,7 +3195,7 @@ end
 function MultiplayerApi.CancelAllServerBackfillTicketsForPlayerAsync(
 	entityToken: string, 
 	request: CancelAllServerBackfillTicketsForPlayerRequest
-): CancelAllServerBackfillTicketsForPlayerResult | ApiErrorWrapper
+): CancelAllServerBackfillTicketsForPlayerResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CancelAllServerBackfillTicketsForPlayer",
 		request,
@@ -3223,7 +3223,7 @@ end
 function MultiplayerApi.CancelMatchmakingTicketAsync(
 	entityToken: string, 
 	request: CancelMatchmakingTicketRequest
-): CancelMatchmakingTicketResult | ApiErrorWrapper
+): CancelMatchmakingTicketResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CancelMatchmakingTicket",
 		request,
@@ -3245,7 +3245,7 @@ end
 function MultiplayerApi.CancelServerBackfillTicketAsync(
 	entityToken: string, 
 	request: CancelServerBackfillTicketRequest
-): CancelServerBackfillTicketResult | ApiErrorWrapper
+): CancelServerBackfillTicketResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CancelServerBackfillTicket",
 		request,
@@ -3261,7 +3261,7 @@ end
 function MultiplayerApi.CreateMatchmakingTicketAsync(
 	entityToken: string, 
 	request: CreateMatchmakingTicketRequest
-): CreateMatchmakingTicketResult | ApiErrorWrapper
+): CreateMatchmakingTicketResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CreateMatchmakingTicket",
 		request,
@@ -3277,7 +3277,7 @@ end
 function MultiplayerApi.CreateServerBackfillTicketAsync(
 	entityToken: string, 
 	request: CreateServerBackfillTicketRequest
-): CreateServerBackfillTicketResult | ApiErrorWrapper
+): CreateServerBackfillTicketResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CreateServerBackfillTicket",
 		request,
@@ -3292,7 +3292,7 @@ end
 function MultiplayerApi.CreateServerMatchmakingTicketAsync(
 	entityToken: string, 
 	request: CreateServerMatchmakingTicketRequest
-): CreateMatchmakingTicketResult | ApiErrorWrapper
+): CreateMatchmakingTicketResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CreateServerMatchmakingTicket",
 		request,
@@ -3310,7 +3310,7 @@ end
 function MultiplayerApi.GetMatchAsync(
 	entityToken: string, 
 	request: GetMatchRequest
-): GetMatchResult | ApiErrorWrapper
+): GetMatchResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetMatch",
 		request,
@@ -3325,7 +3325,7 @@ end
 function MultiplayerApi.GetMatchmakingQueueAsync(
 	entityToken: string, 
 	request: GetMatchmakingQueueRequest
-): GetMatchmakingQueueResult | ApiErrorWrapper
+): GetMatchmakingQueueResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetMatchmakingQueue",
 		request,
@@ -3342,7 +3342,7 @@ end
 function MultiplayerApi.GetMatchmakingTicketAsync(
 	entityToken: string, 
 	request: GetMatchmakingTicketRequest
-): GetMatchmakingTicketResult | ApiErrorWrapper
+): GetMatchmakingTicketResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetMatchmakingTicket",
 		request,
@@ -3362,7 +3362,7 @@ end
 function MultiplayerApi.GetQueueStatisticsAsync(
 	entityToken: string, 
 	request: GetQueueStatisticsRequest
-): GetQueueStatisticsResult | ApiErrorWrapper
+): GetQueueStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetQueueStatistics",
 		request,
@@ -3379,7 +3379,7 @@ end
 function MultiplayerApi.GetServerBackfillTicketAsync(
 	entityToken: string, 
 	request: GetServerBackfillTicketRequest
-): GetServerBackfillTicketResult | ApiErrorWrapper
+): GetServerBackfillTicketResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetServerBackfillTicket",
 		request,
@@ -3398,7 +3398,7 @@ end
 function MultiplayerApi.JoinMatchmakingTicketAsync(
 	entityToken: string, 
 	request: JoinMatchmakingTicketRequest
-): JoinMatchmakingTicketResult | ApiErrorWrapper
+): JoinMatchmakingTicketResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/JoinMatchmakingTicket",
 		request,
@@ -3413,7 +3413,7 @@ end
 function MultiplayerApi.ListMatchmakingQueuesAsync(
 	entityToken: string, 
 	request: ListMatchmakingQueuesRequest
-): ListMatchmakingQueuesResult | ApiErrorWrapper
+): ListMatchmakingQueuesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListMatchmakingQueues",
 		request,
@@ -3430,7 +3430,7 @@ end
 function MultiplayerApi.ListMatchmakingTicketsForPlayerAsync(
 	entityToken: string, 
 	request: ListMatchmakingTicketsForPlayerRequest
-): ListMatchmakingTicketsForPlayerResult | ApiErrorWrapper
+): ListMatchmakingTicketsForPlayerResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListMatchmakingTicketsForPlayer",
 		request,
@@ -3445,7 +3445,7 @@ end
 function MultiplayerApi.ListServerBackfillTicketsForPlayerAsync(
 	entityToken: string, 
 	request: ListServerBackfillTicketsForPlayerRequest
-): ListServerBackfillTicketsForPlayerResult | ApiErrorWrapper
+): ListServerBackfillTicketsForPlayerResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListServerBackfillTicketsForPlayer",
 		request,
@@ -3462,7 +3462,7 @@ end
 function MultiplayerApi.RemoveMatchmakingQueueAsync(
 	entityToken: string, 
 	request: RemoveMatchmakingQueueRequest
-): RemoveMatchmakingQueueResult | ApiErrorWrapper
+): RemoveMatchmakingQueueResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/RemoveMatchmakingQueue",
 		request,
@@ -3480,7 +3480,7 @@ end
 function MultiplayerApi.SetMatchmakingQueueAsync(
 	entityToken: string, 
 	request: SetMatchmakingQueueRequest
-): SetMatchmakingQueueResult | ApiErrorWrapper
+): SetMatchmakingQueueResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/SetMatchmakingQueue",
 		request,
@@ -3496,7 +3496,7 @@ end
 function MultiplayerApi.SubscribeToMatchmakingResourceAsync(
 	entityToken: string, 
 	request: SubscribeToMatchResourceRequest
-): SubscribeToMatchResourceResult | ApiErrorWrapper
+): SubscribeToMatchResourceResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/SubscribeToMatchmakingResource",
 		request,
@@ -3514,7 +3514,7 @@ end
 function MultiplayerApi.UnsubscribeFromMatchmakingResourceAsync(
 	entityToken: string, 
 	request: UnsubscribeFromMatchResourceRequest
-): UnsubscribeFromMatchResourceResult | ApiErrorWrapper
+): UnsubscribeFromMatchResourceResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/UnsubscribeFromMatchmakingResource",
 		request,
@@ -3529,7 +3529,7 @@ end
 function MultiplayerApi.CreateBuildAliasAsync(
 	entityToken: string, 
 	request: CreateBuildAliasRequest
-): BuildAliasDetailsResponse | ApiErrorWrapper
+): BuildAliasDetailsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CreateBuildAlias",
 		request,
@@ -3545,7 +3545,7 @@ end
 function MultiplayerApi.CreateBuildWithCustomContainerAsync(
 	entityToken: string, 
 	request: CreateBuildWithCustomContainerRequest
-): CreateBuildWithCustomContainerResponse | ApiErrorWrapper
+): CreateBuildWithCustomContainerResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CreateBuildWithCustomContainer",
 		request,
@@ -3561,7 +3561,7 @@ end
 function MultiplayerApi.CreateBuildWithManagedContainerAsync(
 	entityToken: string, 
 	request: CreateBuildWithManagedContainerRequest
-): CreateBuildWithManagedContainerResponse | ApiErrorWrapper
+): CreateBuildWithManagedContainerResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CreateBuildWithManagedContainer",
 		request,
@@ -3577,7 +3577,7 @@ end
 function MultiplayerApi.CreateBuildWithProcessBasedServerAsync(
 	entityToken: string, 
 	request: CreateBuildWithProcessBasedServerRequest
-): CreateBuildWithProcessBasedServerResponse | ApiErrorWrapper
+): CreateBuildWithProcessBasedServerResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CreateBuildWithProcessBasedServer",
 		request,
@@ -3593,7 +3593,7 @@ end
 function MultiplayerApi.CreateRemoteUserAsync(
 	entityToken: string, 
 	request: CreateRemoteUserRequest
-): CreateRemoteUserResponse | ApiErrorWrapper
+): CreateRemoteUserResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CreateRemoteUser",
 		request,
@@ -3608,7 +3608,7 @@ end
 function MultiplayerApi.CreateTitleMultiplayerServersQuotaChangeAsync(
 	entityToken: string, 
 	request: CreateTitleMultiplayerServersQuotaChangeRequest
-): CreateTitleMultiplayerServersQuotaChangeResponse | ApiErrorWrapper
+): CreateTitleMultiplayerServersQuotaChangeResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/CreateTitleMultiplayerServersQuotaChange",
 		request,
@@ -3623,7 +3623,7 @@ end
 function MultiplayerApi.DeleteAssetAsync(
 	entityToken: string, 
 	request: DeleteAssetRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/DeleteAsset",
 		request,
@@ -3638,7 +3638,7 @@ end
 function MultiplayerApi.DeleteBuildAsync(
 	entityToken: string, 
 	request: DeleteBuildRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/DeleteBuild",
 		request,
@@ -3653,7 +3653,7 @@ end
 function MultiplayerApi.DeleteBuildAliasAsync(
 	entityToken: string, 
 	request: DeleteBuildAliasRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/DeleteBuildAlias",
 		request,
@@ -3668,7 +3668,7 @@ end
 function MultiplayerApi.DeleteBuildRegionAsync(
 	entityToken: string, 
 	request: DeleteBuildRegionRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/DeleteBuildRegion",
 		request,
@@ -3683,7 +3683,7 @@ end
 function MultiplayerApi.DeleteCertificateAsync(
 	entityToken: string, 
 	request: DeleteCertificateRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/DeleteCertificate",
 		request,
@@ -3700,7 +3700,7 @@ end
 function MultiplayerApi.DeleteContainerImageRepositoryAsync(
 	entityToken: string, 
 	request: DeleteContainerImageRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/DeleteContainerImageRepository",
 		request,
@@ -3716,7 +3716,7 @@ end
 function MultiplayerApi.DeleteRemoteUserAsync(
 	entityToken: string, 
 	request: DeleteRemoteUserRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/DeleteRemoteUser",
 		request,
@@ -3734,7 +3734,7 @@ end
 function MultiplayerApi.EnableMultiplayerServersForTitleAsync(
 	entityToken: string, 
 	request: EnableMultiplayerServersForTitleRequest
-): EnableMultiplayerServersForTitleResponse | ApiErrorWrapper
+): EnableMultiplayerServersForTitleResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/EnableMultiplayerServersForTitle",
 		request,
@@ -3749,7 +3749,7 @@ end
 function MultiplayerApi.GetAssetDownloadUrlAsync(
 	entityToken: string, 
 	request: GetAssetDownloadUrlRequest
-): GetAssetDownloadUrlResponse | ApiErrorWrapper
+): GetAssetDownloadUrlResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetAssetDownloadUrl",
 		request,
@@ -3764,7 +3764,7 @@ end
 function MultiplayerApi.GetAssetUploadUrlAsync(
 	entityToken: string, 
 	request: GetAssetUploadUrlRequest
-): GetAssetUploadUrlResponse | ApiErrorWrapper
+): GetAssetUploadUrlResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetAssetUploadUrl",
 		request,
@@ -3779,7 +3779,7 @@ end
 function MultiplayerApi.GetBuildAsync(
 	entityToken: string, 
 	request: GetBuildRequest
-): GetBuildResponse | ApiErrorWrapper
+): GetBuildResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetBuild",
 		request,
@@ -3794,7 +3794,7 @@ end
 function MultiplayerApi.GetBuildAliasAsync(
 	entityToken: string, 
 	request: GetBuildAliasRequest
-): BuildAliasDetailsResponse | ApiErrorWrapper
+): BuildAliasDetailsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetBuildAlias",
 		request,
@@ -3810,7 +3810,7 @@ end
 function MultiplayerApi.GetContainerRegistryCredentialsAsync(
 	entityToken: string, 
 	request: GetContainerRegistryCredentialsRequest
-): GetContainerRegistryCredentialsResponse | ApiErrorWrapper
+): GetContainerRegistryCredentialsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetContainerRegistryCredentials",
 		request,
@@ -3825,7 +3825,7 @@ end
 function MultiplayerApi.GetMultiplayerServerDetailsAsync(
 	entityToken: string, 
 	request: GetMultiplayerServerDetailsRequest
-): GetMultiplayerServerDetailsResponse | ApiErrorWrapper
+): GetMultiplayerServerDetailsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetMultiplayerServerDetails",
 		request,
@@ -3841,7 +3841,7 @@ end
 function MultiplayerApi.GetMultiplayerServerLogsAsync(
 	entityToken: string, 
 	request: GetMultiplayerServerLogsRequest
-): GetMultiplayerServerLogsResponse | ApiErrorWrapper
+): GetMultiplayerServerLogsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetMultiplayerServerLogs",
 		request,
@@ -3857,7 +3857,7 @@ end
 function MultiplayerApi.GetMultiplayerSessionLogsBySessionIdAsync(
 	entityToken: string, 
 	request: GetMultiplayerSessionLogsBySessionIdRequest
-): GetMultiplayerServerLogsResponse | ApiErrorWrapper
+): GetMultiplayerServerLogsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetMultiplayerSessionLogsBySessionId",
 		request,
@@ -3873,7 +3873,7 @@ end
 function MultiplayerApi.GetRemoteLoginEndpointAsync(
 	entityToken: string, 
 	request: GetRemoteLoginEndpointRequest
-): GetRemoteLoginEndpointResponse | ApiErrorWrapper
+): GetRemoteLoginEndpointResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetRemoteLoginEndpoint",
 		request,
@@ -3889,7 +3889,7 @@ end
 function MultiplayerApi.GetTitleEnabledForMultiplayerServersStatusAsync(
 	entityToken: string, 
 	request: GetTitleEnabledForMultiplayerServersStatusRequest
-): GetTitleEnabledForMultiplayerServersStatusResponse | ApiErrorWrapper
+): GetTitleEnabledForMultiplayerServersStatusResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetTitleEnabledForMultiplayerServersStatus",
 		request,
@@ -3904,7 +3904,7 @@ end
 function MultiplayerApi.GetTitleMultiplayerServersQuotaChangeAsync(
 	entityToken: string, 
 	request: GetTitleMultiplayerServersQuotaChangeRequest
-): GetTitleMultiplayerServersQuotaChangeResponse | ApiErrorWrapper
+): GetTitleMultiplayerServersQuotaChangeResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetTitleMultiplayerServersQuotaChange",
 		request,
@@ -3919,7 +3919,7 @@ end
 function MultiplayerApi.GetTitleMultiplayerServersQuotasAsync(
 	entityToken: string, 
 	request: GetTitleMultiplayerServersQuotasRequest
-): GetTitleMultiplayerServersQuotasResponse | ApiErrorWrapper
+): GetTitleMultiplayerServersQuotasResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/GetTitleMultiplayerServersQuotas",
 		request,
@@ -3934,7 +3934,7 @@ end
 function MultiplayerApi.ListArchivedMultiplayerServersAsync(
 	entityToken: string, 
 	request: ListMultiplayerServersRequest
-): ListMultiplayerServersResponse | ApiErrorWrapper
+): ListMultiplayerServersResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListArchivedMultiplayerServers",
 		request,
@@ -3949,7 +3949,7 @@ end
 function MultiplayerApi.ListAssetSummariesAsync(
 	entityToken: string, 
 	request: ListAssetSummariesRequest
-): ListAssetSummariesResponse | ApiErrorWrapper
+): ListAssetSummariesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListAssetSummaries",
 		request,
@@ -3965,7 +3965,7 @@ end
 function MultiplayerApi.ListBuildAliasesAsync(
 	entityToken: string, 
 	request: ListBuildAliasesRequest
-): ListBuildAliasesResponse | ApiErrorWrapper
+): ListBuildAliasesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListBuildAliases",
 		request,
@@ -3981,7 +3981,7 @@ end
 function MultiplayerApi.ListBuildSummariesV2Async(
 	entityToken: string, 
 	request: ListBuildSummariesRequest
-): ListBuildSummariesResponse | ApiErrorWrapper
+): ListBuildSummariesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListBuildSummariesV2",
 		request,
@@ -3996,7 +3996,7 @@ end
 function MultiplayerApi.ListCertificateSummariesAsync(
 	entityToken: string, 
 	request: ListCertificateSummariesRequest
-): ListCertificateSummariesResponse | ApiErrorWrapper
+): ListCertificateSummariesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListCertificateSummaries",
 		request,
@@ -4012,7 +4012,7 @@ end
 function MultiplayerApi.ListContainerImageTagsAsync(
 	entityToken: string, 
 	request: ListContainerImageTagsRequest
-): ListContainerImageTagsResponse | ApiErrorWrapper
+): ListContainerImageTagsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListContainerImageTags",
 		request,
@@ -4028,7 +4028,7 @@ end
 function MultiplayerApi.ListContainerImagesAsync(
 	entityToken: string, 
 	request: ListContainerImagesRequest
-): ListContainerImagesResponse | ApiErrorWrapper
+): ListContainerImagesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListContainerImages",
 		request,
@@ -4043,7 +4043,7 @@ end
 function MultiplayerApi.ListMultiplayerServersAsync(
 	entityToken: string, 
 	request: ListMultiplayerServersRequest
-): ListMultiplayerServersResponse | ApiErrorWrapper
+): ListMultiplayerServersResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListMultiplayerServers",
 		request,
@@ -4057,7 +4057,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/multiplayer/multiplayerserver/listpartyqosservers
 function MultiplayerApi.ListPartyQosServersAsync(
 	request: ListPartyQosServersRequest
-): ListPartyQosServersResponse | ApiErrorWrapper
+): ListPartyQosServersResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListPartyQosServers",
 		request,
@@ -4072,7 +4072,7 @@ end
 function MultiplayerApi.ListQosServersForTitleAsync(
 	entityToken: string, 
 	request: ListQosServersForTitleRequest
-): ListQosServersForTitleResponse | ApiErrorWrapper
+): ListQosServersForTitleResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListQosServersForTitle",
 		request,
@@ -4087,7 +4087,7 @@ end
 function MultiplayerApi.ListTitleMultiplayerServersQuotaChangesAsync(
 	entityToken: string, 
 	request: ListTitleMultiplayerServersQuotaChangesRequest
-): ListTitleMultiplayerServersQuotaChangesResponse | ApiErrorWrapper
+): ListTitleMultiplayerServersQuotaChangesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListTitleMultiplayerServersQuotaChanges",
 		request,
@@ -4102,7 +4102,7 @@ end
 function MultiplayerApi.ListVirtualMachineSummariesAsync(
 	entityToken: string, 
 	request: ListVirtualMachineSummariesRequest
-): ListVirtualMachineSummariesResponse | ApiErrorWrapper
+): ListVirtualMachineSummariesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ListVirtualMachineSummaries",
 		request,
@@ -4118,7 +4118,7 @@ end
 function MultiplayerApi.RequestMultiplayerServerAsync(
 	entityToken: string, 
 	request: RequestMultiplayerServerRequest
-): RequestMultiplayerServerResponse | ApiErrorWrapper
+): RequestMultiplayerServerResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/RequestMultiplayerServer",
 		request,
@@ -4134,7 +4134,7 @@ end
 function MultiplayerApi.RolloverContainerRegistryCredentialsAsync(
 	entityToken: string, 
 	request: RolloverContainerRegistryCredentialsRequest
-): RolloverContainerRegistryCredentialsResponse | ApiErrorWrapper
+): RolloverContainerRegistryCredentialsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/RolloverContainerRegistryCredentials",
 		request,
@@ -4153,7 +4153,7 @@ end
 function MultiplayerApi.ShutdownMultiplayerServerAsync(
 	entityToken: string, 
 	request: ShutdownMultiplayerServerRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/ShutdownMultiplayerServer",
 		request,
@@ -4170,7 +4170,7 @@ end
 function MultiplayerApi.UntagContainerImageAsync(
 	entityToken: string, 
 	request: UntagContainerImageRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/UntagContainerImage",
 		request,
@@ -4185,7 +4185,7 @@ end
 function MultiplayerApi.UpdateBuildAliasAsync(
 	entityToken: string, 
 	request: UpdateBuildAliasRequest
-): BuildAliasDetailsResponse | ApiErrorWrapper
+): BuildAliasDetailsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/UpdateBuildAlias",
 		request,
@@ -4200,7 +4200,7 @@ end
 function MultiplayerApi.UpdateBuildNameAsync(
 	entityToken: string, 
 	request: UpdateBuildNameRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/UpdateBuildName",
 		request,
@@ -4215,7 +4215,7 @@ end
 function MultiplayerApi.UpdateBuildRegionAsync(
 	entityToken: string, 
 	request: UpdateBuildRegionRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/UpdateBuildRegion",
 		request,
@@ -4230,7 +4230,7 @@ end
 function MultiplayerApi.UpdateBuildRegionsAsync(
 	entityToken: string, 
 	request: UpdateBuildRegionsRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/UpdateBuildRegions",
 		request,
@@ -4245,7 +4245,7 @@ end
 function MultiplayerApi.UploadCertificateAsync(
 	entityToken: string, 
 	request: UploadCertificateRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/UploadCertificate",
 		request,
@@ -4262,7 +4262,7 @@ end
 function MultiplayerApi.NegotiateAsync(
 	entityToken: string, 
 	request: PubSubNegotiateRequest
-): PubSubNegotiateResult | ApiErrorWrapper
+): PubSubNegotiateResult
 	return PlayFabInternal.MakeApiCall(
 		"/Multiplayer/Negotiate",
 		request,

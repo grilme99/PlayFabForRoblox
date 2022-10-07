@@ -47,7 +47,7 @@ function PlayFabInternal.SetSettings(settings: ISettings)
 	Settings = table.clone(settings)
 end
 
-function PlayFabInternal.MakeApiCall(path: string, requestBody: any, authKey: string?, authValue: string?): never
+function PlayFabInternal.MakeApiCall(path: string, requestBody: any, authKey: string?, authValue: string?): unknown
 	local fullUrl = GetFullUrl(path)
 	local encodedBody = HttpService:JSONEncode(requestBody)
 	local headers = {
@@ -74,13 +74,13 @@ function PlayFabInternal.MakeApiCall(path: string, requestBody: any, authKey: st
 			if responseBody and responseBody.code == 200 and responseBody.data then
 				return responseBody.data
 			else
-				return response
+				error(response)
 			end
 		else
-			return response
+			error(response)
 		end
 	else
-		return tostring(response)
+		error(tostring(response))
 	end
 end
 

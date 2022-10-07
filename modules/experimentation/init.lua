@@ -410,7 +410,7 @@ export type Variant = {
 function ExperimentationApi.CreateExclusionGroupAsync(
 	entityToken: string, 
 	request: CreateExclusionGroupRequest
-): CreateExclusionGroupResult | ApiErrorWrapper
+): CreateExclusionGroupResult
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/CreateExclusionGroup",
 		request,
@@ -423,7 +423,7 @@ end
 function ExperimentationApi.CreateExperimentAsync(
 	entityToken: string, 
 	request: CreateExperimentRequest
-): CreateExperimentResult | ApiErrorWrapper
+): CreateExperimentResult
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/CreateExperiment",
 		request,
@@ -436,7 +436,7 @@ end
 function ExperimentationApi.DeleteExclusionGroupAsync(
 	entityToken: string, 
 	request: DeleteExclusionGroupRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/DeleteExclusionGroup",
 		request,
@@ -449,7 +449,7 @@ end
 function ExperimentationApi.DeleteExperimentAsync(
 	entityToken: string, 
 	request: DeleteExperimentRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/DeleteExperiment",
 		request,
@@ -462,7 +462,7 @@ end
 function ExperimentationApi.GetExclusionGroupTrafficAsync(
 	entityToken: string, 
 	request: GetExclusionGroupTrafficRequest
-): GetExclusionGroupTrafficResult | ApiErrorWrapper
+): GetExclusionGroupTrafficResult
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/GetExclusionGroupTraffic",
 		request,
@@ -475,7 +475,7 @@ end
 function ExperimentationApi.GetExclusionGroupsAsync(
 	entityToken: string, 
 	request: GetExclusionGroupsRequest
-): GetExclusionGroupsResult | ApiErrorWrapper
+): GetExclusionGroupsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/GetExclusionGroups",
 		request,
@@ -488,7 +488,7 @@ end
 function ExperimentationApi.GetExperimentsAsync(
 	entityToken: string, 
 	request: GetExperimentsRequest
-): GetExperimentsResult | ApiErrorWrapper
+): GetExperimentsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/GetExperiments",
 		request,
@@ -501,7 +501,7 @@ end
 function ExperimentationApi.GetLatestScorecardAsync(
 	entityToken: string, 
 	request: GetLatestScorecardRequest
-): GetLatestScorecardResult | ApiErrorWrapper
+): GetLatestScorecardResult
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/GetLatestScorecard",
 		request,
@@ -514,7 +514,7 @@ end
 function ExperimentationApi.GetTreatmentAssignmentAsync(
 	entityToken: string, 
 	request: GetTreatmentAssignmentRequest
-): GetTreatmentAssignmentResult | ApiErrorWrapper
+): GetTreatmentAssignmentResult
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/GetTreatmentAssignment",
 		request,
@@ -527,7 +527,7 @@ end
 function ExperimentationApi.StartExperimentAsync(
 	entityToken: string, 
 	request: StartExperimentRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/StartExperiment",
 		request,
@@ -540,7 +540,7 @@ end
 function ExperimentationApi.StopExperimentAsync(
 	entityToken: string, 
 	request: StopExperimentRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/StopExperiment",
 		request,
@@ -553,7 +553,7 @@ end
 function ExperimentationApi.UpdateExclusionGroupAsync(
 	entityToken: string, 
 	request: UpdateExclusionGroupRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/UpdateExclusionGroup",
 		request,
@@ -566,7 +566,7 @@ end
 function ExperimentationApi.UpdateExperimentAsync(
 	entityToken: string, 
 	request: UpdateExperimentRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Experimentation/UpdateExperiment",
 		request,

@@ -67,6 +67,11 @@
       "$properties": {
         "RespectFilteringEnabled": true
       }
+    },
+    "HttpService": {
+      "$properties": {
+        "HttpEnabled": true
+      }
     }
   }
 }

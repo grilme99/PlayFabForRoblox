@@ -307,7 +307,7 @@ export type SetProfileLanguageResponse = {
 function ProfilesApi.GetGlobalPolicyAsync(
 	entityToken: string, 
 	request: GetGlobalPolicyRequest
-): GetGlobalPolicyResponse | ApiErrorWrapper
+): GetGlobalPolicyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Profiles/GetGlobalPolicy",
 		request,
@@ -328,7 +328,7 @@ end
 function ProfilesApi.GetProfileAsync(
 	entityToken: string, 
 	request: GetEntityProfileRequest
-): GetEntityProfileResponse | ApiErrorWrapper
+): GetEntityProfileResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Profiles/GetProfile",
 		request,
@@ -345,7 +345,7 @@ end
 function ProfilesApi.GetProfilesAsync(
 	entityToken: string, 
 	request: GetEntityProfilesRequest
-): GetEntityProfilesResponse | ApiErrorWrapper
+): GetEntityProfilesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Profiles/GetProfiles",
 		request,
@@ -361,7 +361,7 @@ end
 function ProfilesApi.GetTitlePlayersFromMasterPlayerAccountIdsAsync(
 	entityToken: string, 
 	request: GetTitlePlayersFromMasterPlayerAccountIdsRequest
-): GetTitlePlayersFromMasterPlayerAccountIdsResponse | ApiErrorWrapper
+): GetTitlePlayersFromMasterPlayerAccountIdsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Profiles/GetTitlePlayersFromMasterPlayerAccountIds",
 		request,
@@ -378,7 +378,7 @@ end
 function ProfilesApi.SetGlobalPolicyAsync(
 	entityToken: string, 
 	request: SetGlobalPolicyRequest
-): SetGlobalPolicyResponse | ApiErrorWrapper
+): SetGlobalPolicyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Profiles/SetGlobalPolicy",
 		request,
@@ -394,7 +394,7 @@ end
 function ProfilesApi.SetProfileLanguageAsync(
 	entityToken: string, 
 	request: SetProfileLanguageRequest
-): SetProfileLanguageResponse | ApiErrorWrapper
+): SetProfileLanguageResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Profiles/SetProfileLanguage",
 		request,
@@ -411,7 +411,7 @@ end
 function ProfilesApi.SetProfilePolicyAsync(
 	entityToken: string, 
 	request: SetEntityProfilePolicyRequest
-): SetEntityProfilePolicyResponse | ApiErrorWrapper
+): SetEntityProfilePolicyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Profiles/SetProfilePolicy",
 		request,

@@ -4828,7 +4828,7 @@ export type XboxLiveAccountPlayFabIdPair = {
 function ServerApi.AddCharacterVirtualCurrencyAsync(
 	secretKey: string, 
 	request: AddCharacterVirtualCurrencyRequest
-): ModifyCharacterVirtualCurrencyResult | ApiErrorWrapper
+): ModifyCharacterVirtualCurrencyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/AddCharacterVirtualCurrency",
 		request,
@@ -4841,7 +4841,7 @@ end
 function ServerApi.AddFriendAsync(
 	secretKey: string, 
 	request: AddFriendRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/AddFriend",
 		request,
@@ -4854,7 +4854,7 @@ end
 function ServerApi.AddGenericIDAsync(
 	secretKey: string, 
 	request: AddGenericIDRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/AddGenericID",
 		request,
@@ -4872,7 +4872,7 @@ end
 function ServerApi.AddPlayerTagAsync(
 	secretKey: string, 
 	request: AddPlayerTagRequest
-): AddPlayerTagResult | ApiErrorWrapper
+): AddPlayerTagResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/AddPlayerTag",
 		request,
@@ -4885,7 +4885,7 @@ end
 function ServerApi.AddSharedGroupMembersAsync(
 	secretKey: string, 
 	request: AddSharedGroupMembersRequest
-): AddSharedGroupMembersResult | ApiErrorWrapper
+): AddSharedGroupMembersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/AddSharedGroupMembers",
 		request,
@@ -4898,7 +4898,7 @@ end
 function ServerApi.AddUserVirtualCurrencyAsync(
 	secretKey: string, 
 	request: AddUserVirtualCurrencyRequest
-): ModifyUserVirtualCurrencyResult | ApiErrorWrapper
+): ModifyUserVirtualCurrencyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/AddUserVirtualCurrency",
 		request,
@@ -4916,7 +4916,7 @@ end
 function ServerApi.AuthenticateSessionTicketAsync(
 	secretKey: string, 
 	request: AuthenticateSessionTicketRequest
-): AuthenticateSessionTicketResult | ApiErrorWrapper
+): AuthenticateSessionTicketResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/AuthenticateSessionTicket",
 		request,
@@ -4929,7 +4929,7 @@ end
 function ServerApi.AwardSteamAchievementAsync(
 	secretKey: string, 
 	request: AwardSteamAchievementRequest
-): AwardSteamAchievementResult | ApiErrorWrapper
+): AwardSteamAchievementResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/AwardSteamAchievement",
 		request,
@@ -4946,7 +4946,7 @@ end
 function ServerApi.BanUsersAsync(
 	secretKey: string, 
 	request: BanUsersRequest
-): BanUsersResult | ApiErrorWrapper
+): BanUsersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/BanUsers",
 		request,
@@ -4959,7 +4959,7 @@ end
 function ServerApi.ConsumeItemAsync(
 	secretKey: string, 
 	request: ConsumeItemRequest
-): ConsumeItemResult | ApiErrorWrapper
+): ConsumeItemResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/ConsumeItem",
 		request,
@@ -4976,7 +4976,7 @@ end
 function ServerApi.CreateSharedGroupAsync(
 	secretKey: string, 
 	request: CreateSharedGroupRequest
-): CreateSharedGroupResult | ApiErrorWrapper
+): CreateSharedGroupResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/CreateSharedGroup",
 		request,
@@ -4994,7 +4994,7 @@ end
 function ServerApi.DeleteCharacterFromUserAsync(
 	secretKey: string, 
 	request: DeleteCharacterFromUserRequest
-): DeleteCharacterFromUserResult | ApiErrorWrapper
+): DeleteCharacterFromUserResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/DeleteCharacterFromUser",
 		request,
@@ -5020,7 +5020,7 @@ end
 function ServerApi.DeletePlayerAsync(
 	secretKey: string, 
 	request: DeletePlayerRequest
-): DeletePlayerResult | ApiErrorWrapper
+): DeletePlayerResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/DeletePlayer",
 		request,
@@ -5033,7 +5033,7 @@ end
 function ServerApi.DeletePushNotificationTemplateAsync(
 	secretKey: string, 
 	request: DeletePushNotificationTemplateRequest
-): DeletePushNotificationTemplateResult | ApiErrorWrapper
+): DeletePushNotificationTemplateResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/DeletePushNotificationTemplate",
 		request,
@@ -5046,7 +5046,7 @@ end
 function ServerApi.DeleteSharedGroupAsync(
 	secretKey: string, 
 	request: DeleteSharedGroupRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/DeleteSharedGroup",
 		request,
@@ -5059,7 +5059,7 @@ end
 function ServerApi.DeregisterGameAsync(
 	secretKey: string, 
 	request: DeregisterGameRequest
-): DeregisterGameResponse | ApiErrorWrapper
+): DeregisterGameResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/DeregisterGame",
 		request,
@@ -5072,7 +5072,7 @@ end
 function ServerApi.EvaluateRandomResultTableAsync(
 	secretKey: string, 
 	request: EvaluateRandomResultTableRequest
-): EvaluateRandomResultTableResult | ApiErrorWrapper
+): EvaluateRandomResultTableResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/EvaluateRandomResultTable",
 		request,
@@ -5085,7 +5085,7 @@ end
 function ServerApi.ExecuteCloudScriptAsync(
 	secretKey: string, 
 	request: ExecuteCloudScriptServerRequest
-): ExecuteCloudScriptResult | ApiErrorWrapper
+): ExecuteCloudScriptResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/ExecuteCloudScript",
 		request,
@@ -5100,7 +5100,7 @@ end
 function ServerApi.GetAllSegmentsAsync(
 	secretKey: string, 
 	request: GetAllSegmentsRequest
-): GetAllSegmentsResult | ApiErrorWrapper
+): GetAllSegmentsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetAllSegments",
 		request,
@@ -5115,7 +5115,7 @@ end
 function ServerApi.GetAllUsersCharactersAsync(
 	secretKey: string, 
 	request: ListUsersCharactersRequest
-): ListUsersCharactersResult | ApiErrorWrapper
+): ListUsersCharactersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetAllUsersCharacters",
 		request,
@@ -5128,7 +5128,7 @@ end
 function ServerApi.GetCatalogItemsAsync(
 	secretKey: string, 
 	request: GetCatalogItemsRequest
-): GetCatalogItemsResult | ApiErrorWrapper
+): GetCatalogItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetCatalogItems",
 		request,
@@ -5145,7 +5145,7 @@ end
 function ServerApi.GetCharacterDataAsync(
 	secretKey: string, 
 	request: GetCharacterDataRequest
-): GetCharacterDataResult | ApiErrorWrapper
+): GetCharacterDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetCharacterData",
 		request,
@@ -5162,7 +5162,7 @@ end
 function ServerApi.GetCharacterInternalDataAsync(
 	secretKey: string, 
 	request: GetCharacterDataRequest
-): GetCharacterDataResult | ApiErrorWrapper
+): GetCharacterDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetCharacterInternalData",
 		request,
@@ -5181,7 +5181,7 @@ end
 function ServerApi.GetCharacterInventoryAsync(
 	secretKey: string, 
 	request: GetCharacterInventoryRequest
-): GetCharacterInventoryResult | ApiErrorWrapper
+): GetCharacterInventoryResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetCharacterInventory",
 		request,
@@ -5194,7 +5194,7 @@ end
 function ServerApi.GetCharacterLeaderboardAsync(
 	secretKey: string, 
 	request: GetCharacterLeaderboardRequest
-): GetCharacterLeaderboardResult | ApiErrorWrapper
+): GetCharacterLeaderboardResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetCharacterLeaderboard",
 		request,
@@ -5211,7 +5211,7 @@ end
 function ServerApi.GetCharacterReadOnlyDataAsync(
 	secretKey: string, 
 	request: GetCharacterDataRequest
-): GetCharacterDataResult | ApiErrorWrapper
+): GetCharacterDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetCharacterReadOnlyData",
 		request,
@@ -5230,7 +5230,7 @@ end
 function ServerApi.GetCharacterStatisticsAsync(
 	secretKey: string, 
 	request: GetCharacterStatisticsRequest
-): GetCharacterStatisticsResult | ApiErrorWrapper
+): GetCharacterStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetCharacterStatistics",
 		request,
@@ -5243,7 +5243,7 @@ end
 function ServerApi.GetContentDownloadUrlAsync(
 	secretKey: string, 
 	request: GetContentDownloadUrlRequest
-): GetContentDownloadUrlResult | ApiErrorWrapper
+): GetContentDownloadUrlResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetContentDownloadUrl",
 		request,
@@ -5256,7 +5256,7 @@ end
 function ServerApi.GetFriendLeaderboardAsync(
 	secretKey: string, 
 	request: GetFriendLeaderboardRequest
-): GetLeaderboardResult | ApiErrorWrapper
+): GetLeaderboardResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetFriendLeaderboard",
 		request,
@@ -5269,7 +5269,7 @@ end
 function ServerApi.GetFriendsListAsync(
 	secretKey: string, 
 	request: GetFriendsListRequest
-): GetFriendsListResult | ApiErrorWrapper
+): GetFriendsListResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetFriendsList",
 		request,
@@ -5282,7 +5282,7 @@ end
 function ServerApi.GetLeaderboardAsync(
 	secretKey: string, 
 	request: GetLeaderboardRequest
-): GetLeaderboardResult | ApiErrorWrapper
+): GetLeaderboardResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetLeaderboard",
 		request,
@@ -5295,7 +5295,7 @@ end
 function ServerApi.GetLeaderboardAroundCharacterAsync(
 	secretKey: string, 
 	request: GetLeaderboardAroundCharacterRequest
-): GetLeaderboardAroundCharacterResult | ApiErrorWrapper
+): GetLeaderboardAroundCharacterResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetLeaderboardAroundCharacter",
 		request,
@@ -5308,7 +5308,7 @@ end
 function ServerApi.GetLeaderboardAroundUserAsync(
 	secretKey: string, 
 	request: GetLeaderboardAroundUserRequest
-): GetLeaderboardAroundUserResult | ApiErrorWrapper
+): GetLeaderboardAroundUserResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetLeaderboardAroundUser",
 		request,
@@ -5321,7 +5321,7 @@ end
 function ServerApi.GetLeaderboardForUserCharactersAsync(
 	secretKey: string, 
 	request: GetLeaderboardForUsersCharactersRequest
-): GetLeaderboardForUsersCharactersResult | ApiErrorWrapper
+): GetLeaderboardForUsersCharactersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetLeaderboardForUserCharacters",
 		request,
@@ -5334,7 +5334,7 @@ end
 function ServerApi.GetPlayFabIDsFromFacebookIDsAsync(
 	secretKey: string, 
 	request: GetPlayFabIDsFromFacebookIDsRequest
-): GetPlayFabIDsFromFacebookIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromFacebookIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayFabIDsFromFacebookIDs",
 		request,
@@ -5347,7 +5347,7 @@ end
 function ServerApi.GetPlayFabIDsFromFacebookInstantGamesIdsAsync(
 	secretKey: string, 
 	request: GetPlayFabIDsFromFacebookInstantGamesIdsRequest
-): GetPlayFabIDsFromFacebookInstantGamesIdsResult | ApiErrorWrapper
+): GetPlayFabIDsFromFacebookInstantGamesIdsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayFabIDsFromFacebookInstantGamesIds",
 		request,
@@ -5360,7 +5360,7 @@ end
 function ServerApi.GetPlayFabIDsFromGenericIDsAsync(
 	secretKey: string, 
 	request: GetPlayFabIDsFromGenericIDsRequest
-): GetPlayFabIDsFromGenericIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromGenericIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayFabIDsFromGenericIDs",
 		request,
@@ -5373,7 +5373,7 @@ end
 function ServerApi.GetPlayFabIDsFromNintendoServiceAccountIdsAsync(
 	secretKey: string, 
 	request: GetPlayFabIDsFromNintendoServiceAccountIdsRequest
-): GetPlayFabIDsFromNintendoServiceAccountIdsResult | ApiErrorWrapper
+): GetPlayFabIDsFromNintendoServiceAccountIdsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayFabIDsFromNintendoServiceAccountIds",
 		request,
@@ -5386,7 +5386,7 @@ end
 function ServerApi.GetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(
 	secretKey: string, 
 	request: GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest
-): GetPlayFabIDsFromNintendoSwitchDeviceIdsResult | ApiErrorWrapper
+): GetPlayFabIDsFromNintendoSwitchDeviceIdsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayFabIDsFromNintendoSwitchDeviceIds",
 		request,
@@ -5399,7 +5399,7 @@ end
 function ServerApi.GetPlayFabIDsFromPSNAccountIDsAsync(
 	secretKey: string, 
 	request: GetPlayFabIDsFromPSNAccountIDsRequest
-): GetPlayFabIDsFromPSNAccountIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromPSNAccountIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayFabIDsFromPSNAccountIDs",
 		request,
@@ -5412,7 +5412,7 @@ end
 function ServerApi.GetPlayFabIDsFromSteamIDsAsync(
 	secretKey: string, 
 	request: GetPlayFabIDsFromSteamIDsRequest
-): GetPlayFabIDsFromSteamIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromSteamIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayFabIDsFromSteamIDs",
 		request,
@@ -5425,7 +5425,7 @@ end
 function ServerApi.GetPlayFabIDsFromTwitchIDsAsync(
 	secretKey: string, 
 	request: GetPlayFabIDsFromTwitchIDsRequest
-): GetPlayFabIDsFromTwitchIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromTwitchIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayFabIDsFromTwitchIDs",
 		request,
@@ -5438,7 +5438,7 @@ end
 function ServerApi.GetPlayFabIDsFromXboxLiveIDsAsync(
 	secretKey: string, 
 	request: GetPlayFabIDsFromXboxLiveIDsRequest
-): GetPlayFabIDsFromXboxLiveIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromXboxLiveIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayFabIDsFromXboxLiveIDs",
 		request,
@@ -5451,7 +5451,7 @@ end
 function ServerApi.GetPlayerCombinedInfoAsync(
 	secretKey: string, 
 	request: GetPlayerCombinedInfoRequest
-): GetPlayerCombinedInfoResult | ApiErrorWrapper
+): GetPlayerCombinedInfoResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayerCombinedInfo",
 		request,
@@ -5471,7 +5471,7 @@ end
 function ServerApi.GetPlayerProfileAsync(
 	secretKey: string, 
 	request: GetPlayerProfileRequest
-): GetPlayerProfileResult | ApiErrorWrapper
+): GetPlayerProfileResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayerProfile",
 		request,
@@ -5484,7 +5484,7 @@ end
 function ServerApi.GetPlayerSegmentsAsync(
 	secretKey: string, 
 	request: GetPlayersSegmentsRequest
-): GetPlayerSegmentsResult | ApiErrorWrapper
+): GetPlayerSegmentsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayerSegments",
 		request,
@@ -5497,7 +5497,7 @@ end
 function ServerApi.GetPlayerStatisticVersionsAsync(
 	secretKey: string, 
 	request: GetPlayerStatisticVersionsRequest
-): GetPlayerStatisticVersionsResult | ApiErrorWrapper
+): GetPlayerStatisticVersionsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayerStatisticVersions",
 		request,
@@ -5510,7 +5510,7 @@ end
 function ServerApi.GetPlayerStatisticsAsync(
 	secretKey: string, 
 	request: GetPlayerStatisticsRequest
-): GetPlayerStatisticsResult | ApiErrorWrapper
+): GetPlayerStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayerStatistics",
 		request,
@@ -5527,7 +5527,7 @@ end
 function ServerApi.GetPlayerTagsAsync(
 	secretKey: string, 
 	request: GetPlayerTagsRequest
-): GetPlayerTagsResult | ApiErrorWrapper
+): GetPlayerTagsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayerTags",
 		request,
@@ -5551,7 +5551,7 @@ end
 function ServerApi.GetPlayersInSegmentAsync(
 	secretKey: string, 
 	request: GetPlayersInSegmentRequest
-): GetPlayersInSegmentResult | ApiErrorWrapper
+): GetPlayersInSegmentResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPlayersInSegment",
 		request,
@@ -5571,7 +5571,7 @@ end
 function ServerApi.GetPublisherDataAsync(
 	secretKey: string, 
 	request: GetPublisherDataRequest
-): GetPublisherDataResult | ApiErrorWrapper
+): GetPublisherDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetPublisherData",
 		request,
@@ -5584,7 +5584,7 @@ end
 function ServerApi.GetRandomResultTablesAsync(
 	secretKey: string, 
 	request: GetRandomResultTablesRequest
-): GetRandomResultTablesResult | ApiErrorWrapper
+): GetRandomResultTablesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetRandomResultTables",
 		request,
@@ -5597,7 +5597,7 @@ end
 function ServerApi.GetServerCustomIDsFromPlayFabIDsAsync(
 	secretKey: string, 
 	request: GetServerCustomIDsFromPlayFabIDsRequest
-): GetServerCustomIDsFromPlayFabIDsResult | ApiErrorWrapper
+): GetServerCustomIDsFromPlayFabIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetServerCustomIDsFromPlayFabIDs",
 		request,
@@ -5610,7 +5610,7 @@ end
 function ServerApi.GetSharedGroupDataAsync(
 	secretKey: string, 
 	request: GetSharedGroupDataRequest
-): GetSharedGroupDataResult | ApiErrorWrapper
+): GetSharedGroupDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetSharedGroupData",
 		request,
@@ -5637,7 +5637,7 @@ end
 function ServerApi.GetStoreItemsAsync(
 	secretKey: string, 
 	request: GetStoreItemsServerRequest
-): GetStoreItemsResult | ApiErrorWrapper
+): GetStoreItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetStoreItems",
 		request,
@@ -5654,7 +5654,7 @@ end
 function ServerApi.GetTimeAsync(
 	secretKey: string, 
 	request: GetTimeRequest
-): GetTimeResult | ApiErrorWrapper
+): GetTimeResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetTime",
 		request,
@@ -5676,7 +5676,7 @@ end
 function ServerApi.GetTitleDataAsync(
 	secretKey: string, 
 	request: GetTitleDataRequest
-): GetTitleDataResult | ApiErrorWrapper
+): GetTitleDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetTitleData",
 		request,
@@ -5695,7 +5695,7 @@ end
 function ServerApi.GetTitleInternalDataAsync(
 	secretKey: string, 
 	request: GetTitleDataRequest
-): GetTitleDataResult | ApiErrorWrapper
+): GetTitleDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetTitleInternalData",
 		request,
@@ -5708,7 +5708,7 @@ end
 function ServerApi.GetTitleNewsAsync(
 	secretKey: string, 
 	request: GetTitleNewsRequest
-): GetTitleNewsResult | ApiErrorWrapper
+): GetTitleNewsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetTitleNews",
 		request,
@@ -5728,7 +5728,7 @@ end
 function ServerApi.GetUserAccountInfoAsync(
 	secretKey: string, 
 	request: GetUserAccountInfoRequest
-): GetUserAccountInfoResult | ApiErrorWrapper
+): GetUserAccountInfoResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetUserAccountInfo",
 		request,
@@ -5743,7 +5743,7 @@ end
 function ServerApi.GetUserBansAsync(
 	secretKey: string, 
 	request: GetUserBansRequest
-): GetUserBansResult | ApiErrorWrapper
+): GetUserBansResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetUserBans",
 		request,
@@ -5760,7 +5760,7 @@ end
 function ServerApi.GetUserDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetUserData",
 		request,
@@ -5777,7 +5777,7 @@ end
 function ServerApi.GetUserInternalDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetUserInternalData",
 		request,
@@ -5795,7 +5795,7 @@ end
 function ServerApi.GetUserInventoryAsync(
 	secretKey: string, 
 	request: GetUserInventoryRequest
-): GetUserInventoryResult | ApiErrorWrapper
+): GetUserInventoryResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetUserInventory",
 		request,
@@ -5812,7 +5812,7 @@ end
 function ServerApi.GetUserPublisherDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetUserPublisherData",
 		request,
@@ -5829,7 +5829,7 @@ end
 function ServerApi.GetUserPublisherInternalDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetUserPublisherInternalData",
 		request,
@@ -5846,7 +5846,7 @@ end
 function ServerApi.GetUserPublisherReadOnlyDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetUserPublisherReadOnlyData",
 		request,
@@ -5863,7 +5863,7 @@ end
 function ServerApi.GetUserReadOnlyDataAsync(
 	secretKey: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GetUserReadOnlyData",
 		request,
@@ -5878,7 +5878,7 @@ end
 function ServerApi.GrantCharacterToUserAsync(
 	secretKey: string, 
 	request: GrantCharacterToUserRequest
-): GrantCharacterToUserResult | ApiErrorWrapper
+): GrantCharacterToUserResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GrantCharacterToUser",
 		request,
@@ -5898,7 +5898,7 @@ end
 function ServerApi.GrantItemsToCharacterAsync(
 	secretKey: string, 
 	request: GrantItemsToCharacterRequest
-): GrantItemsToCharacterResult | ApiErrorWrapper
+): GrantItemsToCharacterResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GrantItemsToCharacter",
 		request,
@@ -5917,7 +5917,7 @@ end
 function ServerApi.GrantItemsToUserAsync(
 	secretKey: string, 
 	request: GrantItemsToUserRequest
-): GrantItemsToUserResult | ApiErrorWrapper
+): GrantItemsToUserResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GrantItemsToUser",
 		request,
@@ -5936,7 +5936,7 @@ end
 function ServerApi.GrantItemsToUsersAsync(
 	secretKey: string, 
 	request: GrantItemsToUsersRequest
-): GrantItemsToUsersResult | ApiErrorWrapper
+): GrantItemsToUsersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/GrantItemsToUsers",
 		request,
@@ -5949,7 +5949,7 @@ end
 function ServerApi.LinkNintendoServiceAccountAsync(
 	secretKey: string, 
 	request: LinkNintendoServiceAccountRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/LinkNintendoServiceAccount",
 		request,
@@ -5962,7 +5962,7 @@ end
 function ServerApi.LinkNintendoSwitchDeviceIdAsync(
 	secretKey: string, 
 	request: LinkNintendoSwitchDeviceIdRequest
-): LinkNintendoSwitchDeviceIdResult | ApiErrorWrapper
+): LinkNintendoSwitchDeviceIdResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/LinkNintendoSwitchDeviceId",
 		request,
@@ -5975,7 +5975,7 @@ end
 function ServerApi.LinkPSNAccountAsync(
 	secretKey: string, 
 	request: LinkPSNAccountRequest
-): LinkPSNAccountResult | ApiErrorWrapper
+): LinkPSNAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/LinkPSNAccount",
 		request,
@@ -5988,7 +5988,7 @@ end
 function ServerApi.LinkServerCustomIdAsync(
 	secretKey: string, 
 	request: LinkServerCustomIdRequest
-): LinkServerCustomIdResult | ApiErrorWrapper
+): LinkServerCustomIdResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/LinkServerCustomId",
 		request,
@@ -6001,7 +6001,7 @@ end
 function ServerApi.LinkXboxAccountAsync(
 	secretKey: string, 
 	request: LinkXboxAccountRequest
-): LinkXboxAccountResult | ApiErrorWrapper
+): LinkXboxAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/LinkXboxAccount",
 		request,
@@ -6014,7 +6014,7 @@ end
 function ServerApi.LoginWithServerCustomIdAsync(
 	secretKey: string, 
 	request: LoginWithServerCustomIdRequest
-): ServerLoginResult | ApiErrorWrapper
+): ServerLoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/LoginWithServerCustomId",
 		request,
@@ -6037,7 +6037,7 @@ end
 function ServerApi.LoginWithSteamIdAsync(
 	secretKey: string, 
 	request: LoginWithSteamIdRequest
-): ServerLoginResult | ApiErrorWrapper
+): ServerLoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/LoginWithSteamId",
 		request,
@@ -6057,7 +6057,7 @@ end
 function ServerApi.LoginWithXboxAsync(
 	secretKey: string, 
 	request: LoginWithXboxRequest
-): ServerLoginResult | ApiErrorWrapper
+): ServerLoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/LoginWithXbox",
 		request,
@@ -6077,7 +6077,7 @@ end
 function ServerApi.LoginWithXboxIdAsync(
 	secretKey: string, 
 	request: LoginWithXboxIdRequest
-): ServerLoginResult | ApiErrorWrapper
+): ServerLoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/LoginWithXboxId",
 		request,
@@ -6093,7 +6093,7 @@ end
 function ServerApi.ModifyItemUsesAsync(
 	secretKey: string, 
 	request: ModifyItemUsesRequest
-): ModifyItemUsesResult | ApiErrorWrapper
+): ModifyItemUsesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/ModifyItemUses",
 		request,
@@ -6111,7 +6111,7 @@ end
 function ServerApi.MoveItemToCharacterFromCharacterAsync(
 	secretKey: string, 
 	request: MoveItemToCharacterFromCharacterRequest
-): MoveItemToCharacterFromCharacterResult | ApiErrorWrapper
+): MoveItemToCharacterFromCharacterResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/MoveItemToCharacterFromCharacter",
 		request,
@@ -6128,7 +6128,7 @@ end
 function ServerApi.MoveItemToCharacterFromUserAsync(
 	secretKey: string, 
 	request: MoveItemToCharacterFromUserRequest
-): MoveItemToCharacterFromUserResult | ApiErrorWrapper
+): MoveItemToCharacterFromUserResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/MoveItemToCharacterFromUser",
 		request,
@@ -6145,7 +6145,7 @@ end
 function ServerApi.MoveItemToUserFromCharacterAsync(
 	secretKey: string, 
 	request: MoveItemToUserFromCharacterRequest
-): MoveItemToUserFromCharacterResult | ApiErrorWrapper
+): MoveItemToUserFromCharacterResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/MoveItemToUserFromCharacter",
 		request,
@@ -6158,7 +6158,7 @@ end
 function ServerApi.NotifyMatchmakerPlayerLeftAsync(
 	secretKey: string, 
 	request: NotifyMatchmakerPlayerLeftRequest
-): NotifyMatchmakerPlayerLeftResult | ApiErrorWrapper
+): NotifyMatchmakerPlayerLeftResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/NotifyMatchmakerPlayerLeft",
 		request,
@@ -6176,7 +6176,7 @@ end
 function ServerApi.RedeemCouponAsync(
 	secretKey: string, 
 	request: RedeemCouponRequest
-): RedeemCouponResult | ApiErrorWrapper
+): RedeemCouponResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RedeemCoupon",
 		request,
@@ -6200,7 +6200,7 @@ end
 function ServerApi.RedeemMatchmakerTicketAsync(
 	secretKey: string, 
 	request: RedeemMatchmakerTicketRequest
-): RedeemMatchmakerTicketResult | ApiErrorWrapper
+): RedeemMatchmakerTicketResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RedeemMatchmakerTicket",
 		request,
@@ -6213,7 +6213,7 @@ end
 function ServerApi.RefreshGameServerInstanceHeartbeatAsync(
 	secretKey: string, 
 	request: RefreshGameServerInstanceHeartbeatRequest
-): RefreshGameServerInstanceHeartbeatResult | ApiErrorWrapper
+): RefreshGameServerInstanceHeartbeatResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RefreshGameServerInstanceHeartbeat",
 		request,
@@ -6226,7 +6226,7 @@ end
 function ServerApi.RegisterGameAsync(
 	secretKey: string, 
 	request: RegisterGameRequest
-): RegisterGameResponse | ApiErrorWrapper
+): RegisterGameResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RegisterGame",
 		request,
@@ -6239,7 +6239,7 @@ end
 function ServerApi.RemoveFriendAsync(
 	secretKey: string, 
 	request: RemoveFriendRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RemoveFriend",
 		request,
@@ -6252,7 +6252,7 @@ end
 function ServerApi.RemoveGenericIDAsync(
 	secretKey: string, 
 	request: RemoveGenericIDRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RemoveGenericID",
 		request,
@@ -6269,7 +6269,7 @@ end
 function ServerApi.RemovePlayerTagAsync(
 	secretKey: string, 
 	request: RemovePlayerTagRequest
-): RemovePlayerTagResult | ApiErrorWrapper
+): RemovePlayerTagResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RemovePlayerTag",
 		request,
@@ -6282,7 +6282,7 @@ end
 function ServerApi.RemoveSharedGroupMembersAsync(
 	secretKey: string, 
 	request: RemoveSharedGroupMembersRequest
-): RemoveSharedGroupMembersResult | ApiErrorWrapper
+): RemoveSharedGroupMembersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RemoveSharedGroupMembers",
 		request,
@@ -6295,7 +6295,7 @@ end
 function ServerApi.ReportPlayerAsync(
 	secretKey: string, 
 	request: ReportPlayerServerRequest
-): ReportPlayerServerResult | ApiErrorWrapper
+): ReportPlayerServerResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/ReportPlayer",
 		request,
@@ -6312,7 +6312,7 @@ end
 function ServerApi.RevokeAllBansForUserAsync(
 	secretKey: string, 
 	request: RevokeAllBansForUserRequest
-): RevokeAllBansForUserResult | ApiErrorWrapper
+): RevokeAllBansForUserResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RevokeAllBansForUser",
 		request,
@@ -6329,7 +6329,7 @@ end
 function ServerApi.RevokeBansAsync(
 	secretKey: string, 
 	request: RevokeBansRequest
-): RevokeBansResult | ApiErrorWrapper
+): RevokeBansResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RevokeBans",
 		request,
@@ -6346,7 +6346,7 @@ end
 function ServerApi.RevokeInventoryItemAsync(
 	secretKey: string, 
 	request: RevokeInventoryItemRequest
-): RevokeInventoryResult | ApiErrorWrapper
+): RevokeInventoryResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RevokeInventoryItem",
 		request,
@@ -6363,7 +6363,7 @@ end
 function ServerApi.RevokeInventoryItemsAsync(
 	secretKey: string, 
 	request: RevokeInventoryItemsRequest
-): RevokeInventoryItemsResult | ApiErrorWrapper
+): RevokeInventoryItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/RevokeInventoryItems",
 		request,
@@ -6376,7 +6376,7 @@ end
 function ServerApi.SavePushNotificationTemplateAsync(
 	secretKey: string, 
 	request: SavePushNotificationTemplateRequest
-): SavePushNotificationTemplateResult | ApiErrorWrapper
+): SavePushNotificationTemplateResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SavePushNotificationTemplate",
 		request,
@@ -6394,7 +6394,7 @@ end
 function ServerApi.SendCustomAccountRecoveryEmailAsync(
 	secretKey: string, 
 	request: SendCustomAccountRecoveryEmailRequest
-): SendCustomAccountRecoveryEmailResult | ApiErrorWrapper
+): SendCustomAccountRecoveryEmailResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SendCustomAccountRecoveryEmail",
 		request,
@@ -6410,7 +6410,7 @@ end
 function ServerApi.SendEmailFromTemplateAsync(
 	secretKey: string, 
 	request: SendEmailFromTemplateRequest
-): SendEmailFromTemplateResult | ApiErrorWrapper
+): SendEmailFromTemplateResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SendEmailFromTemplate",
 		request,
@@ -6423,7 +6423,7 @@ end
 function ServerApi.SendPushNotificationAsync(
 	secretKey: string, 
 	request: SendPushNotificationRequest
-): SendPushNotificationResult | ApiErrorWrapper
+): SendPushNotificationResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SendPushNotification",
 		request,
@@ -6436,7 +6436,7 @@ end
 function ServerApi.SendPushNotificationFromTemplateAsync(
 	secretKey: string, 
 	request: SendPushNotificationFromTemplateRequest
-): SendPushNotificationResult | ApiErrorWrapper
+): SendPushNotificationResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SendPushNotificationFromTemplate",
 		request,
@@ -6455,7 +6455,7 @@ end
 function ServerApi.SetFriendTagsAsync(
 	secretKey: string, 
 	request: SetFriendTagsRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SetFriendTags",
 		request,
@@ -6468,7 +6468,7 @@ end
 function ServerApi.SetGameServerInstanceDataAsync(
 	secretKey: string, 
 	request: SetGameServerInstanceDataRequest
-): SetGameServerInstanceDataResult | ApiErrorWrapper
+): SetGameServerInstanceDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SetGameServerInstanceData",
 		request,
@@ -6481,7 +6481,7 @@ end
 function ServerApi.SetGameServerInstanceStateAsync(
 	secretKey: string, 
 	request: SetGameServerInstanceStateRequest
-): SetGameServerInstanceStateResult | ApiErrorWrapper
+): SetGameServerInstanceStateResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SetGameServerInstanceState",
 		request,
@@ -6494,7 +6494,7 @@ end
 function ServerApi.SetGameServerInstanceTagsAsync(
 	secretKey: string, 
 	request: SetGameServerInstanceTagsRequest
-): SetGameServerInstanceTagsResult | ApiErrorWrapper
+): SetGameServerInstanceTagsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SetGameServerInstanceTags",
 		request,
@@ -6516,7 +6516,7 @@ end
 function ServerApi.SetPlayerSecretAsync(
 	secretKey: string, 
 	request: SetPlayerSecretRequest
-): SetPlayerSecretResult | ApiErrorWrapper
+): SetPlayerSecretResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SetPlayerSecret",
 		request,
@@ -6537,7 +6537,7 @@ end
 function ServerApi.SetPublisherDataAsync(
 	secretKey: string, 
 	request: SetPublisherDataRequest
-): SetPublisherDataResult | ApiErrorWrapper
+): SetPublisherDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SetPublisherData",
 		request,
@@ -6559,7 +6559,7 @@ end
 function ServerApi.SetTitleDataAsync(
 	secretKey: string, 
 	request: SetTitleDataRequest
-): SetTitleDataResult | ApiErrorWrapper
+): SetTitleDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SetTitleData",
 		request,
@@ -6579,7 +6579,7 @@ end
 function ServerApi.SetTitleInternalDataAsync(
 	secretKey: string, 
 	request: SetTitleDataRequest
-): SetTitleDataResult | ApiErrorWrapper
+): SetTitleDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SetTitleInternalData",
 		request,
@@ -6592,7 +6592,7 @@ end
 function ServerApi.SubtractCharacterVirtualCurrencyAsync(
 	secretKey: string, 
 	request: SubtractCharacterVirtualCurrencyRequest
-): ModifyCharacterVirtualCurrencyResult | ApiErrorWrapper
+): ModifyCharacterVirtualCurrencyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SubtractCharacterVirtualCurrency",
 		request,
@@ -6605,7 +6605,7 @@ end
 function ServerApi.SubtractUserVirtualCurrencyAsync(
 	secretKey: string, 
 	request: SubtractUserVirtualCurrencyRequest
-): ModifyUserVirtualCurrencyResult | ApiErrorWrapper
+): ModifyUserVirtualCurrencyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/SubtractUserVirtualCurrency",
 		request,
@@ -6618,7 +6618,7 @@ end
 function ServerApi.UnlinkNintendoServiceAccountAsync(
 	secretKey: string, 
 	request: UnlinkNintendoServiceAccountRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UnlinkNintendoServiceAccount",
 		request,
@@ -6631,7 +6631,7 @@ end
 function ServerApi.UnlinkNintendoSwitchDeviceIdAsync(
 	secretKey: string, 
 	request: UnlinkNintendoSwitchDeviceIdRequest
-): UnlinkNintendoSwitchDeviceIdResult | ApiErrorWrapper
+): UnlinkNintendoSwitchDeviceIdResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UnlinkNintendoSwitchDeviceId",
 		request,
@@ -6644,7 +6644,7 @@ end
 function ServerApi.UnlinkPSNAccountAsync(
 	secretKey: string, 
 	request: UnlinkPSNAccountRequest
-): UnlinkPSNAccountResult | ApiErrorWrapper
+): UnlinkPSNAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UnlinkPSNAccount",
 		request,
@@ -6657,7 +6657,7 @@ end
 function ServerApi.UnlinkServerCustomIdAsync(
 	secretKey: string, 
 	request: UnlinkServerCustomIdRequest
-): UnlinkServerCustomIdResult | ApiErrorWrapper
+): UnlinkServerCustomIdResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UnlinkServerCustomId",
 		request,
@@ -6670,7 +6670,7 @@ end
 function ServerApi.UnlinkXboxAccountAsync(
 	secretKey: string, 
 	request: UnlinkXboxAccountRequest
-): UnlinkXboxAccountResult | ApiErrorWrapper
+): UnlinkXboxAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UnlinkXboxAccount",
 		request,
@@ -6686,7 +6686,7 @@ end
 function ServerApi.UnlockContainerInstanceAsync(
 	secretKey: string, 
 	request: UnlockContainerInstanceRequest
-): UnlockContainerItemResult | ApiErrorWrapper
+): UnlockContainerItemResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UnlockContainerInstance",
 		request,
@@ -6702,7 +6702,7 @@ end
 function ServerApi.UnlockContainerItemAsync(
 	secretKey: string, 
 	request: UnlockContainerItemRequest
-): UnlockContainerItemResult | ApiErrorWrapper
+): UnlockContainerItemResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UnlockContainerItem",
 		request,
@@ -6715,7 +6715,7 @@ end
 function ServerApi.UpdateAvatarUrlAsync(
 	secretKey: string, 
 	request: UpdateAvatarUrlRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateAvatarUrl",
 		request,
@@ -6732,7 +6732,7 @@ end
 function ServerApi.UpdateBansAsync(
 	secretKey: string, 
 	request: UpdateBansRequest
-): UpdateBansResult | ApiErrorWrapper
+): UpdateBansResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateBans",
 		request,
@@ -6751,7 +6751,7 @@ end
 function ServerApi.UpdateCharacterDataAsync(
 	secretKey: string, 
 	request: UpdateCharacterDataRequest
-): UpdateCharacterDataResult | ApiErrorWrapper
+): UpdateCharacterDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateCharacterData",
 		request,
@@ -6770,7 +6770,7 @@ end
 function ServerApi.UpdateCharacterInternalDataAsync(
 	secretKey: string, 
 	request: UpdateCharacterDataRequest
-): UpdateCharacterDataResult | ApiErrorWrapper
+): UpdateCharacterDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateCharacterInternalData",
 		request,
@@ -6789,7 +6789,7 @@ end
 function ServerApi.UpdateCharacterReadOnlyDataAsync(
 	secretKey: string, 
 	request: UpdateCharacterDataRequest
-): UpdateCharacterDataResult | ApiErrorWrapper
+): UpdateCharacterDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateCharacterReadOnlyData",
 		request,
@@ -6808,7 +6808,7 @@ end
 function ServerApi.UpdateCharacterStatisticsAsync(
 	secretKey: string, 
 	request: UpdateCharacterStatisticsRequest
-): UpdateCharacterStatisticsResult | ApiErrorWrapper
+): UpdateCharacterStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateCharacterStatistics",
 		request,
@@ -6825,7 +6825,7 @@ end
 function ServerApi.UpdatePlayerStatisticsAsync(
 	secretKey: string, 
 	request: UpdatePlayerStatisticsRequest
-): UpdatePlayerStatisticsResult | ApiErrorWrapper
+): UpdatePlayerStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdatePlayerStatistics",
 		request,
@@ -6844,7 +6844,7 @@ end
 function ServerApi.UpdateSharedGroupDataAsync(
 	secretKey: string, 
 	request: UpdateSharedGroupDataRequest
-): UpdateSharedGroupDataResult | ApiErrorWrapper
+): UpdateSharedGroupDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateSharedGroupData",
 		request,
@@ -6863,7 +6863,7 @@ end
 function ServerApi.UpdateUserDataAsync(
 	secretKey: string, 
 	request: UpdateUserDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateUserData",
 		request,
@@ -6882,7 +6882,7 @@ end
 function ServerApi.UpdateUserInternalDataAsync(
 	secretKey: string, 
 	request: UpdateUserInternalDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateUserInternalData",
 		request,
@@ -6901,7 +6901,7 @@ end
 function ServerApi.UpdateUserInventoryItemCustomDataAsync(
 	secretKey: string, 
 	request: UpdateUserInventoryItemDataRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateUserInventoryItemCustomData",
 		request,
@@ -6920,7 +6920,7 @@ end
 function ServerApi.UpdateUserPublisherDataAsync(
 	secretKey: string, 
 	request: UpdateUserDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateUserPublisherData",
 		request,
@@ -6939,7 +6939,7 @@ end
 function ServerApi.UpdateUserPublisherInternalDataAsync(
 	secretKey: string, 
 	request: UpdateUserInternalDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateUserPublisherInternalData",
 		request,
@@ -6958,7 +6958,7 @@ end
 function ServerApi.UpdateUserPublisherReadOnlyDataAsync(
 	secretKey: string, 
 	request: UpdateUserDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateUserPublisherReadOnlyData",
 		request,
@@ -6977,7 +6977,7 @@ end
 function ServerApi.UpdateUserReadOnlyDataAsync(
 	secretKey: string, 
 	request: UpdateUserDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Server/UpdateUserReadOnlyData",
 		request,
@@ -6995,7 +6995,7 @@ end
 function ServerApi.WriteCharacterEventAsync(
 	secretKey: string, 
 	request: WriteServerCharacterEventRequest
-): WriteEventResponse | ApiErrorWrapper
+): WriteEventResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/WriteCharacterEvent",
 		request,
@@ -7013,7 +7013,7 @@ end
 function ServerApi.WritePlayerEventAsync(
 	secretKey: string, 
 	request: WriteServerPlayerEventRequest
-): WriteEventResponse | ApiErrorWrapper
+): WriteEventResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/WritePlayerEvent",
 		request,
@@ -7031,7 +7031,7 @@ end
 function ServerApi.WriteTitleEventAsync(
 	secretKey: string, 
 	request: WriteTitleEventRequest
-): WriteEventResponse | ApiErrorWrapper
+): WriteEventResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Server/WriteTitleEvent",
 		request,

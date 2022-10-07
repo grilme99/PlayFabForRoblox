@@ -5006,7 +5006,7 @@ export type XboxLiveAccountPlayFabIdPair = {
 function ClientApi.AcceptTradeAsync(
 	sessionTicket: string, 
 	request: AcceptTradeRequest
-): AcceptTradeResponse | ApiErrorWrapper
+): AcceptTradeResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/AcceptTrade",
 		request,
@@ -5019,7 +5019,7 @@ end
 function ClientApi.AddFriendAsync(
 	sessionTicket: string, 
 	request: AddFriendRequest
-): AddFriendResult | ApiErrorWrapper
+): AddFriendResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/AddFriend",
 		request,
@@ -5032,7 +5032,7 @@ end
 function ClientApi.AddGenericIDAsync(
 	sessionTicket: string, 
 	request: AddGenericIDRequest
-): AddGenericIDResult | ApiErrorWrapper
+): AddGenericIDResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/AddGenericID",
 		request,
@@ -5049,7 +5049,7 @@ end
 function ClientApi.AddOrUpdateContactEmailAsync(
 	sessionTicket: string, 
 	request: AddOrUpdateContactEmailRequest
-): AddOrUpdateContactEmailResult | ApiErrorWrapper
+): AddOrUpdateContactEmailResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/AddOrUpdateContactEmail",
 		request,
@@ -5062,7 +5062,7 @@ end
 function ClientApi.AddSharedGroupMembersAsync(
 	sessionTicket: string, 
 	request: AddSharedGroupMembersRequest
-): AddSharedGroupMembersResult | ApiErrorWrapper
+): AddSharedGroupMembersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/AddSharedGroupMembers",
 		request,
@@ -5078,7 +5078,7 @@ end
 function ClientApi.AddUserVirtualCurrencyAsync(
 	sessionTicket: string, 
 	request: AddUserVirtualCurrencyRequest
-): ModifyUserVirtualCurrencyResult | ApiErrorWrapper
+): ModifyUserVirtualCurrencyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/AddUserVirtualCurrency",
 		request,
@@ -5091,7 +5091,7 @@ end
 function ClientApi.AddUsernamePasswordAsync(
 	sessionTicket: string, 
 	request: AddUsernamePasswordRequest
-): AddUsernamePasswordResult | ApiErrorWrapper
+): AddUsernamePasswordResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/AddUsernamePassword",
 		request,
@@ -5109,7 +5109,7 @@ end
 function ClientApi.AndroidDevicePushNotificationRegistrationAsync(
 	sessionTicket: string, 
 	request: AndroidDevicePushNotificationRegistrationRequest
-): AndroidDevicePushNotificationRegistrationResult | ApiErrorWrapper
+): AndroidDevicePushNotificationRegistrationResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/AndroidDevicePushNotificationRegistration",
 		request,
@@ -5126,7 +5126,7 @@ end
 function ClientApi.AttributeInstallAsync(
 	sessionTicket: string, 
 	request: AttributeInstallRequest
-): AttributeInstallResult | ApiErrorWrapper
+): AttributeInstallResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/AttributeInstall",
 		request,
@@ -5139,7 +5139,7 @@ end
 function ClientApi.CancelTradeAsync(
 	sessionTicket: string, 
 	request: CancelTradeRequest
-): CancelTradeResponse | ApiErrorWrapper
+): CancelTradeResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/CancelTrade",
 		request,
@@ -5161,7 +5161,7 @@ end
 function ClientApi.ConfirmPurchaseAsync(
 	sessionTicket: string, 
 	request: ConfirmPurchaseRequest
-): ConfirmPurchaseResult | ApiErrorWrapper
+): ConfirmPurchaseResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ConfirmPurchase",
 		request,
@@ -5174,7 +5174,7 @@ end
 function ClientApi.ConsumeItemAsync(
 	sessionTicket: string, 
 	request: ConsumeItemRequest
-): ConsumeItemResult | ApiErrorWrapper
+): ConsumeItemResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ConsumeItem",
 		request,
@@ -5187,7 +5187,7 @@ end
 function ClientApi.ConsumeMicrosoftStoreEntitlementsAsync(
 	sessionTicket: string, 
 	request: ConsumeMicrosoftStoreEntitlementsRequest
-): ConsumeMicrosoftStoreEntitlementsResponse | ApiErrorWrapper
+): ConsumeMicrosoftStoreEntitlementsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ConsumeMicrosoftStoreEntitlements",
 		request,
@@ -5200,7 +5200,7 @@ end
 function ClientApi.ConsumePS5EntitlementsAsync(
 	sessionTicket: string, 
 	request: ConsumePS5EntitlementsRequest
-): ConsumePS5EntitlementsResult | ApiErrorWrapper
+): ConsumePS5EntitlementsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ConsumePS5Entitlements",
 		request,
@@ -5213,7 +5213,7 @@ end
 function ClientApi.ConsumePSNEntitlementsAsync(
 	sessionTicket: string, 
 	request: ConsumePSNEntitlementsRequest
-): ConsumePSNEntitlementsResult | ApiErrorWrapper
+): ConsumePSNEntitlementsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ConsumePSNEntitlements",
 		request,
@@ -5226,7 +5226,7 @@ end
 function ClientApi.ConsumeXboxEntitlementsAsync(
 	sessionTicket: string, 
 	request: ConsumeXboxEntitlementsRequest
-): ConsumeXboxEntitlementsResult | ApiErrorWrapper
+): ConsumeXboxEntitlementsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ConsumeXboxEntitlements",
 		request,
@@ -5243,7 +5243,7 @@ end
 function ClientApi.CreateSharedGroupAsync(
 	sessionTicket: string, 
 	request: CreateSharedGroupRequest
-): CreateSharedGroupResult | ApiErrorWrapper
+): CreateSharedGroupResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/CreateSharedGroup",
 		request,
@@ -5256,7 +5256,7 @@ end
 function ClientApi.ExecuteCloudScriptAsync(
 	sessionTicket: string, 
 	request: ExecuteCloudScriptRequest
-): ExecuteCloudScriptResult | ApiErrorWrapper
+): ExecuteCloudScriptResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ExecuteCloudScript",
 		request,
@@ -5269,7 +5269,7 @@ end
 function ClientApi.GetAccountInfoAsync(
 	sessionTicket: string, 
 	request: GetAccountInfoRequest
-): GetAccountInfoResult | ApiErrorWrapper
+): GetAccountInfoResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetAccountInfo",
 		request,
@@ -5286,7 +5286,7 @@ end
 function ClientApi.GetAdPlacementsAsync(
 	sessionTicket: string, 
 	request: GetAdPlacementsRequest
-): GetAdPlacementsResult | ApiErrorWrapper
+): GetAdPlacementsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetAdPlacements",
 		request,
@@ -5301,7 +5301,7 @@ end
 function ClientApi.GetAllUsersCharactersAsync(
 	sessionTicket: string, 
 	request: ListUsersCharactersRequest
-): ListUsersCharactersResult | ApiErrorWrapper
+): ListUsersCharactersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetAllUsersCharacters",
 		request,
@@ -5314,7 +5314,7 @@ end
 function ClientApi.GetCatalogItemsAsync(
 	sessionTicket: string, 
 	request: GetCatalogItemsRequest
-): GetCatalogItemsResult | ApiErrorWrapper
+): GetCatalogItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetCatalogItems",
 		request,
@@ -5331,7 +5331,7 @@ end
 function ClientApi.GetCharacterDataAsync(
 	sessionTicket: string, 
 	request: GetCharacterDataRequest
-): GetCharacterDataResult | ApiErrorWrapper
+): GetCharacterDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetCharacterData",
 		request,
@@ -5350,7 +5350,7 @@ end
 function ClientApi.GetCharacterInventoryAsync(
 	sessionTicket: string, 
 	request: GetCharacterInventoryRequest
-): GetCharacterInventoryResult | ApiErrorWrapper
+): GetCharacterInventoryResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetCharacterInventory",
 		request,
@@ -5363,7 +5363,7 @@ end
 function ClientApi.GetCharacterLeaderboardAsync(
 	sessionTicket: string, 
 	request: GetCharacterLeaderboardRequest
-): GetCharacterLeaderboardResult | ApiErrorWrapper
+): GetCharacterLeaderboardResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetCharacterLeaderboard",
 		request,
@@ -5380,7 +5380,7 @@ end
 function ClientApi.GetCharacterReadOnlyDataAsync(
 	sessionTicket: string, 
 	request: GetCharacterDataRequest
-): GetCharacterDataResult | ApiErrorWrapper
+): GetCharacterDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetCharacterReadOnlyData",
 		request,
@@ -5393,7 +5393,7 @@ end
 function ClientApi.GetCharacterStatisticsAsync(
 	sessionTicket: string, 
 	request: GetCharacterStatisticsRequest
-): GetCharacterStatisticsResult | ApiErrorWrapper
+): GetCharacterStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetCharacterStatistics",
 		request,
@@ -5406,7 +5406,7 @@ end
 function ClientApi.GetContentDownloadUrlAsync(
 	sessionTicket: string, 
 	request: GetContentDownloadUrlRequest
-): GetContentDownloadUrlResult | ApiErrorWrapper
+): GetContentDownloadUrlResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetContentDownloadUrl",
 		request,
@@ -5419,7 +5419,7 @@ end
 function ClientApi.GetCurrentGamesAsync(
 	sessionTicket: string, 
 	request: CurrentGamesRequest
-): CurrentGamesResult | ApiErrorWrapper
+): CurrentGamesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetCurrentGames",
 		request,
@@ -5432,7 +5432,7 @@ end
 function ClientApi.GetFriendLeaderboardAsync(
 	sessionTicket: string, 
 	request: GetFriendLeaderboardRequest
-): GetLeaderboardResult | ApiErrorWrapper
+): GetLeaderboardResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetFriendLeaderboard",
 		request,
@@ -5445,7 +5445,7 @@ end
 function ClientApi.GetFriendLeaderboardAroundPlayerAsync(
 	sessionTicket: string, 
 	request: GetFriendLeaderboardAroundPlayerRequest
-): GetFriendLeaderboardAroundPlayerResult | ApiErrorWrapper
+): GetFriendLeaderboardAroundPlayerResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetFriendLeaderboardAroundPlayer",
 		request,
@@ -5458,7 +5458,7 @@ end
 function ClientApi.GetFriendsListAsync(
 	sessionTicket: string, 
 	request: GetFriendsListRequest
-): GetFriendsListResult | ApiErrorWrapper
+): GetFriendsListResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetFriendsList",
 		request,
@@ -5471,7 +5471,7 @@ end
 function ClientApi.GetGameServerRegionsAsync(
 	sessionTicket: string, 
 	request: GameServerRegionsRequest
-): GameServerRegionsResult | ApiErrorWrapper
+): GameServerRegionsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetGameServerRegions",
 		request,
@@ -5484,7 +5484,7 @@ end
 function ClientApi.GetLeaderboardAsync(
 	sessionTicket: string, 
 	request: GetLeaderboardRequest
-): GetLeaderboardResult | ApiErrorWrapper
+): GetLeaderboardResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetLeaderboard",
 		request,
@@ -5497,7 +5497,7 @@ end
 function ClientApi.GetLeaderboardAroundCharacterAsync(
 	sessionTicket: string, 
 	request: GetLeaderboardAroundCharacterRequest
-): GetLeaderboardAroundCharacterResult | ApiErrorWrapper
+): GetLeaderboardAroundCharacterResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetLeaderboardAroundCharacter",
 		request,
@@ -5510,7 +5510,7 @@ end
 function ClientApi.GetLeaderboardAroundPlayerAsync(
 	sessionTicket: string, 
 	request: GetLeaderboardAroundPlayerRequest
-): GetLeaderboardAroundPlayerResult | ApiErrorWrapper
+): GetLeaderboardAroundPlayerResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetLeaderboardAroundPlayer",
 		request,
@@ -5523,7 +5523,7 @@ end
 function ClientApi.GetLeaderboardForUserCharactersAsync(
 	sessionTicket: string, 
 	request: GetLeaderboardForUsersCharactersRequest
-): GetLeaderboardForUsersCharactersResult | ApiErrorWrapper
+): GetLeaderboardForUsersCharactersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetLeaderboardForUserCharacters",
 		request,
@@ -5536,7 +5536,7 @@ end
 function ClientApi.GetPaymentTokenAsync(
 	sessionTicket: string, 
 	request: GetPaymentTokenRequest
-): GetPaymentTokenResult | ApiErrorWrapper
+): GetPaymentTokenResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPaymentToken",
 		request,
@@ -5549,7 +5549,7 @@ end
 function ClientApi.GetPhotonAuthenticationTokenAsync(
 	sessionTicket: string, 
 	request: GetPhotonAuthenticationTokenRequest
-): GetPhotonAuthenticationTokenResult | ApiErrorWrapper
+): GetPhotonAuthenticationTokenResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPhotonAuthenticationToken",
 		request,
@@ -5562,7 +5562,7 @@ end
 function ClientApi.GetPlayFabIDsFromFacebookIDsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromFacebookIDsRequest
-): GetPlayFabIDsFromFacebookIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromFacebookIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromFacebookIDs",
 		request,
@@ -5575,7 +5575,7 @@ end
 function ClientApi.GetPlayFabIDsFromFacebookInstantGamesIdsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromFacebookInstantGamesIdsRequest
-): GetPlayFabIDsFromFacebookInstantGamesIdsResult | ApiErrorWrapper
+): GetPlayFabIDsFromFacebookInstantGamesIdsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromFacebookInstantGamesIds",
 		request,
@@ -5588,7 +5588,7 @@ end
 function ClientApi.GetPlayFabIDsFromGameCenterIDsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromGameCenterIDsRequest
-): GetPlayFabIDsFromGameCenterIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromGameCenterIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromGameCenterIDs",
 		request,
@@ -5601,7 +5601,7 @@ end
 function ClientApi.GetPlayFabIDsFromGenericIDsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromGenericIDsRequest
-): GetPlayFabIDsFromGenericIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromGenericIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromGenericIDs",
 		request,
@@ -5614,7 +5614,7 @@ end
 function ClientApi.GetPlayFabIDsFromGoogleIDsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromGoogleIDsRequest
-): GetPlayFabIDsFromGoogleIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromGoogleIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromGoogleIDs",
 		request,
@@ -5627,7 +5627,7 @@ end
 function ClientApi.GetPlayFabIDsFromGooglePlayGamesPlayerIDsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest
-): GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromGooglePlayGamesPlayerIDs",
 		request,
@@ -5640,7 +5640,7 @@ end
 function ClientApi.GetPlayFabIDsFromKongregateIDsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromKongregateIDsRequest
-): GetPlayFabIDsFromKongregateIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromKongregateIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromKongregateIDs",
 		request,
@@ -5653,7 +5653,7 @@ end
 function ClientApi.GetPlayFabIDsFromNintendoServiceAccountIdsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromNintendoServiceAccountIdsRequest
-): GetPlayFabIDsFromNintendoServiceAccountIdsResult | ApiErrorWrapper
+): GetPlayFabIDsFromNintendoServiceAccountIdsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromNintendoServiceAccountIds",
 		request,
@@ -5666,7 +5666,7 @@ end
 function ClientApi.GetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest
-): GetPlayFabIDsFromNintendoSwitchDeviceIdsResult | ApiErrorWrapper
+): GetPlayFabIDsFromNintendoSwitchDeviceIdsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromNintendoSwitchDeviceIds",
 		request,
@@ -5679,7 +5679,7 @@ end
 function ClientApi.GetPlayFabIDsFromPSNAccountIDsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromPSNAccountIDsRequest
-): GetPlayFabIDsFromPSNAccountIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromPSNAccountIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromPSNAccountIDs",
 		request,
@@ -5692,7 +5692,7 @@ end
 function ClientApi.GetPlayFabIDsFromSteamIDsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromSteamIDsRequest
-): GetPlayFabIDsFromSteamIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromSteamIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromSteamIDs",
 		request,
@@ -5705,7 +5705,7 @@ end
 function ClientApi.GetPlayFabIDsFromTwitchIDsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromTwitchIDsRequest
-): GetPlayFabIDsFromTwitchIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromTwitchIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromTwitchIDs",
 		request,
@@ -5718,7 +5718,7 @@ end
 function ClientApi.GetPlayFabIDsFromXboxLiveIDsAsync(
 	sessionTicket: string, 
 	request: GetPlayFabIDsFromXboxLiveIDsRequest
-): GetPlayFabIDsFromXboxLiveIDsResult | ApiErrorWrapper
+): GetPlayFabIDsFromXboxLiveIDsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayFabIDsFromXboxLiveIDs",
 		request,
@@ -5731,7 +5731,7 @@ end
 function ClientApi.GetPlayerCombinedInfoAsync(
 	sessionTicket: string, 
 	request: GetPlayerCombinedInfoRequest
-): GetPlayerCombinedInfoResult | ApiErrorWrapper
+): GetPlayerCombinedInfoResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayerCombinedInfo",
 		request,
@@ -5751,7 +5751,7 @@ end
 function ClientApi.GetPlayerProfileAsync(
 	sessionTicket: string, 
 	request: GetPlayerProfileRequest
-): GetPlayerProfileResult | ApiErrorWrapper
+): GetPlayerProfileResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayerProfile",
 		request,
@@ -5764,7 +5764,7 @@ end
 function ClientApi.GetPlayerSegmentsAsync(
 	sessionTicket: string, 
 	request: GetPlayerSegmentsRequest
-): GetPlayerSegmentsResult | ApiErrorWrapper
+): GetPlayerSegmentsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayerSegments",
 		request,
@@ -5777,7 +5777,7 @@ end
 function ClientApi.GetPlayerStatisticVersionsAsync(
 	sessionTicket: string, 
 	request: GetPlayerStatisticVersionsRequest
-): GetPlayerStatisticVersionsResult | ApiErrorWrapper
+): GetPlayerStatisticVersionsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayerStatisticVersions",
 		request,
@@ -5790,7 +5790,7 @@ end
 function ClientApi.GetPlayerStatisticsAsync(
 	sessionTicket: string, 
 	request: GetPlayerStatisticsRequest
-): GetPlayerStatisticsResult | ApiErrorWrapper
+): GetPlayerStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayerStatistics",
 		request,
@@ -5807,7 +5807,7 @@ end
 function ClientApi.GetPlayerTagsAsync(
 	sessionTicket: string, 
 	request: GetPlayerTagsRequest
-): GetPlayerTagsResult | ApiErrorWrapper
+): GetPlayerTagsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayerTags",
 		request,
@@ -5820,7 +5820,7 @@ end
 function ClientApi.GetPlayerTradesAsync(
 	sessionTicket: string, 
 	request: GetPlayerTradesRequest
-): GetPlayerTradesResponse | ApiErrorWrapper
+): GetPlayerTradesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPlayerTrades",
 		request,
@@ -5840,7 +5840,7 @@ end
 function ClientApi.GetPublisherDataAsync(
 	sessionTicket: string, 
 	request: GetPublisherDataRequest
-): GetPublisherDataResult | ApiErrorWrapper
+): GetPublisherDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPublisherData",
 		request,
@@ -5853,7 +5853,7 @@ end
 function ClientApi.GetPurchaseAsync(
 	sessionTicket: string, 
 	request: GetPurchaseRequest
-): GetPurchaseResult | ApiErrorWrapper
+): GetPurchaseResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetPurchase",
 		request,
@@ -5866,7 +5866,7 @@ end
 function ClientApi.GetSharedGroupDataAsync(
 	sessionTicket: string, 
 	request: GetSharedGroupDataRequest
-): GetSharedGroupDataResult | ApiErrorWrapper
+): GetSharedGroupDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetSharedGroupData",
 		request,
@@ -5893,7 +5893,7 @@ end
 function ClientApi.GetStoreItemsAsync(
 	sessionTicket: string, 
 	request: GetStoreItemsRequest
-): GetStoreItemsResult | ApiErrorWrapper
+): GetStoreItemsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetStoreItems",
 		request,
@@ -5910,7 +5910,7 @@ end
 function ClientApi.GetTimeAsync(
 	sessionTicket: string, 
 	request: GetTimeRequest
-): GetTimeResult | ApiErrorWrapper
+): GetTimeResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetTime",
 		request,
@@ -5932,7 +5932,7 @@ end
 function ClientApi.GetTitleDataAsync(
 	sessionTicket: string, 
 	request: GetTitleDataRequest
-): GetTitleDataResult | ApiErrorWrapper
+): GetTitleDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetTitleData",
 		request,
@@ -5945,7 +5945,7 @@ end
 function ClientApi.GetTitleNewsAsync(
 	sessionTicket: string, 
 	request: GetTitleNewsRequest
-): GetTitleNewsResult | ApiErrorWrapper
+): GetTitleNewsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetTitleNews",
 		request,
@@ -5968,7 +5968,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/gettitlepublickey
 function ClientApi.GetTitlePublicKeyAsync(
 	request: GetTitlePublicKeyRequest
-): GetTitlePublicKeyResult | ApiErrorWrapper
+): GetTitlePublicKeyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetTitlePublicKey",
 		request,
@@ -5981,7 +5981,7 @@ end
 function ClientApi.GetTradeStatusAsync(
 	sessionTicket: string, 
 	request: GetTradeStatusRequest
-): GetTradeStatusResponse | ApiErrorWrapper
+): GetTradeStatusResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetTradeStatus",
 		request,
@@ -6001,7 +6001,7 @@ end
 function ClientApi.GetUserDataAsync(
 	sessionTicket: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetUserData",
 		request,
@@ -6014,7 +6014,7 @@ end
 function ClientApi.GetUserInventoryAsync(
 	sessionTicket: string, 
 	request: GetUserInventoryRequest
-): GetUserInventoryResult | ApiErrorWrapper
+): GetUserInventoryResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetUserInventory",
 		request,
@@ -6031,7 +6031,7 @@ end
 function ClientApi.GetUserPublisherDataAsync(
 	sessionTicket: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetUserPublisherData",
 		request,
@@ -6048,7 +6048,7 @@ end
 function ClientApi.GetUserPublisherReadOnlyDataAsync(
 	sessionTicket: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetUserPublisherReadOnlyData",
 		request,
@@ -6068,7 +6068,7 @@ end
 function ClientApi.GetUserReadOnlyDataAsync(
 	sessionTicket: string, 
 	request: GetUserDataRequest
-): GetUserDataResult | ApiErrorWrapper
+): GetUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GetUserReadOnlyData",
 		request,
@@ -6086,7 +6086,7 @@ end
 function ClientApi.GrantCharacterToUserAsync(
 	sessionTicket: string, 
 	request: GrantCharacterToUserRequest
-): GrantCharacterToUserResult | ApiErrorWrapper
+): GrantCharacterToUserResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/GrantCharacterToUser",
 		request,
@@ -6099,7 +6099,7 @@ end
 function ClientApi.LinkAndroidDeviceIDAsync(
 	sessionTicket: string, 
 	request: LinkAndroidDeviceIDRequest
-): LinkAndroidDeviceIDResult | ApiErrorWrapper
+): LinkAndroidDeviceIDResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkAndroidDeviceID",
 		request,
@@ -6112,7 +6112,7 @@ end
 function ClientApi.LinkAppleAsync(
 	sessionTicket: string, 
 	request: LinkAppleRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkApple",
 		request,
@@ -6125,7 +6125,7 @@ end
 function ClientApi.LinkCustomIDAsync(
 	sessionTicket: string, 
 	request: LinkCustomIDRequest
-): LinkCustomIDResult | ApiErrorWrapper
+): LinkCustomIDResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkCustomID",
 		request,
@@ -6149,7 +6149,7 @@ end
 function ClientApi.LinkFacebookAccountAsync(
 	sessionTicket: string, 
 	request: LinkFacebookAccountRequest
-): LinkFacebookAccountResult | ApiErrorWrapper
+): LinkFacebookAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkFacebookAccount",
 		request,
@@ -6162,7 +6162,7 @@ end
 function ClientApi.LinkFacebookInstantGamesIdAsync(
 	sessionTicket: string, 
 	request: LinkFacebookInstantGamesIdRequest
-): LinkFacebookInstantGamesIdResult | ApiErrorWrapper
+): LinkFacebookInstantGamesIdResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkFacebookInstantGamesId",
 		request,
@@ -6175,7 +6175,7 @@ end
 function ClientApi.LinkGameCenterAccountAsync(
 	sessionTicket: string, 
 	request: LinkGameCenterAccountRequest
-): LinkGameCenterAccountResult | ApiErrorWrapper
+): LinkGameCenterAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkGameCenterAccount",
 		request,
@@ -6191,7 +6191,7 @@ end
 function ClientApi.LinkGoogleAccountAsync(
 	sessionTicket: string, 
 	request: LinkGoogleAccountRequest
-): LinkGoogleAccountResult | ApiErrorWrapper
+): LinkGoogleAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkGoogleAccount",
 		request,
@@ -6208,7 +6208,7 @@ end
 function ClientApi.LinkGooglePlayGamesServicesAccountAsync(
 	sessionTicket: string, 
 	request: LinkGooglePlayGamesServicesAccountRequest
-): LinkGooglePlayGamesServicesAccountResult | ApiErrorWrapper
+): LinkGooglePlayGamesServicesAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkGooglePlayGamesServicesAccount",
 		request,
@@ -6221,7 +6221,7 @@ end
 function ClientApi.LinkIOSDeviceIDAsync(
 	sessionTicket: string, 
 	request: LinkIOSDeviceIDRequest
-): LinkIOSDeviceIDResult | ApiErrorWrapper
+): LinkIOSDeviceIDResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkIOSDeviceID",
 		request,
@@ -6234,7 +6234,7 @@ end
 function ClientApi.LinkKongregateAsync(
 	sessionTicket: string, 
 	request: LinkKongregateAccountRequest
-): LinkKongregateAccountResult | ApiErrorWrapper
+): LinkKongregateAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkKongregate",
 		request,
@@ -6247,7 +6247,7 @@ end
 function ClientApi.LinkNintendoServiceAccountAsync(
 	sessionTicket: string, 
 	request: LinkNintendoServiceAccountRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkNintendoServiceAccount",
 		request,
@@ -6260,7 +6260,7 @@ end
 function ClientApi.LinkNintendoSwitchDeviceIdAsync(
 	sessionTicket: string, 
 	request: LinkNintendoSwitchDeviceIdRequest
-): LinkNintendoSwitchDeviceIdResult | ApiErrorWrapper
+): LinkNintendoSwitchDeviceIdResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkNintendoSwitchDeviceId",
 		request,
@@ -6273,7 +6273,7 @@ end
 function ClientApi.LinkOpenIdConnectAsync(
 	sessionTicket: string, 
 	request: LinkOpenIdConnectRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkOpenIdConnect",
 		request,
@@ -6286,7 +6286,7 @@ end
 function ClientApi.LinkPSNAccountAsync(
 	sessionTicket: string, 
 	request: LinkPSNAccountRequest
-): LinkPSNAccountResult | ApiErrorWrapper
+): LinkPSNAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkPSNAccount",
 		request,
@@ -6306,7 +6306,7 @@ end
 function ClientApi.LinkSteamAccountAsync(
 	sessionTicket: string, 
 	request: LinkSteamAccountRequest
-): LinkSteamAccountResult | ApiErrorWrapper
+): LinkSteamAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkSteamAccount",
 		request,
@@ -6319,7 +6319,7 @@ end
 function ClientApi.LinkTwitchAsync(
 	sessionTicket: string, 
 	request: LinkTwitchAccountRequest
-): LinkTwitchAccountResult | ApiErrorWrapper
+): LinkTwitchAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkTwitch",
 		request,
@@ -6332,7 +6332,7 @@ end
 function ClientApi.LinkXboxAccountAsync(
 	sessionTicket: string, 
 	request: LinkXboxAccountRequest
-): LinkXboxAccountResult | ApiErrorWrapper
+): LinkXboxAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LinkXboxAccount",
 		request,
@@ -6358,7 +6358,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithandroiddeviceid
 function ClientApi.LoginWithAndroidDeviceIDAsync(
 	request: LoginWithAndroidDeviceIDRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithAndroidDeviceID",
 		request,
@@ -6370,7 +6370,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithapple
 function ClientApi.LoginWithAppleAsync(
 	request: LoginWithAppleRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithApple",
 		request,
@@ -6391,7 +6391,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithcustomid
 function ClientApi.LoginWithCustomIDAsync(
 	request: LoginWithCustomIDRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithCustomID",
 		request,
@@ -6408,7 +6408,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithemailaddress
 function ClientApi.LoginWithEmailAddressAsync(
 	request: LoginWithEmailAddressRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithEmailAddress",
 		request,
@@ -6437,7 +6437,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithfacebook
 function ClientApi.LoginWithFacebookAsync(
 	request: LoginWithFacebookRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithFacebook",
 		request,
@@ -6449,7 +6449,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithfacebookinstantgamesid
 function ClientApi.LoginWithFacebookInstantGamesIdAsync(
 	request: LoginWithFacebookInstantGamesIdRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithFacebookInstantGamesId",
 		request,
@@ -6472,7 +6472,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithgamecenter
 function ClientApi.LoginWithGameCenterAsync(
 	request: LoginWithGameCenterRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithGameCenter",
 		request,
@@ -6504,7 +6504,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithgoogleaccount
 function ClientApi.LoginWithGoogleAccountAsync(
 	request: LoginWithGoogleAccountRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithGoogleAccount",
 		request,
@@ -6533,7 +6533,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithgoogleplaygamesservices
 function ClientApi.LoginWithGooglePlayGamesServicesAsync(
 	request: LoginWithGooglePlayGamesServicesRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithGooglePlayGamesServices",
 		request,
@@ -6559,7 +6559,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithiosdeviceid
 function ClientApi.LoginWithIOSDeviceIDAsync(
 	request: LoginWithIOSDeviceIDRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithIOSDeviceID",
 		request,
@@ -6582,7 +6582,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithkongregate
 function ClientApi.LoginWithKongregateAsync(
 	request: LoginWithKongregateRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithKongregate",
 		request,
@@ -6594,7 +6594,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithnintendoserviceaccount
 function ClientApi.LoginWithNintendoServiceAccountAsync(
 	request: LoginWithNintendoServiceAccountRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithNintendoServiceAccount",
 		request,
@@ -6606,7 +6606,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithnintendoswitchdeviceid
 function ClientApi.LoginWithNintendoSwitchDeviceIdAsync(
 	request: LoginWithNintendoSwitchDeviceIdRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithNintendoSwitchDeviceId",
 		request,
@@ -6618,7 +6618,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithopenidconnect
 function ClientApi.LoginWithOpenIdConnectAsync(
 	request: LoginWithOpenIdConnectRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithOpenIdConnect",
 		request,
@@ -6638,7 +6638,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithpsn
 function ClientApi.LoginWithPSNAsync(
 	request: LoginWithPSNRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithPSN",
 		request,
@@ -6656,7 +6656,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithplayfab
 function ClientApi.LoginWithPlayFabAsync(
 	request: LoginWithPlayFabRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithPlayFab",
 		request,
@@ -6681,7 +6681,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithsteam
 function ClientApi.LoginWithSteamAsync(
 	request: LoginWithSteamRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithSteam",
 		request,
@@ -6704,7 +6704,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithtwitch
 function ClientApi.LoginWithTwitchAsync(
 	request: LoginWithTwitchRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithTwitch",
 		request,
@@ -6723,7 +6723,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/loginwithxbox
 function ClientApi.LoginWithXboxAsync(
 	request: LoginWithXboxRequest
-): LoginResult | ApiErrorWrapper
+): LoginResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/LoginWithXbox",
 		request,
@@ -6736,7 +6736,7 @@ end
 function ClientApi.MatchmakeAsync(
 	sessionTicket: string, 
 	request: MatchmakeRequest
-): MatchmakeResult | ApiErrorWrapper
+): MatchmakeResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/Matchmake",
 		request,
@@ -6749,7 +6749,7 @@ end
 function ClientApi.OpenTradeAsync(
 	sessionTicket: string, 
 	request: OpenTradeRequest
-): OpenTradeResponse | ApiErrorWrapper
+): OpenTradeResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/OpenTrade",
 		request,
@@ -6769,7 +6769,7 @@ end
 function ClientApi.PayForPurchaseAsync(
 	sessionTicket: string, 
 	request: PayForPurchaseRequest
-): PayForPurchaseResult | ApiErrorWrapper
+): PayForPurchaseResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/PayForPurchase",
 		request,
@@ -6786,7 +6786,7 @@ end
 function ClientApi.PurchaseItemAsync(
 	sessionTicket: string, 
 	request: PurchaseItemRequest
-): PurchaseItemResult | ApiErrorWrapper
+): PurchaseItemResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/PurchaseItem",
 		request,
@@ -6804,7 +6804,7 @@ end
 function ClientApi.RedeemCouponAsync(
 	sessionTicket: string, 
 	request: RedeemCouponRequest
-): RedeemCouponResult | ApiErrorWrapper
+): RedeemCouponResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/RedeemCoupon",
 		request,
@@ -6817,7 +6817,7 @@ end
 function ClientApi.RefreshPSNAuthTokenAsync(
 	sessionTicket: string, 
 	request: RefreshPSNAuthTokenRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/RefreshPSNAuthToken",
 		request,
@@ -6833,7 +6833,7 @@ end
 function ClientApi.RegisterForIOSPushNotificationAsync(
 	sessionTicket: string, 
 	request: RegisterForIOSPushNotificationRequest
-): RegisterForIOSPushNotificationResult | ApiErrorWrapper
+): RegisterForIOSPushNotificationResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/RegisterForIOSPushNotification",
 		request,
@@ -6845,7 +6845,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/authentication/registerplayfabuser
 function ClientApi.RegisterPlayFabUserAsync(
 	request: RegisterPlayFabUserRequest
-): RegisterPlayFabUserResult | ApiErrorWrapper
+): RegisterPlayFabUserResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/RegisterPlayFabUser",
 		request,
@@ -6860,7 +6860,7 @@ end
 function ClientApi.RemoveContactEmailAsync(
 	sessionTicket: string, 
 	request: RemoveContactEmailRequest
-): RemoveContactEmailResult | ApiErrorWrapper
+): RemoveContactEmailResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/RemoveContactEmail",
 		request,
@@ -6873,7 +6873,7 @@ end
 function ClientApi.RemoveFriendAsync(
 	sessionTicket: string, 
 	request: RemoveFriendRequest
-): RemoveFriendResult | ApiErrorWrapper
+): RemoveFriendResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/RemoveFriend",
 		request,
@@ -6886,7 +6886,7 @@ end
 function ClientApi.RemoveGenericIDAsync(
 	sessionTicket: string, 
 	request: RemoveGenericIDRequest
-): RemoveGenericIDResult | ApiErrorWrapper
+): RemoveGenericIDResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/RemoveGenericID",
 		request,
@@ -6899,7 +6899,7 @@ end
 function ClientApi.RemoveSharedGroupMembersAsync(
 	sessionTicket: string, 
 	request: RemoveSharedGroupMembersRequest
-): RemoveSharedGroupMembersResult | ApiErrorWrapper
+): RemoveSharedGroupMembersResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/RemoveSharedGroupMembers",
 		request,
@@ -6915,7 +6915,7 @@ end
 function ClientApi.ReportAdActivityAsync(
 	sessionTicket: string, 
 	request: ReportAdActivityRequest
-): ReportAdActivityResult | ApiErrorWrapper
+): ReportAdActivityResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ReportAdActivity",
 		request,
@@ -6930,7 +6930,7 @@ end
 function ClientApi.ReportDeviceInfoAsync(
 	sessionTicket: string, 
 	request: DeviceInfoRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ReportDeviceInfo",
 		request,
@@ -6943,7 +6943,7 @@ end
 function ClientApi.ReportPlayerAsync(
 	sessionTicket: string, 
 	request: ReportPlayerClientRequest
-): ReportPlayerClientResult | ApiErrorWrapper
+): ReportPlayerClientResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ReportPlayer",
 		request,
@@ -6963,7 +6963,7 @@ end
 function ClientApi.RestoreIOSPurchasesAsync(
 	sessionTicket: string, 
 	request: RestoreIOSPurchasesRequest
-): RestoreIOSPurchasesResult | ApiErrorWrapper
+): RestoreIOSPurchasesResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/RestoreIOSPurchases",
 		request,
@@ -6981,7 +6981,7 @@ end
 function ClientApi.RewardAdActivityAsync(
 	sessionTicket: string, 
 	request: RewardAdActivityRequest
-): RewardAdActivityResult | ApiErrorWrapper
+): RewardAdActivityResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/RewardAdActivity",
 		request,
@@ -6998,7 +6998,7 @@ end
 --- https://docs.microsoft.com/rest/api/playfab/client/account-management/sendaccountrecoveryemail
 function ClientApi.SendAccountRecoveryEmailAsync(
 	request: SendAccountRecoveryEmailRequest
-): SendAccountRecoveryEmailResult | ApiErrorWrapper
+): SendAccountRecoveryEmailResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/SendAccountRecoveryEmail",
 		request,
@@ -7017,7 +7017,7 @@ end
 function ClientApi.SetFriendTagsAsync(
 	sessionTicket: string, 
 	request: SetFriendTagsRequest
-): SetFriendTagsResult | ApiErrorWrapper
+): SetFriendTagsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/SetFriendTags",
 		request,
@@ -7039,7 +7039,7 @@ end
 function ClientApi.SetPlayerSecretAsync(
 	sessionTicket: string, 
 	request: SetPlayerSecretRequest
-): SetPlayerSecretResult | ApiErrorWrapper
+): SetPlayerSecretResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/SetPlayerSecret",
 		request,
@@ -7058,7 +7058,7 @@ end
 function ClientApi.StartPurchaseAsync(
 	sessionTicket: string, 
 	request: StartPurchaseRequest
-): StartPurchaseResult | ApiErrorWrapper
+): StartPurchaseResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/StartPurchase",
 		request,
@@ -7074,7 +7074,7 @@ end
 function ClientApi.SubtractUserVirtualCurrencyAsync(
 	sessionTicket: string, 
 	request: SubtractUserVirtualCurrencyRequest
-): ModifyUserVirtualCurrencyResult | ApiErrorWrapper
+): ModifyUserVirtualCurrencyResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/SubtractUserVirtualCurrency",
 		request,
@@ -7087,7 +7087,7 @@ end
 function ClientApi.UnlinkAndroidDeviceIDAsync(
 	sessionTicket: string, 
 	request: UnlinkAndroidDeviceIDRequest
-): UnlinkAndroidDeviceIDResult | ApiErrorWrapper
+): UnlinkAndroidDeviceIDResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkAndroidDeviceID",
 		request,
@@ -7100,7 +7100,7 @@ end
 function ClientApi.UnlinkAppleAsync(
 	sessionTicket: string, 
 	request: UnlinkAppleRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkApple",
 		request,
@@ -7113,7 +7113,7 @@ end
 function ClientApi.UnlinkCustomIDAsync(
 	sessionTicket: string, 
 	request: UnlinkCustomIDRequest
-): UnlinkCustomIDResult | ApiErrorWrapper
+): UnlinkCustomIDResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkCustomID",
 		request,
@@ -7126,7 +7126,7 @@ end
 function ClientApi.UnlinkFacebookAccountAsync(
 	sessionTicket: string, 
 	request: UnlinkFacebookAccountRequest
-): UnlinkFacebookAccountResult | ApiErrorWrapper
+): UnlinkFacebookAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkFacebookAccount",
 		request,
@@ -7139,7 +7139,7 @@ end
 function ClientApi.UnlinkFacebookInstantGamesIdAsync(
 	sessionTicket: string, 
 	request: UnlinkFacebookInstantGamesIdRequest
-): UnlinkFacebookInstantGamesIdResult | ApiErrorWrapper
+): UnlinkFacebookInstantGamesIdResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkFacebookInstantGamesId",
 		request,
@@ -7152,7 +7152,7 @@ end
 function ClientApi.UnlinkGameCenterAccountAsync(
 	sessionTicket: string, 
 	request: UnlinkGameCenterAccountRequest
-): UnlinkGameCenterAccountResult | ApiErrorWrapper
+): UnlinkGameCenterAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkGameCenterAccount",
 		request,
@@ -7165,7 +7165,7 @@ end
 function ClientApi.UnlinkGoogleAccountAsync(
 	sessionTicket: string, 
 	request: UnlinkGoogleAccountRequest
-): UnlinkGoogleAccountResult | ApiErrorWrapper
+): UnlinkGoogleAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkGoogleAccount",
 		request,
@@ -7178,7 +7178,7 @@ end
 function ClientApi.UnlinkGooglePlayGamesServicesAccountAsync(
 	sessionTicket: string, 
 	request: UnlinkGooglePlayGamesServicesAccountRequest
-): UnlinkGooglePlayGamesServicesAccountResult | ApiErrorWrapper
+): UnlinkGooglePlayGamesServicesAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkGooglePlayGamesServicesAccount",
 		request,
@@ -7191,7 +7191,7 @@ end
 function ClientApi.UnlinkIOSDeviceIDAsync(
 	sessionTicket: string, 
 	request: UnlinkIOSDeviceIDRequest
-): UnlinkIOSDeviceIDResult | ApiErrorWrapper
+): UnlinkIOSDeviceIDResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkIOSDeviceID",
 		request,
@@ -7204,7 +7204,7 @@ end
 function ClientApi.UnlinkKongregateAsync(
 	sessionTicket: string, 
 	request: UnlinkKongregateAccountRequest
-): UnlinkKongregateAccountResult | ApiErrorWrapper
+): UnlinkKongregateAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkKongregate",
 		request,
@@ -7217,7 +7217,7 @@ end
 function ClientApi.UnlinkNintendoServiceAccountAsync(
 	sessionTicket: string, 
 	request: UnlinkNintendoServiceAccountRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkNintendoServiceAccount",
 		request,
@@ -7230,7 +7230,7 @@ end
 function ClientApi.UnlinkNintendoSwitchDeviceIdAsync(
 	sessionTicket: string, 
 	request: UnlinkNintendoSwitchDeviceIdRequest
-): UnlinkNintendoSwitchDeviceIdResult | ApiErrorWrapper
+): UnlinkNintendoSwitchDeviceIdResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkNintendoSwitchDeviceId",
 		request,
@@ -7243,7 +7243,7 @@ end
 function ClientApi.UnlinkOpenIdConnectAsync(
 	sessionTicket: string, 
 	request: UnlinkOpenIdConnectRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkOpenIdConnect",
 		request,
@@ -7256,7 +7256,7 @@ end
 function ClientApi.UnlinkPSNAccountAsync(
 	sessionTicket: string, 
 	request: UnlinkPSNAccountRequest
-): UnlinkPSNAccountResult | ApiErrorWrapper
+): UnlinkPSNAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkPSNAccount",
 		request,
@@ -7269,7 +7269,7 @@ end
 function ClientApi.UnlinkSteamAccountAsync(
 	sessionTicket: string, 
 	request: UnlinkSteamAccountRequest
-): UnlinkSteamAccountResult | ApiErrorWrapper
+): UnlinkSteamAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkSteamAccount",
 		request,
@@ -7282,7 +7282,7 @@ end
 function ClientApi.UnlinkTwitchAsync(
 	sessionTicket: string, 
 	request: UnlinkTwitchAccountRequest
-): UnlinkTwitchAccountResult | ApiErrorWrapper
+): UnlinkTwitchAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkTwitch",
 		request,
@@ -7295,7 +7295,7 @@ end
 function ClientApi.UnlinkXboxAccountAsync(
 	sessionTicket: string, 
 	request: UnlinkXboxAccountRequest
-): UnlinkXboxAccountResult | ApiErrorWrapper
+): UnlinkXboxAccountResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlinkXboxAccount",
 		request,
@@ -7311,7 +7311,7 @@ end
 function ClientApi.UnlockContainerInstanceAsync(
 	sessionTicket: string, 
 	request: UnlockContainerInstanceRequest
-): UnlockContainerItemResult | ApiErrorWrapper
+): UnlockContainerItemResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlockContainerInstance",
 		request,
@@ -7327,7 +7327,7 @@ end
 function ClientApi.UnlockContainerItemAsync(
 	sessionTicket: string, 
 	request: UnlockContainerItemRequest
-): UnlockContainerItemResult | ApiErrorWrapper
+): UnlockContainerItemResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UnlockContainerItem",
 		request,
@@ -7340,7 +7340,7 @@ end
 function ClientApi.UpdateAvatarUrlAsync(
 	sessionTicket: string, 
 	request: UpdateAvatarUrlRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UpdateAvatarUrl",
 		request,
@@ -7360,7 +7360,7 @@ end
 function ClientApi.UpdateCharacterDataAsync(
 	sessionTicket: string, 
 	request: UpdateCharacterDataRequest
-): UpdateCharacterDataResult | ApiErrorWrapper
+): UpdateCharacterDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UpdateCharacterData",
 		request,
@@ -7381,7 +7381,7 @@ end
 function ClientApi.UpdateCharacterStatisticsAsync(
 	sessionTicket: string, 
 	request: UpdateCharacterStatisticsRequest
-): UpdateCharacterStatisticsResult | ApiErrorWrapper
+): UpdateCharacterStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UpdateCharacterStatistics",
 		request,
@@ -7405,7 +7405,7 @@ end
 function ClientApi.UpdatePlayerStatisticsAsync(
 	sessionTicket: string, 
 	request: UpdatePlayerStatisticsRequest
-): UpdatePlayerStatisticsResult | ApiErrorWrapper
+): UpdatePlayerStatisticsResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UpdatePlayerStatistics",
 		request,
@@ -7424,7 +7424,7 @@ end
 function ClientApi.UpdateSharedGroupDataAsync(
 	sessionTicket: string, 
 	request: UpdateSharedGroupDataRequest
-): UpdateSharedGroupDataResult | ApiErrorWrapper
+): UpdateSharedGroupDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UpdateSharedGroupData",
 		request,
@@ -7443,7 +7443,7 @@ end
 function ClientApi.UpdateUserDataAsync(
 	sessionTicket: string, 
 	request: UpdateUserDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UpdateUserData",
 		request,
@@ -7462,7 +7462,7 @@ end
 function ClientApi.UpdateUserPublisherDataAsync(
 	sessionTicket: string, 
 	request: UpdateUserDataRequest
-): UpdateUserDataResult | ApiErrorWrapper
+): UpdateUserDataResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UpdateUserPublisherData",
 		request,
@@ -7479,7 +7479,7 @@ end
 function ClientApi.UpdateUserTitleDisplayNameAsync(
 	sessionTicket: string, 
 	request: UpdateUserTitleDisplayNameRequest
-): UpdateUserTitleDisplayNameResult | ApiErrorWrapper
+): UpdateUserTitleDisplayNameResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/UpdateUserTitleDisplayName",
 		request,
@@ -7492,7 +7492,7 @@ end
 function ClientApi.ValidateAmazonIAPReceiptAsync(
 	sessionTicket: string, 
 	request: ValidateAmazonReceiptRequest
-): ValidateAmazonReceiptResult | ApiErrorWrapper
+): ValidateAmazonReceiptResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ValidateAmazonIAPReceipt",
 		request,
@@ -7513,7 +7513,7 @@ end
 function ClientApi.ValidateGooglePlayPurchaseAsync(
 	sessionTicket: string, 
 	request: ValidateGooglePlayPurchaseRequest
-): ValidateGooglePlayPurchaseResult | ApiErrorWrapper
+): ValidateGooglePlayPurchaseResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ValidateGooglePlayPurchase",
 		request,
@@ -7534,7 +7534,7 @@ end
 function ClientApi.ValidateIOSReceiptAsync(
 	sessionTicket: string, 
 	request: ValidateIOSReceiptRequest
-): ValidateIOSReceiptResult | ApiErrorWrapper
+): ValidateIOSReceiptResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ValidateIOSReceipt",
 		request,
@@ -7547,7 +7547,7 @@ end
 function ClientApi.ValidateWindowsStoreReceiptAsync(
 	sessionTicket: string, 
 	request: ValidateWindowsReceiptRequest
-): ValidateWindowsReceiptResult | ApiErrorWrapper
+): ValidateWindowsReceiptResult
 	return PlayFabInternal.MakeApiCall(
 		"/Client/ValidateWindowsStoreReceipt",
 		request,
@@ -7565,7 +7565,7 @@ end
 function ClientApi.WriteCharacterEventAsync(
 	sessionTicket: string, 
 	request: WriteClientCharacterEventRequest
-): WriteEventResponse | ApiErrorWrapper
+): WriteEventResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/WriteCharacterEvent",
 		request,
@@ -7583,7 +7583,7 @@ end
 function ClientApi.WritePlayerEventAsync(
 	sessionTicket: string, 
 	request: WriteClientPlayerEventRequest
-): WriteEventResponse | ApiErrorWrapper
+): WriteEventResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/WritePlayerEvent",
 		request,
@@ -7601,7 +7601,7 @@ end
 function ClientApi.WriteTitleEventAsync(
 	sessionTicket: string, 
 	request: WriteTitleEventRequest
-): WriteEventResponse | ApiErrorWrapper
+): WriteEventResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Client/WriteTitleEvent",
 		request,

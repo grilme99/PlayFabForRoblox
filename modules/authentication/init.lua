@@ -186,7 +186,7 @@ export type ValidateEntityTokenResponse = {
 --- https://docs.microsoft.com/rest/api/playfab/authentication/authentication/getentitytoken
 function AuthenticationApi.GetEntityTokenAsync(
 	request: GetEntityTokenRequest
-): GetEntityTokenResponse | ApiErrorWrapper
+): GetEntityTokenResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Authentication/GetEntityToken",
 		request,
@@ -202,7 +202,7 @@ end
 function AuthenticationApi.ValidateEntityTokenAsync(
 	entityToken: string, 
 	request: ValidateEntityTokenRequest
-): ValidateEntityTokenResponse | ApiErrorWrapper
+): ValidateEntityTokenResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Authentication/ValidateEntityToken",
 		request,
@@ -217,7 +217,7 @@ end
 function AuthenticationApi.AuthenticateGameServerWithCustomIdAsync(
 	entityToken: string, 
 	request: AuthenticateCustomIdRequest
-): AuthenticateCustomIdResult | ApiErrorWrapper
+): AuthenticateCustomIdResult
 	return PlayFabInternal.MakeApiCall(
 		"/Authentication/AuthenticateGameServerWithCustomId",
 		request,
@@ -234,7 +234,7 @@ end
 function AuthenticationApi.DeleteAsync(
 	entityToken: string, 
 	request: DeleteRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Authentication/Delete",
 		request,

@@ -280,7 +280,7 @@ export type SetObjectsResponse = {
 function DataApi.AbortFileUploadsAsync(
 	entityToken: string, 
 	request: AbortFileUploadsRequest
-): AbortFileUploadsResponse | ApiErrorWrapper
+): AbortFileUploadsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Data/AbortFileUploads",
 		request,
@@ -295,7 +295,7 @@ end
 function DataApi.DeleteFilesAsync(
 	entityToken: string, 
 	request: DeleteFilesRequest
-): DeleteFilesResponse | ApiErrorWrapper
+): DeleteFilesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Data/DeleteFiles",
 		request,
@@ -311,7 +311,7 @@ end
 function DataApi.FinalizeFileUploadsAsync(
 	entityToken: string, 
 	request: FinalizeFileUploadsRequest
-): FinalizeFileUploadsResponse | ApiErrorWrapper
+): FinalizeFileUploadsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Data/FinalizeFileUploads",
 		request,
@@ -328,7 +328,7 @@ end
 function DataApi.GetFilesAsync(
 	entityToken: string, 
 	request: GetFilesRequest
-): GetFilesResponse | ApiErrorWrapper
+): GetFilesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Data/GetFiles",
 		request,
@@ -345,7 +345,7 @@ end
 function DataApi.InitiateFileUploadsAsync(
 	entityToken: string, 
 	request: InitiateFileUploadsRequest
-): InitiateFileUploadsResponse | ApiErrorWrapper
+): InitiateFileUploadsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Data/InitiateFileUploads",
 		request,
@@ -360,7 +360,7 @@ end
 function DataApi.GetObjectsAsync(
 	entityToken: string, 
 	request: GetObjectsRequest
-): GetObjectsResponse | ApiErrorWrapper
+): GetObjectsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Data/GetObjects",
 		request,
@@ -381,7 +381,7 @@ end
 function DataApi.SetObjectsAsync(
 	entityToken: string, 
 	request: SetObjectsRequest
-): SetObjectsResponse | ApiErrorWrapper
+): SetObjectsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Data/SetObjects",
 		request,

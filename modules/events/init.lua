@@ -87,7 +87,7 @@ export type WriteEventsResponse = {
 function EventsApi.WriteEventsAsync(
 	entityToken: string, 
 	request: WriteEventsRequest
-): WriteEventsResponse | ApiErrorWrapper
+): WriteEventsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Events/WriteEvents",
 		request,
@@ -100,7 +100,7 @@ end
 function EventsApi.WriteTelemetryEventsAsync(
 	entityToken: string, 
 	request: WriteEventsRequest
-): WriteEventsResponse | ApiErrorWrapper
+): WriteEventsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Events/WriteTelemetryEvents",
 		request,

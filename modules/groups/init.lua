@@ -639,7 +639,7 @@ export type UpdateGroupRoleResponse = {
 function GroupsApi.AcceptGroupApplicationAsync(
 	entityToken: string, 
 	request: AcceptGroupApplicationRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/AcceptGroupApplication",
 		request,
@@ -657,7 +657,7 @@ end
 function GroupsApi.AcceptGroupInvitationAsync(
 	entityToken: string, 
 	request: AcceptGroupInvitationRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/AcceptGroupInvitation",
 		request,
@@ -676,7 +676,7 @@ end
 function GroupsApi.AddMembersAsync(
 	entityToken: string, 
 	request: AddMembersRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/AddMembers",
 		request,
@@ -698,7 +698,7 @@ end
 function GroupsApi.ApplyToGroupAsync(
 	entityToken: string, 
 	request: ApplyToGroupRequest
-): ApplyToGroupResponse | ApiErrorWrapper
+): ApplyToGroupResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/ApplyToGroup",
 		request,
@@ -717,7 +717,7 @@ end
 function GroupsApi.BlockEntityAsync(
 	entityToken: string, 
 	request: BlockEntityRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/BlockEntity",
 		request,
@@ -735,7 +735,7 @@ end
 function GroupsApi.ChangeMemberRoleAsync(
 	entityToken: string, 
 	request: ChangeMemberRoleRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/ChangeMemberRole",
 		request,
@@ -751,7 +751,7 @@ end
 function GroupsApi.CreateGroupAsync(
 	entityToken: string, 
 	request: CreateGroupRequest
-): CreateGroupResponse | ApiErrorWrapper
+): CreateGroupResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/CreateGroup",
 		request,
@@ -769,7 +769,7 @@ end
 function GroupsApi.CreateRoleAsync(
 	entityToken: string, 
 	request: CreateGroupRoleRequest
-): CreateGroupRoleResponse | ApiErrorWrapper
+): CreateGroupRoleResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/CreateRole",
 		request,
@@ -788,7 +788,7 @@ end
 function GroupsApi.DeleteGroupAsync(
 	entityToken: string, 
 	request: DeleteGroupRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/DeleteGroup",
 		request,
@@ -803,7 +803,7 @@ end
 function GroupsApi.DeleteRoleAsync(
 	entityToken: string, 
 	request: DeleteRoleRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/DeleteRole",
 		request,
@@ -819,7 +819,7 @@ end
 function GroupsApi.GetGroupAsync(
 	entityToken: string, 
 	request: GetGroupRequest
-): GetGroupResponse | ApiErrorWrapper
+): GetGroupResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/GetGroup",
 		request,
@@ -840,7 +840,7 @@ end
 function GroupsApi.InviteToGroupAsync(
 	entityToken: string, 
 	request: InviteToGroupRequest
-): InviteToGroupResponse | ApiErrorWrapper
+): InviteToGroupResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/InviteToGroup",
 		request,
@@ -858,7 +858,7 @@ end
 function GroupsApi.IsMemberAsync(
 	entityToken: string, 
 	request: IsMemberRequest
-): IsMemberResponse | ApiErrorWrapper
+): IsMemberResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/IsMember",
 		request,
@@ -875,7 +875,7 @@ end
 function GroupsApi.ListGroupApplicationsAsync(
 	entityToken: string, 
 	request: ListGroupApplicationsRequest
-): ListGroupApplicationsResponse | ApiErrorWrapper
+): ListGroupApplicationsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/ListGroupApplications",
 		request,
@@ -891,7 +891,7 @@ end
 function GroupsApi.ListGroupBlocksAsync(
 	entityToken: string, 
 	request: ListGroupBlocksRequest
-): ListGroupBlocksResponse | ApiErrorWrapper
+): ListGroupBlocksResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/ListGroupBlocks",
 		request,
@@ -908,7 +908,7 @@ end
 function GroupsApi.ListGroupInvitationsAsync(
 	entityToken: string, 
 	request: ListGroupInvitationsRequest
-): ListGroupInvitationsResponse | ApiErrorWrapper
+): ListGroupInvitationsResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/ListGroupInvitations",
 		request,
@@ -926,7 +926,7 @@ end
 function GroupsApi.ListGroupMembersAsync(
 	entityToken: string, 
 	request: ListGroupMembersRequest
-): ListGroupMembersResponse | ApiErrorWrapper
+): ListGroupMembersResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/ListGroupMembers",
 		request,
@@ -945,7 +945,7 @@ end
 function GroupsApi.ListMembershipAsync(
 	entityToken: string, 
 	request: ListMembershipRequest
-): ListMembershipResponse | ApiErrorWrapper
+): ListMembershipResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/ListMembership",
 		request,
@@ -963,7 +963,7 @@ end
 function GroupsApi.ListMembershipOpportunitiesAsync(
 	entityToken: string, 
 	request: ListMembershipOpportunitiesRequest
-): ListMembershipOpportunitiesResponse | ApiErrorWrapper
+): ListMembershipOpportunitiesResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/ListMembershipOpportunities",
 		request,
@@ -982,7 +982,7 @@ end
 function GroupsApi.RemoveGroupApplicationAsync(
 	entityToken: string, 
 	request: RemoveGroupApplicationRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/RemoveGroupApplication",
 		request,
@@ -1001,7 +1001,7 @@ end
 function GroupsApi.RemoveGroupInvitationAsync(
 	entityToken: string, 
 	request: RemoveGroupInvitationRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/RemoveGroupInvitation",
 		request,
@@ -1017,7 +1017,7 @@ end
 function GroupsApi.RemoveMembersAsync(
 	entityToken: string, 
 	request: RemoveMembersRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/RemoveMembers",
 		request,
@@ -1033,7 +1033,7 @@ end
 function GroupsApi.UnblockEntityAsync(
 	entityToken: string, 
 	request: UnblockEntityRequest
-): EmptyResponse | ApiErrorWrapper
+): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/UnblockEntity",
 		request,
@@ -1050,7 +1050,7 @@ end
 function GroupsApi.UpdateGroupAsync(
 	entityToken: string, 
 	request: UpdateGroupRequest
-): UpdateGroupResponse | ApiErrorWrapper
+): UpdateGroupResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/UpdateGroup",
 		request,
@@ -1065,7 +1065,7 @@ end
 function GroupsApi.UpdateRoleAsync(
 	entityToken: string, 
 	request: UpdateGroupRoleRequest
-): UpdateGroupRoleResponse | ApiErrorWrapper
+): UpdateGroupRoleResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Groups/UpdateRole",
 		request,

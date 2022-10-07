@@ -6,7 +6,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Packages = ReplicatedStorage.Packages
 local PlayFabClient = require(Packages.PlayFabClient)
 
-local TITLE_ID = ""
+local TITLE_ID = "1234"
 
 PlayFabClient.SetSettings({
 	titleId = TITLE_ID,

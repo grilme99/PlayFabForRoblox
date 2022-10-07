@@ -175,7 +175,7 @@ export type VirtualCurrencyRechargeTime = {
 function MatchmakerApi.AuthUserAsync(
 	secretKey: string, 
 	request: AuthUserRequest
-): AuthUserResponse | ApiErrorWrapper
+): AuthUserResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Matchmaker/AuthUser",
 		request,
@@ -188,7 +188,7 @@ end
 function MatchmakerApi.PlayerJoinedAsync(
 	secretKey: string, 
 	request: PlayerJoinedRequest
-): PlayerJoinedResponse | ApiErrorWrapper
+): PlayerJoinedResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Matchmaker/PlayerJoined",
 		request,
@@ -201,7 +201,7 @@ end
 function MatchmakerApi.PlayerLeftAsync(
 	secretKey: string, 
 	request: PlayerLeftRequest
-): PlayerLeftResponse | ApiErrorWrapper
+): PlayerLeftResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Matchmaker/PlayerLeft",
 		request,
@@ -214,7 +214,7 @@ end
 function MatchmakerApi.UserInfoAsync(
 	secretKey: string, 
 	request: UserInfoRequest
-): UserInfoResponse | ApiErrorWrapper
+): UserInfoResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Matchmaker/UserInfo",
 		request,

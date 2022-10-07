@@ -46,7 +46,7 @@ export type GetLanguageListResponse = {
 function LocalizationApi.GetLanguageListAsync(
 	entityToken: string, 
 	request: GetLanguageListRequest
-): GetLanguageListResponse | ApiErrorWrapper
+): GetLanguageListResponse
 	return PlayFabInternal.MakeApiCall(
 		"/Localization/GetLanguageList",
 		request,

@@ -310,7 +310,11 @@ fn parse_security_types(security_types: &BTreeMap<String, Vec<()>>) -> Option<Ap
 fn parse_api_responses(responses: &BTreeMap<String, SwaggerResponse>) -> anyhow::Result<String> {
     let mut return_str = String::new();
 
-    let mut responses = responses.iter().peekable();
+    let mut responses = responses
+        .iter()
+        .filter(|(status_code, _)| **status_code != "400".to_owned())
+        .peekable();
+
     while let Some((_, response)) = responses.next() {
         let response_type = parse_ref(&response.def_ref).context("Failed to parse response ref")?;
         return_str.push_str(&response_type);

@@ -811,7 +811,7 @@ export type ValueToDateModel = {
 function CloudScriptApi.ExecuteEntityCloudScriptAsync(
 	entityToken: string, 
 	request: ExecuteEntityCloudScriptRequest
-): ExecuteCloudScriptResult | ApiErrorWrapper
+): ExecuteCloudScriptResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/ExecuteEntityCloudScript",
 		request,
@@ -827,7 +827,7 @@ end
 function CloudScriptApi.ExecuteFunctionAsync(
 	entityToken: string, 
 	request: ExecuteFunctionRequest
-): ExecuteFunctionResult | ApiErrorWrapper
+): ExecuteFunctionResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/ExecuteFunction",
 		request,
@@ -840,7 +840,7 @@ end
 function CloudScriptApi.GetFunctionAsync(
 	entityToken: string, 
 	request: GetFunctionRequest
-): GetFunctionResult | ApiErrorWrapper
+): GetFunctionResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/GetFunction",
 		request,
@@ -853,7 +853,7 @@ end
 function CloudScriptApi.ListFunctionsAsync(
 	entityToken: string, 
 	request: ListFunctionsRequest
-): ListFunctionsResult | ApiErrorWrapper
+): ListFunctionsResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/ListFunctions",
 		request,
@@ -869,7 +869,7 @@ end
 function CloudScriptApi.ListHttpFunctionsAsync(
 	entityToken: string, 
 	request: ListFunctionsRequest
-): ListHttpFunctionsResult | ApiErrorWrapper
+): ListHttpFunctionsResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/ListHttpFunctions",
 		request,
@@ -882,7 +882,7 @@ end
 function CloudScriptApi.ListQueuedFunctionsAsync(
 	entityToken: string, 
 	request: ListFunctionsRequest
-): ListQueuedFunctionsResult | ApiErrorWrapper
+): ListQueuedFunctionsResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/ListQueuedFunctions",
 		request,
@@ -895,7 +895,7 @@ end
 function CloudScriptApi.PostFunctionResultForEntityTriggeredActionAsync(
 	entityToken: string, 
 	request: PostFunctionResultForEntityTriggeredActionRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/PostFunctionResultForEntityTriggeredAction",
 		request,
@@ -908,7 +908,7 @@ end
 function CloudScriptApi.PostFunctionResultForFunctionExecutionAsync(
 	entityToken: string, 
 	request: PostFunctionResultForFunctionExecutionRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/PostFunctionResultForFunctionExecution",
 		request,
@@ -921,7 +921,7 @@ end
 function CloudScriptApi.PostFunctionResultForPlayerTriggeredActionAsync(
 	entityToken: string, 
 	request: PostFunctionResultForPlayerTriggeredActionRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/PostFunctionResultForPlayerTriggeredAction",
 		request,
@@ -934,7 +934,7 @@ end
 function CloudScriptApi.PostFunctionResultForScheduledTaskAsync(
 	entityToken: string, 
 	request: PostFunctionResultForScheduledTaskRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/PostFunctionResultForScheduledTask",
 		request,
@@ -947,7 +947,7 @@ end
 function CloudScriptApi.RegisterHttpFunctionAsync(
 	entityToken: string, 
 	request: RegisterHttpFunctionRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/RegisterHttpFunction",
 		request,
@@ -963,7 +963,7 @@ end
 function CloudScriptApi.RegisterQueuedFunctionAsync(
 	entityToken: string, 
 	request: RegisterQueuedFunctionRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/RegisterQueuedFunction",
 		request,
@@ -976,7 +976,7 @@ end
 function CloudScriptApi.UnregisterFunctionAsync(
 	entityToken: string, 
 	request: UnregisterFunctionRequest
-): EmptyResult | ApiErrorWrapper
+): EmptyResult
 	return PlayFabInternal.MakeApiCall(
 		"/CloudScript/UnregisterFunction",
 		request,
