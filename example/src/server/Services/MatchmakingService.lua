@@ -12,6 +12,7 @@
 -- find out more. Make sure to match the queue name with whatever is set in the constant below.
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
 
 local Packages = ReplicatedStorage.Packages
 local PlayFabMultiplayer = require(Packages.PlayFabMultiplayer)
@@ -23,6 +24,7 @@ local MATCHMAKING_TIMEOUT = 30 -- Seconds. How long until the player is kicked o
 local MATCHER_POLL_INTERVAL = 6 -- Seconds. Should not be changed.
 
 local MatchmakingService = {}
+local PlayerMatchmakingTickets: { [Player]: string } = {}
 
 function MatchmakingService:Start()
 	local joinQueueRemote = Instance.new("RemoteFunction")
@@ -33,10 +35,16 @@ function MatchmakingService:Start()
 		return self:_handleJoinQueueRequest(player, ...)
 	end
 
-    game:GetService("Players").PlayerAdded:Connect(function(player)
-        wait(3)
-        self:_handleJoinQueueRequest(player)
-    end)
+	Players.PlayerRemoving:Connect(function(player)
+		self:_handlePlayerRemoving(player)
+	end)
+
+	-- Clean up matchmaking tickets on server close
+	game:BindToClose(function()
+		for _, player in Players:GetPlayers() do
+			self:_handlePlayerRemoving(player)
+		end
+	end)
 
 	-- Kick off the loop!
 	self:_driveMatchmakingLoop()
@@ -49,26 +57,41 @@ function MatchmakingService:_driveMatchmakingLoop()
 	end)
 end
 
+--- We want to clean up any active tickets for players who have left the game. Helps to keep games full and allows the
+--- player to rejoin the queue again in a new server without waiting for the ticket timeout, or for their old ticket to
+--- find a match.
+function MatchmakingService:_handlePlayerRemoving(player: Player)
+	if PlayerMatchmakingTickets[player] == nil then
+		return -- No outstanding tickets
+	end
+
+	local playerSession = SessionService:GetPlayerSession(player)
+
+	PlayFabMultiplayer.CancelAllMatchmakingTicketsForPlayerAsync(playerSession.entityToken, {
+		QueueName = QUEUE_NAME,
+		Entity = playerSession.entityKey,
+	})
+
+	PlayerMatchmakingTickets[player] = nil
+	print("Cancelled any outstanding matchmaking tickets for player: " .. player.Name)
+end
+
 function MatchmakingService:_handleJoinQueueRequest(player: Player)
 	print("Attempting to create a matchmaking ticket for player: " .. player.Name)
 
 	local playerSession = SessionService:GetPlayerSession(player)
-	print(1)
 	local ticket = PlayFabMultiplayer.CreateMatchmakingTicketAsync(playerSession.entityToken, {
 		Creator = {
 			Entity = playerSession.entityKey,
-			Attributes = {
-				DataObject = {},
-				EscapedDataObject = "",
-			},
 		},
 		GiveUpAfterSeconds = MATCHMAKING_TIMEOUT,
 		QueueName = QUEUE_NAME,
 	})
-	print(2)
-	local ticketId = ticket.TicketId
-	print("Created ticket for player " .. player.Name .. " with ID: " .. ticketId)
 
+	local ticketId = ticket.TicketId
+	PlayerMatchmakingTickets[player] = ticketId
+
+	print("Created ticket for player " .. player.Name .. " with ID: " .. ticketId)
 	return true
 end
 

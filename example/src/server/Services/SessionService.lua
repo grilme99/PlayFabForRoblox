@@ -26,6 +26,7 @@ function SessionService:Start()
 	end)
 
 	Players.PlayerRemoving:Connect(function(player)
+		wait(5) -- Relies on timing a bit but give other services time to clean up using the players session
 		PlayerSessions[player] = nil
 	end)
 end
