@@ -60,7 +60,7 @@ function PlayFabInternal.MakeApiCall(path: string, requestBody: any, authKey: st
 		headers[authKey] = authValue
 	end
 
-	requestBody.TitleId = Settings.titleId
+	requestBody.TitleID = Settings.titleId
 
 	local success, response = pcall(HttpService.RequestAsync, HttpService, {
 		Url = fullUrl,
