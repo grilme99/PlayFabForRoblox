@@ -5,6 +5,8 @@
 	APIs which provide the full range of PlayFab features available to the client 
 	- authentication, account and data management, inventory, friends, matchmaking, 
 	reporting, and platform-specific functionality. 
+
+	API Version: 1.220926.4
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

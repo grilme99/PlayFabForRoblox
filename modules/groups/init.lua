@@ -6,6 +6,8 @@
 	Entities (players, or non-players). If you want to make Guilds/Clans/Corporations/etc., 
 	then you should use groups. Groups can also be used to make chatrooms, parties, 
 	or any other persistent collection of entities. 
+
+	API Version: 1.220926.4
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

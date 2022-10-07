@@ -73,7 +73,7 @@ impl<'a> ApiGenerator<'a> {
         self.create_module_readme(module_root, &api_description, &name, &version)
             .context("Failed to create README.md")?;
 
-        self.create_source_file(module_root, &api_description)
+        self.create_source_file(module_root, &api_description, &version)
             .await
             .context("Failed to create init.lua")?;
 
@@ -168,14 +168,21 @@ impl<'a> ApiGenerator<'a> {
         &self,
         module_root: &PathBuf,
         api_description: &str,
+        version: &str,
     ) -> anyhow::Result<()> {
         let file_name = module_root.join("init.lua");
         let api_name = self.api_name.to_case(Case::Pascal);
 
         // Creates and writes to a file internally
-        codegen::generate_source(file_name, &api_name, api_description, &self.swagger_spec)
-            .await
-            .context("Failed to generate source")?;
+        codegen::generate_source(
+            file_name,
+            &api_name,
+            api_description,
+            &self.swagger_spec,
+            &version,
+        )
+        .await
+        .context("Failed to generate source")?;
 
         log::info!("Generated source for module {}", style(api_name).cyan());
 

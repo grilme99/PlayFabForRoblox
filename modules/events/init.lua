@@ -5,6 +5,8 @@
 	Write custom PlayStream and Telemetry events for any PlayFab entity. Telemetry 
 	events can be used for analytic, reporting, or debugging. PlayStream events 
 	can do all of that and also trigger custom actions in near real-time. 
+
+	API Version: 1.220926.4
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

@@ -5,6 +5,8 @@
 	All PlayFab entities have profiles, which hold top-level properties about the 
 	entity. These APIs give you the tools needed to manage entity profiles. The 
 	Master Player APIs allow you to perform operations on a master player account. 
+
+	API Version: 1.220926.4
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

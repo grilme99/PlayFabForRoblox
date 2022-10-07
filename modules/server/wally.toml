@@ -1,7 +1,7 @@
 [package]
 name = "grilme99/playfab-server"
 description = "Provides functionality to allow external (developer-controlled) servers to interact with user inventories and data in a trusted manner, and to handle matchmaking and client connection orchestration. For more info, see: https://github.com/grilme99/RobloxPlayFabSDK"
-version = "1.220926.1"
+version = "1.220926.4"
 license = "MIT"
 authors = ["Brooke Rhodes <brooke@gril.me>"]
 registry = "https://github.com/UpliftGames/wally-index"

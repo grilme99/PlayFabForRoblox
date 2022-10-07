@@ -8,6 +8,8 @@
 	functions. Files can efficiently store data of any size or format. Both objects 
 	and files support a flexible permissions system to control read and write access 
 	by other entities. 
+
+	API Version: 1.220926.4
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

@@ -8,6 +8,8 @@
 	API keys for authenticating any entity. The game_server API is designed to create 
 	uniquely identifiable game_server entities. The game_server Entity token can 
 	be used to call Matchmaking Lobby and Pubsub for server scenarios. 
+
+	API Version: 1.220926.4
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

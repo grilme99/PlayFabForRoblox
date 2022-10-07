@@ -25,10 +25,11 @@ pub async fn generate_source(
     api_name: &str,
     api_description: &str,
     swagger_spec: &SwaggerSpec,
+    version: &str,
 ) -> anyhow::Result<File> {
     let mut buffer = File::create(file_name)?;
 
-    write_module_header(&mut buffer, api_name, api_description)?;
+    write_module_header(&mut buffer, api_name, api_description, version)?;
 
     write_type_definitions(&mut buffer, swagger_spec)?;
     write_api_functions(&mut buffer, swagger_spec, api_name)?;
@@ -42,6 +43,7 @@ fn write_module_header(
     w: &mut dyn Write,
     api_name: &str,
     api_description: &str,
+    version: &str,
 ) -> anyhow::Result<()> {
     writeln!(w, "--!strict")?;
     writeln!(w, "--[=[")?;
@@ -52,6 +54,9 @@ fn write_module_header(
     for part in description_parts {
         writeln!(w, "\t{part}")?;
     }
+
+    writeln!(w, "")?;
+    writeln!(w, "\tAPI Version: {version}")?;
 
     writeln!(w, "]=]")?;
     writeln!(w, "")?;

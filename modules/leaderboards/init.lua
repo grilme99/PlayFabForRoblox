@@ -3,6 +3,8 @@
 	# LeaderboardsApi
 
 	Manage entity statistics Manage entity statistics. 
+
+	API Version: 1.220926.4
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

@@ -5,6 +5,8 @@
 	API methods for managing multiplayer servers. API methods for managing parties. 
 	The lobby service helps players group together to play multiplayer games. It 
 	is often used as a rendezvous point for players to share connection information. 
+
+	API Version: 1.220926.4
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
