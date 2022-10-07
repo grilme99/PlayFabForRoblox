@@ -1,5 +1,5 @@
 Packages/
 
-**.lock
-
+**.rbxl.lock
+sourcemap.json
 src/server/titleId.lua
