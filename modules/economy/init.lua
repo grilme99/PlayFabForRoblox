@@ -5,7 +5,7 @@
 	API methods for managing the catalog. Inventory manages in-game assets for any 
 	given entity. 
 
-	API Version: 1.220926.5
+	API Version: 1.220926.6
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
@@ -1683,7 +1683,7 @@ function EconomyApi.CreateDraftItemAsync(
 	request: CreateDraftItemRequest
 ): CreateDraftItemResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/CreateDraftItem",
+		"/Catalog/CreateDraftItem",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1701,7 +1701,7 @@ function EconomyApi.CreateUploadUrlsAsync(
 	request: CreateUploadUrlsRequest
 ): CreateUploadUrlsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/CreateUploadUrls",
+		"/Catalog/CreateUploadUrls",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1714,7 +1714,7 @@ function EconomyApi.DeleteEntityItemReviewsAsync(
 	request: DeleteEntityItemReviewsRequest
 ): DeleteEntityItemReviewsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/DeleteEntityItemReviews",
+		"/Catalog/DeleteEntityItemReviews",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1727,7 +1727,7 @@ function EconomyApi.DeleteItemAsync(
 	request: DeleteItemRequest
 ): DeleteItemResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/DeleteItem",
+		"/Catalog/DeleteItem",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1740,7 +1740,7 @@ function EconomyApi.GetCatalogConfigAsync(
 	request: GetCatalogConfigRequest
 ): GetCatalogConfigResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetCatalogConfig",
+		"/Catalog/GetCatalogConfig",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1753,7 +1753,7 @@ function EconomyApi.GetDraftItemAsync(
 	request: GetDraftItemRequest
 ): GetDraftItemResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetDraftItem",
+		"/Catalog/GetDraftItem",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1766,7 +1766,7 @@ function EconomyApi.GetDraftItemsAsync(
 	request: GetDraftItemsRequest
 ): GetDraftItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetDraftItems",
+		"/Catalog/GetDraftItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1779,7 +1779,7 @@ function EconomyApi.GetEntityDraftItemsAsync(
 	request: GetEntityDraftItemsRequest
 ): GetEntityDraftItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetEntityDraftItems",
+		"/Catalog/GetEntityDraftItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1792,7 +1792,7 @@ function EconomyApi.GetEntityItemReviewAsync(
 	request: GetEntityItemReviewRequest
 ): GetEntityItemReviewResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetEntityItemReview",
+		"/Catalog/GetEntityItemReview",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1805,7 +1805,7 @@ function EconomyApi.GetItemAsync(
 	request: GetItemRequest
 ): GetItemResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetItem",
+		"/Catalog/GetItem",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1820,7 +1820,7 @@ function EconomyApi.GetItemContainersAsync(
 	request: GetItemContainersRequest
 ): GetItemContainersResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetItemContainers",
+		"/Catalog/GetItemContainers",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1833,7 +1833,7 @@ function EconomyApi.GetItemModerationStateAsync(
 	request: GetItemModerationStateRequest
 ): GetItemModerationStateResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetItemModerationState",
+		"/Catalog/GetItemModerationState",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1846,7 +1846,7 @@ function EconomyApi.GetItemPublishStatusAsync(
 	request: GetItemPublishStatusRequest
 ): GetItemPublishStatusResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetItemPublishStatus",
+		"/Catalog/GetItemPublishStatus",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1859,7 +1859,7 @@ function EconomyApi.GetItemReviewSummaryAsync(
 	request: GetItemReviewSummaryRequest
 ): GetItemReviewSummaryResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetItemReviewSummary",
+		"/Catalog/GetItemReviewSummary",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1872,7 +1872,7 @@ function EconomyApi.GetItemReviewsAsync(
 	request: GetItemReviewsRequest
 ): GetItemReviewsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetItemReviews",
+		"/Catalog/GetItemReviews",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1885,7 +1885,7 @@ function EconomyApi.GetItemsAsync(
 	request: GetItemsRequest
 ): GetItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetItems",
+		"/Catalog/GetItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1901,7 +1901,7 @@ function EconomyApi.PublishDraftItemAsync(
 	request: PublishDraftItemRequest
 ): PublishDraftItemResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/PublishDraftItem",
+		"/Catalog/PublishDraftItem",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1914,7 +1914,7 @@ function EconomyApi.ReportItemAsync(
 	request: ReportItemRequest
 ): ReportItemResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/ReportItem",
+		"/Catalog/ReportItem",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1930,7 +1930,7 @@ function EconomyApi.ReportItemReviewAsync(
 	request: ReportItemReviewRequest
 ): ReportItemReviewResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/ReportItemReview",
+		"/Catalog/ReportItemReview",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1943,7 +1943,7 @@ function EconomyApi.ReviewItemAsync(
 	request: ReviewItemRequest
 ): ReviewItemResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/ReviewItem",
+		"/Catalog/ReviewItem",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1956,7 +1956,7 @@ function EconomyApi.SearchItemsAsync(
 	request: SearchItemsRequest
 ): SearchItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/SearchItems",
+		"/Catalog/SearchItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1969,7 +1969,7 @@ function EconomyApi.SetItemModerationStateAsync(
 	request: SetItemModerationStateRequest
 ): SetItemModerationStateResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/SetItemModerationState",
+		"/Catalog/SetItemModerationState",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1982,7 +1982,7 @@ function EconomyApi.SubmitItemReviewVoteAsync(
 	request: SubmitItemReviewVoteRequest
 ): SubmitItemReviewVoteResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/SubmitItemReviewVote",
+		"/Catalog/SubmitItemReviewVote",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1998,7 +1998,7 @@ function EconomyApi.TakedownItemReviewsAsync(
 	request: TakedownItemReviewsRequest
 ): TakedownItemReviewsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/TakedownItemReviews",
+		"/Catalog/TakedownItemReviews",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2011,7 +2011,7 @@ function EconomyApi.UpdateCatalogConfigAsync(
 	request: UpdateCatalogConfigRequest
 ): UpdateCatalogConfigResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/UpdateCatalogConfig",
+		"/Catalog/UpdateCatalogConfig",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2024,7 +2024,7 @@ function EconomyApi.UpdateDraftItemAsync(
 	request: UpdateDraftItemRequest
 ): UpdateDraftItemResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/UpdateDraftItem",
+		"/Catalog/UpdateDraftItem",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2040,7 +2040,7 @@ function EconomyApi.AddInventoryItemsAsync(
 	request: AddInventoryItemsRequest
 ): AddInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/AddInventoryItems",
+		"/Inventory/AddInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2055,7 +2055,7 @@ function EconomyApi.DeleteInventoryCollectionAsync(
 	request: DeleteInventoryCollectionRequest
 ): DeleteInventoryCollectionResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/DeleteInventoryCollection",
+		"/Inventory/DeleteInventoryCollection",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2071,7 +2071,7 @@ function EconomyApi.DeleteInventoryItemsAsync(
 	request: DeleteInventoryItemsRequest
 ): DeleteInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/DeleteInventoryItems",
+		"/Inventory/DeleteInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2086,7 +2086,7 @@ function EconomyApi.ExecuteInventoryOperationsAsync(
 	request: ExecuteInventoryOperationsRequest
 ): ExecuteInventoryOperationsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/ExecuteInventoryOperations",
+		"/Inventory/ExecuteInventoryOperations",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2101,7 +2101,7 @@ function EconomyApi.GetInventoryCollectionIdsAsync(
 	request: GetInventoryCollectionIdsRequest
 ): GetInventoryCollectionIdsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetInventoryCollectionIds",
+		"/Inventory/GetInventoryCollectionIds",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2117,7 +2117,7 @@ function EconomyApi.GetInventoryItemsAsync(
 	request: GetInventoryItemsRequest
 ): GetInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetInventoryItems",
+		"/Inventory/GetInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2132,7 +2132,7 @@ function EconomyApi.GetMicrosoftStoreAccessTokensAsync(
 	request: GetMicrosoftStoreAccessTokensRequest
 ): GetMicrosoftStoreAccessTokensResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/GetMicrosoftStoreAccessTokens",
+		"/Inventory/GetMicrosoftStoreAccessTokens",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2147,7 +2147,7 @@ function EconomyApi.PurchaseInventoryItemsAsync(
 	request: PurchaseInventoryItemsRequest
 ): PurchaseInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/PurchaseInventoryItems",
+		"/Inventory/PurchaseInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2162,7 +2162,7 @@ function EconomyApi.RedeemAppleAppStoreInventoryItemsAsync(
 	request: RedeemAppleAppStoreInventoryItemsRequest
 ): RedeemAppleAppStoreInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/RedeemAppleAppStoreInventoryItems",
+		"/Inventory/RedeemAppleAppStoreInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2177,7 +2177,7 @@ function EconomyApi.RedeemGooglePlayInventoryItemsAsync(
 	request: RedeemGooglePlayInventoryItemsRequest
 ): RedeemGooglePlayInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/RedeemGooglePlayInventoryItems",
+		"/Inventory/RedeemGooglePlayInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2192,7 +2192,7 @@ function EconomyApi.RedeemMicrosoftStoreInventoryItemsAsync(
 	request: RedeemMicrosoftStoreInventoryItemsRequest
 ): RedeemMicrosoftStoreInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/RedeemMicrosoftStoreInventoryItems",
+		"/Inventory/RedeemMicrosoftStoreInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2207,7 +2207,7 @@ function EconomyApi.RedeemNintendoEShopInventoryItemsAsync(
 	request: RedeemNintendoEShopInventoryItemsRequest
 ): RedeemNintendoEShopInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/RedeemNintendoEShopInventoryItems",
+		"/Inventory/RedeemNintendoEShopInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2222,7 +2222,7 @@ function EconomyApi.RedeemPlayStationStoreInventoryItemsAsync(
 	request: RedeemPlayStationStoreInventoryItemsRequest
 ): RedeemPlayStationStoreInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/RedeemPlayStationStoreInventoryItems",
+		"/Inventory/RedeemPlayStationStoreInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2237,7 +2237,7 @@ function EconomyApi.RedeemSteamInventoryItemsAsync(
 	request: RedeemSteamInventoryItemsRequest
 ): RedeemSteamInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/RedeemSteamInventoryItems",
+		"/Inventory/RedeemSteamInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2253,7 +2253,7 @@ function EconomyApi.SubtractInventoryItemsAsync(
 	request: SubtractInventoryItemsRequest
 ): SubtractInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/SubtractInventoryItems",
+		"/Inventory/SubtractInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2269,7 +2269,7 @@ function EconomyApi.TransferInventoryItemsAsync(
 	request: TransferInventoryItemsRequest
 ): TransferInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/TransferInventoryItems",
+		"/Inventory/TransferInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -2285,7 +2285,7 @@ function EconomyApi.UpdateInventoryItemsAsync(
 	request: UpdateInventoryItemsRequest
 ): UpdateInventoryItemsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Economy/UpdateInventoryItems",
+		"/Inventory/UpdateInventoryItems",
 		request,
 		"X-EntityToken",
 		entityToken

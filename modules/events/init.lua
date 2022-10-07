@@ -6,7 +6,7 @@
 	events can be used for analytic, reporting, or debugging. PlayStream events 
 	can do all of that and also trigger custom actions in near real-time. 
 
-	API Version: 1.220926.5
+	API Version: 1.220926.6
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
@@ -91,7 +91,7 @@ function EventsApi.WriteEventsAsync(
 	request: WriteEventsRequest
 ): WriteEventsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Events/WriteEvents",
+		"/Event/WriteEvents",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -104,7 +104,7 @@ function EventsApi.WriteTelemetryEventsAsync(
 	request: WriteEventsRequest
 ): WriteEventsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Events/WriteTelemetryEvents",
+		"/Event/WriteTelemetryEvents",
 		request,
 		"X-EntityToken",
 		entityToken

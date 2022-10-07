@@ -1,7 +1,7 @@
 [package]
 name = "grilme99/playfab-internal"
 description = "Internal package for making API calls and managing PlayFab settings. Do not consume directly."
-version = "1.0.2"
+version = "1.0.3"
 license = "MIT"
 authors = ["Brooke Rhodes <brooke@gril.me>"]
 registry = "https://github.com/UpliftGames/wally-index"

@@ -9,7 +9,7 @@
 	uniquely identifiable game_server entities. The game_server Entity token can 
 	be used to call Matchmaking Lobby and Pubsub for server scenarios. 
 
-	API Version: 1.220926.5
+	API Version: 1.220926.6
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
@@ -219,7 +219,7 @@ function AuthenticationApi.AuthenticateGameServerWithCustomIdAsync(
 	request: AuthenticateCustomIdRequest
 ): AuthenticateCustomIdResult
 	return PlayFabInternal.MakeApiCall(
-		"/Authentication/AuthenticateGameServerWithCustomId",
+		"/GameServerIdentity/AuthenticateGameServerWithCustomId",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -236,7 +236,7 @@ function AuthenticationApi.DeleteAsync(
 	request: DeleteRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Authentication/Delete",
+		"/GameServerIdentity/Delete",
 		request,
 		"X-EntityToken",
 		entityToken

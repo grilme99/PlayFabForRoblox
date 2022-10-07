@@ -1,7 +1,7 @@
 [package]
 name = "grilme99/playfab-data"
 description = "Store arbitrary data associated with an entity. Objects are small (~1KB) JSON-compatible objects which are stored directly on the entity profile. Objects are made available for use in other PlayFab contexts, such as PlayStream events and CloudScript functions. Files can efficiently store data of any size or format. Both objects and files support a flexible permissions system to control read and write access by other entities.. For more info, see: https://github.com/grilme99/RobloxPlayFabSDK"
-version = "1.220926.5"
+version = "1.220926.6"
 license = "MIT"
 authors = ["Brooke Rhodes <brooke@gril.me>"]
 registry = "https://github.com/UpliftGames/wally-index"

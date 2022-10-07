@@ -7,7 +7,7 @@
 	then you should use groups. Groups can also be used to make chatrooms, parties, 
 	or any other persistent collection of entities. 
 
-	API Version: 1.220926.5
+	API Version: 1.220926.6
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
@@ -643,7 +643,7 @@ function GroupsApi.AcceptGroupApplicationAsync(
 	request: AcceptGroupApplicationRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/AcceptGroupApplication",
+		"/Group/AcceptGroupApplication",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -661,7 +661,7 @@ function GroupsApi.AcceptGroupInvitationAsync(
 	request: AcceptGroupInvitationRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/AcceptGroupInvitation",
+		"/Group/AcceptGroupInvitation",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -680,7 +680,7 @@ function GroupsApi.AddMembersAsync(
 	request: AddMembersRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/AddMembers",
+		"/Group/AddMembers",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -702,7 +702,7 @@ function GroupsApi.ApplyToGroupAsync(
 	request: ApplyToGroupRequest
 ): ApplyToGroupResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/ApplyToGroup",
+		"/Group/ApplyToGroup",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -721,7 +721,7 @@ function GroupsApi.BlockEntityAsync(
 	request: BlockEntityRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/BlockEntity",
+		"/Group/BlockEntity",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -739,7 +739,7 @@ function GroupsApi.ChangeMemberRoleAsync(
 	request: ChangeMemberRoleRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/ChangeMemberRole",
+		"/Group/ChangeMemberRole",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -755,7 +755,7 @@ function GroupsApi.CreateGroupAsync(
 	request: CreateGroupRequest
 ): CreateGroupResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/CreateGroup",
+		"/Group/CreateGroup",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -773,7 +773,7 @@ function GroupsApi.CreateRoleAsync(
 	request: CreateGroupRoleRequest
 ): CreateGroupRoleResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/CreateRole",
+		"/Group/CreateRole",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -792,7 +792,7 @@ function GroupsApi.DeleteGroupAsync(
 	request: DeleteGroupRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/DeleteGroup",
+		"/Group/DeleteGroup",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -807,7 +807,7 @@ function GroupsApi.DeleteRoleAsync(
 	request: DeleteRoleRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/DeleteRole",
+		"/Group/DeleteRole",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -823,7 +823,7 @@ function GroupsApi.GetGroupAsync(
 	request: GetGroupRequest
 ): GetGroupResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/GetGroup",
+		"/Group/GetGroup",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -844,7 +844,7 @@ function GroupsApi.InviteToGroupAsync(
 	request: InviteToGroupRequest
 ): InviteToGroupResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/InviteToGroup",
+		"/Group/InviteToGroup",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -862,7 +862,7 @@ function GroupsApi.IsMemberAsync(
 	request: IsMemberRequest
 ): IsMemberResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/IsMember",
+		"/Group/IsMember",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -879,7 +879,7 @@ function GroupsApi.ListGroupApplicationsAsync(
 	request: ListGroupApplicationsRequest
 ): ListGroupApplicationsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/ListGroupApplications",
+		"/Group/ListGroupApplications",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -895,7 +895,7 @@ function GroupsApi.ListGroupBlocksAsync(
 	request: ListGroupBlocksRequest
 ): ListGroupBlocksResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/ListGroupBlocks",
+		"/Group/ListGroupBlocks",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -912,7 +912,7 @@ function GroupsApi.ListGroupInvitationsAsync(
 	request: ListGroupInvitationsRequest
 ): ListGroupInvitationsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/ListGroupInvitations",
+		"/Group/ListGroupInvitations",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -930,7 +930,7 @@ function GroupsApi.ListGroupMembersAsync(
 	request: ListGroupMembersRequest
 ): ListGroupMembersResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/ListGroupMembers",
+		"/Group/ListGroupMembers",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -949,7 +949,7 @@ function GroupsApi.ListMembershipAsync(
 	request: ListMembershipRequest
 ): ListMembershipResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/ListMembership",
+		"/Group/ListMembership",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -967,7 +967,7 @@ function GroupsApi.ListMembershipOpportunitiesAsync(
 	request: ListMembershipOpportunitiesRequest
 ): ListMembershipOpportunitiesResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/ListMembershipOpportunities",
+		"/Group/ListMembershipOpportunities",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -986,7 +986,7 @@ function GroupsApi.RemoveGroupApplicationAsync(
 	request: RemoveGroupApplicationRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/RemoveGroupApplication",
+		"/Group/RemoveGroupApplication",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1005,7 +1005,7 @@ function GroupsApi.RemoveGroupInvitationAsync(
 	request: RemoveGroupInvitationRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/RemoveGroupInvitation",
+		"/Group/RemoveGroupInvitation",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1021,7 +1021,7 @@ function GroupsApi.RemoveMembersAsync(
 	request: RemoveMembersRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/RemoveMembers",
+		"/Group/RemoveMembers",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1037,7 +1037,7 @@ function GroupsApi.UnblockEntityAsync(
 	request: UnblockEntityRequest
 ): EmptyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/UnblockEntity",
+		"/Group/UnblockEntity",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1054,7 +1054,7 @@ function GroupsApi.UpdateGroupAsync(
 	request: UpdateGroupRequest
 ): UpdateGroupResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/UpdateGroup",
+		"/Group/UpdateGroup",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -1069,7 +1069,7 @@ function GroupsApi.UpdateRoleAsync(
 	request: UpdateGroupRoleRequest
 ): UpdateGroupRoleResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Groups/UpdateRole",
+		"/Group/UpdateRole",
 		request,
 		"X-EntityToken",
 		entityToken

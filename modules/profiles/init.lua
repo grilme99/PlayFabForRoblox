@@ -6,7 +6,7 @@
 	entity. These APIs give you the tools needed to manage entity profiles. The 
 	Master Player APIs allow you to perform operations on a master player account. 
 
-	API Version: 1.220926.5
+	API Version: 1.220926.6
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
@@ -305,7 +305,7 @@ function ProfilesApi.GetGlobalPolicyAsync(
 	request: GetGlobalPolicyRequest
 ): GetGlobalPolicyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Profiles/GetGlobalPolicy",
+		"/Profile/GetGlobalPolicy",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -326,7 +326,7 @@ function ProfilesApi.GetProfileAsync(
 	request: GetEntityProfileRequest
 ): GetEntityProfileResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Profiles/GetProfile",
+		"/Profile/GetProfile",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -343,7 +343,7 @@ function ProfilesApi.GetProfilesAsync(
 	request: GetEntityProfilesRequest
 ): GetEntityProfilesResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Profiles/GetProfiles",
+		"/Profile/GetProfiles",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -359,7 +359,7 @@ function ProfilesApi.GetTitlePlayersFromMasterPlayerAccountIdsAsync(
 	request: GetTitlePlayersFromMasterPlayerAccountIdsRequest
 ): GetTitlePlayersFromMasterPlayerAccountIdsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Profiles/GetTitlePlayersFromMasterPlayerAccountIds",
+		"/Profile/GetTitlePlayersFromMasterPlayerAccountIds",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -376,7 +376,7 @@ function ProfilesApi.SetGlobalPolicyAsync(
 	request: SetGlobalPolicyRequest
 ): SetGlobalPolicyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Profiles/SetGlobalPolicy",
+		"/Profile/SetGlobalPolicy",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -392,7 +392,7 @@ function ProfilesApi.SetProfileLanguageAsync(
 	request: SetProfileLanguageRequest
 ): SetProfileLanguageResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Profiles/SetProfileLanguage",
+		"/Profile/SetProfileLanguage",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -409,7 +409,7 @@ function ProfilesApi.SetProfilePolicyAsync(
 	request: SetEntityProfilePolicyRequest
 ): SetEntityProfilePolicyResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Profiles/SetProfilePolicy",
+		"/Profile/SetProfilePolicy",
 		request,
 		"X-EntityToken",
 		entityToken

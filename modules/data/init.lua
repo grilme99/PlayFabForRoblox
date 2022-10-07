@@ -9,7 +9,7 @@
 	and files support a flexible permissions system to control read and write access 
 	by other entities. 
 
-	API Version: 1.220926.5
+	API Version: 1.220926.6
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
@@ -284,7 +284,7 @@ function DataApi.AbortFileUploadsAsync(
 	request: AbortFileUploadsRequest
 ): AbortFileUploadsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Data/AbortFileUploads",
+		"/File/AbortFileUploads",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -299,7 +299,7 @@ function DataApi.DeleteFilesAsync(
 	request: DeleteFilesRequest
 ): DeleteFilesResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Data/DeleteFiles",
+		"/File/DeleteFiles",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -315,7 +315,7 @@ function DataApi.FinalizeFileUploadsAsync(
 	request: FinalizeFileUploadsRequest
 ): FinalizeFileUploadsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Data/FinalizeFileUploads",
+		"/File/FinalizeFileUploads",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -332,7 +332,7 @@ function DataApi.GetFilesAsync(
 	request: GetFilesRequest
 ): GetFilesResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Data/GetFiles",
+		"/File/GetFiles",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -349,7 +349,7 @@ function DataApi.InitiateFileUploadsAsync(
 	request: InitiateFileUploadsRequest
 ): InitiateFileUploadsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Data/InitiateFileUploads",
+		"/File/InitiateFileUploads",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -364,7 +364,7 @@ function DataApi.GetObjectsAsync(
 	request: GetObjectsRequest
 ): GetObjectsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Data/GetObjects",
+		"/Object/GetObjects",
 		request,
 		"X-EntityToken",
 		entityToken
@@ -385,7 +385,7 @@ function DataApi.SetObjectsAsync(
 	request: SetObjectsRequest
 ): SetObjectsResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Data/SetObjects",
+		"/Object/SetObjects",
 		request,
 		"X-EntityToken",
 		entityToken

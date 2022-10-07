@@ -4,7 +4,7 @@
 
 	Manage the Insights performance level and data storage retention settings. 
 
-	API Version: 1.220926.5
+	API Version: 1.220926.6
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

@@ -6,4 +6,4 @@ realm = "shared"
 
 [dependencies]
 PlayFabClient = "grilme99/playfab-client@1.220926.5"
-PlayFabMatchmaker = "grilme99/playfab-matchmaker@1.220926.5"
+PlayFabMultiplayer = "grilme99/playfab-multiplayer@1.220926.5"

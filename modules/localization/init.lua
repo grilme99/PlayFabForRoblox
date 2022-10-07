@@ -5,7 +5,7 @@
 	The Localization APIs give you the tools needed to manage language setup in 
 	your title. 
 
-	API Version: 1.220926.5
+	API Version: 1.220926.6
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
@@ -50,7 +50,7 @@ function LocalizationApi.GetLanguageListAsync(
 	request: GetLanguageListRequest
 ): GetLanguageListResponse
 	return PlayFabInternal.MakeApiCall(
-		"/Localization/GetLanguageList",
+		"/Locale/GetLanguageList",
 		request,
 		"X-EntityToken",
 		entityToken

@@ -49,7 +49,6 @@ end
 
 function PlayFabInternal.MakeApiCall(path: string, requestBody: any, authKey: string?, authValue: string?): unknown
 	local fullUrl = GetFullUrl(path)
-	local encodedBody = HttpService:JSONEncode(requestBody)
 	local headers = {
 		["X-ReportErrorAsSuccess"] = "true",
 		["X-PlayFabSDK"] = SDK_VERSION_STRING,
@@ -61,6 +60,7 @@ function PlayFabInternal.MakeApiCall(path: string, requestBody: any, authKey: st
 	end
 
 	requestBody.TitleID = Settings.titleId
+	local encodedBody = HttpService:JSONEncode(requestBody)
 
 	local success, response = pcall(HttpService.RequestAsync, HttpService, {
 		Url = fullUrl,

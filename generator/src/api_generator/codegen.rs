@@ -198,7 +198,7 @@ fn write_api_functions(
     api_name: &str,
 ) -> anyhow::Result<()> {
     let namespace = format!("{api_name}Api");
-    for (_, methods) in &swagger_spec.paths {
+    for (url, methods) in &swagger_spec.paths {
         let method = &methods.post;
 
         write_description(w, &method.request_details, "", true)?;
@@ -250,7 +250,7 @@ fn write_api_functions(
         };
 
         writeln!(w, "\treturn PlayFabInternal.MakeApiCall(")?;
-        writeln!(w, "\t\t\"/{api_name}/{}\",", method.operation_id)?;
+        writeln!(w, "\t\t\"{url}\",")?;
         writeln!(w, "\t\trequest,")?;
         writeln!(w, "\t\t{header_name},")?;
         writeln!(w, "\t\t{security_parameter}")?;
