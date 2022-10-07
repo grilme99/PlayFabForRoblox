@@ -16,68 +16,106 @@ end
 
 --- If the task instance has already completed, there will be no-op. 
 export type AbortTaskInstanceRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	TaskInstanceId: string, --- ID of a task instance that is being aborted.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- ID of a task instance that is being aborted. 
+	TaskInstanceId: string,
 }
 
 export type ActionsOnPlayersInSegmentTaskParameter = {
-	ActionId: string, --- ID of the action to perform on each player in segment.
-	SegmentId: string, --- ID of the segment to perform actions on.
+	--- ID of the action to perform on each player in segment. 
+	ActionId: string,
+	--- ID of the segment to perform actions on. 
+	SegmentId: string,
 }
 
 export type ActionsOnPlayersInSegmentTaskSummary = {
-	CompletedAt: string?, --- UTC timestamp when the task completed.
-	ErrorMessage: string?, --- Error message for last processing attempt, if an error occured.
-	ErrorWasFatal: boolean?, --- Flag indicating if the error was fatal, if false job will be retried.
-	EstimatedSecondsRemaining: number?, --- Estimated time remaining in seconds.
-	PercentComplete: number?, --- Progress represented as percentage.
-	ScheduledByUserId: string?, --- If manually scheduled, ID of user who scheduled the task.
-	StartedAt: string, --- UTC timestamp when the task started.
-	Status: string?, --- Current status of the task instance.
-	TaskIdentifier: NameIdentifier?, --- Identifier of the task this instance belongs to.
-	TaskInstanceId: string?, --- ID of the task instance.
-	TotalPlayersInSegment: number?, --- Total players in segment when task was started.
-	TotalPlayersProcessed: number?, --- Total number of players that have had the actions applied to.
+	--- UTC timestamp when the task completed. 
+	CompletedAt: string?,
+	--- Error message for last processing attempt, if an error occured. 
+	ErrorMessage: string?,
+	--- Flag indicating if the error was fatal, if false job will be retried. 
+	ErrorWasFatal: boolean?,
+	--- Estimated time remaining in seconds. 
+	EstimatedSecondsRemaining: number?,
+	--- Progress represented as percentage. 
+	PercentComplete: number?,
+	--- If manually scheduled, ID of user who scheduled the task. 
+	ScheduledByUserId: string?,
+	--- UTC timestamp when the task started. 
+	StartedAt: string,
+	--- Current status of the task instance. 
+	Status: string?,
+	--- Identifier of the task this instance belongs to. 
+	TaskIdentifier: NameIdentifier?,
+	--- ID of the task instance. 
+	TaskInstanceId: string?,
+	--- Total players in segment when task was started. 
+	TotalPlayersInSegment: number?,
+	--- Total number of players that have had the actions applied to. 
+	TotalPlayersProcessed: number?,
 }
 
 export type AdCampaignAttribution = {
-	AttributedAt: string, --- UTC time stamp of attribution
-	CampaignId: string?, --- Attribution campaign identifier
-	Platform: string?, --- Attribution network name
+	--- UTC time stamp of attribution 
+	AttributedAt: string,
+	--- Attribution campaign identifier 
+	CampaignId: string?,
+	--- Attribution network name 
+	Platform: string?,
 }
 
 export type AdCampaignAttributionModel = {
-	AttributedAt: string, --- UTC time stamp of attribution
-	CampaignId: string?, --- Attribution campaign identifier
-	Platform: string?, --- Attribution network name
+	--- UTC time stamp of attribution 
+	AttributedAt: string,
+	--- Attribution campaign identifier 
+	CampaignId: string?,
+	--- Attribution network name 
+	Platform: string?,
 }
 
 export type AdCampaignSegmentFilter = {
-	CampaignId: string?, --- Campaign id.
-	CampaignSource: string?, --- Campaign source.
-	Comparison: string?, --- Campaign comparison.
+	--- Campaign id. 
+	CampaignId: string?,
+	--- Campaign source. 
+	CampaignSource: string?,
+	--- Campaign comparison. 
+	Comparison: string?,
 }
 
 export type AddLocalizedNewsRequest = {
-	Body: string, --- Localized body text of the news.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Language: string, --- Language of the news item.
-	NewsId: string, --- Unique id of the updated news item.
-	Title: string, --- Localized title (headline) of the news item.
+	--- Localized body text of the news. 
+	Body: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Language of the news item. 
+	Language: string,
+	--- Unique id of the updated news item. 
+	NewsId: string,
+	--- Localized title (headline) of the news item. 
+	Title: string,
 }
 
 export type AddLocalizedNewsResult = {
 }
 
 export type AddNewsRequest = {
-	Body: string, --- Default body text of the news.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Timestamp: string?, --- Time this news was published. If not set, defaults to now.
-	Title: string, --- Default title (headline) of the news item.
+	--- Default body text of the news. 
+	Body: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Time this news was published. If not set, defaults to now. 
+	Timestamp: string?,
+	--- Default title (headline) of the news item. 
+	Title: string,
 }
 
 export type AddNewsResult = {
-	NewsId: string?, --- Unique id of the new news item
+	--- Unique id of the new news item 
+	NewsId: string?,
 }
 
 --- This API will trigger a player_tag_added event and add a tag with the given 
@@ -85,43 +123,63 @@ export type AddNewsResult = {
 --- for segmentation and it is limited to 256 characters. Also there is a limit 
 --- on the number of tags a title can have. 
 export type AddPlayerTagRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	TagName: string, --- Unique tag for player profile.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Unique tag for player profile. 
+	TagName: string,
 }
 
 export type AddPlayerTagResult = {
 }
 
 export type AddUserVirtualCurrencyRequest = {
-	Amount: number, --- Amount to be added to the user balance of the specified virtual currency. Maximum VC balance is Int32 (2,147,483,647). Any increase over this value will be discarded.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- PlayFab unique identifier of the user whose virtual currency balance is to be increased.
-	VirtualCurrency: string, --- Name of the virtual currency which is to be incremented.
+	--- Amount to be added to the user balance of the specified virtual currency. Maximum 
+	--- VC balance is Int32 (2,147,483,647). Any increase over this value will be discarded. 
+	Amount: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- PlayFab unique identifier of the user whose virtual currency balance is to be 
+	--- increased. 
+	PlayFabId: string,
+	--- Name of the virtual currency which is to be incremented. 
+	VirtualCurrency: string,
 }
 
 --- This operation is additive. Any new currencies defined in the array will be 
 --- added to the set of those available for the title, while any CurrencyCode identifiers 
 --- matching existing ones in the game will be overwritten with the new values. 
 export type AddVirtualCurrencyTypesRequest = {
-	VirtualCurrencies: {VirtualCurrencyData}, --- List of virtual currencies and their initial deposits (the amount a user is granted when signing in for the first time) to the title
+	--- List of virtual currencies and their initial deposits (the amount a user is 
+	--- granted when signing in for the first time) to the title 
+	VirtualCurrencies: {VirtualCurrencyData},
 }
 
 export type AllPlayersSegmentFilter = {
 }
 
 export type ApiCondition = {
-	HasSignatureOrEncryption: string?, --- Require that API calls contain an RSA encrypted payload or signed headers.
+	--- Require that API calls contain an RSA encrypted payload or signed headers. 
+	HasSignatureOrEncryption: string?,
 }
 
 --- The basic wrapper around every failed API response 
 export type ApiErrorWrapper = {
-	code: number, --- Numerical HTTP code
-	error: string?, --- Playfab error code
-	errorCode: number, --- Numerical PlayFab error code
-	errorDetails: {[any]: any}?, --- Detailed description of individual issues with the request object
-	errorMessage: string?, --- Description for the PlayFab errorCode
-	status: string?, --- String HTTP code
+	--- Numerical HTTP code 
+	code: number,
+	--- Playfab error code 
+	error: string?,
+	--- Numerical PlayFab error code 
+	errorCode: number,
+	--- Detailed description of individual issues with the request object 
+	errorDetails: {[any]: any}?,
+	--- Description for the PlayFab errorCode 
+	errorMessage: string?,
+	--- String HTTP code 
+	status: string?,
 }
 
 export type AuthTokenType = 
@@ -129,38 +187,56 @@ export type AuthTokenType =
 
 --- Contains information for a ban. 
 export type BanInfo = {
-	Active: boolean, --- The active state of this ban. Expired bans may still have this value set to true but they will have no effect.
-	BanId: string?, --- The unique Ban Id associated with this ban.
-	Created: string?, --- The time when this ban was applied.
-	Expires: string?, --- The time when this ban expires. Permanent bans do not have expiration date.
-	IPAddress: string?, --- The IP address on which the ban was applied. May affect multiple players.
-	PlayFabId: string?, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Reason: string?, --- The reason why this ban was applied.
+	--- The active state of this ban. Expired bans may still have this value set to 
+	--- true but they will have no effect. 
+	Active: boolean,
+	--- The unique Ban Id associated with this ban. 
+	BanId: string?,
+	--- The time when this ban was applied. 
+	Created: string?,
+	--- The time when this ban expires. Permanent bans do not have expiration date. 
+	Expires: string?,
+	--- The IP address on which the ban was applied. May affect multiple players. 
+	IPAddress: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string?,
+	--- The reason why this ban was applied. 
+	Reason: string?,
 }
 
 export type BanPlayerSegmentAction = {
-	BanHours: number?, --- Ban hours duration.
-	ReasonForBan: string?, --- Reason for ban.
+	--- Ban hours duration. 
+	BanHours: number?,
+	--- Reason for ban. 
+	ReasonForBan: string?,
 }
 
 --- Represents a single ban request. 
 export type BanRequest = {
-	DurationInHours: number?, --- The duration in hours for the ban. Leave this blank for a permanent ban.
-	IPAddress: string?, --- IP address to be banned. May affect multiple players.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Reason: string?, --- The reason for this ban. Maximum 140 characters.
+	--- The duration in hours for the ban. Leave this blank for a permanent ban. 
+	DurationInHours: number?,
+	--- IP address to be banned. May affect multiple players. 
+	IPAddress: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- The reason for this ban. Maximum 140 characters. 
+	Reason: string?,
 }
 
 --- The existence of each user will not be verified. When banning by IP or MAC address, 
 --- multiple players may be affected, so use this feature with caution. Returns 
 --- information about the new bans. 
 export type BanUsersRequest = {
-	Bans: {BanRequest}, --- List of ban requests to be applied. Maximum 100.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+	--- List of ban requests to be applied. Maximum 100. 
+	Bans: {BanRequest},
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
 }
 
 export type BanUsersResult = {
-	BanData: {BanInfo}?, --- Information on the bans that were applied
+	--- Information on the bans that were applied 
+	BanData: {BanInfo}?,
 }
 
 export type BlankResult = {
@@ -168,36 +244,85 @@ export type BlankResult = {
 
 --- A purchasable item from the item catalog 
 export type CatalogItem = {
-	Bundle: CatalogItemBundleInfo?, --- defines the bundle properties for the item - bundles are items which contain other items, including random drop tables and virtual currencies
-	CanBecomeCharacter: boolean, --- if true, then an item instance of this type can be used to grant a character to a user.
-	CatalogVersion: string?, --- catalog version for this item
-	Consumable: CatalogItemConsumableInfo?, --- defines the consumable properties (number of uses, timeout) for the item
-	Container: CatalogItemContainerInfo?, --- defines the container properties for the item - what items it contains, including random drop tables and virtual currencies, and what item (if any) is required to open it via the UnlockContainerItem API
-	CustomData: string?, --- game specific custom data
-	Description: string?, --- text description of item, to show in-game
-	DisplayName: string?, --- text name for the item, to show in-game
-	InitialLimitedEditionCount: number, --- If the item has IsLImitedEdition set to true, and this is the first time this ItemId has been defined as a limited edition item, this value determines the total number of instances to allocate for the title. Once this limit has been reached, no more instances of this ItemId can be created, and attempts to purchase or grant it will return a Result of false for that ItemId. If the item has already been defined to have a limited edition count, or if this value is less than zero, it will be ignored.
-	IsLimitedEdition: boolean, --- BETA: If true, then only a fixed number can ever be granted.
-	IsStackable: boolean, --- if true, then only one item instance of this type will exist and its remaininguses will be incremented instead. RemainingUses will cap out at Int32.Max (2,147,483,647). All subsequent increases will be discarded
-	IsTradable: boolean, --- if true, then an item instance of this type can be traded between players using the trading APIs
-	ItemClass: string?, --- class to which the item belongs
-	ItemId: string, --- unique identifier for this item
-	ItemImageUrl: string?, --- URL to the item image. For Facebook purchase to display the image on the item purchase page, this must be set to an HTTP URL.
-	RealCurrencyPrices: {[any]: any}?, --- override prices for this item for specific currencies
-	Tags: {any}?, --- list of item tags
-	VirtualCurrencyPrices: {[any]: any}?, --- price of this item in virtual currencies and "RM" (the base Real Money purchase price, in USD pennies)
+	--- defines the bundle properties for the item - bundles are items which contain 
+	--- other items, including random drop tables and virtual currencies 
+	Bundle: CatalogItemBundleInfo?,
+	--- if true, then an item instance of this type can be used to grant a character 
+	--- to a user. 
+	CanBecomeCharacter: boolean,
+	--- catalog version for this item 
+	CatalogVersion: string?,
+	--- defines the consumable properties (number of uses, timeout) for the item 
+	Consumable: CatalogItemConsumableInfo?,
+	--- defines the container properties for the item - what items it contains, including 
+	--- random drop tables and virtual currencies, and what item (if any) is required 
+	--- to open it via the UnlockContainerItem API 
+	Container: CatalogItemContainerInfo?,
+	--- game specific custom data 
+	CustomData: string?,
+	--- text description of item, to show in-game 
+	Description: string?,
+	--- text name for the item, to show in-game 
+	DisplayName: string?,
+	--- If the item has IsLImitedEdition set to true, and this is the first time this 
+	--- ItemId has been defined as a limited edition item, this value determines the 
+	--- total number of instances to allocate for the title. Once this limit has been 
+	--- reached, no more instances of this ItemId can be created, and attempts to purchase 
+	--- or grant it will return a Result of false for that ItemId. If the item has already 
+	--- been defined to have a limited edition count, or if this value is less than 
+	--- zero, it will be ignored. 
+	InitialLimitedEditionCount: number,
+	--- BETA: If true, then only a fixed number can ever be granted. 
+	IsLimitedEdition: boolean,
+	--- if true, then only one item instance of this type will exist and its remaininguses 
+	--- will be incremented instead. RemainingUses will cap out at Int32.Max (2,147,483,647). 
+	--- All subsequent increases will be discarded 
+	IsStackable: boolean,
+	--- if true, then an item instance of this type can be traded between players using 
+	--- the trading APIs 
+	IsTradable: boolean,
+	--- class to which the item belongs 
+	ItemClass: string?,
+	--- unique identifier for this item 
+	ItemId: string,
+	--- URL to the item image. For Facebook purchase to display the image on the item 
+	--- purchase page, this must be set to an HTTP URL. 
+	ItemImageUrl: string?,
+	--- override prices for this item for specific currencies 
+	RealCurrencyPrices: {[any]: any}?,
+	--- list of item tags 
+	Tags: {any}?,
+	--- price of this item in virtual currencies and "RM" (the base Real Money purchase 
+	--- price, in USD pennies) 
+	VirtualCurrencyPrices: {[any]: any}?,
 }
 
 export type CatalogItemBundleInfo = {
-	BundledItems: {any}?, --- unique ItemId values for all items which will be added to the player inventory when the bundle is added
-	BundledResultTables: {any}?, --- unique TableId values for all RandomResultTable objects which are part of the bundle (random tables will be resolved and add the relevant items to the player inventory when the bundle is added)
-	BundledVirtualCurrencies: {[any]: any}?, --- virtual currency types and balances which will be added to the player inventory when the bundle is added
+	--- unique ItemId values for all items which will be added to the player inventory 
+	--- when the bundle is added 
+	BundledItems: {any}?,
+	--- unique TableId values for all RandomResultTable objects which are part of the 
+	--- bundle (random tables will be resolved and add the relevant items to the player 
+	--- inventory when the bundle is added) 
+	BundledResultTables: {any}?,
+	--- virtual currency types and balances which will be added to the player inventory 
+	--- when the bundle is added 
+	BundledVirtualCurrencies: {[any]: any}?,
 }
 
 export type CatalogItemConsumableInfo = {
-	UsageCount: number?, --- number of times this object can be used, after which it will be removed from the player inventory
-	UsagePeriod: number?, --- duration in seconds for how long the item will remain in the player inventory - once elapsed, the item will be removed (recommended minimum value is 5 seconds, as lower values can cause the item to expire before operations depending on this item's details have completed)
-	UsagePeriodGroup: string?, --- all inventory item instances in the player inventory sharing a non-null UsagePeriodGroup have their UsagePeriod values added together, and share the result - when that period has elapsed, all the items in the group will be removed
+	--- number of times this object can be used, after which it will be removed from 
+	--- the player inventory 
+	UsageCount: number?,
+	--- duration in seconds for how long the item will remain in the player inventory 
+	--- - once elapsed, the item will be removed (recommended minimum value is 5 seconds, 
+	--- as lower values can cause the item to expire before operations depending on 
+	--- this item's details have completed) 
+	UsagePeriod: number?,
+	--- all inventory item instances in the player inventory sharing a non-null UsagePeriodGroup 
+	--- have their UsagePeriod values added together, and share the result - when that 
+	--- period has elapsed, all the items in the group will be removed 
+	UsagePeriodGroup: string?,
 }
 
 --- Containers are inventory items that can hold other items defined in the catalog, 
@@ -208,20 +333,33 @@ export type CatalogItemConsumableInfo = {
 --- as Consumable (having a limited number of uses) in their catalog defintiions, 
 --- unless the intent is for the player to be able to re-use them infinitely. 
 export type CatalogItemContainerInfo = {
-	ItemContents: {any}?, --- unique ItemId values for all items which will be added to the player inventory, once the container has been unlocked
-	KeyItemId: string?, --- ItemId for the catalog item used to unlock the container, if any (if not specified, a call to UnlockContainerItem will open the container, adding the contents to the player inventory and currency balances)
-	ResultTableContents: {any}?, --- unique TableId values for all RandomResultTable objects which are part of the container (once unlocked, random tables will be resolved and add the relevant items to the player inventory)
-	VirtualCurrencyContents: {[any]: any}?, --- virtual currency types and balances which will be added to the player inventory when the container is unlocked
+	--- unique ItemId values for all items which will be added to the player inventory, 
+	--- once the container has been unlocked 
+	ItemContents: {any}?,
+	--- ItemId for the catalog item used to unlock the container, if any (if not specified, 
+	--- a call to UnlockContainerItem will open the container, adding the contents to 
+	--- the player inventory and currency balances) 
+	KeyItemId: string?,
+	--- unique TableId values for all RandomResultTable objects which are part of the 
+	--- container (once unlocked, random tables will be resolved and add the relevant 
+	--- items to the player inventory) 
+	ResultTableContents: {any}?,
+	--- virtual currency types and balances which will be added to the player inventory 
+	--- when the container is unlocked 
+	VirtualCurrencyContents: {[any]: any}?,
 }
 
 --- This returns the total number of these items available. 
 export type CheckLimitedEditionItemAvailabilityRequest = {
-	CatalogVersion: string?, --- Which catalog is being updated. If null, uses the default catalog.
-	ItemId: string, --- The item to check for.
+	--- Which catalog is being updated. If null, uses the default catalog. 
+	CatalogVersion: string?,
+	--- The item to check for. 
+	ItemId: string,
 }
 
 export type CheckLimitedEditionItemAvailabilityResult = {
-	Amount: number, --- The amount of the specified resource remaining.
+	--- The amount of the specified resource remaining. 
+	Amount: number,
 }
 
 export type ChurnRiskLevel = 
@@ -231,31 +369,48 @@ export type ChurnRiskLevel =
 	| "HighRisk"
 
 export type CloudScriptFile = {
-	FileContents: string, --- Contents of the Cloud Script javascript. Must be string-escaped javascript.
-	Filename: string, --- Name of the javascript file. These names are not used internally by the server, they are only for developer organizational purposes.
+	--- Contents of the Cloud Script javascript. Must be string-escaped javascript. 
+	FileContents: string,
+	--- Name of the javascript file. These names are not used internally by the server, 
+	--- they are only for developer organizational purposes. 
+	Filename: string,
 }
 
 export type CloudScriptTaskParameter = {
-	Argument: {[any]: any}?, --- Argument to pass to the CloudScript function.
-	FunctionName: string?, --- Name of the CloudScript function to execute.
+	--- Argument to pass to the CloudScript function. 
+	Argument: {[any]: any}?,
+	--- Name of the CloudScript function to execute. 
+	FunctionName: string?,
 }
 
 export type CloudScriptTaskSummary = {
-	CompletedAt: string?, --- UTC timestamp when the task completed.
-	EstimatedSecondsRemaining: number?, --- Estimated time remaining in seconds.
-	PercentComplete: number?, --- Progress represented as percentage.
-	Result: ExecuteCloudScriptResult?, --- Result of CloudScript execution
-	ScheduledByUserId: string?, --- If manually scheduled, ID of user who scheduled the task.
-	StartedAt: string, --- UTC timestamp when the task started.
-	Status: string?, --- Current status of the task instance.
-	TaskIdentifier: NameIdentifier?, --- Identifier of the task this instance belongs to.
-	TaskInstanceId: string?, --- ID of the task instance.
+	--- UTC timestamp when the task completed. 
+	CompletedAt: string?,
+	--- Estimated time remaining in seconds. 
+	EstimatedSecondsRemaining: number?,
+	--- Progress represented as percentage. 
+	PercentComplete: number?,
+	--- Result of CloudScript execution 
+	Result: ExecuteCloudScriptResult?,
+	--- If manually scheduled, ID of user who scheduled the task. 
+	ScheduledByUserId: string?,
+	--- UTC timestamp when the task started. 
+	StartedAt: string,
+	--- Current status of the task instance. 
+	Status: string?,
+	--- Identifier of the task this instance belongs to. 
+	TaskIdentifier: NameIdentifier?,
+	--- ID of the task instance. 
+	TaskInstanceId: string?,
 }
 
 export type CloudScriptVersionStatus = {
-	LatestRevision: number, --- Most recent revision for this Cloud Script version
-	PublishedRevision: number, --- Published code revision for this Cloud Script version
-	Version: number, --- Version number
+	--- Most recent revision for this Cloud Script version 
+	LatestRevision: number,
+	--- Published code revision for this Cloud Script version 
+	PublishedRevision: number,
+	--- Version number 
+	Version: number,
 }
 
 export type Conditionals = 
@@ -264,21 +419,30 @@ export type Conditionals =
 	| "False"
 
 export type ContactEmailInfo = {
-	EmailAddress: string?, --- The email address
-	Name: string?, --- The name of the email info data
-	VerificationStatus: string?, --- The verification status of the email
+	--- The email address 
+	EmailAddress: string?,
+	--- The name of the email info data 
+	Name: string?,
+	--- The verification status of the email 
+	VerificationStatus: string?,
 }
 
 export type ContactEmailInfoModel = {
-	EmailAddress: string?, --- The email address
-	Name: string?, --- The name of the email info data
-	VerificationStatus: string?, --- The verification status of the email
+	--- The email address 
+	EmailAddress: string?,
+	--- The name of the email info data 
+	Name: string?,
+	--- The verification status of the email 
+	VerificationStatus: string?,
 }
 
 export type ContentInfo = {
-	Key: string?, --- Key of the content
-	LastModified: string, --- Last modified time
-	Size: number, --- Size of the content in bytes
+	--- Key of the content 
+	Key: string?,
+	--- Last modified time 
+	LastModified: string,
+	--- Size of the content in bytes 
+	Size: number,
 }
 
 export type ContinentCode = 
@@ -545,45 +709,78 @@ export type CountryCode =
 --- cause a name conflict error. Too many create-task requests within a short time 
 --- will cause a create conflict error. 
 export type CreateActionsOnPlayerSegmentTaskRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Description: string?, --- Description the task
-	IsActive: boolean, --- Whether the schedule is active. Inactive schedule will not trigger task execution.
-	Name: string, --- Name of the task. This is a unique identifier for tasks in the title.
-	Parameter: ActionsOnPlayersInSegmentTaskParameter, --- Task details related to segment and action
-	Schedule: string?, --- Cron expression for the run schedule of the task. The expression should be in UTC.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Description the task 
+	Description: string?,
+	--- Whether the schedule is active. Inactive schedule will not trigger task execution. 
+	IsActive: boolean,
+	--- Name of the task. This is a unique identifier for tasks in the title. 
+	Name: string,
+	--- Task details related to segment and action 
+	Parameter: ActionsOnPlayersInSegmentTaskParameter,
+	--- Cron expression for the run schedule of the task. The expression should be in 
+	--- UTC. 
+	Schedule: string?,
 }
 
 --- Task name is unique within a title. Using a task name that's already taken will 
 --- cause a name conflict error. Too many create-task requests within a short time 
 --- will cause a create conflict error. 
 export type CreateCloudScriptTaskRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Description: string?, --- Description the task
-	IsActive: boolean, --- Whether the schedule is active. Inactive schedule will not trigger task execution.
-	Name: string, --- Name of the task. This is a unique identifier for tasks in the title.
-	Parameter: CloudScriptTaskParameter, --- Task details related to CloudScript
-	Schedule: string?, --- Cron expression for the run schedule of the task. The expression should be in UTC.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Description the task 
+	Description: string?,
+	--- Whether the schedule is active. Inactive schedule will not trigger task execution. 
+	IsActive: boolean,
+	--- Name of the task. This is a unique identifier for tasks in the title. 
+	Name: string,
+	--- Task details related to CloudScript 
+	Parameter: CloudScriptTaskParameter,
+	--- Cron expression for the run schedule of the task. The expression should be in 
+	--- UTC. 
+	Schedule: string?,
 }
 
 --- Task name is unique within a title. Using a task name that's already taken will 
 --- cause a name conflict error. Too many create-task requests within a short time 
 --- will cause a create conflict error. 
 export type CreateInsightsScheduledScalingTaskRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Description: string?, --- Description the task
-	IsActive: boolean, --- Whether the schedule is active. Inactive schedule will not trigger task execution.
-	Name: string, --- Name of the task. This is a unique identifier for tasks in the title.
-	Parameter: InsightsScalingTaskParameter, --- Task details related to Insights Scaling
-	Schedule: string?, --- Cron expression for the run schedule of the task. The expression should be in UTC.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Description the task 
+	Description: string?,
+	--- Whether the schedule is active. Inactive schedule will not trigger task execution. 
+	IsActive: boolean,
+	--- Name of the task. This is a unique identifier for tasks in the title. 
+	Name: string,
+	--- Task details related to Insights Scaling 
+	Parameter: InsightsScalingTaskParameter,
+	--- Cron expression for the run schedule of the task. The expression should be in 
+	--- UTC. 
+	Schedule: string?,
 }
 
 export type CreateOpenIdConnectionRequest = {
-	ClientId: string, --- The client ID given by the ID provider.
-	ClientSecret: string, --- The client secret given by the ID provider.
-	ConnectionId: string, --- A name for the connection that identifies it within the title.
-	IgnoreNonce: boolean?, --- Ignore 'nonce' claim in identity tokens.
-	IssuerDiscoveryUrl: string?, --- The discovery document URL to read issuer information from. This must be the absolute URL to the JSON OpenId Configuration document and must be accessible from the internet. If you don't know it, try your issuer URL followed by "/.well-known/openid-configuration". For example, if the issuer is https://example.com, try https://example.com/.well-known/openid-configuration
-	IssuerInformation: OpenIdIssuerInformation?, --- Manually specified information for an OpenID Connect issuer.
+	--- The client ID given by the ID provider. 
+	ClientId: string,
+	--- The client secret given by the ID provider. 
+	ClientSecret: string,
+	--- A name for the connection that identifies it within the title. 
+	ConnectionId: string,
+	--- Ignore 'nonce' claim in identity tokens. 
+	IgnoreNonce: boolean?,
+	--- The discovery document URL to read issuer information from. This must be the 
+	--- absolute URL to the JSON OpenId Configuration document and must be accessible 
+	--- from the internet. If you don't know it, try your issuer URL followed by "/.well-known/openid-configuration". 
+	--- For example, if the issuer is https://example.com, try https://example.com/.well-known/openid-configuration 
+	IssuerDiscoveryUrl: string?,
+	--- Manually specified information for an OpenID Connect issuer. 
+	IssuerInformation: OpenIdIssuerInformation?,
 }
 
 --- Player Shared Secret Keys are used for the call to Client/GetTitlePublicKey, 
@@ -591,11 +788,13 @@ export type CreateOpenIdConnectionRequest = {
 --- the payload of account creation requests when that API requires a signature 
 --- header. 
 export type CreatePlayerSharedSecretRequest = {
-	FriendlyName: string?, --- Friendly name for this key
+	--- Friendly name for this key 
+	FriendlyName: string?,
 }
 
 export type CreatePlayerSharedSecretResult = {
-	SecretKey: string?, --- The player shared secret to use when calling Client/GetTitlePublicKey
+	--- The player shared secret to use when calling Client/GetTitlePublicKey 
+	SecretKey: string?,
 }
 
 --- Statistics are numeric values, with each statistic in the title also generating 
@@ -616,28 +815,39 @@ export type CreatePlayerSharedSecretResult = {
 --- (Last), use the highest of the old and new values (Max), use the smallest (Min), 
 --- or add them together (Sum). 
 export type CreatePlayerStatisticDefinitionRequest = {
-	AggregationMethod: string?, --- the aggregation method to use in updating the statistic (defaults to last)
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	StatisticName: string, --- unique name of the statistic
-	VersionChangeInterval: string?, --- interval at which the values of the statistic for all players are reset (resets begin at the next interval boundary)
+	--- the aggregation method to use in updating the statistic (defaults to last) 
+	AggregationMethod: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- unique name of the statistic 
+	StatisticName: string,
+	--- interval at which the values of the statistic for all players are reset (resets 
+	--- begin at the next interval boundary) 
+	VersionChangeInterval: string?,
 }
 
 export type CreatePlayerStatisticDefinitionResult = {
-	Statistic: PlayerStatisticDefinition?, --- created statistic definition
+	--- created statistic definition 
+	Statistic: PlayerStatisticDefinition?,
 }
 
 --- Send all the segment details part of CreateSegmentRequest 
 export type CreateSegmentRequest = {
-	SegmentModel: SegmentModel, --- Segment model with all of the segment properties data.
+	--- Segment model with all of the segment properties data. 
+	SegmentModel: SegmentModel,
 }
 
 export type CreateSegmentResponse = {
-	ErrorMessage: string?, --- Error message.
-	SegmentId: string?, --- Segment id.
+	--- Error message. 
+	ErrorMessage: string?,
+	--- Segment id. 
+	SegmentId: string?,
 }
 
 export type CreateTaskResult = {
-	TaskId: string?, --- ID of the task
+	--- ID of the task 
+	TaskId: string?,
 }
 
 export type Currency = 
@@ -805,7 +1015,8 @@ export type Currency =
 	| "ZWD"
 
 export type DeleteContentRequest = {
-	Key: string, --- Key of the content item to be deleted
+	--- Key of the content item to be deleted 
+	Key: string,
 }
 
 --- Deletes all data associated with the master player account, including data from 
@@ -822,28 +1033,39 @@ export type DeleteContentRequest = {
 --- error. It is highly recommended to know the impact of the deletion by calling 
 --- GetPlayedTitleList, before calling this API. 
 export type DeleteMasterPlayerAccountRequest = {
-	MetaData: string?, --- Developer created string to identify a user without PlayFab ID
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Developer created string to identify a user without PlayFab ID 
+	MetaData: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type DeleteMasterPlayerAccountResult = {
-	JobReceiptId: string?, --- A notification email with this job receipt Id will be sent to the title notification email address when deletion is complete.
-	TitleIds: {any}?, --- List of titles from which the player's data will be deleted.
+	--- A notification email with this job receipt Id will be sent to the title notification 
+	--- email address when deletion is complete. 
+	JobReceiptId: string?,
+	--- List of titles from which the player's data will be deleted. 
+	TitleIds: {any}?,
 }
 
 --- This API lets developers delete a membership subscription. 
 export type DeleteMembershipSubscriptionRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	MembershipId: string, --- Id of the membership to apply the override expiration date to.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	SubscriptionId: string, --- Id of the subscription that should be deleted from the membership.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Id of the membership to apply the override expiration date to. 
+	MembershipId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Id of the subscription that should be deleted from the membership. 
+	SubscriptionId: string,
 }
 
 export type DeleteMembershipSubscriptionResult = {
 }
 
 export type DeleteOpenIdConnectionRequest = {
-	ConnectionId: string, --- unique name of the connection
+	--- unique name of the connection 
+	ConnectionId: string,
 }
 
 --- Deletes all data associated with the player, including statistics, custom data, 
@@ -858,7 +1080,8 @@ export type DeleteOpenIdConnectionRequest = {
 --- the same user account in the same title will fail with the 'AccountDeleted' 
 --- error. 
 export type DeletePlayerRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type DeletePlayerResult = {
@@ -872,30 +1095,38 @@ export type DeletePlayerSegmentAction = {
 --- the payload of account creation requests when that API requires a signature 
 --- header. 
 export type DeletePlayerSharedSecretRequest = {
-	SecretKey: string?, --- The shared secret key to delete
+	--- The shared secret key to delete 
+	SecretKey: string?,
 }
 
 export type DeletePlayerSharedSecretResult = {
 }
 
 export type DeletePlayerStatisticSegmentAction = {
-	StatisticName: string?, --- Statistic name.
+	--- Statistic name. 
+	StatisticName: string?,
 }
 
 --- Send segment id planning to delete part of DeleteSegmentRequest object 
 export type DeleteSegmentRequest = {
-	SegmentId: string, --- Segment id.
+	--- Segment id. 
+	SegmentId: string,
 }
 
 export type DeleteSegmentsResponse = {
-	ErrorMessage: string?, --- Error message.
+	--- Error message. 
+	ErrorMessage: string?,
 }
 
 --- This non-reversible operation will permanently delete the requested store. 
 export type DeleteStoreRequest = {
-	CatalogVersion: string?, --- catalog version of the store to delete. If null, uses the default catalog.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	StoreId: string, --- unqiue identifier for the store which is to be deleted
+	--- catalog version of the store to delete. If null, uses the default catalog. 
+	CatalogVersion: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- unqiue identifier for the store which is to be deleted 
+	StoreId: string,
 }
 
 export type DeleteStoreResult = {
@@ -906,12 +1137,14 @@ export type DeleteStoreResult = {
 --- to any task. Executions of any in-progress task instances will continue. If 
 --- the task specified does not exist, the deletion is considered a success. 
 export type DeleteTaskRequest = {
-	Identifier: NameIdentifier?, --- Specify either the task ID or the name of task to be deleted.
+	--- Specify either the task ID or the name of task to be deleted. 
+	Identifier: NameIdentifier?,
 }
 
 --- Will delete all the title data associated with the given override label. 
 export type DeleteTitleDataOverrideRequest = {
-	OverrideLabel: string, --- Name of the override.
+	--- Name of the override. 
+	OverrideLabel: string,
 }
 
 export type DeleteTitleDataOverrideResult = {
@@ -939,8 +1172,10 @@ export type EffectType =
 	| "Deny"
 
 export type EmailNotificationSegmentAction = {
-	EmailTemplateId: string?, --- Email template id.
-	EmailTemplateName: string?, --- Email template name.
+	--- Email template id. 
+	EmailTemplateId: string?,
+	--- Email template name. 
+	EmailTemplateName: string?,
 }
 
 export type EmailVerificationStatus = 
@@ -953,36 +1188,61 @@ export type EmptyResponse = {
 
 --- Combined entity type and ID structure which uniquely identifies a single entity. 
 export type EntityKey = {
-	Id: string, --- Unique ID of the entity.
-	Type: string?, --- Entity type. See https://docs.microsoft.com/gaming/playfab/features/data/entities/available-built-in-entity-types
+	--- Unique ID of the entity. 
+	Id: string,
+	--- Entity type. See https://docs.microsoft.com/gaming/playfab/features/data/entities/available-built-in-entity-types 
+	Type: string?,
 }
 
 export type ExecuteAzureFunctionSegmentAction = {
-	AzureFunction: string?, --- Azure function.
-	FunctionParameter: {[any]: any}?, --- Azure function parameter.
-	GenerateFunctionExecutedEvents: boolean, --- Generate play stream event.
+	--- Azure function. 
+	AzureFunction: string?,
+	--- Azure function parameter. 
+	FunctionParameter: {[any]: any}?,
+	--- Generate play stream event. 
+	GenerateFunctionExecutedEvents: boolean,
 }
 
 export type ExecuteCloudScriptResult = {
-	APIRequestsIssued: number, --- Number of PlayFab API requests issued by the CloudScript function
-	Error: ScriptExecutionError?, --- Information about the error, if any, that occurred during execution
+	--- Number of PlayFab API requests issued by the CloudScript function 
+	APIRequestsIssued: number,
+	--- Information about the error, if any, that occurred during execution 
+	Error: ScriptExecutionError?,
 	ExecutionTimeSeconds: number,
-	FunctionName: string?, --- The name of the function that executed
-	FunctionResult: {[any]: any}?, --- The object returned from the CloudScript function, if any
-	FunctionResultTooLarge: boolean?, --- Flag indicating if the FunctionResult was too large and was subsequently dropped from this event. This only occurs if the total event size is larger than 350KB.
-	HttpRequestsIssued: number, --- Number of external HTTP requests issued by the CloudScript function
-	Logs: {LogStatement}?, --- Entries logged during the function execution. These include both entries logged in the function code using log.info() and log.error() and error entries for API and HTTP request failures.
-	LogsTooLarge: boolean?, --- Flag indicating if the logs were too large and were subsequently dropped from this event. This only occurs if the total event size is larger than 350KB after the FunctionResult was removed.
+	--- The name of the function that executed 
+	FunctionName: string?,
+	--- The object returned from the CloudScript function, if any 
+	FunctionResult: {[any]: any}?,
+	--- Flag indicating if the FunctionResult was too large and was subsequently dropped 
+	--- from this event. This only occurs if the total event size is larger than 350KB. 
+	FunctionResultTooLarge: boolean?,
+	--- Number of external HTTP requests issued by the CloudScript function 
+	HttpRequestsIssued: number,
+	--- Entries logged during the function execution. These include both entries logged 
+	--- in the function code using log.info() and log.error() and error entries for 
+	--- API and HTTP request failures. 
+	Logs: {LogStatement}?,
+	--- Flag indicating if the logs were too large and were subsequently dropped from 
+	--- this event. This only occurs if the total event size is larger than 350KB after 
+	--- the FunctionResult was removed. 
+	LogsTooLarge: boolean?,
 	MemoryConsumedBytes: number,
-	ProcessorTimeSeconds: number, --- Processor time consumed while executing the function. This does not include time spent waiting on API calls or HTTP requests.
-	Revision: number, --- The revision of the CloudScript that executed
+	--- Processor time consumed while executing the function. This does not include 
+	--- time spent waiting on API calls or HTTP requests. 
+	ProcessorTimeSeconds: number,
+	--- The revision of the CloudScript that executed 
+	Revision: number,
 }
 
 export type ExecuteCloudScriptSegmentAction = {
-	CloudScriptFunction: string?, --- Cloud script function.
-	CloudScriptPublishResultsToPlayStream: boolean, --- Generate play stream event.
-	FunctionParameter: {[any]: any}?, --- Cloud script function parameter.
-	FunctionParameterJson: string?, --- Cloud script function parameter json text.
+	--- Cloud script function. 
+	CloudScriptFunction: string?,
+	--- Generate play stream event. 
+	CloudScriptPublishResultsToPlayStream: boolean,
+	--- Cloud script function parameter. 
+	FunctionParameter: {[any]: any}?,
+	--- Cloud script function parameter json text. 
+	FunctionParameterJson: string?,
 }
 
 --- Exports all data associated with the master player account, including data from 
@@ -995,31 +1255,41 @@ export type ExecuteCloudScriptSegmentAction = {
 --- the URL to download the export dump will be sent to the notification email address 
 --- configured for the title. 
 export type ExportMasterPlayerDataRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type ExportMasterPlayerDataResult = {
-	JobReceiptId: string?, --- An email with this job receipt Id containing the export download link will be sent to the title notification email address when the export is complete.
+	--- An email with this job receipt Id containing the export download link will be 
+	--- sent to the title notification email address when the export is complete. 
+	JobReceiptId: string?,
 }
 
 --- Request must contain the Segment ID 
 export type ExportPlayersInSegmentRequest = {
-	SegmentId: string, --- Unique identifier of the requested segment.
+	--- Unique identifier of the requested segment. 
+	SegmentId: string,
 }
 
 export type ExportPlayersInSegmentResult = {
-	ExportId: string?, --- Unique identifier of the export for the requested Segment.
-	SegmentId: string?, --- Unique identifier of the requested Segment.
+	--- Unique identifier of the export for the requested Segment. 
+	ExportId: string?,
+	--- Unique identifier of the requested Segment. 
+	SegmentId: string?,
 }
 
 export type FirstLoginDateSegmentFilter = {
-	Comparison: string?, --- First player login date comparison.
-	LogInDate: string, --- First player login date.
+	--- First player login date comparison. 
+	Comparison: string?,
+	--- First player login date. 
+	LogInDate: string,
 }
 
 export type FirstLoginTimespanSegmentFilter = {
-	Comparison: string?, --- First player login duration comparison.
-	DurationInMinutes: number, --- First player login duration.
+	--- First player login duration comparison. 
+	Comparison: string?,
+	--- First player login duration. 
+	DurationInMinutes: number,
 }
 
 export type GameBuildStatus = 
@@ -1030,10 +1300,16 @@ export type GameBuildStatus =
 	| "FailedToProcess"
 
 export type GameModeInfo = {
-	Gamemode: string, --- specific game mode type
-	MaxPlayerCount: number, --- maximum user count a specific Game Server Instance can support
-	MinPlayerCount: number, --- minimum user count required for this Game Server Instance to continue (usually 1)
-	StartOpen: boolean?, --- whether to start as an open session, meaning that players can matchmake into it (defaults to true)
+	--- specific game mode type 
+	Gamemode: string,
+	--- maximum user count a specific Game Server Instance can support 
+	MaxPlayerCount: number,
+	--- minimum user count required for this Game Server Instance to continue (usually 
+	--- 1) 
+	MinPlayerCount: number,
+	--- whether to start as an open session, meaning that players can matchmake into 
+	--- it (defaults to true) 
+	StartOpen: boolean?,
 }
 
 export type GenericErrorCodes = 
@@ -1735,8 +2011,10 @@ export type GenericErrorCodes =
 	| "AllowNonUniquePlayerDisplayNamesDisableNotAllowed"
 
 export type GetActionsOnPlayersInSegmentTaskInstanceResult = {
-	Parameter: ActionsOnPlayersInSegmentTaskParameter?, --- Parameter of this task instance
-	Summary: ActionsOnPlayersInSegmentTaskSummary?, --- Status summary of the actions-on-players-in-segment task instance
+	--- Parameter of this task instance 
+	Parameter: ActionsOnPlayersInSegmentTaskParameter?,
+	--- Status summary of the actions-on-players-in-segment task instance 
+	Summary: ActionsOnPlayersInSegmentTaskSummary?,
 }
 
 --- Request has no paramaters. 
@@ -1744,92 +2022,138 @@ export type GetAllSegmentsRequest = {
 }
 
 export type GetAllSegmentsResult = {
-	Segments: {GetSegmentResult}?, --- Array of segments for this title.
+	--- Array of segments for this title. 
+	Segments: {GetSegmentResult}?,
 }
 
 export type GetCatalogItemsRequest = {
-	CatalogVersion: string?, --- Which catalog is being requested. If null, uses the default catalog.
+	--- Which catalog is being requested. If null, uses the default catalog. 
+	CatalogVersion: string?,
 }
 
 export type GetCatalogItemsResult = {
-	Catalog: {CatalogItem}?, --- Array of items which can be purchased.
+	--- Array of items which can be purchased. 
+	Catalog: {CatalogItem}?,
 }
 
 export type GetCloudScriptRevisionRequest = {
-	Revision: number?, --- Revision number. If left null, defaults to the latest revision
-	Version: number?, --- Version number. If left null, defaults to the latest version
+	--- Revision number. If left null, defaults to the latest revision 
+	Revision: number?,
+	--- Version number. If left null, defaults to the latest version 
+	Version: number?,
 }
 
 export type GetCloudScriptRevisionResult = {
-	CreatedAt: string, --- Time this revision was created
-	Files: {CloudScriptFile}?, --- List of Cloud Script files in this revision.
-	IsPublished: boolean, --- True if this is the currently published revision
-	Revision: number, --- Revision number.
-	Version: number, --- Version number.
+	--- Time this revision was created 
+	CreatedAt: string,
+	--- List of Cloud Script files in this revision. 
+	Files: {CloudScriptFile}?,
+	--- True if this is the currently published revision 
+	IsPublished: boolean,
+	--- Revision number. 
+	Revision: number,
+	--- Version number. 
+	Version: number,
 }
 
 export type GetCloudScriptTaskInstanceResult = {
-	Parameter: CloudScriptTaskParameter?, --- Parameter of this task instance
-	Summary: CloudScriptTaskSummary?, --- Status summary of the CloudScript task instance
+	--- Parameter of this task instance 
+	Parameter: CloudScriptTaskParameter?,
+	--- Status summary of the CloudScript task instance 
+	Summary: CloudScriptTaskSummary?,
 }
 
 export type GetCloudScriptVersionsRequest = {
 }
 
 export type GetCloudScriptVersionsResult = {
-	Versions: {CloudScriptVersionStatus}?, --- List of versions
+	--- List of versions 
+	Versions: {CloudScriptVersionStatus}?,
 }
 
 export type GetContentListRequest = {
-	Prefix: string?, --- Limits the response to keys that begin with the specified prefix. You can use prefixes to list contents under a folder, or for a specified version, etc.
+	--- Limits the response to keys that begin with the specified prefix. You can use 
+	--- prefixes to list contents under a folder, or for a specified version, etc. 
+	Prefix: string?,
 }
 
 export type GetContentListResult = {
-	Contents: {ContentInfo}?, --- List of content items.
-	ItemCount: number, --- Number of content items returned. We currently have a maximum of 1000 items limit.
-	TotalSize: number, --- The total size of listed contents in bytes.
+	--- List of content items. 
+	Contents: {ContentInfo}?,
+	--- Number of content items returned. We currently have a maximum of 1000 items 
+	--- limit. 
+	ItemCount: number,
+	--- The total size of listed contents in bytes. 
+	TotalSize: number,
 }
 
 export type GetContentUploadUrlRequest = {
-	ContentType: string?, --- A standard MIME type describing the format of the contents. The same MIME type has to be set in the header when uploading the content. If not specified, the MIME type is 'binary/octet-stream' by default.
-	Key: string, --- Key of the content item to upload, usually formatted as a path, e.g. images/a.png
+	--- A standard MIME type describing the format of the contents. The same MIME type 
+	--- has to be set in the header when uploading the content. If not specified, the 
+	--- MIME type is 'binary/octet-stream' by default. 
+	ContentType: string?,
+	--- Key of the content item to upload, usually formatted as a path, e.g. images/a.png 
+	Key: string,
 }
 
 export type GetContentUploadUrlResult = {
-	URL: string?, --- URL for uploading content via HTTP PUT method. The URL requires the 'x-ms-blob-type' header to have the value 'BlockBlob'. The URL will expire in approximately one hour.
+	--- URL for uploading content via HTTP PUT method. The URL requires the 'x-ms-blob-type' 
+	--- header to have the value 'BlockBlob'. The URL will expire in approximately one 
+	--- hour. 
+	URL: string?,
 }
 
 --- Gets the download URL for the requested report data (in CSV form). The reports 
 --- available through this API call are those available in the Game Manager, in 
 --- the Analytics->Reports tab. 
 export type GetDataReportRequest = {
-	Day: number, --- Reporting year (UTC)
-	Month: number, --- Reporting month (UTC)
-	ReportName: string, --- Report name
-	Year: number, --- Reporting year (UTC)
+	--- Reporting year (UTC) 
+	Day: number,
+	--- Reporting month (UTC) 
+	Month: number,
+	--- Report name 
+	ReportName: string,
+	--- Reporting year (UTC) 
+	Year: number,
 }
 
 export type GetDataReportResult = {
-	DownloadUrl: string?, --- The URL where the requested report can be downloaded. This can be any PlayFab generated reports. The full list of reports can be found at: https://docs.microsoft.com/en-us/gaming/playfab/features/analytics/reports/quickstart.
+	--- The URL where the requested report can be downloaded. This can be any PlayFab 
+	--- generated reports. The full list of reports can be found at: https://docs.microsoft.com/en-us/gaming/playfab/features/analytics/reports/quickstart. 
+	DownloadUrl: string?,
 }
 
 export type GetMatchmakerGameInfoRequest = {
-	LobbyId: string, --- unique identifier of the lobby for which info is being requested
+	--- unique identifier of the lobby for which info is being requested 
+	LobbyId: string,
 }
 
 export type GetMatchmakerGameInfoResult = {
-	BuildVersion: string?, --- version identifier of the game server executable binary being run
-	EndTime: string?, --- time when Game Server Instance is currently scheduled to end
-	LobbyId: string?, --- unique identifier of the lobby 
-	Mode: string?, --- game mode for this Game Server Instance
-	Players: {any}?, --- array of unique PlayFab identifiers for users currently connected to this Game Server Instance
-	Region: string?, --- region in which the Game Server Instance is running
-	ServerIPV4Address: string?, --- IPV4 address of the server
-	ServerIPV6Address: string?, --- IPV6 address of the server
-	ServerPort: number, --- communication port for this Game Server Instance
-	ServerPublicDNSName: string?, --- Public DNS name (if any) of the server
-	StartTime: string, --- time when the Game Server Instance was created
-	TitleId: string?, --- unique identifier of the Game Server Instance for this lobby
+	--- version identifier of the game server executable binary being run 
+	BuildVersion: string?,
+	--- time when Game Server Instance is currently scheduled to end 
+	EndTime: string?,
+	--- unique identifier of the lobby  
+	LobbyId: string?,
+	--- game mode for this Game Server Instance 
+	Mode: string?,
+	--- array of unique PlayFab identifiers for users currently connected to this Game 
+	--- Server Instance 
+	Players: {any}?,
+	--- region in which the Game Server Instance is running 
+	Region: string?,
+	--- IPV4 address of the server 
+	ServerIPV4Address: string?,
+	--- IPV6 address of the server 
+	ServerIPV6Address: string?,
+	--- communication port for this Game Server Instance 
+	ServerPort: number,
+	--- Public DNS name (if any) of the server 
+	ServerPublicDNSName: string?,
+	--- time when the Game Server Instance was created 
+	StartTime: string,
+	--- unique identifier of the Game Server Instance for this lobby 
+	TitleId: string?,
 }
 
 --- These details are used by the PlayFab matchmaking service to determine if an 
@@ -1837,32 +2161,39 @@ export type GetMatchmakerGameInfoResult = {
 --- game server management service to determine when a new Game Server Host should 
 --- be created in order to prevent excess load on existing Hosts. 
 export type GetMatchmakerGameModesRequest = {
-	BuildVersion: string, --- previously uploaded build version for which game modes are being requested
+	--- previously uploaded build version for which game modes are being requested 
+	BuildVersion: string,
 }
 
 export type GetMatchmakerGameModesResult = {
-	GameModes: {GameModeInfo}?, --- array of game modes available for the specified build
+	--- array of game modes available for the specified build 
+	GameModes: {GameModeInfo}?,
 }
 
 --- Useful for identifying titles of which the player's data will be deleted by 
 --- DeleteMasterPlayer. 
 export type GetPlayedTitleListRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetPlayedTitleListResult = {
-	TitleIds: {any}?, --- List of titles the player has played
+	--- List of titles the player has played 
+	TitleIds: {any}?,
 }
 
 --- Gets a player ID from an auth token. The token expires after 30 minutes and 
 --- cannot be used to look up a player when expired. 
 export type GetPlayerIdFromAuthTokenRequest = {
-	Token: string, --- The auth token of the player requesting the password reset.
-	TokenType: string, --- The type of auth token of the player requesting the password reset.
+	--- The auth token of the player requesting the password reset. 
+	Token: string,
+	--- The type of auth token of the player requesting the password reset. 
+	TokenType: string,
 }
 
 export type GetPlayerIdFromAuthTokenResult = {
-	PlayFabId: string?, --- The player ID from the token passed in
+	--- The player ID from the token passed in 
+	PlayFabId: string?,
 }
 
 --- This API allows for access to details regarding a user in the PlayFab service, 
@@ -1872,17 +2203,27 @@ export type GetPlayerIdFromAuthTokenResult = {
 --- the relevant information for users who have accessed the title, the recommendation 
 --- is to not store this data locally. 
 export type GetPlayerProfileRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	ProfileConstraints: PlayerProfileViewConstraints?, --- If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- If non-null, this determines which properties of the resulting player profiles 
+	--- to return. For API calls from the client, only the allowed client profile properties 
+	--- for the title may be requested. These allowed properties are configured in the 
+	--- Game Manager "Client Profile Options" tab in the "Settings" section. 
+	ProfileConstraints: PlayerProfileViewConstraints?,
 }
 
 export type GetPlayerProfileResult = {
-	PlayerProfile: PlayerProfileModel?, --- The profile of the player. This profile is not guaranteed to be up-to-date. For a new player, this profile will not exist.
+	--- The profile of the player. This profile is not guaranteed to be up-to-date. 
+	--- For a new player, this profile will not exist. 
+	PlayerProfile: PlayerProfileModel?,
 }
 
 export type GetPlayerSegmentsResult = {
-	Segments: {GetSegmentResult}?, --- Array of segments the requested player currently belongs to.
+	--- Array of segments the requested player currently belongs to. 
+	Segments: {GetSegmentResult}?,
 }
 
 --- Player Shared Secret Keys are used for the call to Client/GetTitlePublicKey, 
@@ -1893,7 +2234,8 @@ export type GetPlayerSharedSecretsRequest = {
 }
 
 export type GetPlayerSharedSecretsResult = {
-	SharedSecrets: {SharedSecret}?, --- The player shared secret to use when calling Client/GetTitlePublicKey
+	--- The player shared secret to use when calling Client/GetTitlePublicKey 
+	SharedSecrets: {SharedSecret}?,
 }
 
 export type GetPlayerStatisticDefinitionsRequest = {
@@ -1917,12 +2259,16 @@ export type GetPlayerStatisticDefinitionsRequest = {
 --- update with the new value (Last), use the highest of the old and new values 
 --- (Max), use the smallest (Min), or add them together (Sum). 
 export type GetPlayerStatisticDefinitionsResult = {
-	Statistics: {PlayerStatisticDefinition}?, --- the player statistic definitions for the title
+	--- the player statistic definitions for the title 
+	Statistics: {PlayerStatisticDefinition}?,
 }
 
 export type GetPlayerStatisticVersionsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	StatisticName: string?, --- unique name of the statistic
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- unique name of the statistic 
+	StatisticName: string?,
 }
 
 --- Statistics are numeric values, with each statistic in the title also generating 
@@ -1935,31 +2281,41 @@ export type GetPlayerStatisticVersionsRequest = {
 --- ArchiveDownloadUrl. Statistics which have not been reset (incremented/versioned) 
 --- will only have a single version which is not scheduled to reset. 
 export type GetPlayerStatisticVersionsResult = {
-	StatisticVersions: {PlayerStatisticVersion}?, --- version change history of the statistic
+	--- version change history of the statistic 
+	StatisticVersions: {PlayerStatisticVersion}?,
 }
 
 --- This API will return a list of canonical tags which includes both namespace 
 --- and tag's name. If namespace is not provided, the result is a list of all canonical 
 --- tags. TagName can be used for segmentation and Namespace is limited to 128 characters. 
 export type GetPlayerTagsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Namespace: string?, --- Optional namespace to filter results by
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Optional namespace to filter results by 
+	Namespace: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetPlayerTagsResult = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Tags: {any}, --- Canonical tags (including namespace and tag's name) for the requested user
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Canonical tags (including namespace and tag's name) for the requested user 
+	Tags: {any},
 }
 
 --- Request must contain the ExportId 
 export type GetPlayersInSegmentExportRequest = {
-	ExportId: string, --- Unique identifier of the export for the requested Segment.
+	--- Unique identifier of the export for the requested Segment. 
+	ExportId: string,
 }
 
 export type GetPlayersInSegmentExportResponse = {
-	IndexUrl: string?, --- Url from which the index file can be downloaded.
-	State: string?, --- Shows the current status of the export
+	--- Url from which the index file can be downloaded. 
+	IndexUrl: string?,
+	--- Shows the current status of the export 
+	State: string?,
 }
 
 --- Initial request must contain at least a Segment ID. Subsequent requests must 
@@ -1973,33 +2329,52 @@ export type GetPlayersInSegmentExportResponse = {
 --- request to this API at a time should be made per title. Concurrent requests 
 --- to the API may be rejected with the APIConcurrentRequestLimitExceeded error. 
 export type GetPlayersInSegmentRequest = {
-	ContinuationToken: string?, --- Continuation token if retrieving subsequent pages of results.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	MaxBatchSize: number?, --- Maximum number of profiles to load. Default is 1,000. Maximum is 10,000.
-	SecondsToLive: number?, --- Number of seconds to keep the continuation token active. After token expiration it is not possible to continue paging results. Default is 300 (5 minutes). Maximum is 1,800 (30 minutes).
-	SegmentId: string, --- Unique identifier for this segment.
+	--- Continuation token if retrieving subsequent pages of results. 
+	ContinuationToken: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Maximum number of profiles to load. Default is 1,000. Maximum is 10,000. 
+	MaxBatchSize: number?,
+	--- Number of seconds to keep the continuation token active. After token expiration 
+	--- it is not possible to continue paging results. Default is 300 (5 minutes). Maximum 
+	--- is 1,800 (30 minutes). 
+	SecondsToLive: number?,
+	--- Unique identifier for this segment. 
+	SegmentId: string,
 }
 
 export type GetPlayersInSegmentResult = {
-	ContinuationToken: string?, --- Continuation token to use to retrieve subsequent pages of results. If token returns null there are no more results.
-	PlayerProfiles: {PlayerProfile}?, --- Array of player profiles in this segment.
-	ProfilesInSegment: number, --- Count of profiles matching this segment.
+	--- Continuation token to use to retrieve subsequent pages of results. If token 
+	--- returns null there are no more results. 
+	ContinuationToken: string?,
+	--- Array of player profiles in this segment. 
+	PlayerProfiles: {PlayerProfile}?,
+	--- Count of profiles matching this segment. 
+	ProfilesInSegment: number,
 }
 
 export type GetPlayersSegmentsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- Views the requested policy. Today, the only supported policy is 'ApiPolicy'. 
 export type GetPolicyRequest = {
-	PolicyName: string?, --- The name of the policy to read. Only supported name is 'ApiPolicy'.
+	--- The name of the policy to read. Only supported name is 'ApiPolicy'. 
+	PolicyName: string?,
 }
 
 export type GetPolicyResponse = {
-	PolicyName: string?, --- The name of the policy read.
-	PolicyVersion: number, --- Policy version.
-	Statements: {PermissionStatement}?, --- The statements in the requested policy.
+	--- The name of the policy read. 
+	PolicyName: string?,
+	--- Policy version. 
+	PolicyVersion: number,
+	--- The statements in the requested policy. 
+	Statements: {PermissionStatement}?,
 }
 
 --- This API is designed to return publisher-specific values which can be read, 
@@ -2009,35 +2384,46 @@ export type GetPolicyResponse = {
 --- helloplayfab@microsoft.com. This AdminAPI call for getting title data guarantees 
 --- no delay in between update and retrieval of newly set data. 
 export type GetPublisherDataRequest = {
-	Keys: {any}, ---  array of keys to get back data from the Publisher data blob, set by the admin tools
+	---  array of keys to get back data from the Publisher data blob, set by the admin 
+	--- tools 
+	Keys: {any},
 }
 
 export type GetPublisherDataResult = {
-	Data: {[any]: any}?, --- a dictionary object of key / value pairs
+	--- a dictionary object of key / value pairs 
+	Data: {[any]: any}?,
 }
 
 export type GetRandomResultTablesRequest = {
-	CatalogVersion: string?, --- catalog version to fetch tables from. Use default catalog version if null
+	--- catalog version to fetch tables from. Use default catalog version if null 
+	CatalogVersion: string?,
 }
 
 export type GetRandomResultTablesResult = {
-	Tables: RandomResultTableListing?, --- array of random result tables currently available
+	--- array of random result tables currently available 
+	Tables: RandomResultTableListing?,
 }
 
 export type GetSegmentResult = {
-	ABTestParent: string?, --- Identifier of the segments AB Test, if it is attached to one.
-	Id: string, --- Unique identifier for this segment.
-	Name: string?, --- Segment name.
+	--- Identifier of the segments AB Test, if it is attached to one. 
+	ABTestParent: string?,
+	--- Unique identifier for this segment. 
+	Id: string,
+	--- Segment name. 
+	Name: string?,
 }
 
 --- Given input segment ids, return list of segments. 
 export type GetSegmentsRequest = {
-	SegmentIds: {any}, --- Segment ids to filter title segments.
+	--- Segment ids to filter title segments. 
+	SegmentIds: {any},
 }
 
 export type GetSegmentsResponse = {
-	ErrorMessage: string?, --- Error message.
-	Segments: {SegmentModel}?, --- List of title segments.
+	--- Error message. 
+	ErrorMessage: string?,
+	--- List of title segments. 
+	Segments: {SegmentModel}?,
 }
 
 --- A store contains an array of references to items defined in the catalog, along 
@@ -2053,16 +2439,23 @@ export type GetSegmentsResponse = {
 --- If no price is specified in the store for an item, the price set in the catalog 
 --- should be displayed to the user. 
 export type GetStoreItemsRequest = {
-	CatalogVersion: string?, --- Catalog version to store items from. Use default catalog version if null
-	StoreId: string, --- Unqiue identifier for the store which is being requested.
+	--- Catalog version to store items from. Use default catalog version if null 
+	CatalogVersion: string?,
+	--- Unqiue identifier for the store which is being requested. 
+	StoreId: string,
 }
 
 export type GetStoreItemsResult = {
-	CatalogVersion: string?, --- The base catalog that this store is a part of.
-	MarketingData: StoreMarketingModel?, --- Additional data about the store.
-	Source: string?, --- How the store was last updated (Admin or a third party).
-	Store: {StoreItem}?, --- Array of items which can be purchased from this store.
-	StoreId: string?, --- The ID of this store.
+	--- The base catalog that this store is a part of. 
+	CatalogVersion: string?,
+	--- Additional data about the store. 
+	MarketingData: StoreMarketingModel?,
+	--- How the store was last updated (Admin or a third party). 
+	Source: string?,
+	--- Array of items which can be purchased from this store. 
+	Store: {StoreItem}?,
+	--- The ID of this store. 
+	StoreId: string?,
 }
 
 --- The result includes detail information that's specific to a CloudScript task. 
@@ -2070,7 +2463,8 @@ export type GetStoreItemsResult = {
 --- retrieved. To get a list of task instances by task, status, or time range, use 
 --- GetTaskInstances. 
 export type GetTaskInstanceRequest = {
-	TaskInstanceId: string, --- ID of the requested task instance.
+	--- ID of the requested task instance. 
+	TaskInstanceId: string,
 }
 
 --- Only the most recent 100 task instances are returned, ordered by start time 
@@ -2078,22 +2472,33 @@ export type GetTaskInstanceRequest = {
 --- get detail information specific to each task type, use Get*TaskInstance based 
 --- on its corresponding task type. 
 export type GetTaskInstancesRequest = {
-	StartedAtRangeFrom: string?, --- Optional range-from filter for task instances' StartedAt timestamp.
-	StartedAtRangeTo: string?, --- Optional range-to filter for task instances' StartedAt timestamp.
-	StatusFilter: string?, --- Optional filter for task instances that are of a specific status.
-	TaskIdentifier: NameIdentifier?, --- Name or ID of the task whose instances are being queried. If not specified, return all task instances that satisfy conditions set by other filters.
+	--- Optional range-from filter for task instances' StartedAt timestamp. 
+	StartedAtRangeFrom: string?,
+	--- Optional range-to filter for task instances' StartedAt timestamp. 
+	StartedAtRangeTo: string?,
+	--- Optional filter for task instances that are of a specific status. 
+	StatusFilter: string?,
+	--- Name or ID of the task whose instances are being queried. If not specified, 
+	--- return all task instances that satisfy conditions set by other filters. 
+	TaskIdentifier: NameIdentifier?,
 }
 
 export type GetTaskInstancesResult = {
-	Summaries: {TaskInstanceBasicSummary}?, --- Basic status summaries of the queried task instances. Empty If no task instances meets the filter criteria. To get detailed status summary, use Get*TaskInstance API according to task type (e.g. GetActionsOnPlayersInSegmentTaskInstance).
+	--- Basic status summaries of the queried task instances. Empty If no task instances 
+	--- meets the filter criteria. To get detailed status summary, use Get*TaskInstance 
+	--- API according to task type (e.g. GetActionsOnPlayersInSegmentTaskInstance). 
+	Summaries: {TaskInstanceBasicSummary}?,
 }
 
 export type GetTasksRequest = {
-	Identifier: NameIdentifier?, --- Provide either the task ID or the task name to get a specific task. If not specified, return all defined tasks.
+	--- Provide either the task ID or the task name to get a specific task. If not specified, 
+	--- return all defined tasks. 
+	Identifier: NameIdentifier?,
 }
 
 export type GetTasksResult = {
-	Tasks: {ScheduledTask}?, --- Result tasks. Empty if there is no task found.
+	--- Result tasks. Empty if there is no task found. 
+	Tasks: {ScheduledTask}?,
 }
 
 --- This API method is designed to return title specific values which can be read 
@@ -2105,36 +2510,52 @@ export type GetTasksResult = {
 --- that due to caching, there may up to a minute delay in between updating title 
 --- data and a query returning the newest value. 
 export type GetTitleDataRequest = {
-	Keys: {any}?, --- Specific keys to search for in the title data (leave null to get all keys)
-	OverrideLabel: string?, --- Optional field that specifies the name of an override. This value is ignored when used by the game client; otherwise, the overrides are applied automatically to the title data.
+	--- Specific keys to search for in the title data (leave null to get all keys) 
+	Keys: {any}?,
+	--- Optional field that specifies the name of an override. This value is ignored 
+	--- when used by the game client; otherwise, the overrides are applied automatically 
+	--- to the title data. 
+	OverrideLabel: string?,
 }
 
 export type GetTitleDataResult = {
-	Data: {[any]: any}?, --- a dictionary object of key / value pairs
+	--- a dictionary object of key / value pairs 
+	Data: {[any]: any}?,
 }
 
 --- Get all bans for a user, including inactive and expired bans.  
 export type GetUserBansRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetUserBansResult = {
-	BanData: {BanInfo}?, --- Information about the bans
+	--- Information about the bans 
+	BanData: {BanInfo}?,
 }
 
 --- Data is stored as JSON key-value pairs. If the Keys parameter is provided, the 
 --- data object returned will only contain the data specific to the indicated Keys. 
 --- Otherwise, the full set of custom user data will be returned. 
 export type GetUserDataRequest = {
-	IfChangedFromDataVersion: number?, --- The version that currently exists according to the caller. The call will return the data for all of the keys if the version in the system is greater than this.
-	Keys: {any}?, --- Specific keys to search for in the custom user data.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The version that currently exists according to the caller. The call will return 
+	--- the data for all of the keys if the version in the system is greater than this. 
+	IfChangedFromDataVersion: number?,
+	--- Specific keys to search for in the custom user data. 
+	Keys: {any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetUserDataResult = {
-	Data: UserDataRecord?, --- User specific data for this title.
-	DataVersion: number, --- Indicates the current version of the data that has been set. This is incremented with every set call for that type of data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
-	PlayFabId: string?, --- PlayFab unique identifier of the user whose custom data is being returned.
+	--- User specific data for this title. 
+	Data: UserDataRecord?,
+	--- Indicates the current version of the data that has been set. This is incremented 
+	--- with every set call for that type of data (read-only, internal, etc). This version 
+	--- can be provided in Get calls to find updated data. 
+	DataVersion: number,
+	--- PlayFab unique identifier of the user whose custom data is being returned. 
+	PlayFabId: string?,
 }
 
 --- All items currently in the user inventory will be returned, irrespective of 
@@ -2144,21 +2565,31 @@ export type GetUserDataResult = {
 --- a delay of up to a half a second for inventory changes to be reflected in the 
 --- GetUserInventory API response. 
 export type GetUserInventoryRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetUserInventoryResult = {
-	Inventory: {ItemInstance}?, --- Array of inventory items belonging to the user.
-	PlayFabId: string?, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	VirtualCurrency: {[any]: any}?, --- Array of virtual currency balance(s) belonging to the user.
-	VirtualCurrencyRechargeTimes: VirtualCurrencyRechargeTime?, --- Array of remaining times and timestamps for virtual currencies.
+	--- Array of inventory items belonging to the user. 
+	Inventory: {ItemInstance}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string?,
+	--- Array of virtual currency balance(s) belonging to the user. 
+	VirtualCurrency: {[any]: any}?,
+	--- Array of remaining times and timestamps for virtual currencies. 
+	VirtualCurrencyRechargeTimes: VirtualCurrencyRechargeTime?,
 }
 
 export type GrantItemSegmentAction = {
-	CatelogId: string?, --- Item catalog id.
-	ItemId: string?, --- Item id.
-	Quantity: number, --- Item quantity.
+	--- Item catalog id. 
+	CatelogId: string?,
+	--- Item id. 
+	ItemId: string?,
+	--- Item quantity. 
+	Quantity: number,
 }
 
 --- This function directly adds inventory items to user inventories. As a result 
@@ -2167,20 +2598,27 @@ export type GrantItemSegmentAction = {
 --- for inventory grants and purchases increases fractionally the more items are 
 --- in the inventory, and the more items are in the grant/purchase operation. 
 export type GrantItemsToUsersRequest = {
-	CatalogVersion: string?, --- Catalog version from which items are to be granted.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ItemGrants: {ItemGrant}, --- Array of items to grant and the users to whom the items are to be granted.
+	--- Catalog version from which items are to be granted. 
+	CatalogVersion: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Array of items to grant and the users to whom the items are to be granted. 
+	ItemGrants: {ItemGrant},
 }
 
 --- Please note that the order of the items in the response may not match the order 
 --- of items in the request. 
 export type GrantItemsToUsersResult = {
-	ItemGrantResults: {GrantedItemInstance}?, --- Array of items granted to users.
+	--- Array of items granted to users. 
+	ItemGrantResults: {GrantedItemInstance}?,
 }
 
 export type GrantVirtualCurrencySegmentAction = {
-	Amount: number, --- Virtual currency amount.
-	CurrencyCode: string?, --- Virtual currency code.
+	--- Virtual currency amount. 
+	Amount: number,
+	--- Virtual currency code. 
+	CurrencyCode: string?,
 }
 
 --- Result of granting an item to a user. Note, to retrieve additional information 
@@ -2191,41 +2629,71 @@ export type GrantVirtualCurrencySegmentAction = {
 --- via a call to UpdateUserInventoryItemCustomData. Other fields such as UnitPrice 
 --- and UnitCurrency are only set when the item was granted via a purchase. 
 export type GrantedItemInstance = {
-	Annotation: string?, --- Game specific comment associated with this instance when it was added to the user inventory.
-	BundleContents: {any}?, --- Array of unique items that were awarded when this catalog item was purchased.
-	BundleParent: string?, --- Unique identifier for the parent inventory item, as defined in the catalog, for object which were added from a bundle or container.
-	CatalogVersion: string?, --- Catalog version for the inventory item, when this instance was created.
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomData: {[any]: any}?, --- A set of custom key-value pairs on the instance of the inventory item, which is not to be confused with the catalog item's custom data.
-	DisplayName: string?, --- CatalogItem.DisplayName at the time this item was purchased.
-	Expiration: string?, --- Timestamp for when this instance will expire.
-	ItemClass: string?, --- Class name for the inventory item, as defined in the catalog.
-	ItemId: string?, --- Unique identifier for the inventory item, as defined in the catalog.
-	ItemInstanceId: string?, --- Unique item identifier for this specific instance of the item.
-	PlayFabId: string?, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	PurchaseDate: string?, --- Timestamp for when this instance was purchased.
-	RemainingUses: number?, --- Total number of remaining uses, if this is a consumable item.
-	Result: boolean, --- Result of this operation.
-	UnitCurrency: string?, --- Currency type for the cost of the catalog item. Not available when granting items.
-	UnitPrice: number, --- Cost of the catalog item in the given currency. Not available when granting items.
-	UsesIncrementedBy: number?, --- The number of uses that were added or removed to this item in this call.
+	--- Game specific comment associated with this instance when it was added to the 
+	--- user inventory. 
+	Annotation: string?,
+	--- Array of unique items that were awarded when this catalog item was purchased. 
+	BundleContents: {any}?,
+	--- Unique identifier for the parent inventory item, as defined in the catalog, 
+	--- for object which were added from a bundle or container. 
+	BundleParent: string?,
+	--- Catalog version for the inventory item, when this instance was created. 
+	CatalogVersion: string?,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- A set of custom key-value pairs on the instance of the inventory item, which 
+	--- is not to be confused with the catalog item's custom data. 
+	CustomData: {[any]: any}?,
+	--- CatalogItem.DisplayName at the time this item was purchased. 
+	DisplayName: string?,
+	--- Timestamp for when this instance will expire. 
+	Expiration: string?,
+	--- Class name for the inventory item, as defined in the catalog. 
+	ItemClass: string?,
+	--- Unique identifier for the inventory item, as defined in the catalog. 
+	ItemId: string?,
+	--- Unique item identifier for this specific instance of the item. 
+	ItemInstanceId: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string?,
+	--- Timestamp for when this instance was purchased. 
+	PurchaseDate: string?,
+	--- Total number of remaining uses, if this is a consumable item. 
+	RemainingUses: number?,
+	--- Result of this operation. 
+	Result: boolean,
+	--- Currency type for the cost of the catalog item. Not available when granting 
+	--- items. 
+	UnitCurrency: string?,
+	--- Cost of the catalog item in the given currency. Not available when granting 
+	--- items. 
+	UnitPrice: number,
+	--- The number of uses that were added or removed to this item in this call. 
+	UsesIncrementedBy: number?,
 }
 
 --- This operation will increment the global counter for the number of these items 
 --- available. This number cannot be decremented, except by actual grants. 
 export type IncrementLimitedEditionItemAvailabilityRequest = {
-	Amount: number, --- Amount to increase availability by.
-	CatalogVersion: string?, --- Which catalog is being updated. If null, uses the default catalog.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ItemId: string, --- The item which needs more availability.
+	--- Amount to increase availability by. 
+	Amount: number,
+	--- Which catalog is being updated. If null, uses the default catalog. 
+	CatalogVersion: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The item which needs more availability. 
+	ItemId: string,
 }
 
 export type IncrementLimitedEditionItemAvailabilityResult = {
 }
 
 export type IncrementPlayerStatisticSegmentAction = {
-	IncrementValue: number, --- Increment value.
-	StatisticName: string?, --- Statistic name.
+	--- Increment value. 
+	IncrementValue: number,
+	--- Statistic name. 
+	StatisticName: string?,
 }
 
 --- Statistics are numeric values, with each statistic in the title also generating 
@@ -2243,25 +2711,40 @@ export type IncrementPlayerStatisticSegmentAction = {
 --- in the title may be retrieved using the URL specified in the version information 
 --- (GetPlayerStatisticVersions). 
 export type IncrementPlayerStatisticVersionRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	StatisticName: string?, --- unique name of the statistic
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- unique name of the statistic 
+	StatisticName: string?,
 }
 
 export type IncrementPlayerStatisticVersionResult = {
-	StatisticVersion: PlayerStatisticVersion?, --- version change history of the statistic
+	--- version change history of the statistic 
+	StatisticVersion: PlayerStatisticVersion?,
 }
 
 export type InsightsScalingTaskParameter = {
-	Level: number, --- Insights Performance Level to scale to.
+	--- Insights Performance Level to scale to. 
+	Level: number,
 }
 
 export type ItemGrant = {
-	Annotation: string?, --- String detailing any additional information concerning this operation.
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	Data: {[any]: any}?, --- Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
-	ItemId: string, --- Unique identifier of the catalog item to be granted to the user.
-	KeysToRemove: {any}?, --- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- String detailing any additional information concerning this operation. 
+	Annotation: string?,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- Key-value pairs to be written to the custom data. Note that keys are trimmed 
+	--- of whitespace, are limited in size, and may not begin with a '!' character or 
+	--- be null. 
+	Data: {[any]: any}?,
+	--- Unique identifier of the catalog item to be granted to the user. 
+	ItemId: string,
+	--- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert 
+	--- null-values into Data due to language constraints. Use this to delete the keys 
+	--- directly. 
+	KeysToRemove: {any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- A unique instance of an item in a user's inventory. Note, to retrieve additional 
@@ -2273,78 +2756,120 @@ export type ItemGrant = {
 --- fields such as UnitPrice and UnitCurrency are only set when the item was granted 
 --- via a purchase. 
 export type ItemInstance = {
-	Annotation: string?, --- Game specific comment associated with this instance when it was added to the user inventory.
-	BundleContents: {any}?, --- Array of unique items that were awarded when this catalog item was purchased.
-	BundleParent: string?, --- Unique identifier for the parent inventory item, as defined in the catalog, for object which were added from a bundle or container.
-	CatalogVersion: string?, --- Catalog version for the inventory item, when this instance was created.
-	CustomData: {[any]: any}?, --- A set of custom key-value pairs on the instance of the inventory item, which is not to be confused with the catalog item's custom data.
-	DisplayName: string?, --- CatalogItem.DisplayName at the time this item was purchased.
-	Expiration: string?, --- Timestamp for when this instance will expire.
-	ItemClass: string?, --- Class name for the inventory item, as defined in the catalog.
-	ItemId: string?, --- Unique identifier for the inventory item, as defined in the catalog.
-	ItemInstanceId: string?, --- Unique item identifier for this specific instance of the item.
-	PurchaseDate: string?, --- Timestamp for when this instance was purchased.
-	RemainingUses: number?, --- Total number of remaining uses, if this is a consumable item.
-	UnitCurrency: string?, --- Currency type for the cost of the catalog item. Not available when granting items.
-	UnitPrice: number, --- Cost of the catalog item in the given currency. Not available when granting items.
-	UsesIncrementedBy: number?, --- The number of uses that were added or removed to this item in this call.
+	--- Game specific comment associated with this instance when it was added to the 
+	--- user inventory. 
+	Annotation: string?,
+	--- Array of unique items that were awarded when this catalog item was purchased. 
+	BundleContents: {any}?,
+	--- Unique identifier for the parent inventory item, as defined in the catalog, 
+	--- for object which were added from a bundle or container. 
+	BundleParent: string?,
+	--- Catalog version for the inventory item, when this instance was created. 
+	CatalogVersion: string?,
+	--- A set of custom key-value pairs on the instance of the inventory item, which 
+	--- is not to be confused with the catalog item's custom data. 
+	CustomData: {[any]: any}?,
+	--- CatalogItem.DisplayName at the time this item was purchased. 
+	DisplayName: string?,
+	--- Timestamp for when this instance will expire. 
+	Expiration: string?,
+	--- Class name for the inventory item, as defined in the catalog. 
+	ItemClass: string?,
+	--- Unique identifier for the inventory item, as defined in the catalog. 
+	ItemId: string?,
+	--- Unique item identifier for this specific instance of the item. 
+	ItemInstanceId: string?,
+	--- Timestamp for when this instance was purchased. 
+	PurchaseDate: string?,
+	--- Total number of remaining uses, if this is a consumable item. 
+	RemainingUses: number?,
+	--- Currency type for the cost of the catalog item. Not available when granting 
+	--- items. 
+	UnitCurrency: string?,
+	--- Cost of the catalog item in the given currency. Not available when granting 
+	--- items. 
+	UnitPrice: number,
+	--- The number of uses that were added or removed to this item in this call. 
+	UsesIncrementedBy: number?,
 }
 
 export type LastLoginDateSegmentFilter = {
-	Comparison: string?, --- Last player login date comparison.
-	LogInDate: string, --- Last player login date.
+	--- Last player login date comparison. 
+	Comparison: string?,
+	--- Last player login date. 
+	LogInDate: string,
 }
 
 export type LastLoginTimespanSegmentFilter = {
-	Comparison: string?, --- Last player login duration comparison.
-	DurationInMinutes: number, --- Last player login duration.
+	--- Last player login duration comparison. 
+	Comparison: string?,
+	--- Last player login duration. 
+	DurationInMinutes: number,
 }
 
 export type LinkedPlatformAccountModel = {
-	Email: string?, --- Linked account email of the user on the platform, if available
-	Platform: string?, --- Authentication platform
-	PlatformUserId: string?, --- Unique account identifier of the user on the platform
-	Username: string?, --- Linked account username of the user on the platform, if available
+	--- Linked account email of the user on the platform, if available 
+	Email: string?,
+	--- Authentication platform 
+	Platform: string?,
+	--- Unique account identifier of the user on the platform 
+	PlatformUserId: string?,
+	--- Linked account username of the user on the platform, if available 
+	Username: string?,
 }
 
 export type LinkedUserAccountHasEmailSegmentFilter = {
-	Comparison: string?, --- Login provider comparison.
-	LoginProvider: string?, --- Login provider.
+	--- Login provider comparison. 
+	Comparison: string?,
+	--- Login provider. 
+	LoginProvider: string?,
 }
 
 export type LinkedUserAccountSegmentFilter = {
-	LoginProvider: string?, --- Login provider.
+	--- Login provider. 
+	LoginProvider: string?,
 }
 
 export type ListOpenIdConnectionRequest = {
 }
 
 export type ListOpenIdConnectionResponse = {
-	Connections: {OpenIdConnection}?, --- The list of Open ID Connections
+	--- The list of Open ID Connections 
+	Connections: {OpenIdConnection}?,
 }
 
 export type ListVirtualCurrencyTypesRequest = {
 }
 
 export type ListVirtualCurrencyTypesResult = {
-	VirtualCurrencies: {VirtualCurrencyData}?, --- List of virtual currency names defined for this title
+	--- List of virtual currency names defined for this title 
+	VirtualCurrencies: {VirtualCurrencyData}?,
 }
 
 export type LocationModel = {
-	City: string?, --- City name.
-	ContinentCode: string?, --- The two-character continent code for this location
-	CountryCode: string?, --- The two-character ISO 3166-1 country code for the country associated with the location
-	Latitude: number?, --- Latitude coordinate of the geographic location.
-	Longitude: number?, --- Longitude coordinate of the geographic location.
+	--- City name. 
+	City: string?,
+	--- The two-character continent code for this location 
+	ContinentCode: string?,
+	--- The two-character ISO 3166-1 country code for the country associated with the 
+	--- location 
+	CountryCode: string?,
+	--- Latitude coordinate of the geographic location. 
+	Latitude: number?,
+	--- Longitude coordinate of the geographic location. 
+	Longitude: number?,
 }
 
 export type LocationSegmentFilter = {
-	CountryCode: string?, --- Segment country code.
+	--- Segment country code. 
+	CountryCode: string?,
 }
 
 export type LogStatement = {
-	Data: {[any]: any}?, --- Optional object accompanying the message as contextual information
-	Level: string?, --- 'Debug', 'Info', or 'Error'
+	--- Optional object accompanying the message as contextual information 
+	Data: {[any]: any}?,
+	--- 'Debug', 'Info', or 'Error' 
+	Level: string?,
 	Message: string?,
 }
 
@@ -2379,208 +2904,373 @@ export type LoginIdentityProvider =
 --- the relevant information for users who have accessed the title, the recommendation 
 --- is to not store this data locally. 
 export type LookupUserAccountInfoRequest = {
-	Email: string?, --- User email address attached to their account
-	PlayFabId: string?, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	TitleDisplayName: string?, --- Title specific username to match against existing user accounts
-	Username: string?, --- PlayFab username for the account (3-20 characters)
+	--- User email address attached to their account 
+	Email: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string?,
+	--- Title specific username to match against existing user accounts 
+	TitleDisplayName: string?,
+	--- PlayFab username for the account (3-20 characters) 
+	Username: string?,
 }
 
 export type LookupUserAccountInfoResult = {
-	UserInfo: UserAccountInfo?, --- User info for the user matching the request
+	--- User info for the user matching the request 
+	UserInfo: UserAccountInfo?,
 }
 
 export type MembershipModel = {
-	IsActive: boolean, --- Whether this membership is active. That is, whether the MembershipExpiration time has been reached.
-	MembershipExpiration: string, --- The time this membership expires
-	MembershipId: string?, --- The id of the membership
-	OverrideExpiration: string?, --- Membership expirations can be explicitly overridden (via game manager or the admin api). If this membership has been overridden, this will be the new expiration time.
-	OverrideIsSet: boolean?, --- Whether the override expiration is set.
-	Subscriptions: {SubscriptionModel}?, --- The list of subscriptions that this player has for this membership
+	--- Whether this membership is active. That is, whether the MembershipExpiration 
+	--- time has been reached. 
+	IsActive: boolean,
+	--- The time this membership expires 
+	MembershipExpiration: string,
+	--- The id of the membership 
+	MembershipId: string?,
+	--- Membership expirations can be explicitly overridden (via game manager or the 
+	--- admin api). If this membership has been overridden, this will be the new expiration 
+	--- time. 
+	OverrideExpiration: string?,
+	--- Whether the override expiration is set. 
+	OverrideIsSet: boolean?,
+	--- The list of subscriptions that this player has for this membership 
+	Subscriptions: {SubscriptionModel}?,
 }
 
 export type ModifyServerBuildRequest = {
-	ActiveRegions: {Region}?, --- array of regions where this build can used, when it is active
-	BuildId: string, --- unique identifier of the previously uploaded build executable to be updated
-	CommandLineTemplate: string?, --- appended to the end of the command line when starting game servers
-	Comment: string?, --- developer comment(s) for this build
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ExecutablePath: string?, --- path to the game server executable. Defaults to gameserver.exe
-	MaxGamesPerHost: number, --- maximum number of game server instances that can run on a single host machine
-	MinFreeGameSlots: number, --- minimum capacity of additional game server instances that can be started before the autoscaling service starts new host machines (given the number of current running host machines and game server instances)
-	Timestamp: string?, --- new timestamp
+	--- array of regions where this build can used, when it is active 
+	ActiveRegions: {Region}?,
+	--- unique identifier of the previously uploaded build executable to be updated 
+	BuildId: string,
+	--- appended to the end of the command line when starting game servers 
+	CommandLineTemplate: string?,
+	--- developer comment(s) for this build 
+	Comment: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- path to the game server executable. Defaults to gameserver.exe 
+	ExecutablePath: string?,
+	--- maximum number of game server instances that can run on a single host machine 
+	MaxGamesPerHost: number,
+	--- minimum capacity of additional game server instances that can be started before 
+	--- the autoscaling service starts new host machines (given the number of current 
+	--- running host machines and game server instances) 
+	MinFreeGameSlots: number,
+	--- new timestamp 
+	Timestamp: string?,
 }
 
 export type ModifyServerBuildResult = {
-	ActiveRegions: {Region}?, --- array of regions where this build can used, when it is active
-	BuildId: string?, --- unique identifier for this build executable
-	CommandLineTemplate: string?, --- appended to the end of the command line when starting game servers
-	Comment: string?, --- developer comment(s) for this build
-	ExecutablePath: string?, --- path to the game server executable. Defaults to gameserver.exe
-	MaxGamesPerHost: number, --- maximum number of game server instances that can run on a single host machine
-	MinFreeGameSlots: number, --- minimum capacity of additional game server instances that can be started before the autoscaling service starts new host machines (given the number of current running host machines and game server instances)
-	Status: string?, --- the current status of the build validation and processing steps
-	Timestamp: string, --- time this build was last modified (or uploaded, if this build has never been modified)
-	TitleId: string?, --- Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a title has been selected.
+	--- array of regions where this build can used, when it is active 
+	ActiveRegions: {Region}?,
+	--- unique identifier for this build executable 
+	BuildId: string?,
+	--- appended to the end of the command line when starting game servers 
+	CommandLineTemplate: string?,
+	--- developer comment(s) for this build 
+	Comment: string?,
+	--- path to the game server executable. Defaults to gameserver.exe 
+	ExecutablePath: string?,
+	--- maximum number of game server instances that can run on a single host machine 
+	MaxGamesPerHost: number,
+	--- minimum capacity of additional game server instances that can be started before 
+	--- the autoscaling service starts new host machines (given the number of current 
+	--- running host machines and game server instances) 
+	MinFreeGameSlots: number,
+	--- the current status of the build validation and processing steps 
+	Status: string?,
+	--- time this build was last modified (or uploaded, if this build has never been 
+	--- modified) 
+	Timestamp: string,
+	--- Unique identifier for the title, found in the Settings > Game Properties section 
+	--- of the PlayFab developer site when a title has been selected. 
+	TitleId: string?,
 }
 
 export type ModifyUserVirtualCurrencyResult = {
-	Balance: number, --- Balance of the virtual currency after modification.
-	BalanceChange: number, --- Amount added or subtracted from the user's virtual currency. Maximum VC balance is Int32 (2,147,483,647). Any increase over this value will be discarded.
-	PlayFabId: string?, --- User currency was subtracted from.
-	VirtualCurrency: string?, --- Name of the virtual currency which was modified.
+	--- Balance of the virtual currency after modification. 
+	Balance: number,
+	--- Amount added or subtracted from the user's virtual currency. Maximum VC balance 
+	--- is Int32 (2,147,483,647). Any increase over this value will be discarded. 
+	BalanceChange: number,
+	--- User currency was subtracted from. 
+	PlayFabId: string?,
+	--- Name of the virtual currency which was modified. 
+	VirtualCurrency: string?,
 }
 
 --- Identifier by either name or ID. Note that a name may change due to renaming, 
 --- or reused after being deleted. ID is immutable and unique. 
 export type NameIdentifier = {
-	Id: string?, --- Id Identifier, if present
-	Name: string?, --- Name Identifier, if present
+	--- Id Identifier, if present 
+	Id: string?,
+	--- Name Identifier, if present 
+	Name: string?,
 }
 
 export type OpenIdConnection = {
-	ClientId: string?, --- The client ID given by the ID provider.
-	ClientSecret: string?, --- The client secret given by the ID provider.
-	ConnectionId: string?, --- A name for the connection to identify it within the title.
-	DiscoverConfiguration: boolean, --- Shows if data about the connection will be loaded from the issuer's discovery document
-	IssuerInformation: OpenIdIssuerInformation?, --- Information for an OpenID Connect provider.
+	--- The client ID given by the ID provider. 
+	ClientId: string?,
+	--- The client secret given by the ID provider. 
+	ClientSecret: string?,
+	--- A name for the connection to identify it within the title. 
+	ConnectionId: string?,
+	--- Shows if data about the connection will be loaded from the issuer's discovery 
+	--- document 
+	DiscoverConfiguration: boolean,
+	--- Information for an OpenID Connect provider. 
+	IssuerInformation: OpenIdIssuerInformation?,
 }
 
 export type OpenIdIssuerInformation = {
-	AuthorizationUrl: string, --- Authorization endpoint URL to direct users to for signin.
-	Issuer: string, --- The URL of the issuer of the tokens. This must match the exact URL of the issuer field in tokens.
-	JsonWebKeySet: {[any]: any}, --- JSON Web Key Set for validating the signature of tokens.
-	TokenUrl: string, --- Token endpoint URL for code verification.
+	--- Authorization endpoint URL to direct users to for signin. 
+	AuthorizationUrl: string,
+	--- The URL of the issuer of the tokens. This must match the exact URL of the issuer 
+	--- field in tokens. 
+	Issuer: string,
+	--- JSON Web Key Set for validating the signature of tokens. 
+	JsonWebKeySet: {[any]: any},
+	--- Token endpoint URL for code verification. 
+	TokenUrl: string,
 }
 
 export type PermissionStatement = {
-	Action: string, --- The action this statement effects. The only supported action is 'Execute'.
-	ApiConditions: ApiCondition?, --- Additional conditions to be applied for API Resources.
-	Comment: string?, --- A comment about the statement. Intended solely for bookkeeping and debugging.
-	Effect: string, --- The effect this statement will have. It could be either Allow or Deny
-	Principal: string, --- The principal this statement will effect. The only supported principal is '*'.
-	Resource: string, --- The resource this statements effects. The only supported resources look like 'pfrn:api--*' for all apis, or 'pfrn:api--/Client/ConfirmPurchase' for specific apis.
+	--- The action this statement effects. The only supported action is 'Execute'. 
+	Action: string,
+	--- Additional conditions to be applied for API Resources. 
+	ApiConditions: ApiCondition?,
+	--- A comment about the statement. Intended solely for bookkeeping and debugging. 
+	Comment: string?,
+	--- The effect this statement will have. It could be either Allow or Deny 
+	Effect: string,
+	--- The principal this statement will effect. The only supported principal is '*'. 
+	Principal: string,
+	--- The resource this statements effects. The only supported resources look like 
+	--- 'pfrn:api--*' for all apis, or 'pfrn:api--/Client/ConfirmPurchase' for specific 
+	--- apis. 
+	Resource: string,
 }
 
 export type PlayerChurnPredictionSegmentFilter = {
-	Comparison: string?, --- Comparison
-	RiskLevel: string?, --- RiskLevel
+	--- Comparison 
+	Comparison: string?,
+	--- RiskLevel 
+	RiskLevel: string?,
 }
 
 export type PlayerChurnPredictionTimeSegmentFilter = {
-	Comparison: string?, --- Comparison
-	DurationInDays: number, --- DurationInDays
+	--- Comparison 
+	Comparison: string?,
+	--- DurationInDays 
+	DurationInDays: number,
 }
 
 export type PlayerChurnPreviousPredictionSegmentFilter = {
-	Comparison: string?, --- Comparison
-	RiskLevel: string?, --- RiskLevel
+	--- Comparison 
+	Comparison: string?,
+	--- RiskLevel 
+	RiskLevel: string?,
 }
 
 export type PlayerLinkedAccount = {
-	Email: string?, --- Linked account's email
-	Platform: string?, --- Authentication platform
-	PlatformUserId: string?, --- Platform user identifier
-	Username: string?, --- Linked account's username
+	--- Linked account's email 
+	Email: string?,
+	--- Authentication platform 
+	Platform: string?,
+	--- Platform user identifier 
+	PlatformUserId: string?,
+	--- Linked account's username 
+	Username: string?,
 }
 
 export type PlayerLocation = {
-	City: string?, --- City of the player's geographic location.
-	ContinentCode: string, --- The two-character continent code for this location
-	CountryCode: string, --- The two-character ISO 3166-1 country code for the country associated with the location
-	Latitude: number?, --- Latitude coordinate of the player's geographic location.
-	Longitude: number?, --- Longitude coordinate of the player's geographic location.
+	--- City of the player's geographic location. 
+	City: string?,
+	--- The two-character continent code for this location 
+	ContinentCode: string,
+	--- The two-character ISO 3166-1 country code for the country associated with the 
+	--- location 
+	CountryCode: string,
+	--- Latitude coordinate of the player's geographic location. 
+	Latitude: number?,
+	--- Longitude coordinate of the player's geographic location. 
+	Longitude: number?,
 }
 
 export type PlayerProfile = {
-	AdCampaignAttributions: {AdCampaignAttribution}?, --- Array of ad campaigns player has been attributed to
-	AvatarUrl: string?, --- Image URL of the player's avatar.
-	BannedUntil: string?, --- Banned until UTC Date. If permanent ban this is set for 20 years after the original ban date.
-	ContactEmailAddresses: {ContactEmailInfo}?, --- Array of contact email addresses associated with the player
-	Created: string?, --- Player record created
-	DisplayName: string?, --- Player Display Name
-	LastLogin: string?, --- Last login
-	LinkedAccounts: {PlayerLinkedAccount}?, --- Array of third party accounts linked to this player
-	Locations: PlayerLocation?, --- Dictionary of player's locations by type.
-	Origination: string?, --- Player account origination
-	PlayerExperimentVariants: {any}?, --- List of player variants for experimentation
-	PlayerId: string?, --- PlayFab Player ID
-	PlayerStatistics: {PlayerStatistic}?, --- Array of player statistics
-	PublisherId: string?, --- Publisher this player belongs to
-	PushNotificationRegistrations: {PushNotificationRegistration}?, --- Array of configured push notification end points
-	Statistics: {[any]: any}?, --- Dictionary of player's statistics using only the latest version's value
-	Tags: {any}?, --- List of player's tags for segmentation.
-	TitleId: string?, --- Title ID this profile applies to
-	TotalValueToDateInUSD: number?, --- A sum of player's total purchases in USD across all currencies.
-	ValuesToDate: {[any]: any}?, --- Dictionary of player's total purchases by currency.
-	VirtualCurrencyBalances: {[any]: any}?, --- Dictionary of player's virtual currency balances
+	--- Array of ad campaigns player has been attributed to 
+	AdCampaignAttributions: {AdCampaignAttribution}?,
+	--- Image URL of the player's avatar. 
+	AvatarUrl: string?,
+	--- Banned until UTC Date. If permanent ban this is set for 20 years after the original 
+	--- ban date. 
+	BannedUntil: string?,
+	--- Array of contact email addresses associated with the player 
+	ContactEmailAddresses: {ContactEmailInfo}?,
+	--- Player record created 
+	Created: string?,
+	--- Player Display Name 
+	DisplayName: string?,
+	--- Last login 
+	LastLogin: string?,
+	--- Array of third party accounts linked to this player 
+	LinkedAccounts: {PlayerLinkedAccount}?,
+	--- Dictionary of player's locations by type. 
+	Locations: PlayerLocation?,
+	--- Player account origination 
+	Origination: string?,
+	--- List of player variants for experimentation 
+	PlayerExperimentVariants: {any}?,
+	--- PlayFab Player ID 
+	PlayerId: string?,
+	--- Array of player statistics 
+	PlayerStatistics: {PlayerStatistic}?,
+	--- Publisher this player belongs to 
+	PublisherId: string?,
+	--- Array of configured push notification end points 
+	PushNotificationRegistrations: {PushNotificationRegistration}?,
+	--- Dictionary of player's statistics using only the latest version's value 
+	Statistics: {[any]: any}?,
+	--- List of player's tags for segmentation. 
+	Tags: {any}?,
+	--- Title ID this profile applies to 
+	TitleId: string?,
+	--- A sum of player's total purchases in USD across all currencies. 
+	TotalValueToDateInUSD: number?,
+	--- Dictionary of player's total purchases by currency. 
+	ValuesToDate: {[any]: any}?,
+	--- Dictionary of player's virtual currency balances 
+	VirtualCurrencyBalances: {[any]: any}?,
 }
 
 export type PlayerProfileModel = {
-	AdCampaignAttributions: {AdCampaignAttributionModel}?, --- List of advertising campaigns the player has been attributed to
-	AvatarUrl: string?, --- URL of the player's avatar image
-	BannedUntil: string?, --- If the player is currently banned, the UTC Date when the ban expires
-	ContactEmailAddresses: {ContactEmailInfoModel}?, --- List of all contact email info associated with the player account
-	Created: string?, --- Player record created
-	DisplayName: string?, --- Player display name
-	ExperimentVariants: {any}?, --- List of experiment variants for the player. Note that these variants are not guaranteed to be up-to-date when returned during login because the player profile is updated only after login. Instead, use the LoginResult.TreatmentAssignment property during login to get the correct variants and variables.
-	LastLogin: string?, --- UTC time when the player most recently logged in to the title
-	LinkedAccounts: {LinkedPlatformAccountModel}?, --- List of all authentication systems linked to this player account
-	Locations: {LocationModel}?, --- List of geographic locations from which the player has logged in to the title
-	Memberships: {MembershipModel}?, --- List of memberships for the player, along with whether are expired.
-	Origination: string?, --- Player account origination
-	PlayerId: string?, --- PlayFab player account unique identifier
-	PublisherId: string?, --- Publisher this player belongs to
-	PushNotificationRegistrations: {PushNotificationRegistrationModel}?, --- List of configured end points registered for sending the player push notifications
-	Statistics: {StatisticModel}?, --- List of leaderboard statistic values for the player
-	Tags: {TagModel}?, --- List of player's tags for segmentation
-	TitleId: string?, --- Title ID this player profile applies to
-	TotalValueToDateInUSD: number?, --- Sum of the player's purchases made with real-money currencies, converted to US dollars equivalent and represented as a whole number of cents (1/100 USD). For example, 999 indicates nine dollars and ninety-nine cents.
-	ValuesToDate: {ValueToDateModel}?, --- List of the player's lifetime purchase totals, summed by real-money currency
+	--- List of advertising campaigns the player has been attributed to 
+	AdCampaignAttributions: {AdCampaignAttributionModel}?,
+	--- URL of the player's avatar image 
+	AvatarUrl: string?,
+	--- If the player is currently banned, the UTC Date when the ban expires 
+	BannedUntil: string?,
+	--- List of all contact email info associated with the player account 
+	ContactEmailAddresses: {ContactEmailInfoModel}?,
+	--- Player record created 
+	Created: string?,
+	--- Player display name 
+	DisplayName: string?,
+	--- List of experiment variants for the player. Note that these variants are not 
+	--- guaranteed to be up-to-date when returned during login because the player profile 
+	--- is updated only after login. Instead, use the LoginResult.TreatmentAssignment 
+	--- property during login to get the correct variants and variables. 
+	ExperimentVariants: {any}?,
+	--- UTC time when the player most recently logged in to the title 
+	LastLogin: string?,
+	--- List of all authentication systems linked to this player account 
+	LinkedAccounts: {LinkedPlatformAccountModel}?,
+	--- List of geographic locations from which the player has logged in to the title 
+	Locations: {LocationModel}?,
+	--- List of memberships for the player, along with whether are expired. 
+	Memberships: {MembershipModel}?,
+	--- Player account origination 
+	Origination: string?,
+	--- PlayFab player account unique identifier 
+	PlayerId: string?,
+	--- Publisher this player belongs to 
+	PublisherId: string?,
+	--- List of configured end points registered for sending the player push notifications 
+	PushNotificationRegistrations: {PushNotificationRegistrationModel}?,
+	--- List of leaderboard statistic values for the player 
+	Statistics: {StatisticModel}?,
+	--- List of player's tags for segmentation 
+	Tags: {TagModel}?,
+	--- Title ID this player profile applies to 
+	TitleId: string?,
+	--- Sum of the player's purchases made with real-money currencies, converted to 
+	--- US dollars equivalent and represented as a whole number of cents (1/100 USD). 
+	--- For example, 999 indicates nine dollars and ninety-nine cents. 
+	TotalValueToDateInUSD: number?,
+	--- List of the player's lifetime purchase totals, summed by real-money currency 
+	ValuesToDate: {ValueToDateModel}?,
 }
 
 export type PlayerProfileViewConstraints = {
-	ShowAvatarUrl: boolean, --- Whether to show player's avatar URL. Defaults to false
-	ShowBannedUntil: boolean, --- Whether to show the banned until time. Defaults to false
-	ShowCampaignAttributions: boolean, --- Whether to show campaign attributions. Defaults to false
-	ShowContactEmailAddresses: boolean, --- Whether to show contact email addresses. Defaults to false
-	ShowCreated: boolean, --- Whether to show the created date. Defaults to false
-	ShowDisplayName: boolean, --- Whether to show the display name. Defaults to false
-	ShowExperimentVariants: boolean, --- Whether to show player's experiment variants. Defaults to false
-	ShowLastLogin: boolean, --- Whether to show the last login time. Defaults to false
-	ShowLinkedAccounts: boolean, --- Whether to show the linked accounts. Defaults to false
-	ShowLocations: boolean, --- Whether to show player's locations. Defaults to false
-	ShowMemberships: boolean, --- Whether to show player's membership information. Defaults to false
-	ShowOrigination: boolean, --- Whether to show origination. Defaults to false
-	ShowPushNotificationRegistrations: boolean, --- Whether to show push notification registrations. Defaults to false
-	ShowStatistics: boolean, --- Reserved for future development
-	ShowTags: boolean, --- Whether to show tags. Defaults to false
-	ShowTotalValueToDateInUsd: boolean, --- Whether to show the total value to date in usd. Defaults to false
-	ShowValuesToDate: boolean, --- Whether to show the values to date. Defaults to false
+	--- Whether to show player's avatar URL. Defaults to false 
+	ShowAvatarUrl: boolean,
+	--- Whether to show the banned until time. Defaults to false 
+	ShowBannedUntil: boolean,
+	--- Whether to show campaign attributions. Defaults to false 
+	ShowCampaignAttributions: boolean,
+	--- Whether to show contact email addresses. Defaults to false 
+	ShowContactEmailAddresses: boolean,
+	--- Whether to show the created date. Defaults to false 
+	ShowCreated: boolean,
+	--- Whether to show the display name. Defaults to false 
+	ShowDisplayName: boolean,
+	--- Whether to show player's experiment variants. Defaults to false 
+	ShowExperimentVariants: boolean,
+	--- Whether to show the last login time. Defaults to false 
+	ShowLastLogin: boolean,
+	--- Whether to show the linked accounts. Defaults to false 
+	ShowLinkedAccounts: boolean,
+	--- Whether to show player's locations. Defaults to false 
+	ShowLocations: boolean,
+	--- Whether to show player's membership information. Defaults to false 
+	ShowMemberships: boolean,
+	--- Whether to show origination. Defaults to false 
+	ShowOrigination: boolean,
+	--- Whether to show push notification registrations. Defaults to false 
+	ShowPushNotificationRegistrations: boolean,
+	--- Reserved for future development 
+	ShowStatistics: boolean,
+	--- Whether to show tags. Defaults to false 
+	ShowTags: boolean,
+	--- Whether to show the total value to date in usd. Defaults to false 
+	ShowTotalValueToDateInUsd: boolean,
+	--- Whether to show the values to date. Defaults to false 
+	ShowValuesToDate: boolean,
 }
 
 export type PlayerStatistic = {
-	Id: string?, --- Statistic ID
-	Name: string?, --- Statistic name
-	StatisticValue: number, --- Current statistic value
-	StatisticVersion: number, --- Statistic version (0 if not a versioned statistic)
+	--- Statistic ID 
+	Id: string?,
+	--- Statistic name 
+	Name: string?,
+	--- Current statistic value 
+	StatisticValue: number,
+	--- Statistic version (0 if not a versioned statistic) 
+	StatisticVersion: number,
 }
 
 export type PlayerStatisticDefinition = {
-	AggregationMethod: string?, --- the aggregation method to use in updating the statistic (defaults to last)
-	CurrentVersion: number, --- current active version of the statistic, incremented each time the statistic resets
-	StatisticName: string?, --- unique name of the statistic
-	VersionChangeInterval: string?, --- interval at which the values of the statistic for all players are reset automatically
+	--- the aggregation method to use in updating the statistic (defaults to last) 
+	AggregationMethod: string?,
+	--- current active version of the statistic, incremented each time the statistic 
+	--- resets 
+	CurrentVersion: number,
+	--- unique name of the statistic 
+	StatisticName: string?,
+	--- interval at which the values of the statistic for all players are reset automatically 
+	VersionChangeInterval: string?,
 }
 
 export type PlayerStatisticVersion = {
-	ActivationTime: string, --- time when the statistic version became active
-	ArchiveDownloadUrl: string?, --- URL for the downloadable archive of player statistic values, if available
-	DeactivationTime: string?, --- time when the statistic version became inactive due to statistic version incrementing
-	ScheduledActivationTime: string?, --- time at which the statistic version was scheduled to become active, based on the configured ResetInterval
-	ScheduledDeactivationTime: string?, --- time at which the statistic version was scheduled to become inactive, based on the configured ResetInterval
-	StatisticName: string?, --- name of the statistic when the version became active
-	Status: string?, --- status of the statistic version
-	Version: number, --- version of the statistic
+	--- time when the statistic version became active 
+	ActivationTime: string,
+	--- URL for the downloadable archive of player statistic values, if available 
+	ArchiveDownloadUrl: string?,
+	--- time when the statistic version became inactive due to statistic version incrementing 
+	DeactivationTime: string?,
+	--- time at which the statistic version was scheduled to become active, based on 
+	--- the configured ResetInterval 
+	ScheduledActivationTime: string?,
+	--- time at which the statistic version was scheduled to become inactive, based 
+	--- on the configured ResetInterval 
+	ScheduledDeactivationTime: string?,
+	--- name of the statistic when the version became active 
+	StatisticName: string?,
+	--- status of the statistic version 
+	Status: string?,
+	--- version of the statistic 
+	Version: number,
 }
 
 export type PushNotificationPlatform = 
@@ -2588,21 +3278,27 @@ export type PushNotificationPlatform =
 	| "GoogleCloudMessaging"
 
 export type PushNotificationRegistration = {
-	NotificationEndpointARN: string?, --- Notification configured endpoint
-	Platform: string?, --- Push notification platform
+	--- Notification configured endpoint 
+	NotificationEndpointARN: string?,
+	--- Push notification platform 
+	Platform: string?,
 }
 
 export type PushNotificationRegistrationModel = {
-	NotificationEndpointARN: string?, --- Notification configured endpoint
-	Platform: string?, --- Push notification platform
+	--- Notification configured endpoint 
+	NotificationEndpointARN: string?,
+	--- Push notification platform 
+	Platform: string?,
 }
 
 export type PushNotificationSegmentAction = {
-	PushNotificationTemplateId: string?, --- Push notification template id.
+	--- Push notification template id. 
+	PushNotificationTemplateId: string?,
 }
 
 export type PushNotificationSegmentFilter = {
-	PushNotificationDevicePlatform: string?, --- Push notification device platform.
+	--- Push notification device platform. 
+	PushNotificationDevicePlatform: string?,
 }
 
 export type PushSetupPlatform = 
@@ -2611,24 +3307,35 @@ export type PushSetupPlatform =
 	| "APNS_SANDBOX"
 
 export type RandomResultTable = {
-	Nodes: {ResultTableNode}, --- Child nodes that indicate what kind of drop table item this actually is.
-	TableId: string, --- Unique name for this drop table
+	--- Child nodes that indicate what kind of drop table item this actually is. 
+	Nodes: {ResultTableNode},
+	--- Unique name for this drop table 
+	TableId: string,
 }
 
 export type RandomResultTableListing = {
-	CatalogVersion: string?, --- Catalog version this table is associated with
-	Nodes: {ResultTableNode}, --- Child nodes that indicate what kind of drop table item this actually is.
-	TableId: string, --- Unique name for this drop table
+	--- Catalog version this table is associated with 
+	CatalogVersion: string?,
+	--- Child nodes that indicate what kind of drop table item this actually is. 
+	Nodes: {ResultTableNode},
+	--- Unique name for this drop table 
+	TableId: string,
 }
 
 export type RefundPurchaseRequest = {
-	OrderId: string, --- Unique order ID for the purchase in question.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Reason: string?, --- The Reason parameter should correspond with the payment providers reason field, if they require one such as Facebook. In the case of Facebook this must match one of their refund or dispute resolution enums (See: https://developers.facebook.com/docs/payments/implementation-guide/handling-disputes-refunds)
+	--- Unique order ID for the purchase in question. 
+	OrderId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- The Reason parameter should correspond with the payment providers reason field, 
+	--- if they require one such as Facebook. In the case of Facebook this must match 
+	--- one of their refund or dispute resolution enums (See: https://developers.facebook.com/docs/payments/implementation-guide/handling-disputes-refunds) 
+	Reason: string?,
 }
 
 export type RefundPurchaseResponse = {
-	PurchaseStatus: string?, --- The order's updated purchase status.
+	--- The order's updated purchase status. 
+	PurchaseStatus: string?,
 }
 
 export type Region = 
@@ -2644,9 +3351,13 @@ export type Region =
 --- TagName and PlayFabID from the corresponding player profile. TagName can be 
 --- used for segmentation and it is limited to 256 characters 
 export type RemovePlayerTagRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	TagName: string, --- Unique tag for player profile.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Unique tag for player profile. 
+	TagName: string,
 }
 
 export type RemovePlayerTagResult = {
@@ -2657,15 +3368,20 @@ export type RemovePlayerTagResult = {
 --- the removed currencies; if a deleted currency is recreated at any point, user 
 --- balances will be in an undefined state. 
 export type RemoveVirtualCurrencyTypesRequest = {
-	VirtualCurrencies: {VirtualCurrencyData}, --- List of virtual currencies to delete
+	--- List of virtual currencies to delete 
+	VirtualCurrencies: {VirtualCurrencyData},
 }
 
 --- Note that this action cannot be un-done. All statistics for this character will 
 --- be deleted, removing the user from all leaderboards for the game. 
 export type ResetCharacterStatisticsRequest = {
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type ResetCharacterStatisticsResult = {
@@ -2675,9 +3391,13 @@ export type ResetCharacterStatisticsResult = {
 --- user based off of a token sent to the playerto their email. The token expires 
 --- after 30 minutes. 
 export type ResetPasswordRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Password: string, --- The new password for the player.
-	Token: string, --- The token of the player requesting the password reset.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The new password for the player. 
+	Password: string,
+	--- The token of the player requesting the password reset. 
+	Token: string,
 }
 
 export type ResetPasswordResult = {
@@ -2686,8 +3406,11 @@ export type ResetPasswordResult = {
 --- Note that this action cannot be un-done. All statistics for this user will be 
 --- deleted, removing the user from all leaderboards for the game. 
 export type ResetUserStatisticsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type ResetUserStatisticsResult = {
@@ -2699,20 +3422,32 @@ export type ResolutionOutcome =
 	| "Manual"
 
 export type ResolvePurchaseDisputeRequest = {
-	OrderId: string, --- Unique order ID for the purchase in question.
-	Outcome: string, --- Enum for the desired purchase result state after notifying the payment provider. Valid values are Revoke, Reinstate and Manual. Manual will cause no change to the order state.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Reason: string?, --- The Reason parameter should correspond with the payment providers reason field, if they require one such as Facebook. In the case of Facebook this must match one of their refund or dispute resolution enums (See: https://developers.facebook.com/docs/payments/implementation-guide/handling-disputes-refunds)
+	--- Unique order ID for the purchase in question. 
+	OrderId: string,
+	--- Enum for the desired purchase result state after notifying the payment provider. 
+	--- Valid values are Revoke, Reinstate and Manual. Manual will cause no change to 
+	--- the order state. 
+	Outcome: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- The Reason parameter should correspond with the payment providers reason field, 
+	--- if they require one such as Facebook. In the case of Facebook this must match 
+	--- one of their refund or dispute resolution enums (See: https://developers.facebook.com/docs/payments/implementation-guide/handling-disputes-refunds) 
+	Reason: string?,
 }
 
 export type ResolvePurchaseDisputeResponse = {
-	PurchaseStatus: string?, --- The order's updated purchase status.
+	--- The order's updated purchase status. 
+	PurchaseStatus: string?,
 }
 
 export type ResultTableNode = {
-	ResultItem: string, --- Either an ItemId, or the TableId of another random result table
-	ResultItemType: string, --- Whether this entry in the table is an item or a link to another table
-	Weight: number, --- How likely this is to be rolled - larger numbers add more weight
+	--- Either an ItemId, or the TableId of another random result table 
+	ResultItem: string,
+	--- Whether this entry in the table is an item or a link to another table 
+	ResultItemType: string,
+	--- How likely this is to be rolled - larger numbers add more weight 
+	Weight: number,
 }
 
 export type ResultTableNodeType = 
@@ -2723,78 +3458,108 @@ export type ResultTableNodeType =
 --- bans with an Active state will be ignored, however. Returns information about 
 --- applied updates only. 
 export type RevokeAllBansForUserRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type RevokeAllBansForUserResult = {
-	BanData: {BanInfo}?, --- Information on the bans that were revoked.
+	--- Information on the bans that were revoked. 
+	BanData: {BanInfo}?,
 }
 
 --- Setting the active state of all bans requested to Inactive regardless of whether 
 --- that ban has already expired. BanIds that do not exist will be skipped. Returns 
 --- information about applied updates only.  
 export type RevokeBansRequest = {
-	BanIds: {any}, --- Ids of the bans to be revoked. Maximum 100.
+	--- Ids of the bans to be revoked. Maximum 100. 
+	BanIds: {any},
 }
 
 export type RevokeBansResult = {
-	BanData: {BanInfo}?, --- Information on the bans that were revoked
+	--- Information on the bans that were revoked 
+	BanData: {BanInfo}?,
 }
 
 export type RevokeInventoryItem = {
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	ItemInstanceId: string, --- Unique PlayFab assigned instance identifier of the item
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- Unique PlayFab assigned instance identifier of the item 
+	ItemInstanceId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- In cases where the inventory item in question is a "crate", and the items it 
 --- contained have already been dispensed, this will not revoke access or otherwise 
 --- remove the items which were dispensed. 
 export type RevokeInventoryItemRequest = {
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	ItemInstanceId: string, --- Unique PlayFab assigned instance identifier of the item
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- Unique PlayFab assigned instance identifier of the item 
+	ItemInstanceId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- In cases where the inventory item in question is a "crate", and the items it 
 --- contained have already been dispensed, this will not revoke access or otherwise 
 --- remove the items which were dispensed. 
 export type RevokeInventoryItemsRequest = {
-	Items: {RevokeInventoryItem}, --- Array of player items to revoke, between 1 and 25 items.
+	--- Array of player items to revoke, between 1 and 25 items. 
+	Items: {RevokeInventoryItem},
 }
 
 export type RevokeInventoryItemsResult = {
-	Errors: {RevokeItemError}?, --- Collection of any errors that occurred during processing.
+	--- Collection of any errors that occurred during processing. 
+	Errors: {RevokeItemError}?,
 }
 
 export type RevokeInventoryResult = {
 }
 
 export type RevokeItemError = {
-	Error: string?, --- Specific error that was encountered.
-	Item: RevokeInventoryItem?, --- Item information that failed to be revoked.
+	--- Specific error that was encountered. 
+	Error: string?,
+	--- Item information that failed to be revoked. 
+	Item: RevokeInventoryItem?,
 }
 
 --- The returned task instance ID can be used to query for task execution status. 
 export type RunTaskRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Identifier: NameIdentifier?, --- Provide either the task ID or the task name to run a task.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Provide either the task ID or the task name to run a task. 
+	Identifier: NameIdentifier?,
 }
 
 export type RunTaskResult = {
-	TaskInstanceId: string?, --- ID of the task instance that is started. This can be used in Get*TaskInstance (e.g. GetCloudScriptTaskInstance) API call to retrieve status for the task instance.
+	--- ID of the task instance that is started. This can be used in Get*TaskInstance 
+	--- (e.g. GetCloudScriptTaskInstance) API call to retrieve status for the task instance. 
+	TaskInstanceId: string?,
 }
 
 export type ScheduledTask = {
-	Description: string?, --- Description the task
-	IsActive: boolean, --- Whether the schedule is active. Inactive schedule will not trigger task execution.
-	LastRunTime: string?, --- UTC time of last run
-	Name: string, --- Name of the task. This is a unique identifier for tasks in the title.
-	NextRunTime: string?, --- UTC time of next run
-	Parameter: {[any]: any}?, --- Task parameter. Different types of task have different parameter structure. See each task type's create API documentation for the details.
-	Schedule: string?, --- Cron expression for the run schedule of the task. The expression should be in UTC.
-	TaskId: string?, --- ID of the task
-	Type: string?, --- Task type.
+	--- Description the task 
+	Description: string?,
+	--- Whether the schedule is active. Inactive schedule will not trigger task execution. 
+	IsActive: boolean,
+	--- UTC time of last run 
+	LastRunTime: string?,
+	--- Name of the task. This is a unique identifier for tasks in the title. 
+	Name: string,
+	--- UTC time of next run 
+	NextRunTime: string?,
+	--- Task parameter. Different types of task have different parameter structure. 
+	--- See each task type's create API documentation for the details. 
+	Parameter: {[any]: any}?,
+	--- Cron expression for the run schedule of the task. The expression should be in 
+	--- UTC. 
+	Schedule: string?,
+	--- ID of the task 
+	TaskId: string?,
+	--- Task type. 
+	Type: string?,
 }
 
 export type ScheduledTaskType = 
@@ -2804,31 +3569,54 @@ export type ScheduledTaskType =
 	| "InsightsScheduledScaling"
 
 export type ScriptExecutionError = {
-	Error: string?, --- Error code, such as CloudScriptNotFound, JavascriptException, CloudScriptFunctionArgumentSizeExceeded, CloudScriptAPIRequestCountExceeded, CloudScriptAPIRequestError, or CloudScriptHTTPRequestError
-	Message: string?, --- Details about the error
-	StackTrace: string?, --- Point during the execution of the script at which the error occurred, if any
+	--- Error code, such as CloudScriptNotFound, JavascriptException, CloudScriptFunctionArgumentSizeExceeded, 
+	--- CloudScriptAPIRequestCountExceeded, CloudScriptAPIRequestError, or CloudScriptHTTPRequestError 
+	Error: string?,
+	--- Details about the error 
+	Message: string?,
+	--- Point during the execution of the script at which the error occurred, if any 
+	StackTrace: string?,
 }
 
 export type SegmentAndDefinition = {
-	AdCampaignFilter: AdCampaignSegmentFilter?, --- Filter property for ad campaign filter.
-	AllPlayersFilter: AllPlayersSegmentFilter?, --- property for all player filter.
-	FirstLoginDateFilter: FirstLoginDateSegmentFilter?, --- Filter property for first login date.
-	FirstLoginFilter: FirstLoginTimespanSegmentFilter?, --- Filter property for first login timespan.
-	LastLoginDateFilter: LastLoginDateSegmentFilter?, --- Filter property for last login date.
-	LastLoginFilter: LastLoginTimespanSegmentFilter?, --- Filter property for last login timespan.
-	LinkedUserAccountFilter: LinkedUserAccountSegmentFilter?, --- Filter property for linked in user account.
-	LinkedUserAccountHasEmailFilter: LinkedUserAccountHasEmailSegmentFilter?, --- Filter property for linked in user account has email.
-	LocationFilter: LocationSegmentFilter?, --- Filter property for location.
-	PlayerChurnPredictionFilter: PlayerChurnPredictionSegmentFilter?, --- Filter property for current player churn value.
-	PlayerChurnPredictionTimeFilter: PlayerChurnPredictionTimeSegmentFilter?, --- Filter property for player churn timespan.
-	PlayerChurnPreviousPredictionFilter: PlayerChurnPreviousPredictionSegmentFilter?, --- Filter property for previous player churn value.
-	PushNotificationFilter: PushNotificationSegmentFilter?, --- Filter property for push notification.
-	StatisticFilter: StatisticSegmentFilter?, --- Filter property for statistics.
-	TagFilter: TagSegmentFilter?, --- Filter property for tags.
-	TotalValueToDateInUSDFilter: TotalValueToDateInUSDSegmentFilter?, --- Filter property for total value to date in USD.
-	UserOriginationFilter: UserOriginationSegmentFilter?, --- Filter property for user origination.
-	ValueToDateFilter: ValueToDateSegmentFilter?, --- Filter property for value to date.
-	VirtualCurrencyBalanceFilter: VirtualCurrencyBalanceSegmentFilter?, --- Filter property for virtual currency.
+	--- Filter property for ad campaign filter. 
+	AdCampaignFilter: AdCampaignSegmentFilter?,
+	--- property for all player filter. 
+	AllPlayersFilter: AllPlayersSegmentFilter?,
+	--- Filter property for first login date. 
+	FirstLoginDateFilter: FirstLoginDateSegmentFilter?,
+	--- Filter property for first login timespan. 
+	FirstLoginFilter: FirstLoginTimespanSegmentFilter?,
+	--- Filter property for last login date. 
+	LastLoginDateFilter: LastLoginDateSegmentFilter?,
+	--- Filter property for last login timespan. 
+	LastLoginFilter: LastLoginTimespanSegmentFilter?,
+	--- Filter property for linked in user account. 
+	LinkedUserAccountFilter: LinkedUserAccountSegmentFilter?,
+	--- Filter property for linked in user account has email. 
+	LinkedUserAccountHasEmailFilter: LinkedUserAccountHasEmailSegmentFilter?,
+	--- Filter property for location. 
+	LocationFilter: LocationSegmentFilter?,
+	--- Filter property for current player churn value. 
+	PlayerChurnPredictionFilter: PlayerChurnPredictionSegmentFilter?,
+	--- Filter property for player churn timespan. 
+	PlayerChurnPredictionTimeFilter: PlayerChurnPredictionTimeSegmentFilter?,
+	--- Filter property for previous player churn value. 
+	PlayerChurnPreviousPredictionFilter: PlayerChurnPreviousPredictionSegmentFilter?,
+	--- Filter property for push notification. 
+	PushNotificationFilter: PushNotificationSegmentFilter?,
+	--- Filter property for statistics. 
+	StatisticFilter: StatisticSegmentFilter?,
+	--- Filter property for tags. 
+	TagFilter: TagSegmentFilter?,
+	--- Filter property for total value to date in USD. 
+	TotalValueToDateInUSDFilter: TotalValueToDateInUSDSegmentFilter?,
+	--- Filter property for user origination. 
+	UserOriginationFilter: UserOriginationSegmentFilter?,
+	--- Filter property for value to date. 
+	ValueToDateFilter: ValueToDateSegmentFilter?,
+	--- Filter property for virtual currency. 
+	VirtualCurrencyBalanceFilter: VirtualCurrencyBalanceSegmentFilter?,
 }
 
 export type SegmentCountryCode = 
@@ -3281,17 +4069,25 @@ export type SegmentLoginIdentityProvider =
 	| "NintendoSwitchAccount"
 
 export type SegmentModel = {
-	Description: string?, --- Segment description.
-	EnteredSegmentActions: {SegmentTrigger}?, --- Segment actions for current entered segment players.
-	LastUpdateTime: string, --- Segment last updated date time.
-	LeftSegmentActions: {SegmentTrigger}?, --- Segment actions for current left segment players.
-	Name: string?, --- Segment name.
-	SegmentId: string?, --- Segment id in hex.
-	SegmentOrDefinitions: {SegmentOrDefinition}?, --- Segment or definitions. This includes segment and definitions and filters.
+	--- Segment description. 
+	Description: string?,
+	--- Segment actions for current entered segment players. 
+	EnteredSegmentActions: {SegmentTrigger}?,
+	--- Segment last updated date time. 
+	LastUpdateTime: string,
+	--- Segment actions for current left segment players. 
+	LeftSegmentActions: {SegmentTrigger}?,
+	--- Segment name. 
+	Name: string?,
+	--- Segment id in hex. 
+	SegmentId: string?,
+	--- Segment or definitions. This includes segment and definitions and filters. 
+	SegmentOrDefinitions: {SegmentOrDefinition}?,
 }
 
 export type SegmentOrDefinition = {
-	SegmentAndDefinitions: {SegmentAndDefinition}?, --- List of segment and definitions.
+	--- List of segment and definitions. 
+	SegmentAndDefinitions: {SegmentAndDefinition}?,
 }
 
 export type SegmentPushNotificationDevicePlatform = 
@@ -3299,16 +4095,26 @@ export type SegmentPushNotificationDevicePlatform =
 	| "GoogleCloudMessaging"
 
 export type SegmentTrigger = {
-	BanPlayerAction: BanPlayerSegmentAction?, --- Ban player segment trigger action.
-	DeletePlayerAction: DeletePlayerSegmentAction?, --- Delete player segment trigger action.
-	DeletePlayerStatisticAction: DeletePlayerStatisticSegmentAction?, --- Delete player statistic segment trigger action.
-	EmailNotificationAction: EmailNotificationSegmentAction?, --- Email notification segment trigger action.
-	ExecuteAzureFunctionAction: ExecuteAzureFunctionSegmentAction?, --- Execute azure function segment trigger action.
-	ExecuteCloudScriptAction: ExecuteCloudScriptSegmentAction?, --- Execute cloud script segment trigger action.
-	GrantItemAction: GrantItemSegmentAction?, --- Grant item segment trigger action.
-	GrantVirtualCurrencyAction: GrantVirtualCurrencySegmentAction?, --- Grant virtual currency segment trigger action.
-	IncrementPlayerStatisticAction: IncrementPlayerStatisticSegmentAction?, --- Increment player statistic segment trigger action.
-	PushNotificationAction: PushNotificationSegmentAction?, --- Push notification segment trigger action.
+	--- Ban player segment trigger action. 
+	BanPlayerAction: BanPlayerSegmentAction?,
+	--- Delete player segment trigger action. 
+	DeletePlayerAction: DeletePlayerSegmentAction?,
+	--- Delete player statistic segment trigger action. 
+	DeletePlayerStatisticAction: DeletePlayerStatisticSegmentAction?,
+	--- Email notification segment trigger action. 
+	EmailNotificationAction: EmailNotificationSegmentAction?,
+	--- Execute azure function segment trigger action. 
+	ExecuteAzureFunctionAction: ExecuteAzureFunctionSegmentAction?,
+	--- Execute cloud script segment trigger action. 
+	ExecuteCloudScriptAction: ExecuteCloudScriptSegmentAction?,
+	--- Grant item segment trigger action. 
+	GrantItemAction: GrantItemSegmentAction?,
+	--- Grant virtual currency segment trigger action. 
+	GrantVirtualCurrencyAction: GrantVirtualCurrencySegmentAction?,
+	--- Increment player statistic segment trigger action. 
+	IncrementPlayerStatisticAction: IncrementPlayerStatisticSegmentAction?,
+	--- Push notification segment trigger action. 
+	PushNotificationAction: PushNotificationSegmentAction?,
 }
 
 --- If the account in question is a "temporary" account (for example, one that was 
@@ -3316,9 +4122,13 @@ export type SegmentTrigger = {
 --- Only PlayFab accounts which have valid email addresses will be able to receive 
 --- a password reset email using this API. 
 export type SendAccountRecoveryEmailRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Email: string, --- User email address attached to their account
-	EmailTemplateId: string?, --- The email template id of the account recovery email template to send.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- User email address attached to their account 
+	Email: string,
+	--- The email template id of the account recovery email template to send. 
+	EmailTemplateId: string?,
 }
 
 export type SendAccountRecoveryEmailResult = {
@@ -3327,10 +4137,16 @@ export type SendAccountRecoveryEmailResult = {
 --- This API lets developers set overrides for membership expirations, independent 
 --- of any subscriptions setting it. 
 export type SetMembershipOverrideRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ExpirationTime: string, --- Expiration time for the membership in DateTime format, will override any subscription expirations.
-	MembershipId: string, --- Id of the membership to apply the override expiration date to.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Expiration time for the membership in DateTime format, will override any subscription 
+	--- expirations. 
+	ExpirationTime: string,
+	--- Id of the membership to apply the override expiration date to. 
+	MembershipId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type SetMembershipOverrideResult = {
@@ -3345,17 +4161,23 @@ export type SetMembershipOverrideResult = {
 --- the header X-PlayFab-Signature, along with a header X-PlayFab-Timestamp of the 
 --- same UTC timestamp used in the signature. 
 export type SetPlayerSecretRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	PlayerSecret: string?, --- Player secret that is used to verify API request signatures (Enterprise Only).
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Player secret that is used to verify API request signatures (Enterprise Only). 
+	PlayerSecret: string?,
 }
 
 export type SetPlayerSecretResult = {
 }
 
 export type SetPublishedRevisionRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Revision: number, --- Revision to make the current published revision
-	Version: number, --- Version number
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Revision to make the current published revision 
+	Revision: number,
+	--- Version number 
+	Version: number,
 }
 
 export type SetPublishedRevisionResult = {
@@ -3369,8 +4191,12 @@ export type SetPublishedRevisionResult = {
 --- Value. If it already exists, the Value for that key will be overwritten with 
 --- the new Value. For more information email helloplayfab@microsoft.com 
 export type SetPublisherDataRequest = {
-	Key: string, --- key we want to set a value on (note, this is additive - will only replace an existing key's value if they are the same name.) Keys are trimmed of whitespace. Keys may not begin with the '!' character.
-	Value: string?, --- new value to set. Set to null to remove a value
+	--- key we want to set a value on (note, this is additive - will only replace an 
+	--- existing key's value if they are the same name.) Keys are trimmed of whitespace. 
+	--- Keys may not begin with the '!' character. 
+	Key: string,
+	--- new value to set. Set to null to remove a value 
+	Value: string?,
 }
 
 export type SetPublisherDataResult = {
@@ -3379,9 +4205,14 @@ export type SetPublisherDataResult = {
 --- Will set the given key values in the specified override or the primary title 
 --- data based on whether the label is provided or not. 
 export type SetTitleDataAndOverridesRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	KeyValues: {TitleDataKeyValue}, --- List of titleData key-value pairs to set/delete. Use an empty value to delete an existing key; use a non-empty value to create/update a key.
-	OverrideLabel: string?, --- Name of the override.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- List of titleData key-value pairs to set/delete. Use an empty value to delete 
+	--- an existing key; use a non-empty value to create/update a key. 
+	KeyValues: {TitleDataKeyValue},
+	--- Name of the override. 
+	OverrideLabel: string?,
 }
 
 export type SetTitleDataAndOverridesResult = {
@@ -3395,9 +4226,15 @@ export type SetTitleDataAndOverridesResult = {
 --- in the current dataset, it will be added with the specified Value. If it already 
 --- exists, the Value for that key will be overwritten with the new Value. 
 export type SetTitleDataRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Key: string, --- key we want to set a value on (note, this is additive - will only replace an existing key's value if they are the same name.) Keys are trimmed of whitespace. Keys may not begin with the '!' character.
-	Value: string?, --- new value to set. Set to null to remove a value
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- key we want to set a value on (note, this is additive - will only replace an 
+	--- existing key's value if they are the same name.) Keys are trimmed of whitespace. 
+	--- Keys may not begin with the '!' character. 
+	Key: string,
+	--- new value to set. Set to null to remove a value 
+	Value: string?,
 }
 
 export type SetTitleDataResult = {
@@ -3409,21 +4246,32 @@ export type SetTitleDataResult = {
 --- The current ARN (if one exists) can be overwritten by setting the OverwriteOldARN 
 --- boolean to true. 
 export type SetupPushNotificationRequest = {
-	Credential: string, --- Credential is the Private Key for APNS/APNS_SANDBOX, and the API Key for GCM
-	Key: string?, --- for APNS, this is the PlatformPrincipal (SSL Certificate)
-	Name: string?, --- This field is deprecated and any usage of this will cause the API to fail.
-	OverwriteOldARN: boolean, --- replace any existing ARN with the newly generated one. If this is set to false, an error will be returned if notifications have already setup for this platform.
-	Platform: string, --- supported notification platforms are Apple Push Notification Service (APNS and APNS_SANDBOX) for iOS and Google Cloud Messaging (GCM) for Android
+	--- Credential is the Private Key for APNS/APNS_SANDBOX, and the API Key for GCM 
+	Credential: string,
+	--- for APNS, this is the PlatformPrincipal (SSL Certificate) 
+	Key: string?,
+	--- This field is deprecated and any usage of this will cause the API to fail. 
+	Name: string?,
+	--- replace any existing ARN with the newly generated one. If this is set to false, 
+	--- an error will be returned if notifications have already setup for this platform. 
+	OverwriteOldARN: boolean,
+	--- supported notification platforms are Apple Push Notification Service (APNS and 
+	--- APNS_SANDBOX) for iOS and Google Cloud Messaging (GCM) for Android 
+	Platform: string,
 }
 
 export type SetupPushNotificationResult = {
-	ARN: string?, --- Amazon Resource Name for the created notification topic.
+	--- Amazon Resource Name for the created notification topic. 
+	ARN: string?,
 }
 
 export type SharedSecret = {
-	Disabled: boolean, --- Flag to indicate if this key is disabled
-	FriendlyName: string?, --- Friendly name for this key
-	SecretKey: string?, --- The player shared secret to use when calling Client/GetTitlePublicKey
+	--- Flag to indicate if this key is disabled 
+	Disabled: boolean,
+	--- Friendly name for this key 
+	FriendlyName: string?,
+	--- The player shared secret to use when calling Client/GetTitlePublicKey 
+	SecretKey: string?,
 }
 
 export type SourceType = 
@@ -3442,9 +4290,12 @@ export type StatisticAggregationMethod =
 	| "Sum"
 
 export type StatisticModel = {
-	Name: string?, --- Statistic name
-	Value: number, --- Statistic value
-	Version: number, --- Statistic version (0 if not a versioned statistic)
+	--- Statistic name 
+	Name: string?,
+	--- Statistic value 
+	Value: number,
+	--- Statistic version (0 if not a versioned statistic) 
+	Version: number,
 }
 
 export type StatisticResetIntervalOption = 
@@ -3455,11 +4306,16 @@ export type StatisticResetIntervalOption =
 	| "Month"
 
 export type StatisticSegmentFilter = {
-	Comparison: string?, --- Statistic filter comparison.
-	FilterValue: string?, --- Statistic filter value.
-	Name: string?, --- Statistic name.
-	UseCurrentVersion: boolean?, --- Use current version of statistic?
-	Version: number?, --- Statistic version.
+	--- Statistic filter comparison. 
+	Comparison: string?,
+	--- Statistic filter value. 
+	FilterValue: string?,
+	--- Statistic name. 
+	Name: string?,
+	--- Use current version of statistic? 
+	UseCurrentVersion: boolean?,
+	--- Statistic version. 
+	Version: number?,
 }
 
 export type StatisticVersionArchivalStatus = 
@@ -3478,28 +4334,46 @@ export type StatisticVersionStatus =
 
 --- A store entry that list a catalog item at a particular price 
 export type StoreItem = {
-	CustomData: {[any]: any}?, --- Store specific custom data. The data only exists as part of this store; it is not transferred to item instances
-	DisplayPosition: number?, --- Intended display position for this item. Note that 0 is the first position
-	ItemId: string, --- Unique identifier of the item as it exists in the catalog - note that this must exactly match the ItemId from the catalog
-	RealCurrencyPrices: {[any]: any}?, --- Override prices for this item for specific currencies
-	VirtualCurrencyPrices: {[any]: any}?, --- Override prices for this item in virtual currencies and "RM" (the base Real Money purchase price, in USD pennies)
+	--- Store specific custom data. The data only exists as part of this store; it is 
+	--- not transferred to item instances 
+	CustomData: {[any]: any}?,
+	--- Intended display position for this item. Note that 0 is the first position 
+	DisplayPosition: number?,
+	--- Unique identifier of the item as it exists in the catalog - note that this must 
+	--- exactly match the ItemId from the catalog 
+	ItemId: string,
+	--- Override prices for this item for specific currencies 
+	RealCurrencyPrices: {[any]: any}?,
+	--- Override prices for this item in virtual currencies and "RM" (the base Real 
+	--- Money purchase price, in USD pennies) 
+	VirtualCurrencyPrices: {[any]: any}?,
 }
 
 --- Marketing data about a specific store 
 export type StoreMarketingModel = {
-	Description: string?, --- Tagline for a store.
-	DisplayName: string?, --- Display name of a store as it will appear to users.
-	Metadata: {[any]: any}?, --- Custom data about a store.
+	--- Tagline for a store. 
+	Description: string?,
+	--- Display name of a store as it will appear to users. 
+	DisplayName: string?,
+	--- Custom data about a store. 
+	Metadata: {[any]: any}?,
 }
 
 export type SubscriptionModel = {
-	Expiration: string, --- When this subscription expires.
-	InitialSubscriptionTime: string, --- The time the subscription was orignially purchased
-	IsActive: boolean, --- Whether this subscription is currently active. That is, if Expiration > now.
-	Status: string?, --- The status of this subscription, according to the subscription provider.
-	SubscriptionId: string?, --- The id for this subscription
-	SubscriptionItemId: string?, --- The item id for this subscription from the primary catalog
-	SubscriptionProvider: string?, --- The provider for this subscription. Apple or Google Play are supported today.
+	--- When this subscription expires. 
+	Expiration: string,
+	--- The time the subscription was orignially purchased 
+	InitialSubscriptionTime: string,
+	--- Whether this subscription is currently active. That is, if Expiration > now. 
+	IsActive: boolean,
+	--- The status of this subscription, according to the subscription provider. 
+	Status: string?,
+	--- The id for this subscription 
+	SubscriptionId: string?,
+	--- The item id for this subscription from the primary catalog 
+	SubscriptionItemId: string?,
+	--- The provider for this subscription. Apple or Google Play are supported today. 
+	SubscriptionProvider: string?,
 }
 
 export type SubscriptionProviderStatus = 
@@ -3513,32 +4387,51 @@ export type SubscriptionProviderStatus =
 	| "PaymentPending"
 
 export type SubtractUserVirtualCurrencyRequest = {
-	Amount: number, --- Amount to be subtracted from the user balance of the specified virtual currency.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- PlayFab unique identifier of the user whose virtual currency balance is to be decreased.
-	VirtualCurrency: string, --- Name of the virtual currency which is to be decremented.
+	--- Amount to be subtracted from the user balance of the specified virtual currency. 
+	Amount: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- PlayFab unique identifier of the user whose virtual currency balance is to be 
+	--- decreased. 
+	PlayFabId: string,
+	--- Name of the virtual currency which is to be decremented. 
+	VirtualCurrency: string,
 }
 
 export type TagModel = {
-	TagValue: string?, --- Full value of the tag, including namespace
+	--- Full value of the tag, including namespace 
+	TagValue: string?,
 }
 
 export type TagSegmentFilter = {
-	Comparison: string?, --- Tag comparison.
-	TagValue: string?, --- Tag value.
+	--- Tag comparison. 
+	Comparison: string?,
+	--- Tag value. 
+	TagValue: string?,
 }
 
 export type TaskInstanceBasicSummary = {
-	CompletedAt: string?, --- UTC timestamp when the task completed.
-	ErrorMessage: string?, --- Error message for last processing attempt, if an error occured.
-	EstimatedSecondsRemaining: number?, --- Estimated time remaining in seconds.
-	PercentComplete: number?, --- Progress represented as percentage.
-	ScheduledByUserId: string?, --- If manually scheduled, ID of user who scheduled the task.
-	StartedAt: string, --- UTC timestamp when the task started.
-	Status: string?, --- Current status of the task instance.
-	TaskIdentifier: NameIdentifier?, --- Identifier of the task this instance belongs to.
-	TaskInstanceId: string?, --- ID of the task instance.
-	Type: string?, --- Type of the task.
+	--- UTC timestamp when the task completed. 
+	CompletedAt: string?,
+	--- Error message for last processing attempt, if an error occured. 
+	ErrorMessage: string?,
+	--- Estimated time remaining in seconds. 
+	EstimatedSecondsRemaining: number?,
+	--- Progress represented as percentage. 
+	PercentComplete: number?,
+	--- If manually scheduled, ID of user who scheduled the task. 
+	ScheduledByUserId: string?,
+	--- UTC timestamp when the task started. 
+	StartedAt: string,
+	--- Current status of the task instance. 
+	Status: string?,
+	--- Identifier of the task this instance belongs to. 
+	TaskIdentifier: NameIdentifier?,
+	--- ID of the task instance. 
+	TaskInstanceId: string?,
+	--- Type of the task. 
+	Type: string?,
 }
 
 export type TaskInstanceStatus = 
@@ -3557,34 +4450,50 @@ export type TitleActivationStatus =
 	| "RevokedSteam"
 
 export type TitleDataKeyValue = {
-	Key: string?, --- Key we want to set a value on (note, this is additive - will only replace an existing key's value if they are the same name.) Keys are trimmed of whitespace. Keys may not begin with the '!' character.
-	Value: string?, --- New value to set. Set to null to remove a value
+	--- Key we want to set a value on (note, this is additive - will only replace an 
+	--- existing key's value if they are the same name.) Keys are trimmed of whitespace. 
+	--- Keys may not begin with the '!' character. 
+	Key: string?,
+	--- New value to set. Set to null to remove a value 
+	Value: string?,
 }
 
 export type TotalValueToDateInUSDSegmentFilter = {
-	Amount: string?, --- Total value to date USD amount.
-	Comparison: string?, --- Total value to date USD comparison.
+	--- Total value to date USD amount. 
+	Amount: string?,
+	--- Total value to date USD comparison. 
+	Comparison: string?,
 }
 
 --- Represents a single update ban request. 
 export type UpdateBanRequest = {
-	Active: boolean?, --- The updated active state for the ban. Null for no change.
-	BanId: string, --- The id of the ban to be updated.
-	Expires: string?, --- The updated expiration date for the ban. Null for no change.
-	IPAddress: string?, --- The updated IP address for the ban. Null for no change.
-	Permanent: boolean?, --- Whether to make this ban permanent. Set to true to make this ban permanent. This will not modify Active state.
-	Reason: string?, --- The updated reason for the ban to be updated. Maximum 140 characters. Null for no change.
+	--- The updated active state for the ban. Null for no change. 
+	Active: boolean?,
+	--- The id of the ban to be updated. 
+	BanId: string,
+	--- The updated expiration date for the ban. Null for no change. 
+	Expires: string?,
+	--- The updated IP address for the ban. Null for no change. 
+	IPAddress: string?,
+	--- Whether to make this ban permanent. Set to true to make this ban permanent. 
+	--- This will not modify Active state. 
+	Permanent: boolean?,
+	--- The updated reason for the ban to be updated. Maximum 140 characters. Null for 
+	--- no change. 
+	Reason: string?,
 }
 
 --- For each ban, only updates the values that are set. Leave any value to null 
 --- for no change. If a ban could not be found, the rest are still applied. Returns 
 --- information about applied updates only. 
 export type UpdateBansRequest = {
-	Bans: {UpdateBanRequest}, --- List of bans to be updated. Maximum 100.
+	--- List of bans to be updated. Maximum 100. 
+	Bans: {UpdateBanRequest},
 }
 
 export type UpdateBansResult = {
-	BanData: {BanInfo}?, --- Information on the bans that were updated
+	--- Information on the bans that were updated 
+	BanData: {BanInfo}?,
 }
 
 --- When used for SetCatalogItems, this operation is not additive. Using it will 
@@ -3595,33 +4504,53 @@ export type UpdateBansResult = {
 --- will be added, while those with ItemId values matching items currently in the 
 --- catalog will overwrite those items with the given values. 
 export type UpdateCatalogItemsRequest = {
-	Catalog: {CatalogItem}?, --- Array of catalog items to be submitted. Note that while CatalogItem has a parameter for CatalogVersion, it is not required and ignored in this call.
-	CatalogVersion: string?, --- Which catalog is being updated. If null, uses the default catalog.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	SetAsDefaultCatalog: boolean?, --- Should this catalog be set as the default catalog. Defaults to true. If there is currently no default catalog, this will always set it.
+	--- Array of catalog items to be submitted. Note that while CatalogItem has a parameter 
+	--- for CatalogVersion, it is not required and ignored in this call. 
+	Catalog: {CatalogItem}?,
+	--- Which catalog is being updated. If null, uses the default catalog. 
+	CatalogVersion: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Should this catalog be set as the default catalog. Defaults to true. If there 
+	--- is currently no default catalog, this will always set it. 
+	SetAsDefaultCatalog: boolean?,
 }
 
 export type UpdateCatalogItemsResult = {
 }
 
 export type UpdateCloudScriptRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	DeveloperPlayFabId: string?, --- PlayFab user ID of the developer initiating the request.
-	Files: {CloudScriptFile}, --- List of Cloud Script files to upload to create the new revision. Must have at least one file.
-	Publish: boolean, --- Immediately publish the new revision
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- PlayFab user ID of the developer initiating the request. 
+	DeveloperPlayFabId: string?,
+	--- List of Cloud Script files to upload to create the new revision. Must have at 
+	--- least one file. 
+	Files: {CloudScriptFile},
+	--- Immediately publish the new revision 
+	Publish: boolean,
 }
 
 export type UpdateCloudScriptResult = {
-	Revision: number, --- New revision number created
-	Version: number, --- Cloud Script version updated
+	--- New revision number created 
+	Revision: number,
+	--- Cloud Script version updated 
+	Version: number,
 }
 
 export type UpdateOpenIdConnectionRequest = {
-	ClientId: string?, --- The client ID given by the ID provider.
-	ClientSecret: string?, --- The client secret given by the ID provider.
-	ConnectionId: string, --- A name for the connection that identifies it within the title.
-	IssuerDiscoveryUrl: string?, --- The issuer URL or discovery document URL to read issuer information from
-	IssuerInformation: OpenIdIssuerInformation?, --- Manually specified information for an OpenID Connect issuer.
+	--- The client ID given by the ID provider. 
+	ClientId: string?,
+	--- The client secret given by the ID provider. 
+	ClientSecret: string?,
+	--- A name for the connection that identifies it within the title. 
+	ConnectionId: string,
+	--- The issuer URL or discovery document URL to read issuer information from 
+	IssuerDiscoveryUrl: string?,
+	--- Manually specified information for an OpenID Connect issuer. 
+	IssuerInformation: OpenIdIssuerInformation?,
 }
 
 --- Player Shared Secret Keys are used for the call to Client/GetTitlePublicKey, 
@@ -3629,9 +4558,12 @@ export type UpdateOpenIdConnectionRequest = {
 --- the payload of account creation requests when that API requires a signature 
 --- header. 
 export type UpdatePlayerSharedSecretRequest = {
-	Disabled: boolean, --- Disable or Enable this key
-	FriendlyName: string?, --- Friendly name for this key
-	SecretKey: string?, --- The shared secret key to update
+	--- Disable or Enable this key 
+	Disabled: boolean,
+	--- Friendly name for this key 
+	FriendlyName: string?,
+	--- The shared secret key to update 
+	SecretKey: string?,
 }
 
 export type UpdatePlayerSharedSecretResult = {
@@ -3655,13 +4587,18 @@ export type UpdatePlayerSharedSecretResult = {
 --- (Last), use the highest of the old and new values (Max), use the smallest (Min), 
 --- or add them together (Sum). 
 export type UpdatePlayerStatisticDefinitionRequest = {
-	AggregationMethod: string?, --- the aggregation method to use in updating the statistic (defaults to last)
-	StatisticName: string, --- unique name of the statistic
-	VersionChangeInterval: string?, --- interval at which the values of the statistic for all players are reset (changes are effective at the next occurance of the new interval boundary)
+	--- the aggregation method to use in updating the statistic (defaults to last) 
+	AggregationMethod: string?,
+	--- unique name of the statistic 
+	StatisticName: string,
+	--- interval at which the values of the statistic for all players are reset (changes 
+	--- are effective at the next occurance of the new interval boundary) 
+	VersionChangeInterval: string?,
 }
 
 export type UpdatePlayerStatisticDefinitionResult = {
-	Statistic: PlayerStatisticDefinition?, --- updated statistic definition
+	--- updated statistic definition 
+	Statistic: PlayerStatisticDefinition?,
 }
 
 --- Updates permissions for your title. Policies affect what is allowed to happen 
@@ -3673,24 +4610,37 @@ export type UpdatePlayerStatisticDefinitionResult = {
 --- apply it to the uploaded policy. Overwriting the combined policy blindly may 
 --- result in unexpected API errors. 
 export type UpdatePolicyRequest = {
-	OverwritePolicy: boolean, --- Whether to overwrite or append to the existing policy.
-	PolicyName: string, --- The name of the policy being updated. Only supported name is 'ApiPolicy'
-	PolicyVersion: number, --- Version of the policy to update. Must be the latest (as returned by GetPolicy).
-	Statements: {PermissionStatement}, --- The new statements to include in the policy.
+	--- Whether to overwrite or append to the existing policy. 
+	OverwritePolicy: boolean,
+	--- The name of the policy being updated. Only supported name is 'ApiPolicy' 
+	PolicyName: string,
+	--- Version of the policy to update. Must be the latest (as returned by GetPolicy). 
+	PolicyVersion: number,
+	--- The new statements to include in the policy. 
+	Statements: {PermissionStatement},
 }
 
 export type UpdatePolicyResponse = {
-	PolicyName: string?, --- The name of the policy that was updated.
-	Statements: {PermissionStatement}?, --- The statements included in the new version of the policy.
+	--- The name of the policy that was updated. 
+	PolicyName: string?,
+	--- The statements included in the new version of the policy. 
+	Statements: {PermissionStatement}?,
 }
 
 --- This operation is additive. Tables with TableId values not currently defined 
 --- will be added, while those with TableId values matching Tables currently in 
 --- the catalog will be overwritten with the given values. 
 export type UpdateRandomResultTablesRequest = {
-	CatalogVersion: string?, --- which catalog is being updated. If null, update the current default catalog version
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Tables: {RandomResultTable}?, --- array of random result tables to make available (Note: specifying an existing TableId will result in overwriting that table, while any others will be added to the available set)
+	--- which catalog is being updated. If null, update the current default catalog 
+	--- version 
+	CatalogVersion: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- array of random result tables to make available (Note: specifying an existing 
+	--- TableId will result in overwriting that table, while any others will be added 
+	--- to the available set) 
+	Tables: {RandomResultTable}?,
 }
 
 export type UpdateRandomResultTablesResult = {
@@ -3698,12 +4648,15 @@ export type UpdateRandomResultTablesResult = {
 
 --- Update segment properties data which are planning to update 
 export type UpdateSegmentRequest = {
-	SegmentModel: SegmentModel, --- Segment model with all of the segment properties data.
+	--- Segment model with all of the segment properties data. 
+	SegmentModel: SegmentModel,
 }
 
 export type UpdateSegmentResponse = {
-	ErrorMessage: string?, --- Error message.
-	SegmentId: string?, --- Segment id.
+	--- Error message. 
+	ErrorMessage: string?,
+	--- Segment id. 
+	SegmentId: string?,
 }
 
 --- When used for SetStoreItems, this operation is not additive. Using it will cause 
@@ -3726,11 +4679,18 @@ export type UpdateSegmentResponse = {
 --- the store for an item, the price set in the catalog should be displayed to the 
 --- user. 
 export type UpdateStoreItemsRequest = {
-	CatalogVersion: string?, --- Catalog version of the store to update. If null, uses the default catalog.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	MarketingData: StoreMarketingModel?, --- Additional data about the store
-	Store: {StoreItem}?, --- Array of store items - references to catalog items, with specific pricing - to be added
-	StoreId: string, --- Unique identifier for the store which is to be updated
+	--- Catalog version of the store to update. If null, uses the default catalog. 
+	CatalogVersion: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Additional data about the store 
+	MarketingData: StoreMarketingModel?,
+	--- Array of store items - references to catalog items, with specific pricing - 
+	--- to be added 
+	Store: {StoreItem}?,
+	--- Unique identifier for the store which is to be updated 
+	StoreId: string,
 }
 
 export type UpdateStoreItemsResult = {
@@ -3743,14 +4703,25 @@ export type UpdateStoreItemsResult = {
 --- task. WARNING: Renaming of a task may break logics where the task name is used 
 --- as an identifier. 
 export type UpdateTaskRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Description: string?, --- Description the task
-	Identifier: NameIdentifier?, --- Specify either the task ID or the name of the task to be updated.
-	IsActive: boolean, --- Whether the schedule is active. Inactive schedule will not trigger task execution.
-	Name: string, --- Name of the task. This is a unique identifier for tasks in the title.
-	Parameter: {[any]: any}?, --- Parameter object specific to the task type. See each task type's create API documentation for details.
-	Schedule: string?, --- Cron expression for the run schedule of the task. The expression should be in UTC.
-	Type: string, --- Task type.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Description the task 
+	Description: string?,
+	--- Specify either the task ID or the name of the task to be updated. 
+	Identifier: NameIdentifier?,
+	--- Whether the schedule is active. Inactive schedule will not trigger task execution. 
+	IsActive: boolean,
+	--- Name of the task. This is a unique identifier for tasks in the title. 
+	Name: string,
+	--- Parameter object specific to the task type. See each task type's create API 
+	--- documentation for details. 
+	Parameter: {[any]: any}?,
+	--- Cron expression for the run schedule of the task. The expression should be in 
+	--- UTC. 
+	Schedule: string?,
+	--- Task type. 
+	Type: string,
 }
 
 --- This function performs an additive update of the arbitrary JSON object containing 
@@ -3759,15 +4730,29 @@ export type UpdateTaskRequest = {
 --- null values will be removed. No other key-value pairs will be changed apart 
 --- from those specified in the call. 
 export type UpdateUserDataRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Data: {[any]: any}?, --- Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
-	KeysToRemove: {any}?, --- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
-	Permission: string?, --- Permission to be applied to all user data keys written in this request. Defaults to "private" if not set.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Key-value pairs to be written to the custom data. Note that keys are trimmed 
+	--- of whitespace, are limited in size, and may not begin with a '!' character or 
+	--- be null. 
+	Data: {[any]: any}?,
+	--- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert 
+	--- null-values into Data due to language constraints. Use this to delete the keys 
+	--- directly. 
+	KeysToRemove: {any}?,
+	--- Permission to be applied to all user data keys written in this request. Defaults 
+	--- to "private" if not set. 
+	Permission: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type UpdateUserDataResult = {
-	DataVersion: number, --- Indicates the current version of the data that has been set. This is incremented with every set call for that type of data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
+	--- Indicates the current version of the data that has been set. This is incremented 
+	--- with every set call for that type of data (read-only, internal, etc). This version 
+	--- can be provided in Get calls to find updated data. 
+	DataVersion: number,
 }
 
 --- This function performs an additive update of the arbitrary JSON object containing 
@@ -3776,10 +4761,19 @@ export type UpdateUserDataResult = {
 --- values will be removed. No other key-value pairs will be changed apart from 
 --- those specified in the call. 
 export type UpdateUserInternalDataRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Data: {[any]: any}?, --- Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
-	KeysToRemove: {any}?, --- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Key-value pairs to be written to the custom data. Note that keys are trimmed 
+	--- of whitespace, are limited in size, and may not begin with a '!' character or 
+	--- be null. 
+	Data: {[any]: any}?,
+	--- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert 
+	--- null-values into Data due to language constraints. Use this to delete the keys 
+	--- directly. 
+	KeysToRemove: {any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- In addition to the PlayFab username, titles can make use of a DisplayName which 
@@ -3788,50 +4782,85 @@ export type UpdateUserInternalDataRequest = {
 --- API enables changing that name, whether due to a customer request, an offensive 
 --- name choice, etc. 
 export type UpdateUserTitleDisplayNameRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	DisplayName: string, --- New title display name for the user - must be between 3 and 25 characters
-	PlayFabId: string, --- PlayFab unique identifier of the user whose title specific display name is to be changed
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- New title display name for the user - must be between 3 and 25 characters 
+	DisplayName: string,
+	--- PlayFab unique identifier of the user whose title specific display name is to 
+	--- be changed 
+	PlayFabId: string,
 }
 
 export type UpdateUserTitleDisplayNameResult = {
-	DisplayName: string?, --- current title display name for the user (this will be the original display name if the rename attempt failed)
+	--- current title display name for the user (this will be the original display name 
+	--- if the rename attempt failed) 
+	DisplayName: string?,
 }
 
 export type UserAccountInfo = {
-	AndroidDeviceInfo: UserAndroidDeviceInfo?, --- User Android device information, if an Android device has been linked
-	AppleAccountInfo: UserAppleIdInfo?, --- Sign in with Apple account information, if an Apple account has been linked
-	Created: string, --- Timestamp indicating when the user account was created
-	CustomIdInfo: UserCustomIdInfo?, --- Custom ID information, if a custom ID has been assigned
-	FacebookInfo: UserFacebookInfo?, --- User Facebook information, if a Facebook account has been linked
-	FacebookInstantGamesIdInfo: UserFacebookInstantGamesIdInfo?, --- Facebook Instant Games account information, if a Facebook Instant Games account has been linked
-	GameCenterInfo: UserGameCenterInfo?, --- User Gamecenter information, if a Gamecenter account has been linked
-	GoogleInfo: UserGoogleInfo?, --- User Google account information, if a Google account has been linked
-	GooglePlayGamesInfo: UserGooglePlayGamesInfo?, --- User Google Play Games account information, if a Google Play Games account has been linked
-	IosDeviceInfo: UserIosDeviceInfo?, --- User iOS device information, if an iOS device has been linked
-	KongregateInfo: UserKongregateInfo?, --- User Kongregate account information, if a Kongregate account has been linked
-	NintendoSwitchAccountInfo: UserNintendoSwitchAccountIdInfo?, --- Nintendo Switch account information, if a Nintendo Switch account has been linked
-	NintendoSwitchDeviceIdInfo: UserNintendoSwitchDeviceIdInfo?, --- Nintendo Switch device information, if a Nintendo Switch device has been linked
-	OpenIdInfo: {UserOpenIdInfo}?, --- OpenID Connect information, if any OpenID Connect accounts have been linked
-	PlayFabId: string?, --- Unique identifier for the user account
-	PrivateInfo: UserPrivateAccountInfo?, --- Personal information for the user which is considered more sensitive
-	PsnInfo: UserPsnInfo?, --- User PlayStation :tm: Network account information, if a PlayStation :tm: Network account has been linked
-	SteamInfo: UserSteamInfo?, --- User Steam information, if a Steam account has been linked
-	TitleInfo: UserTitleInfo?, --- Title-specific information for the user account
-	TwitchInfo: UserTwitchInfo?, --- User Twitch account information, if a Twitch account has been linked
-	Username: string?, --- User account name in the PlayFab service
-	XboxInfo: UserXboxInfo?, --- User XBox account information, if a XBox account has been linked
+	--- User Android device information, if an Android device has been linked 
+	AndroidDeviceInfo: UserAndroidDeviceInfo?,
+	--- Sign in with Apple account information, if an Apple account has been linked 
+	AppleAccountInfo: UserAppleIdInfo?,
+	--- Timestamp indicating when the user account was created 
+	Created: string,
+	--- Custom ID information, if a custom ID has been assigned 
+	CustomIdInfo: UserCustomIdInfo?,
+	--- User Facebook information, if a Facebook account has been linked 
+	FacebookInfo: UserFacebookInfo?,
+	--- Facebook Instant Games account information, if a Facebook Instant Games account 
+	--- has been linked 
+	FacebookInstantGamesIdInfo: UserFacebookInstantGamesIdInfo?,
+	--- User Gamecenter information, if a Gamecenter account has been linked 
+	GameCenterInfo: UserGameCenterInfo?,
+	--- User Google account information, if a Google account has been linked 
+	GoogleInfo: UserGoogleInfo?,
+	--- User Google Play Games account information, if a Google Play Games account has 
+	--- been linked 
+	GooglePlayGamesInfo: UserGooglePlayGamesInfo?,
+	--- User iOS device information, if an iOS device has been linked 
+	IosDeviceInfo: UserIosDeviceInfo?,
+	--- User Kongregate account information, if a Kongregate account has been linked 
+	KongregateInfo: UserKongregateInfo?,
+	--- Nintendo Switch account information, if a Nintendo Switch account has been linked 
+	NintendoSwitchAccountInfo: UserNintendoSwitchAccountIdInfo?,
+	--- Nintendo Switch device information, if a Nintendo Switch device has been linked 
+	NintendoSwitchDeviceIdInfo: UserNintendoSwitchDeviceIdInfo?,
+	--- OpenID Connect information, if any OpenID Connect accounts have been linked 
+	OpenIdInfo: {UserOpenIdInfo}?,
+	--- Unique identifier for the user account 
+	PlayFabId: string?,
+	--- Personal information for the user which is considered more sensitive 
+	PrivateInfo: UserPrivateAccountInfo?,
+	--- User PlayStation :tm: Network account information, if a PlayStation :tm: Network 
+	--- account has been linked 
+	PsnInfo: UserPsnInfo?,
+	--- User Steam information, if a Steam account has been linked 
+	SteamInfo: UserSteamInfo?,
+	--- Title-specific information for the user account 
+	TitleInfo: UserTitleInfo?,
+	--- User Twitch account information, if a Twitch account has been linked 
+	TwitchInfo: UserTwitchInfo?,
+	--- User account name in the PlayFab service 
+	Username: string?,
+	--- User XBox account information, if a XBox account has been linked 
+	XboxInfo: UserXboxInfo?,
 }
 
 export type UserAndroidDeviceInfo = {
-	AndroidDeviceId: string?, --- Android device ID
+	--- Android device ID 
+	AndroidDeviceId: string?,
 }
 
 export type UserAppleIdInfo = {
-	AppleSubjectId: string?, --- Apple subject ID
+	--- Apple subject ID 
+	AppleSubjectId: string?,
 }
 
 export type UserCustomIdInfo = {
-	CustomId: string?, --- Custom ID
+	--- Custom ID 
+	CustomId: string?,
 }
 
 --- Indicates whether a given data key is private (readable only by the player) 
@@ -3842,59 +4871,84 @@ export type UserDataPermission =
 	| "Public"
 
 export type UserDataRecord = {
-	LastUpdated: string, --- Timestamp for when this data was last updated.
-	Permission: string?, --- Indicates whether this data can be read by all users (public) or only the user (private). This is used for GetUserData requests being made by one player about another player.
-	Value: string?, --- Data stored for the specified user data key.
+	--- Timestamp for when this data was last updated. 
+	LastUpdated: string,
+	--- Indicates whether this data can be read by all users (public) or only the user 
+	--- (private). This is used for GetUserData requests being made by one player about 
+	--- another player. 
+	Permission: string?,
+	--- Data stored for the specified user data key. 
+	Value: string?,
 }
 
 export type UserFacebookInfo = {
-	FacebookId: string?, --- Facebook identifier
-	FullName: string?, --- Facebook full name
+	--- Facebook identifier 
+	FacebookId: string?,
+	--- Facebook full name 
+	FullName: string?,
 }
 
 export type UserFacebookInstantGamesIdInfo = {
-	FacebookInstantGamesId: string?, --- Facebook Instant Games ID
+	--- Facebook Instant Games ID 
+	FacebookInstantGamesId: string?,
 }
 
 export type UserGameCenterInfo = {
-	GameCenterId: string?, --- Gamecenter identifier
+	--- Gamecenter identifier 
+	GameCenterId: string?,
 }
 
 export type UserGoogleInfo = {
-	GoogleEmail: string?, --- Email address of the Google account
-	GoogleGender: string?, --- Gender information of the Google account
-	GoogleId: string?, --- Google ID
-	GoogleLocale: string?, --- Locale of the Google account
-	GoogleName: string?, --- Name of the Google account user
+	--- Email address of the Google account 
+	GoogleEmail: string?,
+	--- Gender information of the Google account 
+	GoogleGender: string?,
+	--- Google ID 
+	GoogleId: string?,
+	--- Locale of the Google account 
+	GoogleLocale: string?,
+	--- Name of the Google account user 
+	GoogleName: string?,
 }
 
 export type UserGooglePlayGamesInfo = {
-	GooglePlayGamesPlayerAvatarImageUrl: string?, --- Avatar image url of the Google Play Games player
-	GooglePlayGamesPlayerDisplayName: string?, --- Display name of the Google Play Games player
-	GooglePlayGamesPlayerId: string?, --- Google Play Games player ID
+	--- Avatar image url of the Google Play Games player 
+	GooglePlayGamesPlayerAvatarImageUrl: string?,
+	--- Display name of the Google Play Games player 
+	GooglePlayGamesPlayerDisplayName: string?,
+	--- Google Play Games player ID 
+	GooglePlayGamesPlayerId: string?,
 }
 
 export type UserIosDeviceInfo = {
-	IosDeviceId: string?, --- iOS device ID
+	--- iOS device ID 
+	IosDeviceId: string?,
 }
 
 export type UserKongregateInfo = {
-	KongregateId: string?, --- Kongregate ID
-	KongregateName: string?, --- Kongregate Username
+	--- Kongregate ID 
+	KongregateId: string?,
+	--- Kongregate Username 
+	KongregateName: string?,
 }
 
 export type UserNintendoSwitchAccountIdInfo = {
-	NintendoSwitchAccountSubjectId: string?, --- Nintendo Switch account subject ID
+	--- Nintendo Switch account subject ID 
+	NintendoSwitchAccountSubjectId: string?,
 }
 
 export type UserNintendoSwitchDeviceIdInfo = {
-	NintendoSwitchDeviceId: string?, --- Nintendo Switch Device ID
+	--- Nintendo Switch Device ID 
+	NintendoSwitchDeviceId: string?,
 }
 
 export type UserOpenIdInfo = {
-	ConnectionId: string?, --- OpenID Connection ID
-	Issuer: string?, --- OpenID Issuer
-	Subject: string?, --- OpenID Subject
+	--- OpenID Connection ID 
+	ConnectionId: string?,
+	--- OpenID Issuer 
+	Issuer: string?,
+	--- OpenID Subject 
+	Subject: string?,
 }
 
 export type UserOrigination = 
@@ -3924,77 +4978,128 @@ export type UserOrigination =
 	| "GooglePlayGames"
 
 export type UserOriginationSegmentFilter = {
-	LoginProvider: string?, --- User login provider.
+	--- User login provider. 
+	LoginProvider: string?,
 }
 
 export type UserPrivateAccountInfo = {
-	Email: string?, --- user email address
+	--- user email address 
+	Email: string?,
 }
 
 export type UserPsnInfo = {
-	PsnAccountId: string?, --- PlayStation :tm: Network account ID
-	PsnOnlineId: string?, --- PlayStation :tm: Network online ID
+	--- PlayStation :tm: Network account ID 
+	PsnAccountId: string?,
+	--- PlayStation :tm: Network online ID 
+	PsnOnlineId: string?,
 }
 
 export type UserSteamInfo = {
-	SteamActivationStatus: string?, --- what stage of game ownership the user is listed as being in, from Steam
-	SteamCountry: string?, --- the country in which the player resides, from Steam data
-	SteamCurrency: string?, --- currency type set in the user Steam account
-	SteamId: string?, --- Steam identifier
-	SteamName: string?, --- Steam display name
+	--- what stage of game ownership the user is listed as being in, from Steam 
+	SteamActivationStatus: string?,
+	--- the country in which the player resides, from Steam data 
+	SteamCountry: string?,
+	--- currency type set in the user Steam account 
+	SteamCurrency: string?,
+	--- Steam identifier 
+	SteamId: string?,
+	--- Steam display name 
+	SteamName: string?,
 }
 
 export type UserTitleInfo = {
-	AvatarUrl: string?, --- URL to the player's avatar.
-	Created: string, --- timestamp indicating when the user was first associated with this game (this can differ significantly from when the user first registered with PlayFab)
-	DisplayName: string?, --- name of the user, as it is displayed in-game
-	FirstLogin: string?, --- timestamp indicating when the user first signed into this game (this can differ from the Created timestamp, as other events, such as issuing a beta key to the user, can associate the title to the user)
-	LastLogin: string?, --- timestamp for the last user login for this title
-	Origination: string?, --- source by which the user first joined the game, if known
-	TitlePlayerAccount: EntityKey?, --- Title player account entity for this user
-	isBanned: boolean?, --- boolean indicating whether or not the user is currently banned for a title
+	--- URL to the player's avatar. 
+	AvatarUrl: string?,
+	--- timestamp indicating when the user was first associated with this game (this 
+	--- can differ significantly from when the user first registered with PlayFab) 
+	Created: string,
+	--- name of the user, as it is displayed in-game 
+	DisplayName: string?,
+	--- timestamp indicating when the user first signed into this game (this can differ 
+	--- from the Created timestamp, as other events, such as issuing a beta key to the 
+	--- user, can associate the title to the user) 
+	FirstLogin: string?,
+	--- timestamp for the last user login for this title 
+	LastLogin: string?,
+	--- source by which the user first joined the game, if known 
+	Origination: string?,
+	--- Title player account entity for this user 
+	TitlePlayerAccount: EntityKey?,
+	--- boolean indicating whether or not the user is currently banned for a title 
+	isBanned: boolean?,
 }
 
 export type UserTwitchInfo = {
-	TwitchId: string?, --- Twitch ID
-	TwitchUserName: string?, --- Twitch Username
+	--- Twitch ID 
+	TwitchId: string?,
+	--- Twitch Username 
+	TwitchUserName: string?,
 }
 
 export type UserXboxInfo = {
-	XboxUserId: string?, --- XBox user ID
-	XboxUserSandbox: string?, --- XBox user sandbox
+	--- XBox user ID 
+	XboxUserId: string?,
+	--- XBox user sandbox 
+	XboxUserSandbox: string?,
 }
 
 export type ValueToDateModel = {
-	Currency: string?, --- ISO 4217 code of the currency used in the purchases
-	TotalValue: number, --- Total value of the purchases in a whole number of 1/100 monetary units. For example, 999 indicates nine dollars and ninety-nine cents when Currency is 'USD')
-	TotalValueAsDecimal: string?, --- Total value of the purchases in a string representation of decimal monetary units. For example, '9.99' indicates nine dollars and ninety-nine cents when Currency is 'USD'.
+	--- ISO 4217 code of the currency used in the purchases 
+	Currency: string?,
+	--- Total value of the purchases in a whole number of 1/100 monetary units. For 
+	--- example, 999 indicates nine dollars and ninety-nine cents when Currency is 'USD') 
+	TotalValue: number,
+	--- Total value of the purchases in a string representation of decimal monetary 
+	--- units. For example, '9.99' indicates nine dollars and ninety-nine cents when 
+	--- Currency is 'USD'. 
+	TotalValueAsDecimal: string?,
 }
 
 export type ValueToDateSegmentFilter = {
-	Amount: string?, --- Value to date amount.
-	Comparison: string?, --- Value to date comparison.
-	Currency: string?, --- Currency using for filter.
+	--- Value to date amount. 
+	Amount: string?,
+	--- Value to date comparison. 
+	Comparison: string?,
+	--- Currency using for filter. 
+	Currency: string?,
 }
 
 export type VirtualCurrencyBalanceSegmentFilter = {
-	Amount: number, --- Total amount.
-	Comparison: string?, --- Amount comparison.
-	CurrencyCode: string?, --- Currency code.
+	--- Total amount. 
+	Amount: number,
+	--- Amount comparison. 
+	Comparison: string?,
+	--- Currency code. 
+	CurrencyCode: string?,
 }
 
 export type VirtualCurrencyData = {
-	CurrencyCode: string, --- unique two-character identifier for this currency type (e.g.: "CC")
-	DisplayName: string?, --- friendly name to show in the developer portal, reports, etc.
-	InitialDeposit: number?, --- amount to automatically grant users upon first login to the title
-	RechargeMax: number?, --- maximum amount to which the currency will recharge (cannot exceed MaxAmount, but can be less)
-	RechargeRate: number?, --- rate at which the currency automatically be added to over time, in units per day (24 hours)
+	--- unique two-character identifier for this currency type (e.g.: "CC") 
+	CurrencyCode: string,
+	--- friendly name to show in the developer portal, reports, etc. 
+	DisplayName: string?,
+	--- amount to automatically grant users upon first login to the title 
+	InitialDeposit: number?,
+	--- maximum amount to which the currency will recharge (cannot exceed MaxAmount, 
+	--- but can be less) 
+	RechargeMax: number?,
+	--- rate at which the currency automatically be added to over time, in units per 
+	--- day (24 hours) 
+	RechargeRate: number?,
 }
 
 export type VirtualCurrencyRechargeTime = {
-	RechargeMax: number, --- Maximum value to which the regenerating currency will automatically increment. Note that it can exceed this value through use of the AddUserVirtualCurrency API call. However, it will not regenerate automatically until it has fallen below this value.
-	RechargeTime: string, --- Server timestamp in UTC indicating the next time the virtual currency will be incremented.
-	SecondsToRecharge: number, --- Time remaining (in seconds) before the next recharge increment of the virtual currency.
+	--- Maximum value to which the regenerating currency will automatically increment. 
+	--- Note that it can exceed this value through use of the AddUserVirtualCurrency 
+	--- API call. However, it will not regenerate automatically until it has fallen 
+	--- below this value. 
+	RechargeMax: number,
+	--- Server timestamp in UTC indicating the next time the virtual currency will be 
+	--- incremented. 
+	RechargeTime: string,
+	--- Time remaining (in seconds) before the next recharge increment of the virtual 
+	--- currency. 
+	SecondsToRecharge: number,
 }
 
 

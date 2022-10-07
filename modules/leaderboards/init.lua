@@ -15,12 +15,18 @@ end
 
 --- The basic wrapper around every failed API response 
 export type ApiErrorWrapper = {
-	code: number, --- Numerical HTTP code
-	error: string?, --- Playfab error code
-	errorCode: number, --- Numerical PlayFab error code
-	errorDetails: {[any]: any}?, --- Detailed description of individual issues with the request object
-	errorMessage: string?, --- Description for the PlayFab errorCode
-	status: string?, --- String HTTP code
+	--- Numerical HTTP code 
+	code: number,
+	--- Playfab error code 
+	error: string?,
+	--- Numerical PlayFab error code 
+	errorCode: number,
+	--- Detailed description of individual issues with the request object 
+	errorDetails: {[any]: any}?,
+	--- Description for the PlayFab errorCode 
+	errorMessage: string?,
+	--- String HTTP code 
+	status: string?,
 }
 
 

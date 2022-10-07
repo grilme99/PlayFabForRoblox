@@ -15,92 +15,143 @@ end
 
 --- The basic wrapper around every failed API response 
 export type ApiErrorWrapper = {
-	code: number, --- Numerical HTTP code
-	error: string?, --- Playfab error code
-	errorCode: number, --- Numerical PlayFab error code
-	errorDetails: {[any]: any}?, --- Detailed description of individual issues with the request object
-	errorMessage: string?, --- Description for the PlayFab errorCode
-	status: string?, --- String HTTP code
+	--- Numerical HTTP code 
+	code: number,
+	--- Playfab error code 
+	error: string?,
+	--- Numerical PlayFab error code 
+	errorCode: number,
+	--- Detailed description of individual issues with the request object 
+	errorDetails: {[any]: any}?,
+	--- Description for the PlayFab errorCode 
+	errorMessage: string?,
+	--- String HTTP code 
+	status: string?,
 }
 
 export type InsightsEmptyRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
 }
 
 export type InsightsGetDetailsResponse = {
-	DataUsageMb: number, --- Amount of data (in MB) currently used by Insights.
-	ErrorMessage: string?, --- Details of any error that occurred while retrieving Insights details.
-	Limits: InsightsGetLimitsResponse?, --- Allowed range of values for performance level and data storage retention.
-	PendingOperations: {InsightsGetOperationStatusResponse}?, --- List of pending Insights operations for the title.
-	PerformanceLevel: number, --- Current Insights performance level setting.
-	RetentionDays: number, --- Current Insights data storage retention value in days.
+	--- Amount of data (in MB) currently used by Insights. 
+	DataUsageMb: number,
+	--- Details of any error that occurred while retrieving Insights details. 
+	ErrorMessage: string?,
+	--- Allowed range of values for performance level and data storage retention. 
+	Limits: InsightsGetLimitsResponse?,
+	--- List of pending Insights operations for the title. 
+	PendingOperations: {InsightsGetOperationStatusResponse}?,
+	--- Current Insights performance level setting. 
+	PerformanceLevel: number,
+	--- Current Insights data storage retention value in days. 
+	RetentionDays: number,
 }
 
 export type InsightsGetLimitsResponse = {
-	DefaultPerformanceLevel: number, --- Default Insights performance level.
-	DefaultStorageRetentionDays: number, --- Default Insights data storage retention days.
-	StorageMaxRetentionDays: number, --- Maximum allowed data storage retention days.
-	StorageMinRetentionDays: number, --- Minimum allowed data storage retention days.
-	SubMeters: {InsightsPerformanceLevel}?, --- List of Insights submeter limits for the allowed performance levels.
+	--- Default Insights performance level. 
+	DefaultPerformanceLevel: number,
+	--- Default Insights data storage retention days. 
+	DefaultStorageRetentionDays: number,
+	--- Maximum allowed data storage retention days. 
+	StorageMaxRetentionDays: number,
+	--- Minimum allowed data storage retention days. 
+	StorageMinRetentionDays: number,
+	--- List of Insights submeter limits for the allowed performance levels. 
+	SubMeters: {InsightsPerformanceLevel}?,
 }
 
 --- Returns the current status for the requested operation id. 
 export type InsightsGetOperationStatusRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	OperationId: string?, --- Id of the Insights operation.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Id of the Insights operation. 
+	OperationId: string?,
 }
 
 export type InsightsGetOperationStatusResponse = {
-	Message: string?, --- Optional message related to the operation details.
-	OperationCompletedTime: string, --- Time the operation was completed.
-	OperationId: string?, --- Id of the Insights operation.
-	OperationLastUpdated: string, --- Time the operation status was last updated.
-	OperationStartedTime: string, --- Time the operation started.
-	OperationType: string?, --- The type of operation, SetPerformance or SetStorageRetention.
-	OperationValue: number, --- The value requested for the operation.
-	Status: string?, --- Current status of the operation.
+	--- Optional message related to the operation details. 
+	Message: string?,
+	--- Time the operation was completed. 
+	OperationCompletedTime: string,
+	--- Id of the Insights operation. 
+	OperationId: string?,
+	--- Time the operation status was last updated. 
+	OperationLastUpdated: string,
+	--- Time the operation started. 
+	OperationStartedTime: string,
+	--- The type of operation, SetPerformance or SetStorageRetention. 
+	OperationType: string?,
+	--- The value requested for the operation. 
+	OperationValue: number,
+	--- Current status of the operation. 
+	Status: string?,
 }
 
 --- Returns a list of operations that are in the pending state for the requested 
 --- operation type. 
 export type InsightsGetPendingOperationsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	OperationType: string?, --- The type of pending operations requested, or blank for all operation types.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The type of pending operations requested, or blank for all operation types. 
+	OperationType: string?,
 }
 
 export type InsightsGetPendingOperationsResponse = {
-	PendingOperations: {InsightsGetOperationStatusResponse}?, --- List of pending Insights operations.
+	--- List of pending Insights operations. 
+	PendingOperations: {InsightsGetOperationStatusResponse}?,
 }
 
 export type InsightsOperationResponse = {
-	Message: string?, --- Optional message related to the operation details.
-	OperationId: string?, --- Id of the Insights operation.
-	OperationType: string?, --- The type of operation, SetPerformance or SetStorageRetention.
+	--- Optional message related to the operation details. 
+	Message: string?,
+	--- Id of the Insights operation. 
+	OperationId: string?,
+	--- The type of operation, SetPerformance or SetStorageRetention. 
+	OperationType: string?,
 }
 
 export type InsightsPerformanceLevel = {
-	ActiveEventExports: number, --- Number of allowed active event exports.
-	CacheSizeMB: number, --- Maximum cache size.
-	Concurrency: number, --- Maximum number of concurrent queries.
-	CreditsPerMinute: number, --- Number of Insights credits consumed per minute.
-	EventsPerSecond: number, --- Maximum events per second.
-	Level: number, --- Performance level.
-	MaxMemoryPerQueryMB: number, --- Maximum amount of memory allowed per query.
-	VirtualCpuCores: number, --- Amount of compute power allocated for queries and operations.
+	--- Number of allowed active event exports. 
+	ActiveEventExports: number,
+	--- Maximum cache size. 
+	CacheSizeMB: number,
+	--- Maximum number of concurrent queries. 
+	Concurrency: number,
+	--- Number of Insights credits consumed per minute. 
+	CreditsPerMinute: number,
+	--- Maximum events per second. 
+	EventsPerSecond: number,
+	--- Performance level. 
+	Level: number,
+	--- Maximum amount of memory allowed per query. 
+	MaxMemoryPerQueryMB: number,
+	--- Amount of compute power allocated for queries and operations. 
+	VirtualCpuCores: number,
 }
 
 --- Sets the performance level to the requested value. Use the GetLimits method 
 --- to get the allowed values. 
 export type InsightsSetPerformanceRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PerformanceLevel: number, --- The Insights performance level to apply to the title.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The Insights performance level to apply to the title. 
+	PerformanceLevel: number,
 }
 
 --- Sets the data storage retention to the requested value. Use the GetLimits method 
 --- to get the range of allowed values. 
 export type InsightsSetStorageRetentionRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	RetentionDays: number, --- The Insights data storage retention value (in days) to apply to the title.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The Insights data storage retention value (in days) to apply to the title. 
+	RetentionDays: number,
 }
 
 

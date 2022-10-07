@@ -16,20 +16,29 @@ end
 
 --- The basic wrapper around every failed API response 
 export type ApiErrorWrapper = {
-	code: number, --- Numerical HTTP code
-	error: string?, --- Playfab error code
-	errorCode: number, --- Numerical PlayFab error code
-	errorDetails: {[any]: any}?, --- Detailed description of individual issues with the request object
-	errorMessage: string?, --- Description for the PlayFab errorCode
-	status: string?, --- String HTTP code
+	--- Numerical HTTP code 
+	code: number,
+	--- Playfab error code 
+	error: string?,
+	--- Numerical PlayFab error code 
+	errorCode: number,
+	--- Detailed description of individual issues with the request object 
+	errorDetails: {[any]: any}?,
+	--- Description for the PlayFab errorCode 
+	errorMessage: string?,
+	--- String HTTP code 
+	status: string?,
 }
 
 export type GetLanguageListRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
 }
 
 export type GetLanguageListResponse = {
-	LanguageList: {any}?, --- The list of allowed languages, in BCP47 two-letter format
+	--- The list of allowed languages, in BCP47 two-letter format 
+	LanguageList: {any}?,
 }
 
 

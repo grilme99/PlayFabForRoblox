@@ -65,7 +65,10 @@ fn write_module_header(
     writeln!(w, "local {api_name}Api = {{}}")?;
     writeln!(w, "")?;
 
-    writeln!(w, "function {api_name}Api.SetSettings(settings: PlayFabInternal.ISettings)")?;
+    writeln!(
+        w,
+        "function {api_name}Api.SetSettings(settings: PlayFabInternal.ISettings)"
+    )?;
     writeln!(w, "\tPlayFabInternal.SetSettings(settings)")?;
     writeln!(w, "end")?;
     writeln!(w, "")?;
@@ -99,7 +102,7 @@ fn write_type_object(
         None => Vec::new(),
     };
 
-    write_description(w, &definition.description, false)?;
+    write_description(w, &definition.description, "", false)?;
 
     writeln!(w, "export type {name} = {{")?;
 
@@ -143,12 +146,10 @@ fn write_type_object(
                 "?"
             };
 
+            write_description(w, &property.description, "\t", false)?;
+
             let line = format!("\t{name}: {}{required},", prop_type);
-            if let Some(description) = &property.description {
-                writeln!(w, "{line} --- {description}")?;
-            } else {
-                writeln!(w, "{line}")?;
-            }
+            writeln!(w, "{line}")?;
         }
     }
 
@@ -163,7 +164,7 @@ fn write_type_string(
     name: &str,
     definition: &SwaggerTypeDefinition,
 ) -> anyhow::Result<()> {
-    write_description(w, &definition.description, false)?;
+    write_description(w, &definition.description, "", false)?;
 
     writeln!(w, "export type {name} = ")?;
 
@@ -190,7 +191,7 @@ fn write_api_functions(
     for (_, methods) in &swagger_spec.paths {
         let method = &methods.post;
 
-        write_description(w, &method.request_details, true)?;
+        write_description(w, &method.request_details, "", true)?;
         writeln!(w, "--- {}", method.external_docs.url)?;
 
         // Swagger security format is weird to parse, but this should work fine?
@@ -255,16 +256,17 @@ fn write_api_functions(
 fn write_description(
     w: &mut dyn Write,
     description: &Option<String>,
+    line_prefix: &str,
     newline: bool,
 ) -> anyhow::Result<()> {
     if let Some(description) = description {
         let description_parts = truncate_string(description);
         for part in description_parts {
-            writeln!(w, "--- {part}")?;
+            writeln!(w, "{line_prefix}--- {part}")?;
         }
 
         if newline {
-            writeln!(w, "---")?;
+            writeln!(w, "{line_prefix}---")?;
         }
     }
 

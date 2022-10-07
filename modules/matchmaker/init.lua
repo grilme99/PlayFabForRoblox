@@ -16,12 +16,18 @@ end
 
 --- The basic wrapper around every failed API response 
 export type ApiErrorWrapper = {
-	code: number, --- Numerical HTTP code
-	error: string?, --- Playfab error code
-	errorCode: number, --- Numerical PlayFab error code
-	errorDetails: {[any]: any}?, --- Detailed description of individual issues with the request object
-	errorMessage: string?, --- Description for the PlayFab errorCode
-	status: string?, --- String HTTP code
+	--- Numerical HTTP code 
+	code: number,
+	--- Playfab error code 
+	error: string?,
+	--- Numerical PlayFab error code 
+	errorCode: number,
+	--- Detailed description of individual issues with the request object 
+	errorDetails: {[any]: any}?,
+	--- Description for the PlayFab errorCode 
+	errorMessage: string?,
+	--- String HTTP code 
+	status: string?,
 }
 
 --- This API allows the external match-making service to confirm that the user has 
@@ -29,12 +35,16 @@ export type ApiErrorWrapper = {
 --- The client passes the user's Session Ticket to the external match-making service, 
 --- which then passes the Session Ticket in as the AuthorizationTicket in this call. 
 export type AuthUserRequest = {
-	AuthorizationTicket: string, --- Session Ticket provided by the client.
+	--- Session Ticket provided by the client. 
+	AuthorizationTicket: string,
 }
 
 export type AuthUserResponse = {
-	Authorized: boolean, --- Boolean indicating if the user has been authorized to use the external match-making service.
-	PlayFabId: string?, --- PlayFab unique identifier of the account that has been authorized.
+	--- Boolean indicating if the user has been authorized to use the external match-making 
+	--- service. 
+	Authorized: boolean,
+	--- PlayFab unique identifier of the account that has been authorized. 
+	PlayFabId: string?,
 }
 
 --- A unique instance of an item in a user's inventory. Note, to retrieve additional 
@@ -46,62 +56,113 @@ export type AuthUserResponse = {
 --- fields such as UnitPrice and UnitCurrency are only set when the item was granted 
 --- via a purchase. 
 export type ItemInstance = {
-	Annotation: string?, --- Game specific comment associated with this instance when it was added to the user inventory.
-	BundleContents: {any}?, --- Array of unique items that were awarded when this catalog item was purchased.
-	BundleParent: string?, --- Unique identifier for the parent inventory item, as defined in the catalog, for object which were added from a bundle or container.
-	CatalogVersion: string?, --- Catalog version for the inventory item, when this instance was created.
-	CustomData: {[any]: any}?, --- A set of custom key-value pairs on the instance of the inventory item, which is not to be confused with the catalog item's custom data.
-	DisplayName: string?, --- CatalogItem.DisplayName at the time this item was purchased.
-	Expiration: string?, --- Timestamp for when this instance will expire.
-	ItemClass: string?, --- Class name for the inventory item, as defined in the catalog.
-	ItemId: string?, --- Unique identifier for the inventory item, as defined in the catalog.
-	ItemInstanceId: string?, --- Unique item identifier for this specific instance of the item.
-	PurchaseDate: string?, --- Timestamp for when this instance was purchased.
-	RemainingUses: number?, --- Total number of remaining uses, if this is a consumable item.
-	UnitCurrency: string?, --- Currency type for the cost of the catalog item. Not available when granting items.
-	UnitPrice: number, --- Cost of the catalog item in the given currency. Not available when granting items.
-	UsesIncrementedBy: number?, --- The number of uses that were added or removed to this item in this call.
+	--- Game specific comment associated with this instance when it was added to the 
+	--- user inventory. 
+	Annotation: string?,
+	--- Array of unique items that were awarded when this catalog item was purchased. 
+	BundleContents: {any}?,
+	--- Unique identifier for the parent inventory item, as defined in the catalog, 
+	--- for object which were added from a bundle or container. 
+	BundleParent: string?,
+	--- Catalog version for the inventory item, when this instance was created. 
+	CatalogVersion: string?,
+	--- A set of custom key-value pairs on the instance of the inventory item, which 
+	--- is not to be confused with the catalog item's custom data. 
+	CustomData: {[any]: any}?,
+	--- CatalogItem.DisplayName at the time this item was purchased. 
+	DisplayName: string?,
+	--- Timestamp for when this instance will expire. 
+	Expiration: string?,
+	--- Class name for the inventory item, as defined in the catalog. 
+	ItemClass: string?,
+	--- Unique identifier for the inventory item, as defined in the catalog. 
+	ItemId: string?,
+	--- Unique item identifier for this specific instance of the item. 
+	ItemInstanceId: string?,
+	--- Timestamp for when this instance was purchased. 
+	PurchaseDate: string?,
+	--- Total number of remaining uses, if this is a consumable item. 
+	RemainingUses: number?,
+	--- Currency type for the cost of the catalog item. Not available when granting 
+	--- items. 
+	UnitCurrency: string?,
+	--- Cost of the catalog item in the given currency. Not available when granting 
+	--- items. 
+	UnitPrice: number,
+	--- The number of uses that were added or removed to this item in this call. 
+	UsesIncrementedBy: number?,
 }
 
 export type PlayerJoinedRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	LobbyId: string, --- Unique identifier of the Game Server Instance the user is joining. This must be a Game Server Instance started with the Matchmaker/StartGame API.
-	PlayFabId: string, --- PlayFab unique identifier for the player joining.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique identifier of the Game Server Instance the user is joining. This must 
+	--- be a Game Server Instance started with the Matchmaker/StartGame API. 
+	LobbyId: string,
+	--- PlayFab unique identifier for the player joining. 
+	PlayFabId: string,
 }
 
 export type PlayerJoinedResponse = {
 }
 
 export type PlayerLeftRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	LobbyId: string, --- Unique identifier of the Game Server Instance the user is leaving. This must be a Game Server Instance started with the Matchmaker/StartGame API.
-	PlayFabId: string, --- PlayFab unique identifier for the player leaving.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique identifier of the Game Server Instance the user is leaving. This must 
+	--- be a Game Server Instance started with the Matchmaker/StartGame API. 
+	LobbyId: string,
+	--- PlayFab unique identifier for the player leaving. 
+	PlayFabId: string,
 }
 
 export type PlayerLeftResponse = {
 }
 
 export type UserInfoRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	MinCatalogVersion: number, --- Minimum catalog version for which data is requested (filters the results to only contain inventory items which have a catalog version of this or higher).
-	PlayFabId: string, --- PlayFab unique identifier of the user whose information is being requested.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Minimum catalog version for which data is requested (filters the results to 
+	--- only contain inventory items which have a catalog version of this or higher). 
+	MinCatalogVersion: number,
+	--- PlayFab unique identifier of the user whose information is being requested. 
+	PlayFabId: string,
 }
 
 export type UserInfoResponse = {
-	Inventory: {ItemInstance}?, --- Array of inventory items in the user's current inventory.
-	IsDeveloper: boolean, --- Boolean indicating whether the user is a developer.
-	PlayFabId: string?, --- PlayFab unique identifier of the user whose information was requested.
-	SteamId: string?, --- Steam unique identifier, if the user has an associated Steam account.
-	TitleDisplayName: string?, --- Title specific display name, if set.
-	Username: string?, --- PlayFab unique user name.
-	VirtualCurrency: {[any]: any}?, --- Array of virtual currency balance(s) belonging to the user.
-	VirtualCurrencyRechargeTimes: VirtualCurrencyRechargeTime?, --- Array of remaining times and timestamps for virtual currencies.
+	--- Array of inventory items in the user's current inventory. 
+	Inventory: {ItemInstance}?,
+	--- Boolean indicating whether the user is a developer. 
+	IsDeveloper: boolean,
+	--- PlayFab unique identifier of the user whose information was requested. 
+	PlayFabId: string?,
+	--- Steam unique identifier, if the user has an associated Steam account. 
+	SteamId: string?,
+	--- Title specific display name, if set. 
+	TitleDisplayName: string?,
+	--- PlayFab unique user name. 
+	Username: string?,
+	--- Array of virtual currency balance(s) belonging to the user. 
+	VirtualCurrency: {[any]: any}?,
+	--- Array of remaining times and timestamps for virtual currencies. 
+	VirtualCurrencyRechargeTimes: VirtualCurrencyRechargeTime?,
 }
 
 export type VirtualCurrencyRechargeTime = {
-	RechargeMax: number, --- Maximum value to which the regenerating currency will automatically increment. Note that it can exceed this value through use of the AddUserVirtualCurrency API call. However, it will not regenerate automatically until it has fallen below this value.
-	RechargeTime: string, --- Server timestamp in UTC indicating the next time the virtual currency will be incremented.
-	SecondsToRecharge: number, --- Time remaining (in seconds) before the next recharge increment of the virtual currency.
+	--- Maximum value to which the regenerating currency will automatically increment. 
+	--- Note that it can exceed this value through use of the AddUserVirtualCurrency 
+	--- API call. However, it will not regenerate automatically until it has fallen 
+	--- below this value. 
+	RechargeMax: number,
+	--- Server timestamp in UTC indicating the next time the virtual currency will be 
+	--- incremented. 
+	RechargeTime: string,
+	--- Time remaining (in seconds) before the next recharge increment of the virtual 
+	--- currency. 
+	SecondsToRecharge: number,
 }
 
 

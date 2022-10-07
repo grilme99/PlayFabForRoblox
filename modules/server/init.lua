@@ -16,36 +16,58 @@ function ServerApi.SetSettings(settings: PlayFabInternal.ISettings)
 end
 
 export type AdCampaignAttribution = {
-	AttributedAt: string, --- UTC time stamp of attribution
-	CampaignId: string?, --- Attribution campaign identifier
-	Platform: string?, --- Attribution network name
+	--- UTC time stamp of attribution 
+	AttributedAt: string,
+	--- Attribution campaign identifier 
+	CampaignId: string?,
+	--- Attribution network name 
+	Platform: string?,
 }
 
 export type AdCampaignAttributionModel = {
-	AttributedAt: string, --- UTC time stamp of attribution
-	CampaignId: string?, --- Attribution campaign identifier
-	Platform: string?, --- Attribution network name
+	--- UTC time stamp of attribution 
+	AttributedAt: string,
+	--- Attribution campaign identifier 
+	CampaignId: string?,
+	--- Attribution network name 
+	Platform: string?,
 }
 
 export type AddCharacterVirtualCurrencyRequest = {
-	Amount: number, --- Amount to be added to the character balance of the specified virtual currency. Maximum VC balance is Int32 (2,147,483,647). Any increase over this value will be discarded.
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- PlayFab unique identifier of the user whose virtual currency balance is to be incremented.
-	VirtualCurrency: string, --- Name of the virtual currency which is to be incremented.
+	--- Amount to be added to the character balance of the specified virtual currency. 
+	--- Maximum VC balance is Int32 (2,147,483,647). Any increase over this value will 
+	--- be discarded. 
+	Amount: number,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- PlayFab unique identifier of the user whose virtual currency balance is to be 
+	--- incremented. 
+	PlayFabId: string,
+	--- Name of the virtual currency which is to be incremented. 
+	VirtualCurrency: string,
 }
 
 export type AddFriendRequest = {
-	FriendEmail: string?, --- Email address of the user being added.
-	FriendPlayFabId: string?, --- The PlayFab identifier of the user being added.
-	FriendTitleDisplayName: string?, --- Title-specific display name of the user to being added.
-	FriendUsername: string?, --- The PlayFab username of the user being added
-	PlayFabId: string, --- PlayFab identifier of the player to add a new friend.
+	--- Email address of the user being added. 
+	FriendEmail: string?,
+	--- The PlayFab identifier of the user being added. 
+	FriendPlayFabId: string?,
+	--- Title-specific display name of the user to being added. 
+	FriendTitleDisplayName: string?,
+	--- The PlayFab username of the user being added 
+	FriendUsername: string?,
+	--- PlayFab identifier of the player to add a new friend. 
+	PlayFabId: string,
 }
 
 export type AddGenericIDRequest = {
-	GenericId: GenericServiceId, --- Generic service identifier to add to the player account.
-	PlayFabId: string, --- PlayFabId of the user to link.
+	--- Generic service identifier to add to the player account. 
+	GenericId: GenericServiceId,
+	--- PlayFabId of the user to link. 
+	PlayFabId: string,
 }
 
 --- This API will trigger a player_tag_added event and add a tag with the given 
@@ -53,43 +75,67 @@ export type AddGenericIDRequest = {
 --- for segmentation and it is limited to 256 characters. Also there is a limit 
 --- on the number of tags a title can have. 
 export type AddPlayerTagRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	TagName: string, --- Unique tag for player profile.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Unique tag for player profile. 
+	TagName: string,
 }
 
 export type AddPlayerTagResult = {
 }
 
 export type AddSharedGroupMembersRequest = {
-	PlayFabIds: {any}, --- An array of unique PlayFab assigned ID of the user on whom the operation will be performed.
-	SharedGroupId: string, --- Unique identifier for the shared group.
+	--- An array of unique PlayFab assigned ID of the user on whom the operation will 
+	--- be performed. 
+	PlayFabIds: {any},
+	--- Unique identifier for the shared group. 
+	SharedGroupId: string,
 }
 
 export type AddSharedGroupMembersResult = {
 }
 
 export type AddUserVirtualCurrencyRequest = {
-	Amount: number, --- Amount to be added to the user balance of the specified virtual currency. Maximum VC balance is Int32 (2,147,483,647). Any increase over this value will be discarded.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- PlayFab unique identifier of the user whose virtual currency balance is to be increased.
-	VirtualCurrency: string, --- Name of the virtual currency which is to be incremented.
+	--- Amount to be added to the user balance of the specified virtual currency. Maximum 
+	--- VC balance is Int32 (2,147,483,647). Any increase over this value will be discarded. 
+	Amount: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- PlayFab unique identifier of the user whose virtual currency balance is to be 
+	--- increased. 
+	PlayFabId: string,
+	--- Name of the virtual currency which is to be incremented. 
+	VirtualCurrency: string,
 }
 
 export type AdvancedPushPlatformMsg = {
-	GCMDataOnly: boolean?, --- Stops GoogleCloudMessaging notifications from including both notification and data properties and instead only sends the data property.
-	Json: string, --- The Json the platform should receive.
-	Platform: string, --- The platform that should receive the Json.
+	--- Stops GoogleCloudMessaging notifications from including both notification and 
+	--- data properties and instead only sends the data property. 
+	GCMDataOnly: boolean?,
+	--- The Json the platform should receive. 
+	Json: string,
+	--- The platform that should receive the Json. 
+	Platform: string,
 }
 
 --- The basic wrapper around every failed API response 
 export type ApiErrorWrapper = {
-	code: number, --- Numerical HTTP code
-	error: string?, --- Playfab error code
-	errorCode: number, --- Numerical PlayFab error code
-	errorDetails: {[any]: any}?, --- Detailed description of individual issues with the request object
-	errorMessage: string?, --- Description for the PlayFab errorCode
-	status: string?, --- String HTTP code
+	--- Numerical HTTP code 
+	code: number,
+	--- Playfab error code 
+	error: string?,
+	--- Numerical PlayFab error code 
+	errorCode: number,
+	--- Detailed description of individual issues with the request object 
+	errorDetails: {[any]: any}?,
+	--- Description for the PlayFab errorCode 
+	errorMessage: string?,
+	--- String HTTP code 
+	status: string?,
 }
 
 --- Note that data returned may be Personally Identifying Information (PII), such 
@@ -97,91 +143,164 @@ export type ApiErrorWrapper = {
 --- managed. Since this call will always return the relevant information for users 
 --- who have accessed the title, the recommendation is to not store this data locally. 
 export type AuthenticateSessionTicketRequest = {
-	SessionTicket: string, --- Session ticket as issued by a PlayFab client login API.
+	--- Session ticket as issued by a PlayFab client login API. 
+	SessionTicket: string,
 }
 
 export type AuthenticateSessionTicketResult = {
-	IsSessionTicketExpired: boolean?, --- Indicates if token was expired at request time.
-	UserInfo: UserAccountInfo?, --- Account info for the user whose session ticket was supplied.
+	--- Indicates if token was expired at request time. 
+	IsSessionTicketExpired: boolean?,
+	--- Account info for the user whose session ticket was supplied. 
+	UserInfo: UserAccountInfo?,
 }
 
 export type AwardSteamAchievementItem = {
-	AchievementName: string, --- Unique Steam achievement name.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Result: boolean, --- Result of the award attempt (only valid on response, not on request).
+	--- Unique Steam achievement name. 
+	AchievementName: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Result of the award attempt (only valid on response, not on request). 
+	Result: boolean,
 }
 
 export type AwardSteamAchievementRequest = {
-	Achievements: {AwardSteamAchievementItem}, --- Array of achievements to grant and the users to whom they are to be granted.
+	--- Array of achievements to grant and the users to whom they are to be granted. 
+	Achievements: {AwardSteamAchievementItem},
 }
 
 export type AwardSteamAchievementResult = {
-	AchievementResults: {AwardSteamAchievementItem}?, --- Array of achievements granted.
+	--- Array of achievements granted. 
+	AchievementResults: {AwardSteamAchievementItem}?,
 }
 
 --- Contains information for a ban. 
 export type BanInfo = {
-	Active: boolean, --- The active state of this ban. Expired bans may still have this value set to true but they will have no effect.
-	BanId: string?, --- The unique Ban Id associated with this ban.
-	Created: string?, --- The time when this ban was applied.
-	Expires: string?, --- The time when this ban expires. Permanent bans do not have expiration date.
-	IPAddress: string?, --- The IP address on which the ban was applied. May affect multiple players.
-	PlayFabId: string?, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Reason: string?, --- The reason why this ban was applied.
+	--- The active state of this ban. Expired bans may still have this value set to 
+	--- true but they will have no effect. 
+	Active: boolean,
+	--- The unique Ban Id associated with this ban. 
+	BanId: string?,
+	--- The time when this ban was applied. 
+	Created: string?,
+	--- The time when this ban expires. Permanent bans do not have expiration date. 
+	Expires: string?,
+	--- The IP address on which the ban was applied. May affect multiple players. 
+	IPAddress: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string?,
+	--- The reason why this ban was applied. 
+	Reason: string?,
 }
 
 --- Represents a single ban request. 
 export type BanRequest = {
-	DurationInHours: number?, --- The duration in hours for the ban. Leave this blank for a permanent ban.
-	IPAddress: string?, --- IP address to be banned. May affect multiple players.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Reason: string?, --- The reason for this ban. Maximum 140 characters.
+	--- The duration in hours for the ban. Leave this blank for a permanent ban. 
+	DurationInHours: number?,
+	--- IP address to be banned. May affect multiple players. 
+	IPAddress: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- The reason for this ban. Maximum 140 characters. 
+	Reason: string?,
 }
 
 --- The existence of each user will not be verified. When banning by IP or MAC address, 
 --- multiple players may be affected, so use this feature with caution. Returns 
 --- information about the new bans. 
 export type BanUsersRequest = {
-	Bans: {BanRequest}, --- List of ban requests to be applied. Maximum 100.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+	--- List of ban requests to be applied. Maximum 100. 
+	Bans: {BanRequest},
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
 }
 
 export type BanUsersResult = {
-	BanData: {BanInfo}?, --- Information on the bans that were applied
+	--- Information on the bans that were applied 
+	BanData: {BanInfo}?,
 }
 
 --- A purchasable item from the item catalog 
 export type CatalogItem = {
-	Bundle: CatalogItemBundleInfo?, --- defines the bundle properties for the item - bundles are items which contain other items, including random drop tables and virtual currencies
-	CanBecomeCharacter: boolean, --- if true, then an item instance of this type can be used to grant a character to a user.
-	CatalogVersion: string?, --- catalog version for this item
-	Consumable: CatalogItemConsumableInfo?, --- defines the consumable properties (number of uses, timeout) for the item
-	Container: CatalogItemContainerInfo?, --- defines the container properties for the item - what items it contains, including random drop tables and virtual currencies, and what item (if any) is required to open it via the UnlockContainerItem API
-	CustomData: string?, --- game specific custom data
-	Description: string?, --- text description of item, to show in-game
-	DisplayName: string?, --- text name for the item, to show in-game
-	InitialLimitedEditionCount: number, --- If the item has IsLImitedEdition set to true, and this is the first time this ItemId has been defined as a limited edition item, this value determines the total number of instances to allocate for the title. Once this limit has been reached, no more instances of this ItemId can be created, and attempts to purchase or grant it will return a Result of false for that ItemId. If the item has already been defined to have a limited edition count, or if this value is less than zero, it will be ignored.
-	IsLimitedEdition: boolean, --- BETA: If true, then only a fixed number can ever be granted.
-	IsStackable: boolean, --- if true, then only one item instance of this type will exist and its remaininguses will be incremented instead. RemainingUses will cap out at Int32.Max (2,147,483,647). All subsequent increases will be discarded
-	IsTradable: boolean, --- if true, then an item instance of this type can be traded between players using the trading APIs
-	ItemClass: string?, --- class to which the item belongs
-	ItemId: string, --- unique identifier for this item
-	ItemImageUrl: string?, --- URL to the item image. For Facebook purchase to display the image on the item purchase page, this must be set to an HTTP URL.
-	RealCurrencyPrices: {[any]: any}?, --- override prices for this item for specific currencies
-	Tags: {any}?, --- list of item tags
-	VirtualCurrencyPrices: {[any]: any}?, --- price of this item in virtual currencies and "RM" (the base Real Money purchase price, in USD pennies)
+	--- defines the bundle properties for the item - bundles are items which contain 
+	--- other items, including random drop tables and virtual currencies 
+	Bundle: CatalogItemBundleInfo?,
+	--- if true, then an item instance of this type can be used to grant a character 
+	--- to a user. 
+	CanBecomeCharacter: boolean,
+	--- catalog version for this item 
+	CatalogVersion: string?,
+	--- defines the consumable properties (number of uses, timeout) for the item 
+	Consumable: CatalogItemConsumableInfo?,
+	--- defines the container properties for the item - what items it contains, including 
+	--- random drop tables and virtual currencies, and what item (if any) is required 
+	--- to open it via the UnlockContainerItem API 
+	Container: CatalogItemContainerInfo?,
+	--- game specific custom data 
+	CustomData: string?,
+	--- text description of item, to show in-game 
+	Description: string?,
+	--- text name for the item, to show in-game 
+	DisplayName: string?,
+	--- If the item has IsLImitedEdition set to true, and this is the first time this 
+	--- ItemId has been defined as a limited edition item, this value determines the 
+	--- total number of instances to allocate for the title. Once this limit has been 
+	--- reached, no more instances of this ItemId can be created, and attempts to purchase 
+	--- or grant it will return a Result of false for that ItemId. If the item has already 
+	--- been defined to have a limited edition count, or if this value is less than 
+	--- zero, it will be ignored. 
+	InitialLimitedEditionCount: number,
+	--- BETA: If true, then only a fixed number can ever be granted. 
+	IsLimitedEdition: boolean,
+	--- if true, then only one item instance of this type will exist and its remaininguses 
+	--- will be incremented instead. RemainingUses will cap out at Int32.Max (2,147,483,647). 
+	--- All subsequent increases will be discarded 
+	IsStackable: boolean,
+	--- if true, then an item instance of this type can be traded between players using 
+	--- the trading APIs 
+	IsTradable: boolean,
+	--- class to which the item belongs 
+	ItemClass: string?,
+	--- unique identifier for this item 
+	ItemId: string,
+	--- URL to the item image. For Facebook purchase to display the image on the item 
+	--- purchase page, this must be set to an HTTP URL. 
+	ItemImageUrl: string?,
+	--- override prices for this item for specific currencies 
+	RealCurrencyPrices: {[any]: any}?,
+	--- list of item tags 
+	Tags: {any}?,
+	--- price of this item in virtual currencies and "RM" (the base Real Money purchase 
+	--- price, in USD pennies) 
+	VirtualCurrencyPrices: {[any]: any}?,
 }
 
 export type CatalogItemBundleInfo = {
-	BundledItems: {any}?, --- unique ItemId values for all items which will be added to the player inventory when the bundle is added
-	BundledResultTables: {any}?, --- unique TableId values for all RandomResultTable objects which are part of the bundle (random tables will be resolved and add the relevant items to the player inventory when the bundle is added)
-	BundledVirtualCurrencies: {[any]: any}?, --- virtual currency types and balances which will be added to the player inventory when the bundle is added
+	--- unique ItemId values for all items which will be added to the player inventory 
+	--- when the bundle is added 
+	BundledItems: {any}?,
+	--- unique TableId values for all RandomResultTable objects which are part of the 
+	--- bundle (random tables will be resolved and add the relevant items to the player 
+	--- inventory when the bundle is added) 
+	BundledResultTables: {any}?,
+	--- virtual currency types and balances which will be added to the player inventory 
+	--- when the bundle is added 
+	BundledVirtualCurrencies: {[any]: any}?,
 }
 
 export type CatalogItemConsumableInfo = {
-	UsageCount: number?, --- number of times this object can be used, after which it will be removed from the player inventory
-	UsagePeriod: number?, --- duration in seconds for how long the item will remain in the player inventory - once elapsed, the item will be removed (recommended minimum value is 5 seconds, as lower values can cause the item to expire before operations depending on this item's details have completed)
-	UsagePeriodGroup: string?, --- all inventory item instances in the player inventory sharing a non-null UsagePeriodGroup have their UsagePeriod values added together, and share the result - when that period has elapsed, all the items in the group will be removed
+	--- number of times this object can be used, after which it will be removed from 
+	--- the player inventory 
+	UsageCount: number?,
+	--- duration in seconds for how long the item will remain in the player inventory 
+	--- - once elapsed, the item will be removed (recommended minimum value is 5 seconds, 
+	--- as lower values can cause the item to expire before operations depending on 
+	--- this item's details have completed) 
+	UsagePeriod: number?,
+	--- all inventory item instances in the player inventory sharing a non-null UsagePeriodGroup 
+	--- have their UsagePeriod values added together, and share the result - when that 
+	--- period has elapsed, all the items in the group will be removed 
+	UsagePeriodGroup: string?,
 }
 
 --- Containers are inventory items that can hold other items defined in the catalog, 
@@ -192,31 +311,54 @@ export type CatalogItemConsumableInfo = {
 --- as Consumable (having a limited number of uses) in their catalog defintiions, 
 --- unless the intent is for the player to be able to re-use them infinitely. 
 export type CatalogItemContainerInfo = {
-	ItemContents: {any}?, --- unique ItemId values for all items which will be added to the player inventory, once the container has been unlocked
-	KeyItemId: string?, --- ItemId for the catalog item used to unlock the container, if any (if not specified, a call to UnlockContainerItem will open the container, adding the contents to the player inventory and currency balances)
-	ResultTableContents: {any}?, --- unique TableId values for all RandomResultTable objects which are part of the container (once unlocked, random tables will be resolved and add the relevant items to the player inventory)
-	VirtualCurrencyContents: {[any]: any}?, --- virtual currency types and balances which will be added to the player inventory when the container is unlocked
+	--- unique ItemId values for all items which will be added to the player inventory, 
+	--- once the container has been unlocked 
+	ItemContents: {any}?,
+	--- ItemId for the catalog item used to unlock the container, if any (if not specified, 
+	--- a call to UnlockContainerItem will open the container, adding the contents to 
+	--- the player inventory and currency balances) 
+	KeyItemId: string?,
+	--- unique TableId values for all RandomResultTable objects which are part of the 
+	--- container (once unlocked, random tables will be resolved and add the relevant 
+	--- items to the player inventory) 
+	ResultTableContents: {any}?,
+	--- virtual currency types and balances which will be added to the player inventory 
+	--- when the container is unlocked 
+	VirtualCurrencyContents: {[any]: any}?,
 }
 
 export type CharacterInventory = {
-	CharacterId: string?, --- The id of this character.
-	Inventory: {ItemInstance}?, --- The inventory of this character.
+	--- The id of this character. 
+	CharacterId: string?,
+	--- The inventory of this character. 
+	Inventory: {ItemInstance}?,
 }
 
 export type CharacterLeaderboardEntry = {
-	CharacterId: string?, --- PlayFab unique identifier of the character that belongs to the user for this leaderboard entry.
-	CharacterName: string?, --- Title-specific display name of the character for this leaderboard entry.
-	CharacterType: string?, --- Name of the character class for this entry.
-	DisplayName: string?, --- Title-specific display name of the user for this leaderboard entry.
-	PlayFabId: string?, --- PlayFab unique identifier of the user for this leaderboard entry.
-	Position: number, --- User's overall position in the leaderboard.
-	StatValue: number, --- Specific value of the user's statistic.
+	--- PlayFab unique identifier of the character that belongs to the user for this 
+	--- leaderboard entry. 
+	CharacterId: string?,
+	--- Title-specific display name of the character for this leaderboard entry. 
+	CharacterName: string?,
+	--- Name of the character class for this entry. 
+	CharacterType: string?,
+	--- Title-specific display name of the user for this leaderboard entry. 
+	DisplayName: string?,
+	--- PlayFab unique identifier of the user for this leaderboard entry. 
+	PlayFabId: string?,
+	--- User's overall position in the leaderboard. 
+	Position: number,
+	--- Specific value of the user's statistic. 
+	StatValue: number,
 }
 
 export type CharacterResult = {
-	CharacterId: string?, --- The id for this character on this player.
-	CharacterName: string?, --- The name of this character.
-	CharacterType: string?, --- The type-string that was given to this character on creation.
+	--- The id for this character on this player. 
+	CharacterId: string?,
+	--- The name of this character. 
+	CharacterName: string?,
+	--- The type-string that was given to this character on creation. 
+	CharacterType: string?,
 }
 
 export type CloudScriptRevisionOption = 
@@ -225,28 +367,42 @@ export type CloudScriptRevisionOption =
 	| "Specific"
 
 export type ConsumeItemRequest = {
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	ConsumeCount: number, --- Number of uses to consume from the item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ItemInstanceId: string, --- Unique instance identifier of the item to be consumed.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- Number of uses to consume from the item. 
+	ConsumeCount: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique instance identifier of the item to be consumed. 
+	ItemInstanceId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type ConsumeItemResult = {
-	ItemInstanceId: string?, --- Unique instance identifier of the item with uses consumed.
-	RemainingUses: number, --- Number of uses remaining on the item.
+	--- Unique instance identifier of the item with uses consumed. 
+	ItemInstanceId: string?,
+	--- Number of uses remaining on the item. 
+	RemainingUses: number,
 }
 
 export type ContactEmailInfo = {
-	EmailAddress: string?, --- The email address
-	Name: string?, --- The name of the email info data
-	VerificationStatus: string?, --- The verification status of the email
+	--- The email address 
+	EmailAddress: string?,
+	--- The name of the email info data 
+	Name: string?,
+	--- The verification status of the email 
+	VerificationStatus: string?,
 }
 
 export type ContactEmailInfoModel = {
-	EmailAddress: string?, --- The email address
-	Name: string?, --- The name of the email info data
-	VerificationStatus: string?, --- The verification status of the email
+	--- The email address 
+	EmailAddress: string?,
+	--- The name of the email info data 
+	Name: string?,
+	--- The verification status of the email 
+	VerificationStatus: string?,
 }
 
 export type ContinentCode = 
@@ -513,11 +669,14 @@ export type CountryCode =
 --- that identifier, and will return an error if it is already in use. If no SharedGroupId 
 --- is specified, a random identifier will be assigned. 
 export type CreateSharedGroupRequest = {
-	SharedGroupId: string?, --- Unique identifier for the shared group (a random identifier will be assigned, if one is not specified).
+	--- Unique identifier for the shared group (a random identifier will be assigned, 
+	--- if one is not specified). 
+	SharedGroupId: string?,
 }
 
 export type CreateSharedGroupResult = {
-	SharedGroupId: string?, --- Unique identifier for the shared group.
+	--- Unique identifier for the shared group. 
+	SharedGroupId: string?,
 }
 
 export type Currency = 
@@ -689,10 +848,16 @@ export type Currency =
 --- It will NOT delete any statistics associated for this character, in order to 
 --- preserve leaderboard integrity. 
 export type DeleteCharacterFromUserRequest = {
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	SaveCharacterInventory: boolean, --- If true, the character's inventory will be transferred up to the owning user; otherwise, this request will purge those items.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- If true, the character's inventory will be transferred up to the owning user; 
+	--- otherwise, this request will purge those items. 
+	SaveCharacterInventory: boolean,
 }
 
 export type DeleteCharacterFromUserResult = {
@@ -711,7 +876,8 @@ export type DeleteCharacterFromUserResult = {
 --- error. This API must be enabled for use as an option in the game manager website. 
 --- It is disabled by default. 
 export type DeletePlayerRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type DeletePlayerResult = {
@@ -719,19 +885,24 @@ export type DeletePlayerResult = {
 
 --- Represents the request to delete a push notification template. 
 export type DeletePushNotificationTemplateRequest = {
-	PushNotificationTemplateId: string, --- Id of the push notification template to be deleted.
+	--- Id of the push notification template to be deleted. 
+	PushNotificationTemplateId: string,
 }
 
 export type DeletePushNotificationTemplateResult = {
 }
 
 export type DeleteSharedGroupRequest = {
-	SharedGroupId: string, --- Unique identifier for the shared group.
+	--- Unique identifier for the shared group. 
+	SharedGroupId: string,
 }
 
 export type DeregisterGameRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	LobbyId: string, --- Unique identifier for the Game Server Instance that is being deregistered.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique identifier for the Game Server Instance that is being deregistered. 
+	LobbyId: string,
 }
 
 export type DeregisterGameResponse = {
@@ -750,74 +921,136 @@ export type EmptyResult = {
 
 --- Combined entity type and ID structure which uniquely identifies a single entity. 
 export type EntityKey = {
-	Id: string, --- Unique ID of the entity.
-	Type: string?, --- Entity type. See https://docs.microsoft.com/gaming/playfab/features/data/entities/available-built-in-entity-types
+	--- Unique ID of the entity. 
+	Id: string,
+	--- Entity type. See https://docs.microsoft.com/gaming/playfab/features/data/entities/available-built-in-entity-types 
+	Type: string?,
 }
 
 export type EntityTokenResponse = {
-	Entity: EntityKey?, --- The entity id and type.
-	EntityToken: string?, --- The token used to set X-EntityToken for all entity based API calls.
-	TokenExpiration: string?, --- The time the token will expire, if it is an expiring token, in UTC.
+	--- The entity id and type. 
+	Entity: EntityKey?,
+	--- The token used to set X-EntityToken for all entity based API calls. 
+	EntityToken: string?,
+	--- The time the token will expire, if it is an expiring token, in UTC. 
+	TokenExpiration: string?,
 }
 
 export type EvaluateRandomResultTableRequest = {
-	CatalogVersion: string?, --- Specifies the catalog version that should be used to evaluate the Random Result Table. If unspecified, uses default/primary catalog.
-	TableId: string, --- The unique identifier of the Random Result Table to use.
+	--- Specifies the catalog version that should be used to evaluate the Random Result 
+	--- Table. If unspecified, uses default/primary catalog. 
+	CatalogVersion: string?,
+	--- The unique identifier of the Random Result Table to use. 
+	TableId: string,
 }
 
 --- Note that if the Random Result Table contains no entries, or does not exist 
 --- for the catalog specified (the Primary catalog if one is not specified), an 
 --- InvalidDropTable error will be returned. 
 export type EvaluateRandomResultTableResult = {
-	ResultItemId: string?, --- Unique identifier for the item returned from the Random Result Table evaluation, for the given catalog.
+	--- Unique identifier for the item returned from the Random Result Table evaluation, 
+	--- for the given catalog. 
+	ResultItemId: string?,
 }
 
 export type ExecuteCloudScriptResult = {
-	APIRequestsIssued: number, --- Number of PlayFab API requests issued by the CloudScript function
-	Error: ScriptExecutionError?, --- Information about the error, if any, that occurred during execution
+	--- Number of PlayFab API requests issued by the CloudScript function 
+	APIRequestsIssued: number,
+	--- Information about the error, if any, that occurred during execution 
+	Error: ScriptExecutionError?,
 	ExecutionTimeSeconds: number,
-	FunctionName: string?, --- The name of the function that executed
-	FunctionResult: {[any]: any}?, --- The object returned from the CloudScript function, if any
-	FunctionResultTooLarge: boolean?, --- Flag indicating if the FunctionResult was too large and was subsequently dropped from this event. This only occurs if the total event size is larger than 350KB.
-	HttpRequestsIssued: number, --- Number of external HTTP requests issued by the CloudScript function
-	Logs: {LogStatement}?, --- Entries logged during the function execution. These include both entries logged in the function code using log.info() and log.error() and error entries for API and HTTP request failures.
-	LogsTooLarge: boolean?, --- Flag indicating if the logs were too large and were subsequently dropped from this event. This only occurs if the total event size is larger than 350KB after the FunctionResult was removed.
+	--- The name of the function that executed 
+	FunctionName: string?,
+	--- The object returned from the CloudScript function, if any 
+	FunctionResult: {[any]: any}?,
+	--- Flag indicating if the FunctionResult was too large and was subsequently dropped 
+	--- from this event. This only occurs if the total event size is larger than 350KB. 
+	FunctionResultTooLarge: boolean?,
+	--- Number of external HTTP requests issued by the CloudScript function 
+	HttpRequestsIssued: number,
+	--- Entries logged during the function execution. These include both entries logged 
+	--- in the function code using log.info() and log.error() and error entries for 
+	--- API and HTTP request failures. 
+	Logs: {LogStatement}?,
+	--- Flag indicating if the logs were too large and were subsequently dropped from 
+	--- this event. This only occurs if the total event size is larger than 350KB after 
+	--- the FunctionResult was removed. 
+	LogsTooLarge: boolean?,
 	MemoryConsumedBytes: number,
-	ProcessorTimeSeconds: number, --- Processor time consumed while executing the function. This does not include time spent waiting on API calls or HTTP requests.
-	Revision: number, --- The revision of the CloudScript that executed
+	--- Processor time consumed while executing the function. This does not include 
+	--- time spent waiting on API calls or HTTP requests. 
+	ProcessorTimeSeconds: number,
+	--- The revision of the CloudScript that executed 
+	Revision: number,
 }
 
 export type ExecuteCloudScriptServerRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	FunctionName: string, --- The name of the CloudScript function to execute
-	FunctionParameter: {[any]: any}?, --- Object that is passed in to the function as the first argument
-	GeneratePlayStreamEvent: boolean?, --- Generate a 'player_executed_cloudscript' PlayStream event containing the results of the function execution and other contextual information. This event will show up in the PlayStream debugger console for the player in Game Manager.
-	PlayFabId: string, --- The unique user identifier for the player on whose behalf the script is being run
-	RevisionSelection: string?, --- Option for which revision of the CloudScript to execute. 'Latest' executes the most recently created revision, 'Live' executes the current live, published revision, and 'Specific' executes the specified revision. The default value is 'Specific', if the SpeificRevision parameter is specified, otherwise it is 'Live'.
-	SpecificRevision: number?, --- The specivic revision to execute, when RevisionSelection is set to 'Specific'
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The name of the CloudScript function to execute 
+	FunctionName: string,
+	--- Object that is passed in to the function as the first argument 
+	FunctionParameter: {[any]: any}?,
+	--- Generate a 'player_executed_cloudscript' PlayStream event containing the results 
+	--- of the function execution and other contextual information. This event will 
+	--- show up in the PlayStream debugger console for the player in Game Manager. 
+	GeneratePlayStreamEvent: boolean?,
+	--- The unique user identifier for the player on whose behalf the script is being 
+	--- run 
+	PlayFabId: string,
+	--- Option for which revision of the CloudScript to execute. 'Latest' executes the 
+	--- most recently created revision, 'Live' executes the current live, published 
+	--- revision, and 'Specific' executes the specified revision. The default value 
+	--- is 'Specific', if the SpeificRevision parameter is specified, otherwise it is 
+	--- 'Live'. 
+	RevisionSelection: string?,
+	--- The specivic revision to execute, when RevisionSelection is set to 'Specific' 
+	SpecificRevision: number?,
 }
 
 export type FacebookInstantGamesPlayFabIdPair = {
-	FacebookInstantGamesId: string?, --- Unique Facebook Instant Games identifier for a user.
-	PlayFabId: string?, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Facebook Instant Games identifier.
+	--- Unique Facebook Instant Games identifier for a user. 
+	FacebookInstantGamesId: string?,
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the Facebook Instant Games identifier. 
+	PlayFabId: string?,
 }
 
 export type FacebookPlayFabIdPair = {
-	FacebookId: string?, --- Unique Facebook identifier for a user.
-	PlayFabId: string?, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Facebook identifier.
+	--- Unique Facebook identifier for a user. 
+	FacebookId: string?,
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the Facebook identifier. 
+	PlayFabId: string?,
 }
 
 export type FriendInfo = {
-	FacebookInfo: UserFacebookInfo?, --- Available Facebook information (if the user and PlayFab friend are also connected in Facebook).
-	FriendPlayFabId: string?, --- PlayFab unique identifier for this friend.
-	GameCenterInfo: UserGameCenterInfo?, --- Available Game Center information (if the user and PlayFab friend are also connected in Game Center).
-	PSNInfo: UserPsnInfo?, --- Available PlayStation :tm: Network information, if the user and PlayFab friend are both connected to PlayStation :tm: Network.
-	Profile: PlayerProfileModel?, --- The profile of the user, if requested.
-	SteamInfo: UserSteamInfo?, --- Available Steam information (if the user and PlayFab friend are also connected in Steam).
-	Tags: {any}?, --- Tags which have been associated with this friend.
-	TitleDisplayName: string?, --- Title-specific display name for this friend.
-	Username: string?, --- PlayFab unique username for this friend.
-	XboxInfo: UserXboxInfo?, --- Available Xbox information, if the user and PlayFab friend are both connected to Xbox Live.
+	--- Available Facebook information (if the user and PlayFab friend are also connected 
+	--- in Facebook). 
+	FacebookInfo: UserFacebookInfo?,
+	--- PlayFab unique identifier for this friend. 
+	FriendPlayFabId: string?,
+	--- Available Game Center information (if the user and PlayFab friend are also connected 
+	--- in Game Center). 
+	GameCenterInfo: UserGameCenterInfo?,
+	--- Available PlayStation :tm: Network information, if the user and PlayFab friend 
+	--- are both connected to PlayStation :tm: Network. 
+	PSNInfo: UserPsnInfo?,
+	--- The profile of the user, if requested. 
+	Profile: PlayerProfileModel?,
+	--- Available Steam information (if the user and PlayFab friend are also connected 
+	--- in Steam). 
+	SteamInfo: UserSteamInfo?,
+	--- Tags which have been associated with this friend. 
+	Tags: {any}?,
+	--- Title-specific display name for this friend. 
+	TitleDisplayName: string?,
+	--- PlayFab unique username for this friend. 
+	Username: string?,
+	--- Available Xbox information, if the user and PlayFab friend are both connected 
+	--- to Xbox Live. 
+	XboxInfo: UserXboxInfo?,
 }
 
 export type GameInstanceState = 
@@ -1523,13 +1756,18 @@ export type GenericErrorCodes =
 	| "AllowNonUniquePlayerDisplayNamesDisableNotAllowed"
 
 export type GenericPlayFabIdPair = {
-	GenericId: GenericServiceId?, --- Unique generic service identifier for a user.
-	PlayFabId: string?, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the given generic identifier.
+	--- Unique generic service identifier for a user. 
+	GenericId: GenericServiceId?,
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the given generic identifier. 
+	PlayFabId: string?,
 }
 
 export type GenericServiceId = {
-	ServiceName: string, --- Name of the service for which the player has a unique identifier.
-	UserId: string, --- Unique identifier of the player in that service.
+	--- Name of the service for which the player has a unique identifier. 
+	ServiceName: string,
+	--- Unique identifier of the player in that service. 
+	UserId: string,
 }
 
 --- Request has no paramaters. 
@@ -1537,32 +1775,46 @@ export type GetAllSegmentsRequest = {
 }
 
 export type GetAllSegmentsResult = {
-	Segments: {GetSegmentResult}?, --- Array of segments for this title.
+	--- Array of segments for this title. 
+	Segments: {GetSegmentResult}?,
 }
 
 export type GetCatalogItemsRequest = {
-	CatalogVersion: string?, --- Which catalog is being requested. If null, uses the default catalog.
+	--- Which catalog is being requested. If null, uses the default catalog. 
+	CatalogVersion: string?,
 }
 
 export type GetCatalogItemsResult = {
-	Catalog: {CatalogItem}?, --- Array of items which can be purchased.
+	--- Array of items which can be purchased. 
+	Catalog: {CatalogItem}?,
 }
 
 --- Data is stored as JSON key-value pairs. If the Keys parameter is provided, the 
 --- data object returned will only contain the data specific to the indicated Keys. 
 --- Otherwise, the full set of custom user data will be returned. 
 export type GetCharacterDataRequest = {
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	IfChangedFromDataVersion: number?, --- The version that currently exists according to the caller. The call will return the data for all of the keys if the version in the system is greater than this.
-	Keys: {any}?, --- Specific keys to search for in the custom user data.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- The version that currently exists according to the caller. The call will return 
+	--- the data for all of the keys if the version in the system is greater than this. 
+	IfChangedFromDataVersion: number?,
+	--- Specific keys to search for in the custom user data. 
+	Keys: {any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetCharacterDataResult = {
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	Data: UserDataRecord?, --- User specific data for this title.
-	DataVersion: number, --- Indicates the current version of the data that has been set. This is incremented with every set call for that type of data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
-	PlayFabId: string?, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- User specific data for this title. 
+	Data: UserDataRecord?,
+	--- Indicates the current version of the data that has been set. This is incremented 
+	--- with every set call for that type of data (read-only, internal, etc). This version 
+	--- can be provided in Get calls to find updated data. 
+	DataVersion: number,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string?,
 }
 
 --- All items currently in the character inventory will be returned, irrespective 
@@ -1571,30 +1823,43 @@ export type GetCharacterDataResult = {
 --- in the user's current inventory, and so will not be not included. Also returns 
 --- their virtual currency balances. 
 export type GetCharacterInventoryRequest = {
-	CatalogVersion: string?, --- Used to limit results to only those from a specific catalog version.
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Used to limit results to only those from a specific catalog version. 
+	CatalogVersion: string?,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetCharacterInventoryResult = {
-	CharacterId: string?, --- Unique identifier of the character for this inventory.
-	Inventory: {ItemInstance}?, --- Array of inventory items belonging to the character.
-	PlayFabId: string?, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	VirtualCurrency: {[any]: any}?, --- Array of virtual currency balance(s) belonging to the character.
-	VirtualCurrencyRechargeTimes: VirtualCurrencyRechargeTime?, --- Array of remaining times and timestamps for virtual currencies.
+	--- Unique identifier of the character for this inventory. 
+	CharacterId: string?,
+	--- Array of inventory items belonging to the character. 
+	Inventory: {ItemInstance}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string?,
+	--- Array of virtual currency balance(s) belonging to the character. 
+	VirtualCurrency: {[any]: any}?,
+	--- Array of remaining times and timestamps for virtual currencies. 
+	VirtualCurrencyRechargeTimes: VirtualCurrencyRechargeTime?,
 }
 
 export type GetCharacterLeaderboardRequest = {
-	CharacterType: string?, --- Optional character type on which to filter the leaderboard entries.
-	MaxResultsCount: number, --- Maximum number of entries to retrieve.
-	StartPosition: number, --- First entry in the leaderboard to be retrieved.
-	StatisticName: string, --- Unique identifier for the title-specific statistic for the leaderboard.
+	--- Maximum number of entries to retrieve. 
+	MaxResultsCount: number,
+	--- First entry in the leaderboard to be retrieved. 
+	StartPosition: number,
+	--- Unique identifier for the title-specific statistic for the leaderboard. 
+	StatisticName: string,
 }
 
 --- Note that the Position of the character in the results is for the overall leaderboard. 
 export type GetCharacterLeaderboardResult = {
-	Leaderboard: {CharacterLeaderboardEntry}?, --- Ordered list of leaderboard entries.
+	--- Ordered list of leaderboard entries. 
+	Leaderboard: {CharacterLeaderboardEntry}?,
 }
 
 --- Character statistics are similar to user statistics in that they are numeric 
@@ -1603,47 +1868,91 @@ export type GetCharacterLeaderboardResult = {
 --- use by the title, the statistics are used for all leaderboard operations in 
 --- PlayFab. 
 export type GetCharacterStatisticsRequest = {
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetCharacterStatisticsResult = {
-	CharacterId: string?, --- Unique identifier of the character for the statistics.
-	CharacterStatistics: {[any]: any}?, --- Character statistics for the requested user.
-	PlayFabId: string?, --- PlayFab unique identifier of the user whose character statistics are being returned.
+	--- Unique identifier of the character for the statistics. 
+	CharacterId: string?,
+	--- Character statistics for the requested user. 
+	CharacterStatistics: {[any]: any}?,
+	--- PlayFab unique identifier of the user whose character statistics are being returned. 
+	PlayFabId: string?,
 }
 
 export type GetContentDownloadUrlRequest = {
-	HttpMethod: string?, --- HTTP method to fetch item - GET or HEAD. Use HEAD when only fetching metadata. Default is GET.
-	Key: string, --- Key of the content item to fetch, usually formatted as a path, e.g. images/a.png
-	ThruCDN: boolean?, --- True to download through CDN. CDN provides higher download bandwidth and lower latency. However, if you want the latest, non-cached version of the content during development, set this to false. Default is true.
+	--- HTTP method to fetch item - GET or HEAD. Use HEAD when only fetching metadata. 
+	--- Default is GET. 
+	HttpMethod: string?,
+	--- Key of the content item to fetch, usually formatted as a path, e.g. images/a.png 
+	Key: string,
+	--- True to download through CDN. CDN provides higher download bandwidth and lower 
+	--- latency. However, if you want the latest, non-cached version of the content 
+	--- during development, set this to false. Default is true. 
+	ThruCDN: boolean?,
 }
 
 export type GetContentDownloadUrlResult = {
-	URL: string?, --- URL for downloading content via HTTP GET or HEAD method. The URL will expire in approximately one hour.
+	--- URL for downloading content via HTTP GET or HEAD method. The URL will expire 
+	--- in approximately one hour. 
+	URL: string?,
 }
 
 export type GetFriendLeaderboardRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	IncludeFacebookFriends: boolean?, --- Indicates whether Facebook friends should be included in the response. Default is true.
-	IncludeSteamFriends: boolean?, --- Indicates whether Steam service friends should be included in the response. Default is true.
-	MaxResultsCount: number, --- Maximum number of entries to retrieve.
-	PlayFabId: string, --- The player whose friend leaderboard to get
-	ProfileConstraints: PlayerProfileViewConstraints?, --- If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
-	StartPosition: number, --- Position in the leaderboard to start this listing (defaults to the first entry).
-	StatisticName: string, --- Statistic used to rank friends for this leaderboard.
-	UseSpecificVersion: boolean?, --- If set to false, Version is considered null. If true, uses the specified Version
-	Version: number?, --- The version of the leaderboard to get.
-	XboxToken: string?, --- Xbox token if Xbox friends should be included. Requires Xbox be configured on PlayFab.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Indicates whether Facebook friends should be included in the response. Default 
+	--- is true. 
+	IncludeFacebookFriends: boolean?,
+	--- Indicates whether Steam service friends should be included in the response. 
+	--- Default is true. 
+	IncludeSteamFriends: boolean?,
+	--- Maximum number of entries to retrieve. 
+	MaxResultsCount: number,
+	--- The player whose friend leaderboard to get 
+	PlayFabId: string,
+	--- If non-null, this determines which properties of the resulting player profiles 
+	--- to return. For API calls from the client, only the allowed client profile properties 
+	--- for the title may be requested. These allowed properties are configured in the 
+	--- Game Manager "Client Profile Options" tab in the "Settings" section. 
+	ProfileConstraints: PlayerProfileViewConstraints?,
+	--- Position in the leaderboard to start this listing (defaults to the first entry). 
+	StartPosition: number,
+	--- Statistic used to rank friends for this leaderboard. 
+	StatisticName: string,
+	--- If set to false, Version is considered null. If true, uses the specified Version 
+	UseSpecificVersion: boolean?,
+	--- The version of the leaderboard to get. 
+	Version: number?,
+	--- Xbox token if Xbox friends should be included. Requires Xbox be configured on 
+	--- PlayFab. 
+	XboxToken: string?,
 }
 
 export type GetFriendsListRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	IncludeFacebookFriends: boolean?, --- Indicates whether Facebook friends should be included in the response. Default is true.
-	IncludeSteamFriends: boolean?, --- Indicates whether Steam service friends should be included in the response. Default is true.
-	PlayFabId: string, --- PlayFab identifier of the player whose friend list to get.
-	ProfileConstraints: PlayerProfileViewConstraints?, --- If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
-	XboxToken: string?, --- Xbox token if Xbox friends should be included. Requires Xbox be configured on PlayFab.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Indicates whether Facebook friends should be included in the response. Default 
+	--- is true. 
+	IncludeFacebookFriends: boolean?,
+	--- Indicates whether Steam service friends should be included in the response. 
+	--- Default is true. 
+	IncludeSteamFriends: boolean?,
+	--- PlayFab identifier of the player whose friend list to get. 
+	PlayFabId: string,
+	--- If non-null, this determines which properties of the resulting player profiles 
+	--- to return. For API calls from the client, only the allowed client profile properties 
+	--- for the title may be requested. These allowed properties are configured in the 
+	--- Game Manager "Client Profile Options" tab in the "Settings" section. 
+	ProfileConstraints: PlayerProfileViewConstraints?,
+	--- Xbox token if Xbox friends should be included. Requires Xbox be configured on 
+	--- PlayFab. 
+	XboxToken: string?,
 }
 
 --- If any additional services are queried for the user's friends, those friends 
@@ -1653,44 +1962,66 @@ export type GetFriendsListRequest = {
 --- Xbox Live, user has to have logged into the Xbox Live recently, and only friends 
 --- who also play this game will be included. 
 export type GetFriendsListResult = {
-	Friends: {FriendInfo}?, --- Array of friends found.
+	--- Array of friends found. 
+	Friends: {FriendInfo}?,
 }
 
 export type GetLeaderboardAroundCharacterRequest = {
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CharacterType: string?, --- Optional character type on which to filter the leaderboard entries.
-	MaxResultsCount: number, --- Maximum number of entries to retrieve.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	StatisticName: string, --- Unique identifier for the title-specific statistic for the leaderboard.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- Maximum number of entries to retrieve. 
+	MaxResultsCount: number,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Unique identifier for the title-specific statistic for the leaderboard. 
+	StatisticName: string,
 }
 
 --- Note: When calling 'GetLeaderboardAround...' APIs, the position of the character 
 --- defaults to 0 when the character does not have the corresponding statistic. 
 export type GetLeaderboardAroundCharacterResult = {
-	Leaderboard: {CharacterLeaderboardEntry}?, --- Ordered list of leaderboard entries.
+	--- Ordered list of leaderboard entries. 
+	Leaderboard: {CharacterLeaderboardEntry}?,
 }
 
 export type GetLeaderboardAroundUserRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	MaxResultsCount: number, --- Maximum number of entries to retrieve.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	ProfileConstraints: PlayerProfileViewConstraints?, --- If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
-	StatisticName: string, --- Unique identifier for the title-specific statistic for the leaderboard.
-	UseSpecificVersion: boolean?, --- If set to false, Version is considered null. If true, uses the specified Version
-	Version: number?, --- The version of the leaderboard to get.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Maximum number of entries to retrieve. 
+	MaxResultsCount: number,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- If non-null, this determines which properties of the resulting player profiles 
+	--- to return. For API calls from the client, only the allowed client profile properties 
+	--- for the title may be requested. These allowed properties are configured in the 
+	--- Game Manager "Client Profile Options" tab in the "Settings" section. 
+	ProfileConstraints: PlayerProfileViewConstraints?,
+	--- Unique identifier for the title-specific statistic for the leaderboard. 
+	StatisticName: string,
+	--- If set to false, Version is considered null. If true, uses the specified Version 
+	UseSpecificVersion: boolean?,
+	--- The version of the leaderboard to get. 
+	Version: number?,
 }
 
 --- Note: When calling 'GetLeaderboardAround...' APIs, the position of the user 
 --- defaults to 0 when the user does not have the corresponding statistic. 
 export type GetLeaderboardAroundUserResult = {
-	Leaderboard: {PlayerLeaderboardEntry}?, --- Ordered listing of users and their positions in the requested leaderboard.
-	NextReset: string?, --- The time the next scheduled reset will occur. Null if the leaderboard does not reset on a schedule.
-	Version: number, --- The version of the leaderboard returned.
+	--- Ordered listing of users and their positions in the requested leaderboard. 
+	Leaderboard: {PlayerLeaderboardEntry}?,
+	--- The time the next scheduled reset will occur. Null if the leaderboard does not 
+	--- reset on a schedule. 
+	NextReset: string?,
+	--- The version of the leaderboard returned. 
+	Version: number,
 }
 
 export type GetLeaderboardForUsersCharactersRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	StatisticName: string, --- Unique identifier for the title-specific statistic for the leaderboard.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Unique identifier for the title-specific statistic for the leaderboard. 
+	StatisticName: string,
 }
 
 --- NOTE: The position of the character in the results is relative to the other 
@@ -1698,161 +2029,247 @@ export type GetLeaderboardForUsersCharactersRequest = {
 --- 0 and one less than the number of characters returned regardless of the size 
 --- of the actual leaderboard. 
 export type GetLeaderboardForUsersCharactersResult = {
-	Leaderboard: {CharacterLeaderboardEntry}?, --- Ordered list of leaderboard entries.
+	--- Ordered list of leaderboard entries. 
+	Leaderboard: {CharacterLeaderboardEntry}?,
 }
 
 export type GetLeaderboardRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	MaxResultsCount: number, --- Maximum number of entries to retrieve.
-	ProfileConstraints: PlayerProfileViewConstraints?, --- If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
-	StartPosition: number, --- First entry in the leaderboard to be retrieved.
-	StatisticName: string, --- Unique identifier for the title-specific statistic for the leaderboard.
-	UseSpecificVersion: boolean?, --- If set to false, Version is considered null. If true, uses the specified Version
-	Version: number?, --- The version of the leaderboard to get.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Maximum number of entries to retrieve. 
+	MaxResultsCount: number,
+	--- If non-null, this determines which properties of the resulting player profiles 
+	--- to return. For API calls from the client, only the allowed client profile properties 
+	--- for the title may be requested. These allowed properties are configured in the 
+	--- Game Manager "Client Profile Options" tab in the "Settings" section. 
+	ProfileConstraints: PlayerProfileViewConstraints?,
+	--- First entry in the leaderboard to be retrieved. 
+	StartPosition: number,
+	--- Unique identifier for the title-specific statistic for the leaderboard. 
+	StatisticName: string,
+	--- If set to false, Version is considered null. If true, uses the specified Version 
+	UseSpecificVersion: boolean?,
+	--- The version of the leaderboard to get. 
+	Version: number?,
 }
 
 --- Note that the Position of the user in the results is for the overall leaderboard. 
 export type GetLeaderboardResult = {
-	Leaderboard: {PlayerLeaderboardEntry}?, --- Ordered listing of users and their positions in the requested leaderboard.
-	NextReset: string?, --- The time the next scheduled reset will occur. Null if the leaderboard does not reset on a schedule.
-	Version: number, --- The version of the leaderboard returned.
+	--- Ordered listing of users and their positions in the requested leaderboard. 
+	Leaderboard: {PlayerLeaderboardEntry}?,
+	--- The time the next scheduled reset will occur. Null if the leaderboard does not 
+	--- reset on a schedule. 
+	NextReset: string?,
+	--- The version of the leaderboard returned. 
+	Version: number,
 }
 
 export type GetPlayFabIDsFromFacebookIDsRequest = {
-	FacebookIDs: {any}, --- Array of unique Facebook identifiers for which the title needs to get PlayFab identifiers.
+	--- Array of unique Facebook identifiers for which the title needs to get PlayFab 
+	--- identifiers. 
+	FacebookIDs: {any},
 }
 
 --- For Facebook identifiers which have not been linked to PlayFab accounts, null 
 --- will be returned. 
 export type GetPlayFabIDsFromFacebookIDsResult = {
-	Data: {FacebookPlayFabIdPair}?, --- Mapping of Facebook identifiers to PlayFab identifiers.
+	--- Mapping of Facebook identifiers to PlayFab identifiers. 
+	Data: {FacebookPlayFabIdPair}?,
 }
 
 export type GetPlayFabIDsFromFacebookInstantGamesIdsRequest = {
-	FacebookInstantGamesIds: {any}, --- Array of unique Facebook Instant Games identifiers for which the title needs to get PlayFab identifiers.
+	--- Array of unique Facebook Instant Games identifiers for which the title needs 
+	--- to get PlayFab identifiers. 
+	FacebookInstantGamesIds: {any},
 }
 
 --- For Facebook Instant Games identifiers which have not been linked to PlayFab 
 --- accounts, null will be returned. 
 export type GetPlayFabIDsFromFacebookInstantGamesIdsResult = {
-	Data: {FacebookInstantGamesPlayFabIdPair}?, --- Mapping of Facebook Instant Games identifiers to PlayFab identifiers.
+	--- Mapping of Facebook Instant Games identifiers to PlayFab identifiers. 
+	Data: {FacebookInstantGamesPlayFabIdPair}?,
 }
 
 export type GetPlayFabIDsFromGenericIDsRequest = {
-	GenericIDs: {GenericServiceId}, --- Array of unique generic service identifiers for which the title needs to get PlayFab identifiers. Currently limited to a maximum of 10 in a single request.
+	--- Array of unique generic service identifiers for which the title needs to get 
+	--- PlayFab identifiers. Currently limited to a maximum of 10 in a single request. 
+	GenericIDs: {GenericServiceId},
 }
 
 --- For generic service identifiers which have not been linked to PlayFab accounts, 
 --- null will be returned. 
 export type GetPlayFabIDsFromGenericIDsResult = {
-	Data: {GenericPlayFabIdPair}?, --- Mapping of generic service identifiers to PlayFab identifiers.
+	--- Mapping of generic service identifiers to PlayFab identifiers. 
+	Data: {GenericPlayFabIdPair}?,
 }
 
 export type GetPlayFabIDsFromNintendoServiceAccountIdsRequest = {
-	NintendoAccountIds: {any}, --- Array of unique Nintendo Switch Account identifiers for which the title needs to get PlayFab identifiers.
+	--- Array of unique Nintendo Switch Account identifiers for which the title needs 
+	--- to get PlayFab identifiers. 
+	NintendoAccountIds: {any},
 }
 
 --- For Nintendo Service Account identifiers which have not been linked to PlayFab 
 --- accounts, null will be returned. 
 export type GetPlayFabIDsFromNintendoServiceAccountIdsResult = {
-	Data: {NintendoServiceAccountPlayFabIdPair}?, --- Mapping of Nintendo Switch Service Account identifiers to PlayFab identifiers.
+	--- Mapping of Nintendo Switch Service Account identifiers to PlayFab identifiers. 
+	Data: {NintendoServiceAccountPlayFabIdPair}?,
 }
 
 export type GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest = {
-	NintendoSwitchDeviceIds: {any}, --- Array of unique Nintendo Switch Device identifiers for which the title needs to get PlayFab identifiers.
+	--- Array of unique Nintendo Switch Device identifiers for which the title needs 
+	--- to get PlayFab identifiers. 
+	NintendoSwitchDeviceIds: {any},
 }
 
 --- For Nintendo Switch Device identifiers which have not been linked to PlayFab 
 --- accounts, null will be returned. 
 export type GetPlayFabIDsFromNintendoSwitchDeviceIdsResult = {
-	Data: {NintendoSwitchPlayFabIdPair}?, --- Mapping of Nintendo Switch Device identifiers to PlayFab identifiers.
+	--- Mapping of Nintendo Switch Device identifiers to PlayFab identifiers. 
+	Data: {NintendoSwitchPlayFabIdPair}?,
 }
 
 export type GetPlayFabIDsFromPSNAccountIDsRequest = {
-	IssuerId: number?, --- Id of the PlayStation :tm: Network issuer environment. If null, defaults to production environment.
-	PSNAccountIDs: {any}, --- Array of unique PlayStation :tm: Network identifiers for which the title needs to get PlayFab identifiers.
+	--- Id of the PlayStation :tm: Network issuer environment. If null, defaults to 
+	--- production environment. 
+	IssuerId: number?,
+	--- Array of unique PlayStation :tm: Network identifiers for which the title needs 
+	--- to get PlayFab identifiers. 
+	PSNAccountIDs: {any},
 }
 
 --- For PlayStation :tm: Network identifiers which have not been linked to PlayFab 
 --- accounts, null will be returned. 
 export type GetPlayFabIDsFromPSNAccountIDsResult = {
-	Data: {PSNAccountPlayFabIdPair}?, --- Mapping of PlayStation :tm: Network identifiers to PlayFab identifiers.
+	--- Mapping of PlayStation :tm: Network identifiers to PlayFab identifiers. 
+	Data: {PSNAccountPlayFabIdPair}?,
 }
 
 export type GetPlayFabIDsFromSteamIDsRequest = {
-	SteamStringIDs: {any}?, --- Array of unique Steam identifiers (Steam profile IDs) for which the title needs to get PlayFab identifiers.
+	--- Array of unique Steam identifiers (Steam profile IDs) for which the title needs 
+	--- to get PlayFab identifiers. 
+	SteamStringIDs: {any}?,
 }
 
 --- For Steam identifiers which have not been linked to PlayFab accounts, null will 
 --- be returned. 
 export type GetPlayFabIDsFromSteamIDsResult = {
-	Data: {SteamPlayFabIdPair}?, --- Mapping of Steam identifiers to PlayFab identifiers.
+	--- Mapping of Steam identifiers to PlayFab identifiers. 
+	Data: {SteamPlayFabIdPair}?,
 }
 
 export type GetPlayFabIDsFromTwitchIDsRequest = {
-	TwitchIds: {any}, --- Array of unique Twitch identifiers (Twitch's _id) for which the title needs to get PlayFab identifiers.
+	--- Array of unique Twitch identifiers (Twitch's _id) for which the title needs 
+	--- to get PlayFab identifiers. 
+	TwitchIds: {any},
 }
 
 --- For Twitch identifiers which have not been linked to PlayFab accounts, null 
 --- will be returned. 
 export type GetPlayFabIDsFromTwitchIDsResult = {
-	Data: {TwitchPlayFabIdPair}?, --- Mapping of Twitch identifiers to PlayFab identifiers.
+	--- Mapping of Twitch identifiers to PlayFab identifiers. 
+	Data: {TwitchPlayFabIdPair}?,
 }
 
 export type GetPlayFabIDsFromXboxLiveIDsRequest = {
-	Sandbox: string?, --- The ID of Xbox Live sandbox.
-	XboxLiveAccountIDs: {any}, --- Array of unique Xbox Live account identifiers for which the title needs to get PlayFab identifiers.
+	--- The ID of Xbox Live sandbox. 
+	Sandbox: string?,
+	--- Array of unique Xbox Live account identifiers for which the title needs to get 
+	--- PlayFab identifiers. 
+	XboxLiveAccountIDs: {any},
 }
 
 --- For XboxLive identifiers which have not been linked to PlayFab accounts, null 
 --- will be returned. 
 export type GetPlayFabIDsFromXboxLiveIDsResult = {
-	Data: {XboxLiveAccountPlayFabIdPair}?, --- Mapping of Xbox Live identifiers to PlayFab identifiers.
+	--- Mapping of Xbox Live identifiers to PlayFab identifiers. 
+	Data: {XboxLiveAccountPlayFabIdPair}?,
 }
 
 export type GetPlayerCombinedInfoRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	InfoRequestParameters: GetPlayerCombinedInfoRequestParams, --- Flags for which pieces of info to return for the user.
-	PlayFabId: string, --- PlayFabId of the user whose data will be returned
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Flags for which pieces of info to return for the user. 
+	InfoRequestParameters: GetPlayerCombinedInfoRequestParams,
+	--- PlayFabId of the user whose data will be returned 
+	PlayFabId: string,
 }
 
 export type GetPlayerCombinedInfoRequestParams = {
-	GetCharacterInventories: boolean, --- Whether to get character inventories. Defaults to false.
-	GetCharacterList: boolean, --- Whether to get the list of characters. Defaults to false.
-	GetPlayerProfile: boolean, --- Whether to get player profile. Defaults to false. Has no effect for a new player.
-	GetPlayerStatistics: boolean, --- Whether to get player statistics. Defaults to false.
-	GetTitleData: boolean, --- Whether to get title data. Defaults to false.
-	GetUserAccountInfo: boolean, --- Whether to get the player's account Info. Defaults to false
-	GetUserData: boolean, --- Whether to get the player's custom data. Defaults to false
-	GetUserInventory: boolean, --- Whether to get the player's inventory. Defaults to false
-	GetUserReadOnlyData: boolean, --- Whether to get the player's read only data. Defaults to false
-	GetUserVirtualCurrency: boolean, --- Whether to get the player's virtual currency balances. Defaults to false
-	PlayerStatisticNames: {any}?, --- Specific statistics to retrieve. Leave null to get all keys. Has no effect if GetPlayerStatistics is false
-	ProfileConstraints: PlayerProfileViewConstraints?, --- Specifies the properties to return from the player profile. Defaults to returning the player's display name.
-	TitleDataKeys: {any}?, --- Specific keys to search for in the custom data. Leave null to get all keys. Has no effect if GetTitleData is false
-	UserDataKeys: {any}?, --- Specific keys to search for in the custom data. Leave null to get all keys. Has no effect if GetUserData is false
-	UserReadOnlyDataKeys: {any}?, --- Specific keys to search for in the custom data. Leave null to get all keys. Has no effect if GetUserReadOnlyData is false
+	--- Whether to get character inventories. Defaults to false. 
+	GetCharacterInventories: boolean,
+	--- Whether to get the list of characters. Defaults to false. 
+	GetCharacterList: boolean,
+	--- Whether to get player profile. Defaults to false. Has no effect for a new player. 
+	GetPlayerProfile: boolean,
+	--- Whether to get player statistics. Defaults to false. 
+	GetPlayerStatistics: boolean,
+	--- Whether to get title data. Defaults to false. 
+	GetTitleData: boolean,
+	--- Whether to get the player's account Info. Defaults to false 
+	GetUserAccountInfo: boolean,
+	--- Whether to get the player's custom data. Defaults to false 
+	GetUserData: boolean,
+	--- Whether to get the player's inventory. Defaults to false 
+	GetUserInventory: boolean,
+	--- Whether to get the player's read only data. Defaults to false 
+	GetUserReadOnlyData: boolean,
+	--- Whether to get the player's virtual currency balances. Defaults to false 
+	GetUserVirtualCurrency: boolean,
+	--- Specific statistics to retrieve. Leave null to get all keys. Has no effect if 
+	--- GetPlayerStatistics is false 
+	PlayerStatisticNames: {any}?,
+	--- Specifies the properties to return from the player profile. Defaults to returning 
+	--- the player's display name. 
+	ProfileConstraints: PlayerProfileViewConstraints?,
+	--- Specific keys to search for in the custom data. Leave null to get all keys. 
+	--- Has no effect if GetTitleData is false 
+	TitleDataKeys: {any}?,
+	--- Specific keys to search for in the custom data. Leave null to get all keys. 
+	--- Has no effect if GetUserData is false 
+	UserDataKeys: {any}?,
+	--- Specific keys to search for in the custom data. Leave null to get all keys. 
+	--- Has no effect if GetUserReadOnlyData is false 
+	UserReadOnlyDataKeys: {any}?,
 }
 
 export type GetPlayerCombinedInfoResult = {
-	InfoResultPayload: GetPlayerCombinedInfoResultPayload?, --- Results for requested info.
-	PlayFabId: string?, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Results for requested info. 
+	InfoResultPayload: GetPlayerCombinedInfoResultPayload?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string?,
 }
 
 export type GetPlayerCombinedInfoResultPayload = {
-	AccountInfo: UserAccountInfo?, --- Account information for the user. This is always retrieved.
-	CharacterInventories: {CharacterInventory}?, --- Inventories for each character for the user.
-	CharacterList: {CharacterResult}?, --- List of characters for the user.
-	PlayerProfile: PlayerProfileModel?, --- The profile of the players. This profile is not guaranteed to be up-to-date. For a new player, this profile will not exist.
-	PlayerStatistics: {StatisticValue}?, --- List of statistics for this player.
-	TitleData: {[any]: any}?, --- Title data for this title.
-	UserData: UserDataRecord?, --- User specific custom data.
-	UserDataVersion: number, --- The version of the UserData that was returned.
-	UserInventory: {ItemInstance}?, --- Array of inventory items in the user's current inventory.
-	UserReadOnlyData: UserDataRecord?, --- User specific read-only data.
-	UserReadOnlyDataVersion: number, --- The version of the Read-Only UserData that was returned.
-	UserVirtualCurrency: {[any]: any}?, --- Dictionary of virtual currency balance(s) belonging to the user.
-	UserVirtualCurrencyRechargeTimes: VirtualCurrencyRechargeTime?, --- Dictionary of remaining times and timestamps for virtual currencies.
+	--- Account information for the user. This is always retrieved. 
+	AccountInfo: UserAccountInfo?,
+	--- Inventories for each character for the user. 
+	CharacterInventories: {CharacterInventory}?,
+	--- List of characters for the user. 
+	CharacterList: {CharacterResult}?,
+	--- The profile of the players. This profile is not guaranteed to be up-to-date. 
+	--- For a new player, this profile will not exist. 
+	PlayerProfile: PlayerProfileModel?,
+	--- List of statistics for this player. 
+	PlayerStatistics: {StatisticValue}?,
+	--- Title data for this title. 
+	TitleData: {[any]: any}?,
+	--- User specific custom data. 
+	UserData: UserDataRecord?,
+	--- The version of the UserData that was returned. 
+	UserDataVersion: number,
+	--- Array of inventory items in the user's current inventory. 
+	UserInventory: {ItemInstance}?,
+	--- User specific read-only data. 
+	UserReadOnlyData: UserDataRecord?,
+	--- The version of the Read-Only UserData that was returned. 
+	UserReadOnlyDataVersion: number,
+	--- Dictionary of virtual currency balance(s) belonging to the user. 
+	UserVirtualCurrency: {[any]: any}?,
+	--- Dictionary of remaining times and timestamps for virtual currencies. 
+	UserVirtualCurrencyRechargeTimes: VirtualCurrencyRechargeTime?,
 }
 
 --- This API allows for access to details regarding a user in the PlayFab service, 
@@ -1862,54 +2279,82 @@ export type GetPlayerCombinedInfoResultPayload = {
 --- the relevant information for users who have accessed the title, the recommendation 
 --- is to not store this data locally. 
 export type GetPlayerProfileRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	ProfileConstraints: PlayerProfileViewConstraints?, --- If non-null, this determines which properties of the resulting player profiles to return. For API calls from the client, only the allowed client profile properties for the title may be requested. These allowed properties are configured in the Game Manager "Client Profile Options" tab in the "Settings" section.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- If non-null, this determines which properties of the resulting player profiles 
+	--- to return. For API calls from the client, only the allowed client profile properties 
+	--- for the title may be requested. These allowed properties are configured in the 
+	--- Game Manager "Client Profile Options" tab in the "Settings" section. 
+	ProfileConstraints: PlayerProfileViewConstraints?,
 }
 
 export type GetPlayerProfileResult = {
-	PlayerProfile: PlayerProfileModel?, --- The profile of the player. This profile is not guaranteed to be up-to-date. For a new player, this profile will not exist.
+	--- The profile of the player. This profile is not guaranteed to be up-to-date. 
+	--- For a new player, this profile will not exist. 
+	PlayerProfile: PlayerProfileModel?,
 }
 
 export type GetPlayerSegmentsResult = {
-	Segments: {GetSegmentResult}?, --- Array of segments the requested player currently belongs to.
+	--- Array of segments the requested player currently belongs to. 
+	Segments: {GetSegmentResult}?,
 }
 
 export type GetPlayerStatisticVersionsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	StatisticName: string?, --- unique name of the statistic
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- unique name of the statistic 
+	StatisticName: string?,
 }
 
 export type GetPlayerStatisticVersionsResult = {
-	StatisticVersions: {PlayerStatisticVersion}?, --- version change history of the statistic
+	--- version change history of the statistic 
+	StatisticVersions: {PlayerStatisticVersion}?,
 }
 
 export type GetPlayerStatisticsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- user for whom statistics are being requested
-	StatisticNameVersions: {StatisticNameVersion}?, --- statistics to return, if StatisticNames is not set (only statistics which have a version matching that provided will be returned)
-	StatisticNames: {any}?, --- statistics to return
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- user for whom statistics are being requested 
+	PlayFabId: string,
+	--- statistics to return, if StatisticNames is not set (only statistics which have 
+	--- a version matching that provided will be returned) 
+	StatisticNameVersions: {StatisticNameVersion}?,
+	--- statistics to return 
+	StatisticNames: {any}?,
 }
 
 --- In addition to being available for use by the title, the statistics are used 
 --- for all leaderboard operations in PlayFab. 
 export type GetPlayerStatisticsResult = {
-	PlayFabId: string?, --- PlayFab unique identifier of the user whose statistics are being returned
-	Statistics: {StatisticValue}?, --- User statistics for the requested user.
+	--- PlayFab unique identifier of the user whose statistics are being returned 
+	PlayFabId: string?,
+	--- User statistics for the requested user. 
+	Statistics: {StatisticValue}?,
 }
 
 --- This API will return a list of canonical tags which includes both namespace 
 --- and tag's name. If namespace is not provided, the result is a list of all canonical 
 --- tags. TagName can be used for segmentation and Namespace is limited to 128 characters. 
 export type GetPlayerTagsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Namespace: string?, --- Optional namespace to filter results by
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Optional namespace to filter results by 
+	Namespace: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetPlayerTagsResult = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Tags: {any}, --- Canonical tags (including namespace and tag's name) for the requested user
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Canonical tags (including namespace and tag's name) for the requested user 
+	Tags: {any},
 }
 
 --- Initial request must contain at least a Segment ID. Subsequent requests must 
@@ -1923,22 +2368,37 @@ export type GetPlayerTagsResult = {
 --- request to this API at a time should be made per title. Concurrent requests 
 --- to the API may be rejected with the APIConcurrentRequestLimitExceeded error. 
 export type GetPlayersInSegmentRequest = {
-	ContinuationToken: string?, --- Continuation token if retrieving subsequent pages of results.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	MaxBatchSize: number?, --- Maximum number of profiles to load. Default is 1,000. Maximum is 10,000.
-	SecondsToLive: number?, --- Number of seconds to keep the continuation token active. After token expiration it is not possible to continue paging results. Default is 300 (5 minutes). Maximum is 1,800 (30 minutes).
-	SegmentId: string, --- Unique identifier for this segment.
+	--- Continuation token if retrieving subsequent pages of results. 
+	ContinuationToken: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Maximum number of profiles to load. Default is 1,000. Maximum is 10,000. 
+	MaxBatchSize: number?,
+	--- Number of seconds to keep the continuation token active. After token expiration 
+	--- it is not possible to continue paging results. Default is 300 (5 minutes). Maximum 
+	--- is 1,800 (30 minutes). 
+	SecondsToLive: number?,
+	--- Unique identifier for this segment. 
+	SegmentId: string,
 }
 
 export type GetPlayersInSegmentResult = {
-	ContinuationToken: string?, --- Continuation token to use to retrieve subsequent pages of results. If token returns null there are no more results.
-	PlayerProfiles: {PlayerProfile}?, --- Array of player profiles in this segment.
-	ProfilesInSegment: number, --- Count of profiles matching this segment.
+	--- Continuation token to use to retrieve subsequent pages of results. If token 
+	--- returns null there are no more results. 
+	ContinuationToken: string?,
+	--- Array of player profiles in this segment. 
+	PlayerProfiles: {PlayerProfile}?,
+	--- Count of profiles matching this segment. 
+	ProfilesInSegment: number,
 }
 
 export type GetPlayersSegmentsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- This API is designed to return publisher-specific values which can be read, 
@@ -1948,57 +2408,81 @@ export type GetPlayersSegmentsRequest = {
 --- helloplayfab@microsoft.com. Note that there may up to a minute delay in between 
 --- updating title data and this API call returning the newest value. 
 export type GetPublisherDataRequest = {
-	Keys: {any}, ---  array of keys to get back data from the Publisher data blob, set by the admin tools
+	---  array of keys to get back data from the Publisher data blob, set by the admin 
+	--- tools 
+	Keys: {any},
 }
 
 export type GetPublisherDataResult = {
-	Data: {[any]: any}?, --- a dictionary object of key / value pairs
+	--- a dictionary object of key / value pairs 
+	Data: {[any]: any}?,
 }
 
 export type GetRandomResultTablesRequest = {
-	CatalogVersion: string?, --- Specifies the catalog version that should be used to retrieve the Random Result Tables. If unspecified, uses default/primary catalog.
-	TableIDs: {any}, --- The unique identifier of the Random Result Table to use.
+	--- Specifies the catalog version that should be used to retrieve the Random Result 
+	--- Tables. If unspecified, uses default/primary catalog. 
+	CatalogVersion: string?,
+	--- The unique identifier of the Random Result Table to use. 
+	TableIDs: {any},
 }
 
 --- Note that if a specified Random Result Table contains no entries, or does not 
 --- exist in the catalog, an InvalidDropTable error will be returned. 
 export type GetRandomResultTablesResult = {
-	Tables: RandomResultTableListing?, --- array of random result tables currently available
+	--- array of random result tables currently available 
+	Tables: RandomResultTableListing?,
 }
 
 export type GetSegmentResult = {
-	ABTestParent: string?, --- Identifier of the segments AB Test, if it is attached to one.
-	Id: string, --- Unique identifier for this segment.
-	Name: string?, --- Segment name.
+	--- Identifier of the segments AB Test, if it is attached to one. 
+	ABTestParent: string?,
+	--- Unique identifier for this segment. 
+	Id: string,
+	--- Segment name. 
+	Name: string?,
 }
 
 export type GetServerCustomIDsFromPlayFabIDsRequest = {
-	PlayFabIDs: {any}, --- Array of unique PlayFab player identifiers for which the title needs to get server custom identifiers. Cannot contain more than 25 identifiers.
+	--- Array of unique PlayFab player identifiers for which the title needs to get 
+	--- server custom identifiers. Cannot contain more than 25 identifiers. 
+	PlayFabIDs: {any},
 }
 
 --- For a PlayFab account that isn't associated with a server custom identity, ServerCustomId 
 --- will be null. 
 export type GetServerCustomIDsFromPlayFabIDsResult = {
-	Data: {ServerCustomIDPlayFabIDPair}?, --- Mapping of server custom player identifiers to PlayFab identifiers.
+	--- Mapping of server custom player identifiers to PlayFab identifiers. 
+	Data: {ServerCustomIDPlayFabIDPair}?,
 }
 
 export type GetSharedGroupDataRequest = {
-	GetMembers: boolean?, --- If true, return the list of all members of the shared group.
-	Keys: {any}?, --- Specific keys to retrieve from the shared group (if not specified, all keys will be returned, while an empty array indicates that no keys should be returned).
-	SharedGroupId: string, --- Unique identifier for the shared group.
+	--- If true, return the list of all members of the shared group. 
+	GetMembers: boolean?,
+	--- Specific keys to retrieve from the shared group (if not specified, all keys 
+	--- will be returned, while an empty array indicates that no keys should be returned). 
+	Keys: {any}?,
+	--- Unique identifier for the shared group. 
+	SharedGroupId: string,
 }
 
 export type GetSharedGroupDataResult = {
-	Data: SharedGroupDataRecord?, --- Data for the requested keys.
-	Members: {any}?, --- List of PlayFabId identifiers for the members of this group, if requested.
+	--- Data for the requested keys. 
+	Data: SharedGroupDataRecord?,
+	--- List of PlayFabId identifiers for the members of this group, if requested. 
+	Members: {any}?,
 }
 
 export type GetStoreItemsResult = {
-	CatalogVersion: string?, --- The base catalog that this store is a part of.
-	MarketingData: StoreMarketingModel?, --- Additional data about the store.
-	Source: string?, --- How the store was last updated (Admin or a third party).
-	Store: {StoreItem}?, --- Array of items which can be purchased from this store.
-	StoreId: string?, --- The ID of this store.
+	--- The base catalog that this store is a part of. 
+	CatalogVersion: string?,
+	--- Additional data about the store. 
+	MarketingData: StoreMarketingModel?,
+	--- How the store was last updated (Admin or a third party). 
+	Source: string?,
+	--- Array of items which can be purchased from this store. 
+	Store: {StoreItem}?,
+	--- The ID of this store. 
+	StoreId: string?,
 }
 
 --- A store contains an array of references to items defined in one or more catalog 
@@ -2015,10 +2499,16 @@ export type GetStoreItemsResult = {
 --- the store for an item, the price set in the catalog should be displayed to the 
 --- user. 
 export type GetStoreItemsServerRequest = {
-	CatalogVersion: string?, --- Catalog version to store items from. Use default catalog version if null
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string?, --- Optional identifier for the player to use in requesting the store information - if used, segment overrides will be applied
-	StoreId: string, --- Unqiue identifier for the store which is being requested
+	--- Catalog version to store items from. Use default catalog version if null 
+	CatalogVersion: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Optional identifier for the player to use in requesting the store information 
+	--- - if used, segment overrides will be applied 
+	PlayFabId: string?,
+	--- Unqiue identifier for the store which is being requested 
+	StoreId: string,
 }
 
 --- This query retrieves the current time from one of the servers in PlayFab. Please 
@@ -2029,7 +2519,8 @@ export type GetTimeRequest = {
 
 --- Time is always returned as Coordinated Universal Time (UTC). 
 export type GetTimeResult = {
-	Time: string, --- Current server time when the request was received, in UTC
+	--- Current server time when the request was received, in UTC 
+	Time: string,
 }
 
 --- This API is designed to return title specific values which can be read, but 
@@ -2041,20 +2532,27 @@ export type GetTimeResult = {
 --- title data. Note that there may up to a minute delay in between updating title 
 --- data and this API call returning the newest value. 
 export type GetTitleDataRequest = {
-	Keys: {any}?, --- Specific keys to search for in the title data (leave null to get all keys)
-	OverrideLabel: string?, --- Optional field that specifies the name of an override. This value is ignored when used by the game client; otherwise, the overrides are applied automatically to the title data.
+	--- Specific keys to search for in the title data (leave null to get all keys) 
+	Keys: {any}?,
+	--- Optional field that specifies the name of an override. This value is ignored 
+	--- when used by the game client; otherwise, the overrides are applied automatically 
+	--- to the title data. 
+	OverrideLabel: string?,
 }
 
 export type GetTitleDataResult = {
-	Data: {[any]: any}?, --- a dictionary object of key / value pairs
+	--- a dictionary object of key / value pairs 
+	Data: {[any]: any}?,
 }
 
 export type GetTitleNewsRequest = {
-	Count: number?, --- Limits the results to the last n entries. Defaults to 10 if not set.
+	--- Limits the results to the last n entries. Defaults to 10 if not set. 
+	Count: number?,
 }
 
 export type GetTitleNewsResult = {
-	News: {TitleNewsItem}?, --- Array of localized news items.
+	--- Array of localized news items. 
+	News: {TitleNewsItem}?,
 }
 
 --- This API allows for access to details regarding a user in the PlayFab service, 
@@ -2064,35 +2562,48 @@ export type GetTitleNewsResult = {
 --- the relevant information for users who have accessed the title, the recommendation 
 --- is to not store this data locally. 
 export type GetUserAccountInfoRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetUserAccountInfoResult = {
-	UserInfo: UserAccountInfo?, --- Account details for the user whose information was requested.
+	--- Account details for the user whose information was requested. 
+	UserInfo: UserAccountInfo?,
 }
 
 --- Get all bans for a user, including inactive and expired bans.  
 export type GetUserBansRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetUserBansResult = {
-	BanData: {BanInfo}?, --- Information about the bans
+	--- Information about the bans 
+	BanData: {BanInfo}?,
 }
 
 --- Data is stored as JSON key-value pairs. If the Keys parameter is provided, the 
 --- data object returned will only contain the data specific to the indicated Keys. 
 --- Otherwise, the full set of custom user data will be returned. 
 export type GetUserDataRequest = {
-	IfChangedFromDataVersion: number?, --- The version that currently exists according to the caller. The call will return the data for all of the keys if the version in the system is greater than this.
-	Keys: {any}?, --- Specific keys to search for in the custom user data.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The version that currently exists according to the caller. The call will return 
+	--- the data for all of the keys if the version in the system is greater than this. 
+	IfChangedFromDataVersion: number?,
+	--- Specific keys to search for in the custom user data. 
+	Keys: {any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetUserDataResult = {
-	Data: UserDataRecord?, --- User specific data for this title.
-	DataVersion: number, --- Indicates the current version of the data that has been set. This is incremented with every set call for that type of data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
-	PlayFabId: string?, --- PlayFab unique identifier of the user whose custom data is being returned.
+	--- User specific data for this title. 
+	Data: UserDataRecord?,
+	--- Indicates the current version of the data that has been set. This is incremented 
+	--- with every set call for that type of data (read-only, internal, etc). This version 
+	--- can be provided in Get calls to find updated data. 
+	DataVersion: number,
+	--- PlayFab unique identifier of the user whose custom data is being returned. 
+	PlayFabId: string?,
 }
 
 --- All items currently in the user inventory will be returned, irrespective of 
@@ -2100,27 +2611,41 @@ export type GetUserDataResult = {
 --- expired, fully consumed, or are no longer valid are not considered to be in 
 --- the user's current inventory, and so will not be not included. 
 export type GetUserInventoryRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GetUserInventoryResult = {
-	Inventory: {ItemInstance}?, --- Array of inventory items belonging to the user.
-	PlayFabId: string?, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	VirtualCurrency: {[any]: any}?, --- Array of virtual currency balance(s) belonging to the user.
-	VirtualCurrencyRechargeTimes: VirtualCurrencyRechargeTime?, --- Array of remaining times and timestamps for virtual currencies.
+	--- Array of inventory items belonging to the user. 
+	Inventory: {ItemInstance}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string?,
+	--- Array of virtual currency balance(s) belonging to the user. 
+	VirtualCurrency: {[any]: any}?,
+	--- Array of remaining times and timestamps for virtual currencies. 
+	VirtualCurrencyRechargeTimes: VirtualCurrencyRechargeTime?,
 }
 
 --- Grants a character to the user of the type and name specified in the request. 
 export type GrantCharacterToUserRequest = {
-	CharacterName: string, --- Non-unique display name of the character being granted (1-40 characters in length).
-	CharacterType: string, --- Type of the character being granted; statistics can be sliced based on this value.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Non-unique display name of the character being granted (1-40 characters in length). 
+	CharacterName: string,
+	--- Type of the character being granted; statistics can be sliced based on this 
+	--- value. 
+	CharacterType: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GrantCharacterToUserResult = {
-	CharacterId: string?, --- Unique identifier tagged to this character.
+	--- Unique identifier tagged to this character. 
+	CharacterId: string?,
 }
 
 --- This function directly adds inventory items to the character's inventories. 
@@ -2130,16 +2655,24 @@ export type GrantCharacterToUserResult = {
 --- more items are in the inventory, and the more items are in the grant/purchase 
 --- operation. 
 export type GrantItemsToCharacterRequest = {
-	Annotation: string?, --- String detailing any additional information concerning this operation.
-	CatalogVersion: string?, --- Catalog version from which items are to be granted.
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ItemIds: {any}?, --- Array of itemIds to grant to the user.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- String detailing any additional information concerning this operation. 
+	Annotation: string?,
+	--- Catalog version from which items are to be granted. 
+	CatalogVersion: string?,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Array of itemIds to grant to the user. 
+	ItemIds: {any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type GrantItemsToCharacterResult = {
-	ItemGrantResults: {GrantedItemInstance}?, --- Array of items granted to users.
+	--- Array of items granted to users. 
+	ItemGrantResults: {GrantedItemInstance}?,
 }
 
 --- This function directly adds inventory items to the user's inventories. As a 
@@ -2148,17 +2681,24 @@ export type GrantItemsToCharacterResult = {
 --- time for inventory grants and purchases increases fractionally the more items 
 --- are in the inventory, and the more items are in the grant/purchase operation. 
 export type GrantItemsToUserRequest = {
-	Annotation: string?, --- String detailing any additional information concerning this operation.
-	CatalogVersion: string?, --- Catalog version from which items are to be granted.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ItemIds: {any}, --- Array of itemIds to grant to the user.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- String detailing any additional information concerning this operation. 
+	Annotation: string?,
+	--- Catalog version from which items are to be granted. 
+	CatalogVersion: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Array of itemIds to grant to the user. 
+	ItemIds: {any},
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- Please note that the order of the items in the response may not match the order 
 --- of items in the request. 
 export type GrantItemsToUserResult = {
-	ItemGrantResults: {GrantedItemInstance}?, --- Array of items granted to users.
+	--- Array of items granted to users. 
+	ItemGrantResults: {GrantedItemInstance}?,
 }
 
 --- This function directly adds inventory items to user inventories. As a result 
@@ -2167,15 +2707,20 @@ export type GrantItemsToUserResult = {
 --- for inventory grants and purchases increases fractionally the more items are 
 --- in the inventory, and the more items are in the grant/purchase operation. 
 export type GrantItemsToUsersRequest = {
-	CatalogVersion: string?, --- Catalog version from which items are to be granted.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ItemGrants: {ItemGrant}, --- Array of items to grant and the users to whom the items are to be granted.
+	--- Catalog version from which items are to be granted. 
+	CatalogVersion: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Array of items to grant and the users to whom the items are to be granted. 
+	ItemGrants: {ItemGrant},
 }
 
 --- Please note that the order of the items in the response may not match the order 
 --- of items in the request. 
 export type GrantItemsToUsersResult = {
-	ItemGrantResults: {GrantedItemInstance}?, --- Array of items granted to users.
+	--- Array of items granted to users. 
+	ItemGrantResults: {GrantedItemInstance}?,
 }
 
 --- Result of granting an item to a user. Note, to retrieve additional information 
@@ -2186,33 +2731,66 @@ export type GrantItemsToUsersResult = {
 --- via a call to UpdateUserInventoryItemCustomData. Other fields such as UnitPrice 
 --- and UnitCurrency are only set when the item was granted via a purchase. 
 export type GrantedItemInstance = {
-	Annotation: string?, --- Game specific comment associated with this instance when it was added to the user inventory.
-	BundleContents: {any}?, --- Array of unique items that were awarded when this catalog item was purchased.
-	BundleParent: string?, --- Unique identifier for the parent inventory item, as defined in the catalog, for object which were added from a bundle or container.
-	CatalogVersion: string?, --- Catalog version for the inventory item, when this instance was created.
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomData: {[any]: any}?, --- A set of custom key-value pairs on the instance of the inventory item, which is not to be confused with the catalog item's custom data.
-	DisplayName: string?, --- CatalogItem.DisplayName at the time this item was purchased.
-	Expiration: string?, --- Timestamp for when this instance will expire.
-	ItemClass: string?, --- Class name for the inventory item, as defined in the catalog.
-	ItemId: string?, --- Unique identifier for the inventory item, as defined in the catalog.
-	ItemInstanceId: string?, --- Unique item identifier for this specific instance of the item.
-	PlayFabId: string?, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	PurchaseDate: string?, --- Timestamp for when this instance was purchased.
-	RemainingUses: number?, --- Total number of remaining uses, if this is a consumable item.
-	Result: boolean, --- Result of this operation.
-	UnitCurrency: string?, --- Currency type for the cost of the catalog item. Not available when granting items.
-	UnitPrice: number, --- Cost of the catalog item in the given currency. Not available when granting items.
-	UsesIncrementedBy: number?, --- The number of uses that were added or removed to this item in this call.
+	--- Game specific comment associated with this instance when it was added to the 
+	--- user inventory. 
+	Annotation: string?,
+	--- Array of unique items that were awarded when this catalog item was purchased. 
+	BundleContents: {any}?,
+	--- Unique identifier for the parent inventory item, as defined in the catalog, 
+	--- for object which were added from a bundle or container. 
+	BundleParent: string?,
+	--- Catalog version for the inventory item, when this instance was created. 
+	CatalogVersion: string?,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- A set of custom key-value pairs on the instance of the inventory item, which 
+	--- is not to be confused with the catalog item's custom data. 
+	CustomData: {[any]: any}?,
+	--- CatalogItem.DisplayName at the time this item was purchased. 
+	DisplayName: string?,
+	--- Timestamp for when this instance will expire. 
+	Expiration: string?,
+	--- Class name for the inventory item, as defined in the catalog. 
+	ItemClass: string?,
+	--- Unique identifier for the inventory item, as defined in the catalog. 
+	ItemId: string?,
+	--- Unique item identifier for this specific instance of the item. 
+	ItemInstanceId: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string?,
+	--- Timestamp for when this instance was purchased. 
+	PurchaseDate: string?,
+	--- Total number of remaining uses, if this is a consumable item. 
+	RemainingUses: number?,
+	--- Result of this operation. 
+	Result: boolean,
+	--- Currency type for the cost of the catalog item. Not available when granting 
+	--- items. 
+	UnitCurrency: string?,
+	--- Cost of the catalog item in the given currency. Not available when granting 
+	--- items. 
+	UnitPrice: number,
+	--- The number of uses that were added or removed to this item in this call. 
+	UsesIncrementedBy: number?,
 }
 
 export type ItemGrant = {
-	Annotation: string?, --- String detailing any additional information concerning this operation.
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	Data: {[any]: any}?, --- Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
-	ItemId: string, --- Unique identifier of the catalog item to be granted to the user.
-	KeysToRemove: {any}?, --- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- String detailing any additional information concerning this operation. 
+	Annotation: string?,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- Key-value pairs to be written to the custom data. Note that keys are trimmed 
+	--- of whitespace, are limited in size, and may not begin with a '!' character or 
+	--- be null. 
+	Data: {[any]: any}?,
+	--- Unique identifier of the catalog item to be granted to the user. 
+	ItemId: string,
+	--- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert 
+	--- null-values into Data due to language constraints. Use this to delete the keys 
+	--- directly. 
+	KeysToRemove: {any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- A unique instance of an item in a user's inventory. Note, to retrieve additional 
@@ -2224,105 +2802,177 @@ export type ItemGrant = {
 --- fields such as UnitPrice and UnitCurrency are only set when the item was granted 
 --- via a purchase. 
 export type ItemInstance = {
-	Annotation: string?, --- Game specific comment associated with this instance when it was added to the user inventory.
-	BundleContents: {any}?, --- Array of unique items that were awarded when this catalog item was purchased.
-	BundleParent: string?, --- Unique identifier for the parent inventory item, as defined in the catalog, for object which were added from a bundle or container.
-	CatalogVersion: string?, --- Catalog version for the inventory item, when this instance was created.
-	CustomData: {[any]: any}?, --- A set of custom key-value pairs on the instance of the inventory item, which is not to be confused with the catalog item's custom data.
-	DisplayName: string?, --- CatalogItem.DisplayName at the time this item was purchased.
-	Expiration: string?, --- Timestamp for when this instance will expire.
-	ItemClass: string?, --- Class name for the inventory item, as defined in the catalog.
-	ItemId: string?, --- Unique identifier for the inventory item, as defined in the catalog.
-	ItemInstanceId: string?, --- Unique item identifier for this specific instance of the item.
-	PurchaseDate: string?, --- Timestamp for when this instance was purchased.
-	RemainingUses: number?, --- Total number of remaining uses, if this is a consumable item.
-	UnitCurrency: string?, --- Currency type for the cost of the catalog item. Not available when granting items.
-	UnitPrice: number, --- Cost of the catalog item in the given currency. Not available when granting items.
-	UsesIncrementedBy: number?, --- The number of uses that were added or removed to this item in this call.
+	--- Game specific comment associated with this instance when it was added to the 
+	--- user inventory. 
+	Annotation: string?,
+	--- Array of unique items that were awarded when this catalog item was purchased. 
+	BundleContents: {any}?,
+	--- Unique identifier for the parent inventory item, as defined in the catalog, 
+	--- for object which were added from a bundle or container. 
+	BundleParent: string?,
+	--- Catalog version for the inventory item, when this instance was created. 
+	CatalogVersion: string?,
+	--- A set of custom key-value pairs on the instance of the inventory item, which 
+	--- is not to be confused with the catalog item's custom data. 
+	CustomData: {[any]: any}?,
+	--- CatalogItem.DisplayName at the time this item was purchased. 
+	DisplayName: string?,
+	--- Timestamp for when this instance will expire. 
+	Expiration: string?,
+	--- Class name for the inventory item, as defined in the catalog. 
+	ItemClass: string?,
+	--- Unique identifier for the inventory item, as defined in the catalog. 
+	ItemId: string?,
+	--- Unique item identifier for this specific instance of the item. 
+	ItemInstanceId: string?,
+	--- Timestamp for when this instance was purchased. 
+	PurchaseDate: string?,
+	--- Total number of remaining uses, if this is a consumable item. 
+	RemainingUses: number?,
+	--- Currency type for the cost of the catalog item. Not available when granting 
+	--- items. 
+	UnitCurrency: string?,
+	--- Cost of the catalog item in the given currency. Not available when granting 
+	--- items. 
+	UnitPrice: number,
+	--- The number of uses that were added or removed to this item in this call. 
+	UsesIncrementedBy: number?,
 }
 
 export type LinkNintendoServiceAccountRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ForceLink: boolean?, --- If another user is already linked to a specific Nintendo Switch account, unlink the other user and re-link.
-	IdentityToken: string, --- The JSON Web token (JWT) returned by Nintendo after login. Used to validate the request and find the user ID (Nintendo Switch subject) to link with.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- If another user is already linked to a specific Nintendo Switch account, unlink 
+	--- the other user and re-link. 
+	ForceLink: boolean?,
+	--- The JSON Web token (JWT) returned by Nintendo after login. Used to validate 
+	--- the request and find the user ID (Nintendo Switch subject) to link with. 
+	IdentityToken: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type LinkNintendoSwitchDeviceIdRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ForceLink: boolean?, --- If another user is already linked to the Nintendo Switch Device ID, unlink the other user and re-link.
-	NintendoSwitchDeviceId: string, --- Nintendo Switch unique identifier for the user's device.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- If another user is already linked to the Nintendo Switch Device ID, unlink the 
+	--- other user and re-link. 
+	ForceLink: boolean?,
+	--- Nintendo Switch unique identifier for the user's device. 
+	NintendoSwitchDeviceId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type LinkNintendoSwitchDeviceIdResult = {
 }
 
 export type LinkPSNAccountRequest = {
-	AuthCode: string, --- Authentication code provided by the PlayStation :tm: Network.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ForceLink: boolean?, --- If another user is already linked to the account, unlink the other user and re-link.
-	IssuerId: number?, --- Id of the PlayStation :tm: Network issuer environment. If null, defaults to production environment.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	RedirectUri: string, --- Redirect URI supplied to PlayStation :tm: Network when requesting an auth code
+	--- Authentication code provided by the PlayStation :tm: Network. 
+	AuthCode: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- If another user is already linked to the account, unlink the other user and 
+	--- re-link. 
+	ForceLink: boolean?,
+	--- Id of the PlayStation :tm: Network issuer environment. If null, defaults to 
+	--- production environment. 
+	IssuerId: number?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Redirect URI supplied to PlayStation :tm: Network when requesting an auth code 
+	RedirectUri: string,
 }
 
 export type LinkPSNAccountResult = {
 }
 
 export type LinkServerCustomIdRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ForceLink: boolean?, --- If another user is already linked to the custom ID, unlink the other user and re-link.
-	PlayFabId: string, --- Unique PlayFab identifier.
-	ServerCustomId: string, --- Unique server custom identifier for this player.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- If another user is already linked to the custom ID, unlink the other user and 
+	--- re-link. 
+	ForceLink: boolean?,
+	--- Unique PlayFab identifier. 
+	PlayFabId: string,
+	--- Unique server custom identifier for this player. 
+	ServerCustomId: string,
 }
 
 export type LinkServerCustomIdResult = {
 }
 
 export type LinkXboxAccountRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ForceLink: boolean?, --- If another user is already linked to the account, unlink the other user and re-link.
-	PlayFabId: string, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Xbox Live identifier.
-	XboxToken: string, --- Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com/", "").
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- If another user is already linked to the account, unlink the other user and 
+	--- re-link. 
+	ForceLink: boolean?,
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the Xbox Live identifier. 
+	PlayFabId: string,
+	--- Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", 
+	--- "https://playfabapi.com/", ""). 
+	XboxToken: string,
 }
 
 export type LinkXboxAccountResult = {
 }
 
 export type LinkedPlatformAccountModel = {
-	Email: string?, --- Linked account email of the user on the platform, if available
-	Platform: string?, --- Authentication platform
-	PlatformUserId: string?, --- Unique account identifier of the user on the platform
-	Username: string?, --- Linked account username of the user on the platform, if available
+	--- Linked account email of the user on the platform, if available 
+	Email: string?,
+	--- Authentication platform 
+	Platform: string?,
+	--- Unique account identifier of the user on the platform 
+	PlatformUserId: string?,
+	--- Linked account username of the user on the platform, if available 
+	Username: string?,
 }
 
 --- Returns a list of every character that currently belongs to a user. 
 export type ListUsersCharactersRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type ListUsersCharactersResult = {
-	Characters: {CharacterResult}?, --- The requested list of characters.
+	--- The requested list of characters. 
+	Characters: {CharacterResult}?,
 }
 
 --- Contains the localized push notification content. 
 export type LocalizedPushNotificationProperties = {
-	Message: string?, --- Message of the localized push notification template.
-	Subject: string?, --- Subject of the localized push notification template.
+	--- Message of the localized push notification template. 
+	Message: string?,
+	--- Subject of the localized push notification template. 
+	Subject: string?,
 }
 
 export type LocationModel = {
-	City: string?, --- City name.
-	ContinentCode: string?, --- The two-character continent code for this location
-	CountryCode: string?, --- The two-character ISO 3166-1 country code for the country associated with the location
-	Latitude: number?, --- Latitude coordinate of the geographic location.
-	Longitude: number?, --- Longitude coordinate of the geographic location.
+	--- City name. 
+	City: string?,
+	--- The two-character continent code for this location 
+	ContinentCode: string?,
+	--- The two-character ISO 3166-1 country code for the country associated with the 
+	--- location 
+	CountryCode: string?,
+	--- Latitude coordinate of the geographic location. 
+	Latitude: number?,
+	--- Longitude coordinate of the geographic location. 
+	Longitude: number?,
 }
 
 export type LogStatement = {
-	Data: {[any]: any}?, --- Optional object accompanying the message as contextual information
-	Level: string?, --- 'Debug', 'Info', or 'Error'
+	--- Optional object accompanying the message as contextual information 
+	Data: {[any]: any}?,
+	--- 'Debug', 'Info', or 'Error' 
+	Level: string?,
 	Message: string?,
 }
 
@@ -2351,11 +3001,18 @@ export type LoginIdentityProvider =
 	| "GooglePlayGames"
 
 export type LoginWithServerCustomIdRequest = {
-	CreateAccount: boolean?, --- Automatically create a PlayFab account if one is not currently linked to this ID.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?, --- Flags for which pieces of info to return for the user.
-	PlayerSecret: string?, --- Player secret that is used to verify API request signatures (Enterprise Only).
-	ServerCustomId: string?, --- The backend server identifier for this player.
+	--- Automatically create a PlayFab account if one is not currently linked to this 
+	--- ID. 
+	CreateAccount: boolean?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Flags for which pieces of info to return for the user. 
+	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
+	--- Player secret that is used to verify API request signatures (Enterprise Only). 
+	PlayerSecret: string?,
+	--- The backend server identifier for this player. 
+	ServerCustomId: string?,
 }
 
 --- If this is the first time a user has signed in with the Steam ID and CreateAccount 
@@ -2368,10 +3025,16 @@ export type LoginWithServerCustomIdRequest = {
 --- such as currency and country will not be available until they login while the 
 --- Client is open. 
 export type LoginWithSteamIdRequest = {
-	CreateAccount: boolean?, --- Automatically create a PlayFab account if one is not currently linked to this ID.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?, --- Flags for which pieces of info to return for the user.
-	SteamId: string, --- Unique Steam identifier for a user
+	--- Automatically create a PlayFab account if one is not currently linked to this 
+	--- ID. 
+	CreateAccount: boolean?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Flags for which pieces of info to return for the user. 
+	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
+	--- Unique Steam identifier for a user 
+	SteamId: string,
 }
 
 --- If this is the first time a user has signed in with the Xbox ID and CreateAccount 
@@ -2381,11 +3044,18 @@ export type LoginWithSteamIdRequest = {
 --- account, an error indicating this will be returned, so that the title can guide 
 --- the user through creation of a PlayFab account. 
 export type LoginWithXboxIdRequest = {
-	CreateAccount: boolean?, --- Automatically create a PlayFab account if one is not currently linked to this ID.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?, --- Flags for which pieces of info to return for the user.
-	Sandbox: string, --- The id of Xbox Live sandbox.
-	XboxId: string, --- Unique Xbox identifier for a user
+	--- Automatically create a PlayFab account if one is not currently linked to this 
+	--- ID. 
+	CreateAccount: boolean?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Flags for which pieces of info to return for the user. 
+	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
+	--- The id of Xbox Live sandbox. 
+	Sandbox: string,
+	--- Unique Xbox identifier for a user 
+	XboxId: string,
 }
 
 --- If this is the first time a user has signed in with the Xbox Live account and 
@@ -2395,45 +3065,75 @@ export type LoginWithXboxIdRequest = {
 --- Xbox Live account, an error indicating this will be returned, so that the title 
 --- can guide the user through creation of a PlayFab account. 
 export type LoginWithXboxRequest = {
-	CreateAccount: boolean?, --- Automatically create a PlayFab account if one is not currently linked to this ID.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?, --- Flags for which pieces of info to return for the user.
-	XboxToken: string, --- Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", "https://playfabapi.com/", "").
+	--- Automatically create a PlayFab account if one is not currently linked to this 
+	--- ID. 
+	CreateAccount: boolean?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Flags for which pieces of info to return for the user. 
+	InfoRequestParameters: GetPlayerCombinedInfoRequestParams?,
+	--- Token provided by the Xbox Live SDK/XDK method GetTokenAndSignatureAsync("POST", 
+	--- "https://playfabapi.com/", ""). 
+	XboxToken: string,
 }
 
 export type MembershipModel = {
-	IsActive: boolean, --- Whether this membership is active. That is, whether the MembershipExpiration time has been reached.
-	MembershipExpiration: string, --- The time this membership expires
-	MembershipId: string?, --- The id of the membership
-	OverrideExpiration: string?, --- Membership expirations can be explicitly overridden (via game manager or the admin api). If this membership has been overridden, this will be the new expiration time.
-	OverrideIsSet: boolean?, --- Whether the override expiration is set.
-	Subscriptions: {SubscriptionModel}?, --- The list of subscriptions that this player has for this membership
+	--- Whether this membership is active. That is, whether the MembershipExpiration 
+	--- time has been reached. 
+	IsActive: boolean,
+	--- The time this membership expires 
+	MembershipExpiration: string,
+	--- The id of the membership 
+	MembershipId: string?,
+	--- Membership expirations can be explicitly overridden (via game manager or the 
+	--- admin api). If this membership has been overridden, this will be the new expiration 
+	--- time. 
+	OverrideExpiration: string?,
+	--- Whether the override expiration is set. 
+	OverrideIsSet: boolean?,
+	--- The list of subscriptions that this player has for this membership 
+	Subscriptions: {SubscriptionModel}?,
 }
 
 export type ModifyCharacterVirtualCurrencyResult = {
-	Balance: number, --- Balance of the virtual currency after modification.
-	VirtualCurrency: string?, --- Name of the virtual currency which was modified.
+	--- Balance of the virtual currency after modification. 
+	Balance: number,
+	--- Name of the virtual currency which was modified. 
+	VirtualCurrency: string?,
 }
 
 --- This function can both add and remove uses of an inventory item. If the number 
 --- of uses drops below zero, the item will be removed from active inventory. 
 export type ModifyItemUsesRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ItemInstanceId: string, --- Unique instance identifier of the item to be modified.
-	PlayFabId: string, --- PlayFab unique identifier of the user whose item is being modified.
-	UsesToAdd: number, --- Number of uses to add to the item. Can be negative to remove uses.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique instance identifier of the item to be modified. 
+	ItemInstanceId: string,
+	--- PlayFab unique identifier of the user whose item is being modified. 
+	PlayFabId: string,
+	--- Number of uses to add to the item. Can be negative to remove uses. 
+	UsesToAdd: number,
 }
 
 export type ModifyItemUsesResult = {
-	ItemInstanceId: string?, --- Unique instance identifier of the item with uses consumed.
-	RemainingUses: number, --- Number of uses remaining on the item.
+	--- Unique instance identifier of the item with uses consumed. 
+	ItemInstanceId: string?,
+	--- Number of uses remaining on the item. 
+	RemainingUses: number,
 }
 
 export type ModifyUserVirtualCurrencyResult = {
-	Balance: number, --- Balance of the virtual currency after modification.
-	BalanceChange: number, --- Amount added or subtracted from the user's virtual currency. Maximum VC balance is Int32 (2,147,483,647). Any increase over this value will be discarded.
-	PlayFabId: string?, --- User currency was subtracted from.
-	VirtualCurrency: string?, --- Name of the virtual currency which was modified.
+	--- Balance of the virtual currency after modification. 
+	Balance: number,
+	--- Amount added or subtracted from the user's virtual currency. Maximum VC balance 
+	--- is Int32 (2,147,483,647). Any increase over this value will be discarded. 
+	BalanceChange: number,
+	--- User currency was subtracted from. 
+	PlayFabId: string?,
+	--- Name of the virtual currency which was modified. 
+	VirtualCurrency: string?,
 }
 
 --- Transfers an item from a character to another character that is owned by the 
@@ -2441,10 +3141,14 @@ export type ModifyUserVirtualCurrencyResult = {
 --- unless it is moved back), and will enable the other character to make use of 
 --- the item instead. 
 export type MoveItemToCharacterFromCharacterRequest = {
-	GivingCharacterId: string, --- Unique identifier of the character that currently has the item.
-	ItemInstanceId: string, --- Unique PlayFab assigned instance identifier of the item
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	ReceivingCharacterId: string, --- Unique identifier of the character that will be receiving the item.
+	--- Unique identifier of the character that currently has the item. 
+	GivingCharacterId: string,
+	--- Unique PlayFab assigned instance identifier of the item 
+	ItemInstanceId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Unique identifier of the character that will be receiving the item. 
+	ReceivingCharacterId: string,
 }
 
 export type MoveItemToCharacterFromCharacterResult = {
@@ -2454,9 +3158,12 @@ export type MoveItemToCharacterFromCharacterResult = {
 --- item from the user's inventory (until and unless it is moved back), and will 
 --- enable the character to make use of the item instead. 
 export type MoveItemToCharacterFromUserRequest = {
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	ItemInstanceId: string, --- Unique PlayFab assigned instance identifier of the item
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- Unique PlayFab assigned instance identifier of the item 
+	ItemInstanceId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type MoveItemToCharacterFromUserResult = {
@@ -2466,37 +3173,54 @@ export type MoveItemToCharacterFromUserResult = {
 --- item from the character's inventory (until and unless it is moved back), and 
 --- will enable the user to make use of the item instead. 
 export type MoveItemToUserFromCharacterRequest = {
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	ItemInstanceId: string, --- Unique PlayFab assigned instance identifier of the item
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- Unique PlayFab assigned instance identifier of the item 
+	ItemInstanceId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type MoveItemToUserFromCharacterResult = {
 }
 
 export type NintendoServiceAccountPlayFabIdPair = {
-	NintendoServiceAccountId: string?, --- Unique Nintendo Switch Service Account identifier for a user.
-	PlayFabId: string?, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Nintendo Switch Service Account identifier.
+	--- Unique Nintendo Switch Service Account identifier for a user. 
+	NintendoServiceAccountId: string?,
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the Nintendo Switch Service Account identifier. 
+	PlayFabId: string?,
 }
 
 export type NintendoSwitchPlayFabIdPair = {
-	NintendoSwitchDeviceId: string?, --- Unique Nintendo Switch Device identifier for a user.
-	PlayFabId: string?, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Nintendo Switch Device identifier.
+	--- Unique Nintendo Switch Device identifier for a user. 
+	NintendoSwitchDeviceId: string?,
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the Nintendo Switch Device identifier. 
+	PlayFabId: string?,
 }
 
 export type NotifyMatchmakerPlayerLeftRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	LobbyId: string, --- Unique identifier of the Game Instance the user is leaving.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique identifier of the Game Instance the user is leaving. 
+	LobbyId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type NotifyMatchmakerPlayerLeftResult = {
-	PlayerState: string?, --- State of user leaving the Game Server Instance.
+	--- State of user leaving the Game Server Instance. 
+	PlayerState: string?,
 }
 
 export type PSNAccountPlayFabIdPair = {
-	PSNAccountId: string?, --- Unique PlayStation :tm: Network identifier for a user.
-	PlayFabId: string?, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the PlayStation :tm: Network identifier.
+	--- Unique PlayStation :tm: Network identifier for a user. 
+	PSNAccountId: string?,
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the PlayStation :tm: Network identifier. 
+	PlayFabId: string?,
 }
 
 export type PlayerConnectionState = 
@@ -2506,118 +3230,216 @@ export type PlayerConnectionState =
 	| "Participated"
 
 export type PlayerLeaderboardEntry = {
-	DisplayName: string?, --- Title-specific display name of the user for this leaderboard entry.
-	PlayFabId: string?, --- PlayFab unique identifier of the user for this leaderboard entry.
-	Position: number, --- User's overall position in the leaderboard.
-	Profile: PlayerProfileModel?, --- The profile of the user, if requested.
-	StatValue: number, --- Specific value of the user's statistic.
+	--- Title-specific display name of the user for this leaderboard entry. 
+	DisplayName: string?,
+	--- PlayFab unique identifier of the user for this leaderboard entry. 
+	PlayFabId: string?,
+	--- User's overall position in the leaderboard. 
+	Position: number,
+	--- The profile of the user, if requested. 
+	Profile: PlayerProfileModel?,
+	--- Specific value of the user's statistic. 
+	StatValue: number,
 }
 
 export type PlayerLinkedAccount = {
-	Email: string?, --- Linked account's email
-	Platform: string?, --- Authentication platform
-	PlatformUserId: string?, --- Platform user identifier
-	Username: string?, --- Linked account's username
+	--- Linked account's email 
+	Email: string?,
+	--- Authentication platform 
+	Platform: string?,
+	--- Platform user identifier 
+	PlatformUserId: string?,
+	--- Linked account's username 
+	Username: string?,
 }
 
 export type PlayerLocation = {
-	City: string?, --- City of the player's geographic location.
-	ContinentCode: string, --- The two-character continent code for this location
-	CountryCode: string, --- The two-character ISO 3166-1 country code for the country associated with the location
-	Latitude: number?, --- Latitude coordinate of the player's geographic location.
-	Longitude: number?, --- Longitude coordinate of the player's geographic location.
+	--- City of the player's geographic location. 
+	City: string?,
+	--- The two-character continent code for this location 
+	ContinentCode: string,
+	--- The two-character ISO 3166-1 country code for the country associated with the 
+	--- location 
+	CountryCode: string,
+	--- Latitude coordinate of the player's geographic location. 
+	Latitude: number?,
+	--- Longitude coordinate of the player's geographic location. 
+	Longitude: number?,
 }
 
 export type PlayerProfile = {
-	AdCampaignAttributions: {AdCampaignAttribution}?, --- Array of ad campaigns player has been attributed to
-	AvatarUrl: string?, --- Image URL of the player's avatar.
-	BannedUntil: string?, --- Banned until UTC Date. If permanent ban this is set for 20 years after the original ban date.
-	ContactEmailAddresses: {ContactEmailInfo}?, --- Array of contact email addresses associated with the player
-	Created: string?, --- Player record created
-	DisplayName: string?, --- Player Display Name
-	LastLogin: string?, --- Last login
-	LinkedAccounts: {PlayerLinkedAccount}?, --- Array of third party accounts linked to this player
-	Locations: PlayerLocation?, --- Dictionary of player's locations by type.
-	Origination: string?, --- Player account origination
-	PlayerExperimentVariants: {any}?, --- List of player variants for experimentation
-	PlayerId: string?, --- PlayFab Player ID
-	PlayerStatistics: {PlayerStatistic}?, --- Array of player statistics
-	PublisherId: string?, --- Publisher this player belongs to
-	PushNotificationRegistrations: {PushNotificationRegistration}?, --- Array of configured push notification end points
-	Statistics: {[any]: any}?, --- Dictionary of player's statistics using only the latest version's value
-	Tags: {any}?, --- List of player's tags for segmentation.
-	TitleId: string?, --- Title ID this profile applies to
-	TotalValueToDateInUSD: number?, --- A sum of player's total purchases in USD across all currencies.
-	ValuesToDate: {[any]: any}?, --- Dictionary of player's total purchases by currency.
-	VirtualCurrencyBalances: {[any]: any}?, --- Dictionary of player's virtual currency balances
+	--- Array of ad campaigns player has been attributed to 
+	AdCampaignAttributions: {AdCampaignAttribution}?,
+	--- Image URL of the player's avatar. 
+	AvatarUrl: string?,
+	--- Banned until UTC Date. If permanent ban this is set for 20 years after the original 
+	--- ban date. 
+	BannedUntil: string?,
+	--- Array of contact email addresses associated with the player 
+	ContactEmailAddresses: {ContactEmailInfo}?,
+	--- Player record created 
+	Created: string?,
+	--- Player Display Name 
+	DisplayName: string?,
+	--- Last login 
+	LastLogin: string?,
+	--- Array of third party accounts linked to this player 
+	LinkedAccounts: {PlayerLinkedAccount}?,
+	--- Dictionary of player's locations by type. 
+	Locations: PlayerLocation?,
+	--- Player account origination 
+	Origination: string?,
+	--- List of player variants for experimentation 
+	PlayerExperimentVariants: {any}?,
+	--- PlayFab Player ID 
+	PlayerId: string?,
+	--- Array of player statistics 
+	PlayerStatistics: {PlayerStatistic}?,
+	--- Publisher this player belongs to 
+	PublisherId: string?,
+	--- Array of configured push notification end points 
+	PushNotificationRegistrations: {PushNotificationRegistration}?,
+	--- Dictionary of player's statistics using only the latest version's value 
+	Statistics: {[any]: any}?,
+	--- List of player's tags for segmentation. 
+	Tags: {any}?,
+	--- Title ID this profile applies to 
+	TitleId: string?,
+	--- A sum of player's total purchases in USD across all currencies. 
+	TotalValueToDateInUSD: number?,
+	--- Dictionary of player's total purchases by currency. 
+	ValuesToDate: {[any]: any}?,
+	--- Dictionary of player's virtual currency balances 
+	VirtualCurrencyBalances: {[any]: any}?,
 }
 
 export type PlayerProfileModel = {
-	AdCampaignAttributions: {AdCampaignAttributionModel}?, --- List of advertising campaigns the player has been attributed to
-	AvatarUrl: string?, --- URL of the player's avatar image
-	BannedUntil: string?, --- If the player is currently banned, the UTC Date when the ban expires
-	ContactEmailAddresses: {ContactEmailInfoModel}?, --- List of all contact email info associated with the player account
-	Created: string?, --- Player record created
-	DisplayName: string?, --- Player display name
-	ExperimentVariants: {any}?, --- List of experiment variants for the player. Note that these variants are not guaranteed to be up-to-date when returned during login because the player profile is updated only after login. Instead, use the LoginResult.TreatmentAssignment property during login to get the correct variants and variables.
-	LastLogin: string?, --- UTC time when the player most recently logged in to the title
-	LinkedAccounts: {LinkedPlatformAccountModel}?, --- List of all authentication systems linked to this player account
-	Locations: {LocationModel}?, --- List of geographic locations from which the player has logged in to the title
-	Memberships: {MembershipModel}?, --- List of memberships for the player, along with whether are expired.
-	Origination: string?, --- Player account origination
-	PlayerId: string?, --- PlayFab player account unique identifier
-	PublisherId: string?, --- Publisher this player belongs to
-	PushNotificationRegistrations: {PushNotificationRegistrationModel}?, --- List of configured end points registered for sending the player push notifications
-	Statistics: {StatisticModel}?, --- List of leaderboard statistic values for the player
-	Tags: {TagModel}?, --- List of player's tags for segmentation
-	TitleId: string?, --- Title ID this player profile applies to
-	TotalValueToDateInUSD: number?, --- Sum of the player's purchases made with real-money currencies, converted to US dollars equivalent and represented as a whole number of cents (1/100 USD). For example, 999 indicates nine dollars and ninety-nine cents.
-	ValuesToDate: {ValueToDateModel}?, --- List of the player's lifetime purchase totals, summed by real-money currency
+	--- List of advertising campaigns the player has been attributed to 
+	AdCampaignAttributions: {AdCampaignAttributionModel}?,
+	--- URL of the player's avatar image 
+	AvatarUrl: string?,
+	--- If the player is currently banned, the UTC Date when the ban expires 
+	BannedUntil: string?,
+	--- List of all contact email info associated with the player account 
+	ContactEmailAddresses: {ContactEmailInfoModel}?,
+	--- Player record created 
+	Created: string?,
+	--- Player display name 
+	DisplayName: string?,
+	--- List of experiment variants for the player. Note that these variants are not 
+	--- guaranteed to be up-to-date when returned during login because the player profile 
+	--- is updated only after login. Instead, use the LoginResult.TreatmentAssignment 
+	--- property during login to get the correct variants and variables. 
+	ExperimentVariants: {any}?,
+	--- UTC time when the player most recently logged in to the title 
+	LastLogin: string?,
+	--- List of all authentication systems linked to this player account 
+	LinkedAccounts: {LinkedPlatformAccountModel}?,
+	--- List of geographic locations from which the player has logged in to the title 
+	Locations: {LocationModel}?,
+	--- List of memberships for the player, along with whether are expired. 
+	Memberships: {MembershipModel}?,
+	--- Player account origination 
+	Origination: string?,
+	--- PlayFab player account unique identifier 
+	PlayerId: string?,
+	--- Publisher this player belongs to 
+	PublisherId: string?,
+	--- List of configured end points registered for sending the player push notifications 
+	PushNotificationRegistrations: {PushNotificationRegistrationModel}?,
+	--- List of leaderboard statistic values for the player 
+	Statistics: {StatisticModel}?,
+	--- List of player's tags for segmentation 
+	Tags: {TagModel}?,
+	--- Title ID this player profile applies to 
+	TitleId: string?,
+	--- Sum of the player's purchases made with real-money currencies, converted to 
+	--- US dollars equivalent and represented as a whole number of cents (1/100 USD). 
+	--- For example, 999 indicates nine dollars and ninety-nine cents. 
+	TotalValueToDateInUSD: number?,
+	--- List of the player's lifetime purchase totals, summed by real-money currency 
+	ValuesToDate: {ValueToDateModel}?,
 }
 
 export type PlayerProfileViewConstraints = {
-	ShowAvatarUrl: boolean, --- Whether to show player's avatar URL. Defaults to false
-	ShowBannedUntil: boolean, --- Whether to show the banned until time. Defaults to false
-	ShowCampaignAttributions: boolean, --- Whether to show campaign attributions. Defaults to false
-	ShowContactEmailAddresses: boolean, --- Whether to show contact email addresses. Defaults to false
-	ShowCreated: boolean, --- Whether to show the created date. Defaults to false
-	ShowDisplayName: boolean, --- Whether to show the display name. Defaults to false
-	ShowExperimentVariants: boolean, --- Whether to show player's experiment variants. Defaults to false
-	ShowLastLogin: boolean, --- Whether to show the last login time. Defaults to false
-	ShowLinkedAccounts: boolean, --- Whether to show the linked accounts. Defaults to false
-	ShowLocations: boolean, --- Whether to show player's locations. Defaults to false
-	ShowMemberships: boolean, --- Whether to show player's membership information. Defaults to false
-	ShowOrigination: boolean, --- Whether to show origination. Defaults to false
-	ShowPushNotificationRegistrations: boolean, --- Whether to show push notification registrations. Defaults to false
-	ShowStatistics: boolean, --- Reserved for future development
-	ShowTags: boolean, --- Whether to show tags. Defaults to false
-	ShowTotalValueToDateInUsd: boolean, --- Whether to show the total value to date in usd. Defaults to false
-	ShowValuesToDate: boolean, --- Whether to show the values to date. Defaults to false
+	--- Whether to show player's avatar URL. Defaults to false 
+	ShowAvatarUrl: boolean,
+	--- Whether to show the banned until time. Defaults to false 
+	ShowBannedUntil: boolean,
+	--- Whether to show campaign attributions. Defaults to false 
+	ShowCampaignAttributions: boolean,
+	--- Whether to show contact email addresses. Defaults to false 
+	ShowContactEmailAddresses: boolean,
+	--- Whether to show the created date. Defaults to false 
+	ShowCreated: boolean,
+	--- Whether to show the display name. Defaults to false 
+	ShowDisplayName: boolean,
+	--- Whether to show player's experiment variants. Defaults to false 
+	ShowExperimentVariants: boolean,
+	--- Whether to show the last login time. Defaults to false 
+	ShowLastLogin: boolean,
+	--- Whether to show the linked accounts. Defaults to false 
+	ShowLinkedAccounts: boolean,
+	--- Whether to show player's locations. Defaults to false 
+	ShowLocations: boolean,
+	--- Whether to show player's membership information. Defaults to false 
+	ShowMemberships: boolean,
+	--- Whether to show origination. Defaults to false 
+	ShowOrigination: boolean,
+	--- Whether to show push notification registrations. Defaults to false 
+	ShowPushNotificationRegistrations: boolean,
+	--- Reserved for future development 
+	ShowStatistics: boolean,
+	--- Whether to show tags. Defaults to false 
+	ShowTags: boolean,
+	--- Whether to show the total value to date in usd. Defaults to false 
+	ShowTotalValueToDateInUsd: boolean,
+	--- Whether to show the values to date. Defaults to false 
+	ShowValuesToDate: boolean,
 }
 
 export type PlayerStatistic = {
-	Id: string?, --- Statistic ID
-	Name: string?, --- Statistic name
-	StatisticValue: number, --- Current statistic value
-	StatisticVersion: number, --- Statistic version (0 if not a versioned statistic)
+	--- Statistic ID 
+	Id: string?,
+	--- Statistic name 
+	Name: string?,
+	--- Current statistic value 
+	StatisticValue: number,
+	--- Statistic version (0 if not a versioned statistic) 
+	StatisticVersion: number,
 }
 
 export type PlayerStatisticVersion = {
-	ActivationTime: string, --- time when the statistic version became active
-	DeactivationTime: string?, --- time when the statistic version became inactive due to statistic version incrementing
-	ScheduledActivationTime: string?, --- time at which the statistic version was scheduled to become active, based on the configured ResetInterval
-	ScheduledDeactivationTime: string?, --- time at which the statistic version was scheduled to become inactive, based on the configured ResetInterval
-	StatisticName: string?, --- name of the statistic when the version became active
-	Version: number, --- version of the statistic
+	--- time when the statistic version became active 
+	ActivationTime: string,
+	--- time when the statistic version became inactive due to statistic version incrementing 
+	DeactivationTime: string?,
+	--- time at which the statistic version was scheduled to become active, based on 
+	--- the configured ResetInterval 
+	ScheduledActivationTime: string?,
+	--- time at which the statistic version was scheduled to become inactive, based 
+	--- on the configured ResetInterval 
+	ScheduledDeactivationTime: string?,
+	--- name of the statistic when the version became active 
+	StatisticName: string?,
+	--- version of the statistic 
+	Version: number,
 }
 
 export type PushNotificationPackage = {
-	Badge: number, --- Numerical badge to display on App icon (iOS only)
-	CustomData: string?, --- This must be a JSON formatted object. For use with developer-created custom Push Notification plugins
-	Icon: string?, --- Icon file to display with the message (Not supported for iOS)
-	Message: string, --- Content of the message (all platforms)
-	Sound: string?, --- Sound file to play with the message (all platforms)
-	Title: string, --- Title/Subject of the message. Not supported for iOS
+	--- Numerical badge to display on App icon (iOS only) 
+	Badge: number,
+	--- This must be a JSON formatted object. For use with developer-created custom 
+	--- Push Notification plugins 
+	CustomData: string?,
+	--- Icon file to display with the message (Not supported for iOS) 
+	Icon: string?,
+	--- Content of the message (all platforms) 
+	Message: string,
+	--- Sound file to play with the message (all platforms) 
+	Sound: string?,
+	--- Title/Subject of the message. Not supported for iOS 
+	Title: string,
 }
 
 export type PushNotificationPlatform = 
@@ -2625,19 +3447,26 @@ export type PushNotificationPlatform =
 	| "GoogleCloudMessaging"
 
 export type PushNotificationRegistration = {
-	NotificationEndpointARN: string?, --- Notification configured endpoint
-	Platform: string?, --- Push notification platform
+	--- Notification configured endpoint 
+	NotificationEndpointARN: string?,
+	--- Push notification platform 
+	Platform: string?,
 }
 
 export type PushNotificationRegistrationModel = {
-	NotificationEndpointARN: string?, --- Notification configured endpoint
-	Platform: string?, --- Push notification platform
+	--- Notification configured endpoint 
+	NotificationEndpointARN: string?,
+	--- Push notification platform 
+	Platform: string?,
 }
 
 export type RandomResultTableListing = {
-	CatalogVersion: string?, --- Catalog version this table is associated with
-	Nodes: {ResultTableNode}, --- Child nodes that indicate what kind of drop table item this actually is.
-	TableId: string, --- Unique name for this drop table
+	--- Catalog version this table is associated with 
+	CatalogVersion: string?,
+	--- Child nodes that indicate what kind of drop table item this actually is. 
+	Nodes: {ResultTableNode},
+	--- Unique name for this drop table 
+	TableId: string,
 }
 
 --- Coupon codes can be created for any item, or set of items, in the catalog for 
@@ -2645,15 +3474,23 @@ export type RandomResultTableListing = {
 --- items to be awarded to the user. Attempting to re-use an already consumed code, 
 --- or a code which has not yet been created in the service, will result in an error. 
 export type RedeemCouponRequest = {
-	CatalogVersion: string?, --- Catalog version of the coupon.
-	CharacterId: string?, --- Optional identifier for the Character that should receive the item. If null, item is added to the player
-	CouponCode: string, --- Generated coupon code to redeem.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Catalog version of the coupon. 
+	CatalogVersion: string?,
+	--- Optional identifier for the Character that should receive the item. If null, 
+	--- item is added to the player 
+	CharacterId: string?,
+	--- Generated coupon code to redeem. 
+	CouponCode: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type RedeemCouponResult = {
-	GrantedItems: {ItemInstance}?, --- Items granted to the player as a result of redeeming the coupon.
+	--- Items granted to the player as a result of redeeming the coupon. 
+	GrantedItems: {ItemInstance}?,
 }
 
 --- This function is used by a Game Server Instance to validate with the PlayFab 
@@ -2667,19 +3504,28 @@ export type RedeemCouponResult = {
 --- the relevant information for users who have accessed the title, the recommendation 
 --- is to not store this data locally. 
 export type RedeemMatchmakerTicketRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	LobbyId: string, --- Unique identifier of the Game Server Instance that is asking for validation of the authorization ticket.
-	Ticket: string, --- Server authorization ticket passed back from a call to Matchmake or StartGame.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique identifier of the Game Server Instance that is asking for validation 
+	--- of the authorization ticket. 
+	LobbyId: string,
+	--- Server authorization ticket passed back from a call to Matchmake or StartGame. 
+	Ticket: string,
 }
 
 export type RedeemMatchmakerTicketResult = {
-	Error: string?, --- Error value if the ticket was not validated.
-	TicketIsValid: boolean, --- Boolean indicating whether the ticket was validated by the PlayFab service.
-	UserInfo: UserAccountInfo?, --- User account information for the user validated.
+	--- Error value if the ticket was not validated. 
+	Error: string?,
+	--- Boolean indicating whether the ticket was validated by the PlayFab service. 
+	TicketIsValid: boolean,
+	--- User account information for the user validated. 
+	UserInfo: UserAccountInfo?,
 }
 
 export type RefreshGameServerInstanceHeartbeatRequest = {
-	LobbyId: string, --- Unique identifier of the Game Server Instance for which the heartbeat is updated.
+	--- Unique identifier of the Game Server Instance for which the heartbeat is updated. 
+	LobbyId: string,
 }
 
 export type RefreshGameServerInstanceHeartbeatResult = {
@@ -2695,70 +3541,108 @@ export type Region =
 	| "Australia"
 
 export type RegisterGameRequest = {
-	Build: string, --- Unique identifier of the build running on the Game Server Instance.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	GameMode: string, --- Game Mode the Game Server instance is running. Note that this must be defined in the Game Modes tab in the PlayFab Game Manager, along with the Build ID (the same Game Mode can be defined for multiple Build IDs).
-	LobbyId: string?, --- Previous lobby id if re-registering an existing game.
-	Region: string, --- Region in which the Game Server Instance is running. For matchmaking using non-AWS region names, set this to any AWS region and use Tags (below) to specify your custom region.
-	ServerIPV4Address: string?, --- IPV4 address of the game server instance.
-	ServerIPV6Address: string?, --- IPV6 address (if any) of the game server instance.
-	ServerPort: string, --- Port number for communication with the Game Server Instance.
-	ServerPublicDNSName: string?, --- Public DNS name (if any) of the server
-	Tags: {[any]: any}?, --- Tags for the Game Server Instance
+	--- Unique identifier of the build running on the Game Server Instance. 
+	Build: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Game Mode the Game Server instance is running. Note that this must be defined 
+	--- in the Game Modes tab in the PlayFab Game Manager, along with the Build ID (the 
+	--- same Game Mode can be defined for multiple Build IDs). 
+	GameMode: string,
+	--- Previous lobby id if re-registering an existing game. 
+	LobbyId: string?,
+	--- Region in which the Game Server Instance is running. For matchmaking using non-AWS 
+	--- region names, set this to any AWS region and use Tags (below) to specify your 
+	--- custom region. 
+	Region: string,
+	--- IPV4 address of the game server instance. 
+	ServerIPV4Address: string?,
+	--- IPV6 address (if any) of the game server instance. 
+	ServerIPV6Address: string?,
+	--- Port number for communication with the Game Server Instance. 
+	ServerPort: string,
+	--- Public DNS name (if any) of the server 
+	ServerPublicDNSName: string?,
+	--- Tags for the Game Server Instance 
+	Tags: {[any]: any}?,
 }
 
 export type RegisterGameResponse = {
-	LobbyId: string?, --- Unique identifier generated for the Game Server Instance that is registered. If LobbyId is specified in request and the game still exists in PlayFab, the LobbyId in request is returned. Otherwise a new lobby id will be returned.
+	--- Unique identifier generated for the Game Server Instance that is registered. 
+	--- If LobbyId is specified in request and the game still exists in PlayFab, the 
+	--- LobbyId in request is returned. Otherwise a new lobby id will be returned. 
+	LobbyId: string?,
 }
 
 export type RemoveFriendRequest = {
-	FriendPlayFabId: string, --- PlayFab identifier of the friend account which is to be removed.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- PlayFab identifier of the friend account which is to be removed. 
+	FriendPlayFabId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type RemoveGenericIDRequest = {
-	GenericId: GenericServiceId, --- Generic service identifier to be removed from the player.
-	PlayFabId: string, --- PlayFabId of the user to remove.
+	--- Generic service identifier to be removed from the player. 
+	GenericId: GenericServiceId,
+	--- PlayFabId of the user to remove. 
+	PlayFabId: string,
 }
 
 --- This API will trigger a player_tag_removed event and remove a tag with the given 
 --- TagName and PlayFabID from the corresponding player profile. TagName can be 
 --- used for segmentation and it is limited to 256 characters 
 export type RemovePlayerTagRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	TagName: string, --- Unique tag for player profile.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Unique tag for player profile. 
+	TagName: string,
 }
 
 export type RemovePlayerTagResult = {
 }
 
 export type RemoveSharedGroupMembersRequest = {
-	PlayFabIds: {any}, --- An array of unique PlayFab assigned ID of the user on whom the operation will be performed.
-	SharedGroupId: string, --- Unique identifier for the shared group.
+	--- An array of unique PlayFab assigned ID of the user on whom the operation will 
+	--- be performed. 
+	PlayFabIds: {any},
+	--- Unique identifier for the shared group. 
+	SharedGroupId: string,
 }
 
 export type RemoveSharedGroupMembersResult = {
 }
 
 export type ReportPlayerServerRequest = {
-	Comment: string?, --- Optional additional comment by reporting player.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ReporteeId: string, --- Unique PlayFab identifier of the reported player.
-	ReporterId: string, --- PlayFabId of the reporting player.
+	--- Optional additional comment by reporting player. 
+	Comment: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab identifier of the reported player. 
+	ReporteeId: string,
+	--- PlayFabId of the reporting player. 
+	ReporterId: string,
 }
 
 --- Players are currently limited to five reports per day. Attempts by a single 
 --- user account to submit reports beyond five will result in Updated being returned 
 --- as false. 
 export type ReportPlayerServerResult = {
-	SubmissionsRemaining: number, --- The number of remaining reports which may be filed today by this reporting player.
+	--- The number of remaining reports which may be filed today by this reporting player. 
+	SubmissionsRemaining: number,
 }
 
 export type ResultTableNode = {
-	ResultItem: string, --- Either an ItemId, or the TableId of another random result table
-	ResultItemType: string, --- Whether this entry in the table is an item or a link to another table
-	Weight: number, --- How likely this is to be rolled - larger numbers add more weight
+	--- Either an ItemId, or the TableId of another random result table 
+	ResultItem: string,
+	--- Whether this entry in the table is an item or a link to another table 
+	ResultItemType: string,
+	--- How likely this is to be rolled - larger numbers add more weight 
+	Weight: number,
 }
 
 export type ResultTableNodeType = 
@@ -2769,76 +3653,101 @@ export type ResultTableNodeType =
 --- bans with an Active state will be ignored, however. Returns information about 
 --- applied updates only. 
 export type RevokeAllBansForUserRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type RevokeAllBansForUserResult = {
-	BanData: {BanInfo}?, --- Information on the bans that were revoked.
+	--- Information on the bans that were revoked. 
+	BanData: {BanInfo}?,
 }
 
 --- Setting the active state of all bans requested to Inactive regardless of whether 
 --- that ban has already expired. BanIds that do not exist will be skipped. Returns 
 --- information about applied updates only.  
 export type RevokeBansRequest = {
-	BanIds: {any}, --- Ids of the bans to be revoked. Maximum 100.
+	--- Ids of the bans to be revoked. Maximum 100. 
+	BanIds: {any},
 }
 
 export type RevokeBansResult = {
-	BanData: {BanInfo}?, --- Information on the bans that were revoked
+	--- Information on the bans that were revoked 
+	BanData: {BanInfo}?,
 }
 
 export type RevokeInventoryItem = {
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	ItemInstanceId: string, --- Unique PlayFab assigned instance identifier of the item
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- Unique PlayFab assigned instance identifier of the item 
+	ItemInstanceId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- In cases where the inventory item in question is a "crate", and the items it 
 --- contained have already been dispensed, this will not revoke access or otherwise 
 --- remove the items which were dispensed. 
 export type RevokeInventoryItemRequest = {
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	ItemInstanceId: string, --- Unique PlayFab assigned instance identifier of the item
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- Unique PlayFab assigned instance identifier of the item 
+	ItemInstanceId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- In cases where the inventory item in question is a "crate", and the items it 
 --- contained have already been dispensed, this will not revoke access or otherwise 
 --- remove the items which were dispensed. 
 export type RevokeInventoryItemsRequest = {
-	Items: {RevokeInventoryItem}, --- Array of player items to revoke, between 1 and 25 items.
+	--- Array of player items to revoke, between 1 and 25 items. 
+	Items: {RevokeInventoryItem},
 }
 
 export type RevokeInventoryItemsResult = {
-	Errors: {RevokeItemError}?, --- Collection of any errors that occurred during processing.
+	--- Collection of any errors that occurred during processing. 
+	Errors: {RevokeItemError}?,
 }
 
 export type RevokeInventoryResult = {
 }
 
 export type RevokeItemError = {
-	Error: string?, --- Specific error that was encountered.
-	Item: RevokeInventoryItem?, --- Item information that failed to be revoked.
+	--- Specific error that was encountered. 
+	Error: string?,
+	--- Item information that failed to be revoked. 
+	Item: RevokeInventoryItem?,
 }
 
 --- Represents the save push notification template request. 
 export type SavePushNotificationTemplateRequest = {
-	AndroidPayload: string?, --- Android JSON for the notification template.
-	IOSPayload: string?, --- IOS JSON for the notification template.
-	Id: string?, --- Id of the push notification template.
-	LocalizedPushNotificationTemplates: LocalizedPushNotificationProperties?, --- Dictionary of localized push notification templates with the language as the key.
-	Name: string, --- Name of the push notification template.
+	--- Android JSON for the notification template. 
+	AndroidPayload: string?,
+	--- IOS JSON for the notification template. 
+	IOSPayload: string?,
+	--- Id of the push notification template. 
+	Id: string?,
+	--- Dictionary of localized push notification templates with the language as the 
+	--- key. 
+	LocalizedPushNotificationTemplates: LocalizedPushNotificationProperties?,
+	--- Name of the push notification template. 
+	Name: string,
 }
 
 --- Represents the save push notification template result. 
 export type SavePushNotificationTemplateResult = {
-	PushNotificationTemplateId: string?, --- Id of the push notification template that was saved.
+	--- Id of the push notification template that was saved. 
+	PushNotificationTemplateId: string?,
 }
 
 export type ScriptExecutionError = {
-	Error: string?, --- Error code, such as CloudScriptNotFound, JavascriptException, CloudScriptFunctionArgumentSizeExceeded, CloudScriptAPIRequestCountExceeded, CloudScriptAPIRequestError, or CloudScriptHTTPRequestError
-	Message: string?, --- Details about the error
-	StackTrace: string?, --- Point during the execution of the script at which the error occurred, if any
+	--- Error code, such as CloudScriptNotFound, JavascriptException, CloudScriptFunctionArgumentSizeExceeded, 
+	--- CloudScriptAPIRequestCountExceeded, CloudScriptAPIRequestError, or CloudScriptHTTPRequestError 
+	Error: string?,
+	--- Details about the error 
+	Message: string?,
+	--- Point during the execution of the script at which the error occurred, if any 
+	StackTrace: string?,
 }
 
 --- PlayFab accounts which have valid email address or username will be able to 
@@ -2846,10 +3755,15 @@ export type ScriptExecutionError = {
 --- recovery email template. The username or email can be passed in to send the 
 --- email 
 export type SendCustomAccountRecoveryEmailRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Email: string?, --- User email address attached to their account
-	EmailTemplateId: string, --- The email template id of the account recovery email template to send.
-	Username: string?, --- The user's username requesting an account recovery.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- User email address attached to their account 
+	Email: string?,
+	--- The email template id of the account recovery email template to send. 
+	EmailTemplateId: string,
+	--- The user's username requesting an account recovery. 
+	Username: string?,
 }
 
 export type SendCustomAccountRecoveryEmailResult = {
@@ -2858,9 +3772,13 @@ export type SendCustomAccountRecoveryEmailResult = {
 --- Sends an email for only players that have contact emails associated with them. 
 --- Takes in an email template ID specifyingthe email template to send. 
 export type SendEmailFromTemplateRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	EmailTemplateId: string, --- The email template id of the email template to send.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The email template id of the email template to send. 
+	EmailTemplateId: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type SendEmailFromTemplateResult = {
@@ -2868,38 +3786,68 @@ export type SendEmailFromTemplateResult = {
 
 --- Represents the request for sending a push notification template to a recipient. 
 export type SendPushNotificationFromTemplateRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PushNotificationTemplateId: string, --- Id of the push notification template.
-	Recipient: string, --- PlayFabId of the push notification recipient.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Id of the push notification template. 
+	PushNotificationTemplateId: string,
+	--- PlayFabId of the push notification recipient. 
+	Recipient: string,
 }
 
 export type SendPushNotificationRequest = {
-	AdvancedPlatformDelivery: {AdvancedPushPlatformMsg}?, --- Allows you to provide precisely formatted json to target devices. This is an advanced feature, allowing you to deliver to custom plugin logic, fields, or functionality not natively supported by PlayFab.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Message: string?, --- Text of message to send.
-	Package: PushNotificationPackage?, --- Defines all possible push attributes like message, title, icon, etc. Some parameters are device specific - please see the PushNotificationPackage documentation for details.
-	Recipient: string, --- PlayFabId of the recipient of the push notification.
-	Subject: string?, --- Subject of message to send (may not be displayed in all platforms)
-	TargetPlatforms: {PushNotificationPlatform}?, --- Target Platforms that should receive the Message or Package. If omitted, we will send to all available platforms.
+	--- Allows you to provide precisely formatted json to target devices. This is an 
+	--- advanced feature, allowing you to deliver to custom plugin logic, fields, or 
+	--- functionality not natively supported by PlayFab. 
+	AdvancedPlatformDelivery: {AdvancedPushPlatformMsg}?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Text of message to send. 
+	Message: string?,
+	--- Defines all possible push attributes like message, title, icon, etc. Some parameters 
+	--- are device specific - please see the PushNotificationPackage documentation for 
+	--- details. 
+	Package: PushNotificationPackage?,
+	--- PlayFabId of the recipient of the push notification. 
+	Recipient: string,
+	--- Subject of message to send (may not be displayed in all platforms) 
+	Subject: string?,
+	--- Target Platforms that should receive the Message or Package. If omitted, we 
+	--- will send to all available platforms. 
+	TargetPlatforms: {PushNotificationPlatform}?,
 }
 
 export type SendPushNotificationResult = {
 }
 
 export type ServerCustomIDPlayFabIDPair = {
-	PlayFabId: string?, --- Unique PlayFab identifier.
-	ServerCustomId: string?, --- Unique server custom identifier for this player.
+	--- Unique PlayFab identifier. 
+	PlayFabId: string?,
+	--- Unique server custom identifier for this player. 
+	ServerCustomId: string?,
 }
 
 export type ServerLoginResult = {
-	EntityToken: EntityTokenResponse?, --- If LoginTitlePlayerAccountEntity flag is set on the login request the title_player_account will also be logged in and returned.
-	InfoResultPayload: GetPlayerCombinedInfoResultPayload?, --- Results for requested info.
-	LastLoginTime: string?, --- The time of this user's previous login. If there was no previous login, then it's DateTime.MinValue
-	NewlyCreated: boolean, --- True if the account was newly created on this login.
-	PlayFabId: string?, --- Player's unique PlayFabId.
-	SessionTicket: string?, --- Unique token authorizing the user and game at the server level, for the current session.
-	SettingsForUser: UserSettings?, --- Settings specific to this user.
-	TreatmentAssignment: TreatmentAssignment?, --- The experimentation treatments for this user at the time of login.
+	--- If LoginTitlePlayerAccountEntity flag is set on the login request the title_player_account 
+	--- will also be logged in and returned. 
+	EntityToken: EntityTokenResponse?,
+	--- Results for requested info. 
+	InfoResultPayload: GetPlayerCombinedInfoResultPayload?,
+	--- The time of this user's previous login. If there was no previous login, then 
+	--- it's DateTime.MinValue 
+	LastLoginTime: string?,
+	--- True if the account was newly created on this login. 
+	NewlyCreated: boolean,
+	--- Player's unique PlayFabId. 
+	PlayFabId: string?,
+	--- Unique token authorizing the user and game at the server level, for the current 
+	--- session. 
+	SessionTicket: string?,
+	--- Settings specific to this user. 
+	SettingsForUser: UserSettings?,
+	--- The experimentation treatments for this user at the time of login. 
+	TreatmentAssignment: TreatmentAssignment?,
 }
 
 --- This operation is not additive. It will completely replace the tag list for 
@@ -2908,30 +3856,40 @@ export type ServerLoginResult = {
 --- friends list from a social site integration (such as Facebook or Steam) will 
 --- return the AccountNotFound error. 
 export type SetFriendTagsRequest = {
-	FriendPlayFabId: string, --- PlayFab identifier of the friend account to which the tag(s) should be applied.
-	PlayFabId: string, --- PlayFab identifier of the player whose friend is to be updated.
-	Tags: {any}, --- Array of tags to set on the friend account.
+	--- PlayFab identifier of the friend account to which the tag(s) should be applied. 
+	FriendPlayFabId: string,
+	--- PlayFab identifier of the player whose friend is to be updated. 
+	PlayFabId: string,
+	--- Array of tags to set on the friend account. 
+	Tags: {any},
 }
 
 export type SetGameServerInstanceDataRequest = {
-	GameServerData: string, --- Custom data to set for the specified game server instance.
-	LobbyId: string, --- Unique identifier of the Game Instance to be updated, in decimal format.
+	--- Custom data to set for the specified game server instance. 
+	GameServerData: string,
+	--- Unique identifier of the Game Instance to be updated, in decimal format. 
+	LobbyId: string,
 }
 
 export type SetGameServerInstanceDataResult = {
 }
 
 export type SetGameServerInstanceStateRequest = {
-	LobbyId: string, --- Unique identifier of the Game Instance to be updated, in decimal format.
-	State: string, --- State to set for the specified game server instance.
+	--- Unique identifier of the Game Instance to be updated, in decimal format. 
+	LobbyId: string,
+	--- State to set for the specified game server instance. 
+	State: string,
 }
 
 export type SetGameServerInstanceStateResult = {
 }
 
 export type SetGameServerInstanceTagsRequest = {
-	LobbyId: string, --- Unique identifier of the Game Server Instance to be updated.
-	Tags: {[any]: any}, --- Tags to set for the specified Game Server Instance. Note that this is the complete list of tags to be associated with the Game Server Instance.
+	--- Unique identifier of the Game Server Instance to be updated. 
+	LobbyId: string,
+	--- Tags to set for the specified Game Server Instance. Note that this is the complete 
+	--- list of tags to be associated with the Game Server Instance. 
+	Tags: {[any]: any},
 }
 
 export type SetGameServerInstanceTagsResult = {
@@ -2946,8 +3904,10 @@ export type SetGameServerInstanceTagsResult = {
 --- the header X-PlayFab-Signature, along with a header X-PlayFab-Timestamp of the 
 --- same UTC timestamp used in the signature. 
 export type SetPlayerSecretRequest = {
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	PlayerSecret: string?, --- Player secret that is used to verify API request signatures (Enterprise Only).
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Player secret that is used to verify API request signatures (Enterprise Only). 
+	PlayerSecret: string?,
 }
 
 export type SetPlayerSecretResult = {
@@ -2961,8 +3921,12 @@ export type SetPlayerSecretResult = {
 --- Value. If it already exists, the Value for that key will be overwritten with 
 --- the new Value. For more information email helloplayfab@microsoft.com 
 export type SetPublisherDataRequest = {
-	Key: string, --- key we want to set a value on (note, this is additive - will only replace an existing key's value if they are the same name.) Keys are trimmed of whitespace. Keys may not begin with the '!' character.
-	Value: string?, --- new value to set. Set to null to remove a value
+	--- key we want to set a value on (note, this is additive - will only replace an 
+	--- existing key's value if they are the same name.) Keys are trimmed of whitespace. 
+	--- Keys may not begin with the '!' character. 
+	Key: string,
+	--- new value to set. Set to null to remove a value 
+	Value: string?,
 }
 
 export type SetPublisherDataResult = {
@@ -2977,19 +3941,30 @@ export type SetPublisherDataResult = {
 --- Value. If it already exists, the Value for that key will be overwritten with 
 --- the new Value. 
 export type SetTitleDataRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Key: string, --- key we want to set a value on (note, this is additive - will only replace an existing key's value if they are the same name.) Keys are trimmed of whitespace. Keys may not begin with the '!' character.
-	Value: string?, --- new value to set. Set to null to remove a value
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- key we want to set a value on (note, this is additive - will only replace an 
+	--- existing key's value if they are the same name.) Keys are trimmed of whitespace. 
+	--- Keys may not begin with the '!' character. 
+	Key: string,
+	--- new value to set. Set to null to remove a value 
+	Value: string?,
 }
 
 export type SetTitleDataResult = {
 }
 
 export type SharedGroupDataRecord = {
-	LastUpdated: string, --- Timestamp for when this data was last updated.
-	LastUpdatedBy: string?, --- PlayFabId of the user to last update this value.
-	Permission: string?, --- Indicates whether this data can be read by all users (public) or only members of the group (private).
-	Value: string?, --- Data stored for the specified group data key.
+	--- Timestamp for when this data was last updated. 
+	LastUpdated: string,
+	--- PlayFabId of the user to last update this value. 
+	LastUpdatedBy: string?,
+	--- Indicates whether this data can be read by all users (public) or only members 
+	--- of the group (private). 
+	Permission: string?,
+	--- Data stored for the specified group data key. 
+	Value: string?,
 }
 
 export type SourceType = 
@@ -3002,57 +3977,92 @@ export type SourceType =
 	| "API"
 
 export type StatisticModel = {
-	Name: string?, --- Statistic name
-	Value: number, --- Statistic value
-	Version: number, --- Statistic version (0 if not a versioned statistic)
+	--- Statistic name 
+	Name: string?,
+	--- Statistic value 
+	Value: number,
+	--- Statistic version (0 if not a versioned statistic) 
+	Version: number,
 }
 
 export type StatisticNameVersion = {
-	StatisticName: string, --- unique name of the statistic
-	Version: number, --- the version of the statistic to be returned
+	--- unique name of the statistic 
+	StatisticName: string,
+	--- the version of the statistic to be returned 
+	Version: number,
 }
 
 export type StatisticUpdate = {
-	StatisticName: string, --- unique name of the statistic
-	Value: number, --- statistic value for the player
-	Version: number?, --- for updates to an existing statistic value for a player, the version of the statistic when it was loaded. Null when setting the statistic value for the first time.
+	--- unique name of the statistic 
+	StatisticName: string,
+	--- statistic value for the player 
+	Value: number,
+	--- for updates to an existing statistic value for a player, the version of the 
+	--- statistic when it was loaded. Null when setting the statistic value for the 
+	--- first time. 
+	Version: number?,
 }
 
 export type StatisticValue = {
-	StatisticName: string?, --- unique name of the statistic
-	Value: number, --- statistic value for the player
-	Version: number, --- for updates to an existing statistic value for a player, the version of the statistic when it was loaded
+	--- unique name of the statistic 
+	StatisticName: string?,
+	--- statistic value for the player 
+	Value: number,
+	--- for updates to an existing statistic value for a player, the version of the 
+	--- statistic when it was loaded 
+	Version: number,
 }
 
 export type SteamPlayFabIdPair = {
-	PlayFabId: string?, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Steam identifier.
-	SteamStringId: string?, --- Unique Steam identifier for a user.
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the Steam identifier. 
+	PlayFabId: string?,
+	--- Unique Steam identifier for a user. 
+	SteamStringId: string?,
 }
 
 --- A store entry that list a catalog item at a particular price 
 export type StoreItem = {
-	CustomData: {[any]: any}?, --- Store specific custom data. The data only exists as part of this store; it is not transferred to item instances
-	DisplayPosition: number?, --- Intended display position for this item. Note that 0 is the first position
-	ItemId: string, --- Unique identifier of the item as it exists in the catalog - note that this must exactly match the ItemId from the catalog
-	RealCurrencyPrices: {[any]: any}?, --- Override prices for this item for specific currencies
-	VirtualCurrencyPrices: {[any]: any}?, --- Override prices for this item in virtual currencies and "RM" (the base Real Money purchase price, in USD pennies)
+	--- Store specific custom data. The data only exists as part of this store; it is 
+	--- not transferred to item instances 
+	CustomData: {[any]: any}?,
+	--- Intended display position for this item. Note that 0 is the first position 
+	DisplayPosition: number?,
+	--- Unique identifier of the item as it exists in the catalog - note that this must 
+	--- exactly match the ItemId from the catalog 
+	ItemId: string,
+	--- Override prices for this item for specific currencies 
+	RealCurrencyPrices: {[any]: any}?,
+	--- Override prices for this item in virtual currencies and "RM" (the base Real 
+	--- Money purchase price, in USD pennies) 
+	VirtualCurrencyPrices: {[any]: any}?,
 }
 
 --- Marketing data about a specific store 
 export type StoreMarketingModel = {
-	Description: string?, --- Tagline for a store.
-	DisplayName: string?, --- Display name of a store as it will appear to users.
-	Metadata: {[any]: any}?, --- Custom data about a store.
+	--- Tagline for a store. 
+	Description: string?,
+	--- Display name of a store as it will appear to users. 
+	DisplayName: string?,
+	--- Custom data about a store. 
+	Metadata: {[any]: any}?,
 }
 
 export type SubscriptionModel = {
-	Expiration: string, --- When this subscription expires.
-	InitialSubscriptionTime: string, --- The time the subscription was orignially purchased
-	IsActive: boolean, --- Whether this subscription is currently active. That is, if Expiration > now.
-	Status: string?, --- The status of this subscription, according to the subscription provider.
-	SubscriptionId: string?, --- The id for this subscription
-	SubscriptionItemId: string?, --- The item id for this subscription from the primary catalog
-	SubscriptionProvider: string?, --- The provider for this subscription. Apple or Google Play are supported today.
+	--- When this subscription expires. 
+	Expiration: string,
+	--- The time the subscription was orignially purchased 
+	InitialSubscriptionTime: string,
+	--- Whether this subscription is currently active. That is, if Expiration > now. 
+	IsActive: boolean,
+	--- The status of this subscription, according to the subscription provider. 
+	Status: string?,
+	--- The id for this subscription 
+	SubscriptionId: string?,
+	--- The item id for this subscription from the primary catalog 
+	SubscriptionItemId: string?,
+	--- The provider for this subscription. Apple or Google Play are supported today. 
+	SubscriptionProvider: string?,
 }
 
 export type SubscriptionProviderStatus = 
@@ -3066,22 +4076,35 @@ export type SubscriptionProviderStatus =
 	| "PaymentPending"
 
 export type SubtractCharacterVirtualCurrencyRequest = {
-	Amount: number, --- Amount to be subtracted from the user balance of the specified virtual currency.
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	VirtualCurrency: string, --- Name of the virtual currency which is to be decremented.
+	--- Amount to be subtracted from the user balance of the specified virtual currency. 
+	Amount: number,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Name of the virtual currency which is to be decremented. 
+	VirtualCurrency: string,
 }
 
 export type SubtractUserVirtualCurrencyRequest = {
-	Amount: number, --- Amount to be subtracted from the user balance of the specified virtual currency.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- PlayFab unique identifier of the user whose virtual currency balance is to be decreased.
-	VirtualCurrency: string, --- Name of the virtual currency which is to be decremented.
+	--- Amount to be subtracted from the user balance of the specified virtual currency. 
+	Amount: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- PlayFab unique identifier of the user whose virtual currency balance is to be 
+	--- decreased. 
+	PlayFabId: string,
+	--- Name of the virtual currency which is to be decremented. 
+	VirtualCurrency: string,
 }
 
 export type TagModel = {
-	TagValue: string?, --- Full value of the tag, including namespace
+	--- Full value of the tag, including namespace 
+	TagValue: string?,
 }
 
 export type TitleActivationStatus = 
@@ -3092,56 +4115,84 @@ export type TitleActivationStatus =
 	| "RevokedSteam"
 
 export type TitleNewsItem = {
-	Body: string?, --- News item body.
-	NewsId: string?, --- Unique identifier of news item.
-	Timestamp: string, --- Date and time when the news item was posted.
-	Title: string?, --- Title of the news item.
+	--- News item body. 
+	Body: string?,
+	--- Unique identifier of news item. 
+	NewsId: string?,
+	--- Date and time when the news item was posted. 
+	Timestamp: string,
+	--- Title of the news item. 
+	Title: string?,
 }
 
 export type TreatmentAssignment = {
-	Variables: {Variable}?, --- List of the experiment variables.
-	Variants: {any}?, --- List of the experiment variants.
+	--- List of the experiment variables. 
+	Variables: {Variable}?,
+	--- List of the experiment variants. 
+	Variants: {any}?,
 }
 
 export type TwitchPlayFabIdPair = {
-	PlayFabId: string?, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Twitch identifier.
-	TwitchId: string?, --- Unique Twitch identifier for a user.
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the Twitch identifier. 
+	PlayFabId: string?,
+	--- Unique Twitch identifier for a user. 
+	TwitchId: string?,
 }
 
 export type UnlinkNintendoServiceAccountRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type UnlinkNintendoSwitchDeviceIdRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	NintendoSwitchDeviceId: string?, --- Nintendo Switch Device identifier for the user. If not specified, the most recently signed in device ID will be used.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Nintendo Switch Device identifier for the user. If not specified, the most recently 
+	--- signed in device ID will be used. 
+	NintendoSwitchDeviceId: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type UnlinkNintendoSwitchDeviceIdResult = {
 }
 
 export type UnlinkPSNAccountRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type UnlinkPSNAccountResult = {
 }
 
 export type UnlinkServerCustomIdRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab identifier.
-	ServerCustomId: string, --- Unique server custom identifier for this player.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab identifier. 
+	PlayFabId: string,
+	--- Unique server custom identifier for this player. 
+	ServerCustomId: string,
 }
 
 export type UnlinkServerCustomIdResult = {
 }
 
 export type UnlinkXboxAccountRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Xbox Live identifier.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the Xbox Live identifier. 
+	PlayFabId: string,
 }
 
 export type UnlinkXboxAccountResult = {
@@ -3150,57 +4201,89 @@ export type UnlinkXboxAccountResult = {
 --- Specify the container and optionally the catalogVersion for the container to 
 --- open 
 export type UnlockContainerInstanceRequest = {
-	CatalogVersion: string?, --- Specifies the catalog version that should be used to determine container contents. If unspecified, uses catalog associated with the item instance.
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	ContainerItemInstanceId: string, --- ItemInstanceId of the container to unlock.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	KeyItemInstanceId: string?, --- ItemInstanceId of the key that will be consumed by unlocking this container. If the container requires a key, this parameter is required.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Specifies the catalog version that should be used to determine container contents. 
+	--- If unspecified, uses catalog associated with the item instance. 
+	CatalogVersion: string?,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- ItemInstanceId of the container to unlock. 
+	ContainerItemInstanceId: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- ItemInstanceId of the key that will be consumed by unlocking this container. 
+	--- If the container requires a key, this parameter is required. 
+	KeyItemInstanceId: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- Specify the type of container to open and optionally the catalogVersion for 
 --- the container to open 
 export type UnlockContainerItemRequest = {
-	CatalogVersion: string?, --- Specifies the catalog version that should be used to determine container contents. If unspecified, uses default/primary catalog.
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	ContainerItemId: string, --- Catalog ItemId of the container type to unlock.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Specifies the catalog version that should be used to determine container contents. 
+	--- If unspecified, uses default/primary catalog. 
+	CatalogVersion: string?,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- Catalog ItemId of the container type to unlock. 
+	ContainerItemId: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- The items and vc found within the container. These will be added and stacked 
 --- in your inventory as appropriate. 
 export type UnlockContainerItemResult = {
-	GrantedItems: {ItemInstance}?, --- Items granted to the player as a result of unlocking the container.
-	UnlockedItemInstanceId: string?, --- Unique instance identifier of the container unlocked.
-	UnlockedWithItemInstanceId: string?, --- Unique instance identifier of the key used to unlock the container, if applicable.
-	VirtualCurrency: {[any]: any}?, --- Virtual currency granted to the player as a result of unlocking the container.
+	--- Items granted to the player as a result of unlocking the container. 
+	GrantedItems: {ItemInstance}?,
+	--- Unique instance identifier of the container unlocked. 
+	UnlockedItemInstanceId: string?,
+	--- Unique instance identifier of the key used to unlock the container, if applicable. 
+	UnlockedWithItemInstanceId: string?,
+	--- Virtual currency granted to the player as a result of unlocking the container. 
+	VirtualCurrency: {[any]: any}?,
 }
 
 export type UpdateAvatarUrlRequest = {
-	ImageUrl: string, --- URL of the avatar image. If empty, it removes the existing avatar URL.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- URL of the avatar image. If empty, it removes the existing avatar URL. 
+	ImageUrl: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- Represents a single update ban request. 
 export type UpdateBanRequest = {
-	Active: boolean?, --- The updated active state for the ban. Null for no change.
-	BanId: string, --- The id of the ban to be updated.
-	Expires: string?, --- The updated expiration date for the ban. Null for no change.
-	IPAddress: string?, --- The updated IP address for the ban. Null for no change.
-	Permanent: boolean?, --- Whether to make this ban permanent. Set to true to make this ban permanent. This will not modify Active state.
-	Reason: string?, --- The updated reason for the ban to be updated. Maximum 140 characters. Null for no change.
+	--- The updated active state for the ban. Null for no change. 
+	Active: boolean?,
+	--- The id of the ban to be updated. 
+	BanId: string,
+	--- The updated expiration date for the ban. Null for no change. 
+	Expires: string?,
+	--- The updated IP address for the ban. Null for no change. 
+	IPAddress: string?,
+	--- Whether to make this ban permanent. Set to true to make this ban permanent. 
+	--- This will not modify Active state. 
+	Permanent: boolean?,
+	--- The updated reason for the ban to be updated. Maximum 140 characters. Null for 
+	--- no change. 
+	Reason: string?,
 }
 
 --- For each ban, only updates the values that are set. Leave any value to null 
 --- for no change. If a ban could not be found, the rest are still applied. Returns 
 --- information about applied updates only. 
 export type UpdateBansRequest = {
-	Bans: {UpdateBanRequest}, --- List of bans to be updated. Maximum 100.
+	--- List of bans to be updated. Maximum 100. 
+	Bans: {UpdateBanRequest},
 }
 
 export type UpdateBansResult = {
-	BanData: {BanInfo}?, --- Information on the bans that were updated
+	--- Information on the bans that were updated 
+	BanData: {BanInfo}?,
 }
 
 --- This function performs an additive update of the arbitrary JSON object containing 
@@ -3209,16 +4292,31 @@ export type UpdateBansResult = {
 --- null values will be removed. No other key-value pairs will be changed apart 
 --- from those specified in the call. 
 export type UpdateCharacterDataRequest = {
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Data: {[any]: any}?, --- Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
-	KeysToRemove: {any}?, --- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
-	Permission: string?, --- Permission to be applied to all user data keys written in this request. Defaults to "private" if not set.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Key-value pairs to be written to the custom data. Note that keys are trimmed 
+	--- of whitespace, are limited in size, and may not begin with a '!' character or 
+	--- be null. 
+	Data: {[any]: any}?,
+	--- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert 
+	--- null-values into Data due to language constraints. Use this to delete the keys 
+	--- directly. 
+	KeysToRemove: {any}?,
+	--- Permission to be applied to all user data keys written in this request. Defaults 
+	--- to "private" if not set. 
+	Permission: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type UpdateCharacterDataResult = {
-	DataVersion: number, --- Indicates the current version of the data that has been set. This is incremented with every set call for that type of data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
+	--- Indicates the current version of the data that has been set. This is incremented 
+	--- with every set call for that type of data (read-only, internal, etc). This version 
+	--- can be provided in Get calls to find updated data. 
+	DataVersion: number,
 }
 
 --- Character statistics are similar to user statistics in that they are numeric 
@@ -3227,10 +4325,15 @@ export type UpdateCharacterDataResult = {
 --- use by the title, the statistics are used for all leaderboard operations in 
 --- PlayFab. 
 export type UpdateCharacterStatisticsRequest = {
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CharacterStatistics: {[any]: any}?, --- Statistics to be updated with the provided values.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- Statistics to be updated with the provided values. 
+	CharacterStatistics: {[any]: any}?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type UpdateCharacterStatisticsResult = {
@@ -3240,10 +4343,16 @@ export type UpdateCharacterStatisticsResult = {
 --- while those already defined will be updated with the given values. All other 
 --- user statistics will remain unchanged. 
 export type UpdatePlayerStatisticsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ForceUpdate: boolean?, --- Indicates whether the statistics provided should be set, regardless of the aggregation method set on the statistic. Default is false.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Statistics: {StatisticUpdate}, --- Statistics to be updated with the provided values
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Indicates whether the statistics provided should be set, regardless of the aggregation 
+	--- method set on the statistic. Default is false. 
+	ForceUpdate: boolean?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- Statistics to be updated with the provided values 
+	Statistics: {StatisticUpdate},
 }
 
 export type UpdatePlayerStatisticsResult = {
@@ -3255,11 +4364,21 @@ export type UpdatePlayerStatisticsResult = {
 --- of data updates, it is recommended that titles make use of user data with read 
 --- permission set to public, or a combination of user data and shared group data. 
 export type UpdateSharedGroupDataRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Data: {[any]: any}?, --- Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
-	KeysToRemove: {any}?, --- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
-	Permission: string?, --- Permission to be applied to all user data keys in this request.
-	SharedGroupId: string, --- Unique identifier for the shared group.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Key-value pairs to be written to the custom data. Note that keys are trimmed 
+	--- of whitespace, are limited in size, and may not begin with a '!' character or 
+	--- be null. 
+	Data: {[any]: any}?,
+	--- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert 
+	--- null-values into Data due to language constraints. Use this to delete the keys 
+	--- directly. 
+	KeysToRemove: {any}?,
+	--- Permission to be applied to all user data keys in this request. 
+	Permission: string?,
+	--- Unique identifier for the shared group. 
+	SharedGroupId: string,
 }
 
 export type UpdateSharedGroupDataResult = {
@@ -3271,15 +4390,29 @@ export type UpdateSharedGroupDataResult = {
 --- null values will be removed. No other key-value pairs will be changed apart 
 --- from those specified in the call. 
 export type UpdateUserDataRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Data: {[any]: any}?, --- Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
-	KeysToRemove: {any}?, --- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
-	Permission: string?, --- Permission to be applied to all user data keys written in this request. Defaults to "private" if not set.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Key-value pairs to be written to the custom data. Note that keys are trimmed 
+	--- of whitespace, are limited in size, and may not begin with a '!' character or 
+	--- be null. 
+	Data: {[any]: any}?,
+	--- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert 
+	--- null-values into Data due to language constraints. Use this to delete the keys 
+	--- directly. 
+	KeysToRemove: {any}?,
+	--- Permission to be applied to all user data keys written in this request. Defaults 
+	--- to "private" if not set. 
+	Permission: string?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type UpdateUserDataResult = {
-	DataVersion: number, --- Indicates the current version of the data that has been set. This is incremented with every set call for that type of data (read-only, internal, etc). This version can be provided in Get calls to find updated data.
+	--- Indicates the current version of the data that has been set. This is incremented 
+	--- with every set call for that type of data (read-only, internal, etc). This version 
+	--- can be provided in Get calls to find updated data. 
+	DataVersion: number,
 }
 
 --- This function performs an additive update of the arbitrary JSON object containing 
@@ -3288,10 +4421,19 @@ export type UpdateUserDataResult = {
 --- values will be removed. No other key-value pairs will be changed apart from 
 --- those specified in the call. 
 export type UpdateUserInternalDataRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Data: {[any]: any}?, --- Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
-	KeysToRemove: {any}?, --- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Key-value pairs to be written to the custom data. Note that keys are trimmed 
+	--- of whitespace, are limited in size, and may not begin with a '!' character or 
+	--- be null. 
+	Data: {[any]: any}?,
+	--- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert 
+	--- null-values into Data due to language constraints. Use this to delete the keys 
+	--- directly. 
+	KeysToRemove: {any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 --- This function performs an additive update of the arbitrary JSON object containing 
@@ -3300,49 +4442,88 @@ export type UpdateUserInternalDataRequest = {
 --- have their values overwritten, while keys with null values will be removed. 
 --- No other key-value pairs will be changed apart from those specified in the call. 
 export type UpdateUserInventoryItemDataRequest = {
-	CharacterId: string?, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Data: {[any]: any}?, --- Key-value pairs to be written to the custom data. Note that keys are trimmed of whitespace, are limited in size, and may not begin with a '!' character or be null.
-	ItemInstanceId: string, --- Unique PlayFab assigned instance identifier of the item
-	KeysToRemove: {any}?, --- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert null-values into Data due to language constraints. Use this to delete the keys directly.
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Key-value pairs to be written to the custom data. Note that keys are trimmed 
+	--- of whitespace, are limited in size, and may not begin with a '!' character or 
+	--- be null. 
+	Data: {[any]: any}?,
+	--- Unique PlayFab assigned instance identifier of the item 
+	ItemInstanceId: string,
+	--- Optional list of Data-keys to remove from UserData. Some SDKs cannot insert 
+	--- null-values into Data due to language constraints. Use this to delete the keys 
+	--- directly. 
+	KeysToRemove: {any}?,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
 }
 
 export type UserAccountInfo = {
-	AndroidDeviceInfo: UserAndroidDeviceInfo?, --- User Android device information, if an Android device has been linked
-	AppleAccountInfo: UserAppleIdInfo?, --- Sign in with Apple account information, if an Apple account has been linked
-	Created: string, --- Timestamp indicating when the user account was created
-	CustomIdInfo: UserCustomIdInfo?, --- Custom ID information, if a custom ID has been assigned
-	FacebookInfo: UserFacebookInfo?, --- User Facebook information, if a Facebook account has been linked
-	FacebookInstantGamesIdInfo: UserFacebookInstantGamesIdInfo?, --- Facebook Instant Games account information, if a Facebook Instant Games account has been linked
-	GameCenterInfo: UserGameCenterInfo?, --- User Gamecenter information, if a Gamecenter account has been linked
-	GoogleInfo: UserGoogleInfo?, --- User Google account information, if a Google account has been linked
-	GooglePlayGamesInfo: UserGooglePlayGamesInfo?, --- User Google Play Games account information, if a Google Play Games account has been linked
-	IosDeviceInfo: UserIosDeviceInfo?, --- User iOS device information, if an iOS device has been linked
-	KongregateInfo: UserKongregateInfo?, --- User Kongregate account information, if a Kongregate account has been linked
-	NintendoSwitchAccountInfo: UserNintendoSwitchAccountIdInfo?, --- Nintendo Switch account information, if a Nintendo Switch account has been linked
-	NintendoSwitchDeviceIdInfo: UserNintendoSwitchDeviceIdInfo?, --- Nintendo Switch device information, if a Nintendo Switch device has been linked
-	OpenIdInfo: {UserOpenIdInfo}?, --- OpenID Connect information, if any OpenID Connect accounts have been linked
-	PlayFabId: string?, --- Unique identifier for the user account
-	PrivateInfo: UserPrivateAccountInfo?, --- Personal information for the user which is considered more sensitive
-	PsnInfo: UserPsnInfo?, --- User PlayStation :tm: Network account information, if a PlayStation :tm: Network account has been linked
-	SteamInfo: UserSteamInfo?, --- User Steam information, if a Steam account has been linked
-	TitleInfo: UserTitleInfo?, --- Title-specific information for the user account
-	TwitchInfo: UserTwitchInfo?, --- User Twitch account information, if a Twitch account has been linked
-	Username: string?, --- User account name in the PlayFab service
-	XboxInfo: UserXboxInfo?, --- User XBox account information, if a XBox account has been linked
+	--- User Android device information, if an Android device has been linked 
+	AndroidDeviceInfo: UserAndroidDeviceInfo?,
+	--- Sign in with Apple account information, if an Apple account has been linked 
+	AppleAccountInfo: UserAppleIdInfo?,
+	--- Timestamp indicating when the user account was created 
+	Created: string,
+	--- Custom ID information, if a custom ID has been assigned 
+	CustomIdInfo: UserCustomIdInfo?,
+	--- User Facebook information, if a Facebook account has been linked 
+	FacebookInfo: UserFacebookInfo?,
+	--- Facebook Instant Games account information, if a Facebook Instant Games account 
+	--- has been linked 
+	FacebookInstantGamesIdInfo: UserFacebookInstantGamesIdInfo?,
+	--- User Gamecenter information, if a Gamecenter account has been linked 
+	GameCenterInfo: UserGameCenterInfo?,
+	--- User Google account information, if a Google account has been linked 
+	GoogleInfo: UserGoogleInfo?,
+	--- User Google Play Games account information, if a Google Play Games account has 
+	--- been linked 
+	GooglePlayGamesInfo: UserGooglePlayGamesInfo?,
+	--- User iOS device information, if an iOS device has been linked 
+	IosDeviceInfo: UserIosDeviceInfo?,
+	--- User Kongregate account information, if a Kongregate account has been linked 
+	KongregateInfo: UserKongregateInfo?,
+	--- Nintendo Switch account information, if a Nintendo Switch account has been linked 
+	NintendoSwitchAccountInfo: UserNintendoSwitchAccountIdInfo?,
+	--- Nintendo Switch device information, if a Nintendo Switch device has been linked 
+	NintendoSwitchDeviceIdInfo: UserNintendoSwitchDeviceIdInfo?,
+	--- OpenID Connect information, if any OpenID Connect accounts have been linked 
+	OpenIdInfo: {UserOpenIdInfo}?,
+	--- Unique identifier for the user account 
+	PlayFabId: string?,
+	--- Personal information for the user which is considered more sensitive 
+	PrivateInfo: UserPrivateAccountInfo?,
+	--- User PlayStation :tm: Network account information, if a PlayStation :tm: Network 
+	--- account has been linked 
+	PsnInfo: UserPsnInfo?,
+	--- User Steam information, if a Steam account has been linked 
+	SteamInfo: UserSteamInfo?,
+	--- Title-specific information for the user account 
+	TitleInfo: UserTitleInfo?,
+	--- User Twitch account information, if a Twitch account has been linked 
+	TwitchInfo: UserTwitchInfo?,
+	--- User account name in the PlayFab service 
+	Username: string?,
+	--- User XBox account information, if a XBox account has been linked 
+	XboxInfo: UserXboxInfo?,
 }
 
 export type UserAndroidDeviceInfo = {
-	AndroidDeviceId: string?, --- Android device ID
+	--- Android device ID 
+	AndroidDeviceId: string?,
 }
 
 export type UserAppleIdInfo = {
-	AppleSubjectId: string?, --- Apple subject ID
+	--- Apple subject ID 
+	AppleSubjectId: string?,
 }
 
 export type UserCustomIdInfo = {
-	CustomId: string?, --- Custom ID
+	--- Custom ID 
+	CustomId: string?,
 }
 
 --- Indicates whether a given data key is private (readable only by the player) 
@@ -3353,59 +4534,84 @@ export type UserDataPermission =
 	| "Public"
 
 export type UserDataRecord = {
-	LastUpdated: string, --- Timestamp for when this data was last updated.
-	Permission: string?, --- Indicates whether this data can be read by all users (public) or only the user (private). This is used for GetUserData requests being made by one player about another player.
-	Value: string?, --- Data stored for the specified user data key.
+	--- Timestamp for when this data was last updated. 
+	LastUpdated: string,
+	--- Indicates whether this data can be read by all users (public) or only the user 
+	--- (private). This is used for GetUserData requests being made by one player about 
+	--- another player. 
+	Permission: string?,
+	--- Data stored for the specified user data key. 
+	Value: string?,
 }
 
 export type UserFacebookInfo = {
-	FacebookId: string?, --- Facebook identifier
-	FullName: string?, --- Facebook full name
+	--- Facebook identifier 
+	FacebookId: string?,
+	--- Facebook full name 
+	FullName: string?,
 }
 
 export type UserFacebookInstantGamesIdInfo = {
-	FacebookInstantGamesId: string?, --- Facebook Instant Games ID
+	--- Facebook Instant Games ID 
+	FacebookInstantGamesId: string?,
 }
 
 export type UserGameCenterInfo = {
-	GameCenterId: string?, --- Gamecenter identifier
+	--- Gamecenter identifier 
+	GameCenterId: string?,
 }
 
 export type UserGoogleInfo = {
-	GoogleEmail: string?, --- Email address of the Google account
-	GoogleGender: string?, --- Gender information of the Google account
-	GoogleId: string?, --- Google ID
-	GoogleLocale: string?, --- Locale of the Google account
-	GoogleName: string?, --- Name of the Google account user
+	--- Email address of the Google account 
+	GoogleEmail: string?,
+	--- Gender information of the Google account 
+	GoogleGender: string?,
+	--- Google ID 
+	GoogleId: string?,
+	--- Locale of the Google account 
+	GoogleLocale: string?,
+	--- Name of the Google account user 
+	GoogleName: string?,
 }
 
 export type UserGooglePlayGamesInfo = {
-	GooglePlayGamesPlayerAvatarImageUrl: string?, --- Avatar image url of the Google Play Games player
-	GooglePlayGamesPlayerDisplayName: string?, --- Display name of the Google Play Games player
-	GooglePlayGamesPlayerId: string?, --- Google Play Games player ID
+	--- Avatar image url of the Google Play Games player 
+	GooglePlayGamesPlayerAvatarImageUrl: string?,
+	--- Display name of the Google Play Games player 
+	GooglePlayGamesPlayerDisplayName: string?,
+	--- Google Play Games player ID 
+	GooglePlayGamesPlayerId: string?,
 }
 
 export type UserIosDeviceInfo = {
-	IosDeviceId: string?, --- iOS device ID
+	--- iOS device ID 
+	IosDeviceId: string?,
 }
 
 export type UserKongregateInfo = {
-	KongregateId: string?, --- Kongregate ID
-	KongregateName: string?, --- Kongregate Username
+	--- Kongregate ID 
+	KongregateId: string?,
+	--- Kongregate Username 
+	KongregateName: string?,
 }
 
 export type UserNintendoSwitchAccountIdInfo = {
-	NintendoSwitchAccountSubjectId: string?, --- Nintendo Switch account subject ID
+	--- Nintendo Switch account subject ID 
+	NintendoSwitchAccountSubjectId: string?,
 }
 
 export type UserNintendoSwitchDeviceIdInfo = {
-	NintendoSwitchDeviceId: string?, --- Nintendo Switch Device ID
+	--- Nintendo Switch Device ID 
+	NintendoSwitchDeviceId: string?,
 }
 
 export type UserOpenIdInfo = {
-	ConnectionId: string?, --- OpenID Connection ID
-	Issuer: string?, --- OpenID Issuer
-	Subject: string?, --- OpenID Subject
+	--- OpenID Connection ID 
+	ConnectionId: string?,
+	--- OpenID Issuer 
+	Issuer: string?,
+	--- OpenID Subject 
+	Subject: string?,
 }
 
 export type UserOrigination = 
@@ -3435,68 +4641,112 @@ export type UserOrigination =
 	| "GooglePlayGames"
 
 export type UserPrivateAccountInfo = {
-	Email: string?, --- user email address
+	--- user email address 
+	Email: string?,
 }
 
 export type UserPsnInfo = {
-	PsnAccountId: string?, --- PlayStation :tm: Network account ID
-	PsnOnlineId: string?, --- PlayStation :tm: Network online ID
+	--- PlayStation :tm: Network account ID 
+	PsnAccountId: string?,
+	--- PlayStation :tm: Network online ID 
+	PsnOnlineId: string?,
 }
 
 export type UserSettings = {
-	GatherDeviceInfo: boolean, --- Boolean for whether this player is eligible for gathering device info.
-	GatherFocusInfo: boolean, --- Boolean for whether this player should report OnFocus play-time tracking.
-	NeedsAttribution: boolean, --- Boolean for whether this player is eligible for ad tracking.
+	--- Boolean for whether this player is eligible for gathering device info. 
+	GatherDeviceInfo: boolean,
+	--- Boolean for whether this player should report OnFocus play-time tracking. 
+	GatherFocusInfo: boolean,
+	--- Boolean for whether this player is eligible for ad tracking. 
+	NeedsAttribution: boolean,
 }
 
 export type UserSteamInfo = {
-	SteamActivationStatus: string?, --- what stage of game ownership the user is listed as being in, from Steam
-	SteamCountry: string?, --- the country in which the player resides, from Steam data
-	SteamCurrency: string?, --- currency type set in the user Steam account
-	SteamId: string?, --- Steam identifier
-	SteamName: string?, --- Steam display name
+	--- what stage of game ownership the user is listed as being in, from Steam 
+	SteamActivationStatus: string?,
+	--- the country in which the player resides, from Steam data 
+	SteamCountry: string?,
+	--- currency type set in the user Steam account 
+	SteamCurrency: string?,
+	--- Steam identifier 
+	SteamId: string?,
+	--- Steam display name 
+	SteamName: string?,
 }
 
 export type UserTitleInfo = {
-	AvatarUrl: string?, --- URL to the player's avatar.
-	Created: string, --- timestamp indicating when the user was first associated with this game (this can differ significantly from when the user first registered with PlayFab)
-	DisplayName: string?, --- name of the user, as it is displayed in-game
-	FirstLogin: string?, --- timestamp indicating when the user first signed into this game (this can differ from the Created timestamp, as other events, such as issuing a beta key to the user, can associate the title to the user)
-	LastLogin: string?, --- timestamp for the last user login for this title
-	Origination: string?, --- source by which the user first joined the game, if known
-	TitlePlayerAccount: EntityKey?, --- Title player account entity for this user
-	isBanned: boolean?, --- boolean indicating whether or not the user is currently banned for a title
+	--- URL to the player's avatar. 
+	AvatarUrl: string?,
+	--- timestamp indicating when the user was first associated with this game (this 
+	--- can differ significantly from when the user first registered with PlayFab) 
+	Created: string,
+	--- name of the user, as it is displayed in-game 
+	DisplayName: string?,
+	--- timestamp indicating when the user first signed into this game (this can differ 
+	--- from the Created timestamp, as other events, such as issuing a beta key to the 
+	--- user, can associate the title to the user) 
+	FirstLogin: string?,
+	--- timestamp for the last user login for this title 
+	LastLogin: string?,
+	--- source by which the user first joined the game, if known 
+	Origination: string?,
+	--- Title player account entity for this user 
+	TitlePlayerAccount: EntityKey?,
+	--- boolean indicating whether or not the user is currently banned for a title 
+	isBanned: boolean?,
 }
 
 export type UserTwitchInfo = {
-	TwitchId: string?, --- Twitch ID
-	TwitchUserName: string?, --- Twitch Username
+	--- Twitch ID 
+	TwitchId: string?,
+	--- Twitch Username 
+	TwitchUserName: string?,
 }
 
 export type UserXboxInfo = {
-	XboxUserId: string?, --- XBox user ID
-	XboxUserSandbox: string?, --- XBox user sandbox
+	--- XBox user ID 
+	XboxUserId: string?,
+	--- XBox user sandbox 
+	XboxUserSandbox: string?,
 }
 
 export type ValueToDateModel = {
-	Currency: string?, --- ISO 4217 code of the currency used in the purchases
-	TotalValue: number, --- Total value of the purchases in a whole number of 1/100 monetary units. For example, 999 indicates nine dollars and ninety-nine cents when Currency is 'USD')
-	TotalValueAsDecimal: string?, --- Total value of the purchases in a string representation of decimal monetary units. For example, '9.99' indicates nine dollars and ninety-nine cents when Currency is 'USD'.
+	--- ISO 4217 code of the currency used in the purchases 
+	Currency: string?,
+	--- Total value of the purchases in a whole number of 1/100 monetary units. For 
+	--- example, 999 indicates nine dollars and ninety-nine cents when Currency is 'USD') 
+	TotalValue: number,
+	--- Total value of the purchases in a string representation of decimal monetary 
+	--- units. For example, '9.99' indicates nine dollars and ninety-nine cents when 
+	--- Currency is 'USD'. 
+	TotalValueAsDecimal: string?,
 }
 
 export type Variable = {
-	Name: string, --- Name of the variable.
-	Value: string?, --- Value of the variable.
+	--- Name of the variable. 
+	Name: string,
+	--- Value of the variable. 
+	Value: string?,
 }
 
 export type VirtualCurrencyRechargeTime = {
-	RechargeMax: number, --- Maximum value to which the regenerating currency will automatically increment. Note that it can exceed this value through use of the AddUserVirtualCurrency API call. However, it will not regenerate automatically until it has fallen below this value.
-	RechargeTime: string, --- Server timestamp in UTC indicating the next time the virtual currency will be incremented.
-	SecondsToRecharge: number, --- Time remaining (in seconds) before the next recharge increment of the virtual currency.
+	--- Maximum value to which the regenerating currency will automatically increment. 
+	--- Note that it can exceed this value through use of the AddUserVirtualCurrency 
+	--- API call. However, it will not regenerate automatically until it has fallen 
+	--- below this value. 
+	RechargeMax: number,
+	--- Server timestamp in UTC indicating the next time the virtual currency will be 
+	--- incremented. 
+	RechargeTime: string,
+	--- Time remaining (in seconds) before the next recharge increment of the virtual 
+	--- currency. 
+	SecondsToRecharge: number,
 }
 
 export type WriteEventResponse = {
-	EventId: string?, --- The unique identifier of the event. The values of this identifier consist of ASCII characters and are not constrained to any particular format.
+	--- The unique identifier of the event. The values of this identifier consist of 
+	--- ASCII characters and are not constrained to any particular format. 
+	EventId: string?,
 }
 
 --- This API is designed to write a multitude of different event types into PlayStream. 
@@ -3504,12 +4754,23 @@ export type WriteEventResponse = {
 --- to describe any character-based event. The created event will be locked to the 
 --- authenticated title.  
 export type WriteServerCharacterEventRequest = {
-	Body: {[any]: any}?, --- Custom event properties. Each property consists of a name (string) and a value (JSON object).
-	CharacterId: string, --- Unique PlayFab assigned ID for a specific character owned by a user
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	EventName: string, --- The name of the event, within the namespace scoped to the title. The naming convention is up to the caller, but it commonly follows the subject_verb_object pattern (e.g. player_logged_in).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Timestamp: string?, --- The time (in UTC) associated with this event. The value defaults to the current time.
+	--- Custom event properties. Each property consists of a name (string) and a value 
+	--- (JSON object). 
+	Body: {[any]: any}?,
+	--- Unique PlayFab assigned ID for a specific character owned by a user 
+	CharacterId: string,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The name of the event, within the namespace scoped to the title. The naming 
+	--- convention is up to the caller, but it commonly follows the subject_verb_object 
+	--- pattern (e.g. player_logged_in). 
+	EventName: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- The time (in UTC) associated with this event. The value defaults to the current 
+	--- time. 
+	Timestamp: string?,
 }
 
 --- This API is designed to write a multitude of different event types into PlayStream. 
@@ -3517,11 +4778,21 @@ export type WriteServerCharacterEventRequest = {
 --- to describe any player-based event. The created event will be locked to the 
 --- authenticated title.  
 export type WriteServerPlayerEventRequest = {
-	Body: {[any]: any}?, --- Custom data properties associated with the event. Each property consists of a name (string) and a value (JSON object).
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	EventName: string, --- The name of the event, within the namespace scoped to the title. The naming convention is up to the caller, but it commonly follows the subject_verb_object pattern (e.g. player_logged_in).
-	PlayFabId: string, --- Unique PlayFab assigned ID of the user on whom the operation will be performed.
-	Timestamp: string?, --- The time (in UTC) associated with this event. The value defaults to the current time.
+	--- Custom data properties associated with the event. Each property consists of 
+	--- a name (string) and a value (JSON object). 
+	Body: {[any]: any}?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The name of the event, within the namespace scoped to the title. The naming 
+	--- convention is up to the caller, but it commonly follows the subject_verb_object 
+	--- pattern (e.g. player_logged_in). 
+	EventName: string,
+	--- Unique PlayFab assigned ID of the user on whom the operation will be performed. 
+	PlayFabId: string,
+	--- The time (in UTC) associated with this event. The value defaults to the current 
+	--- time. 
+	Timestamp: string?,
 }
 
 --- This API is designed to write a multitude of different event types into PlayStream. 
@@ -3529,15 +4800,27 @@ export type WriteServerPlayerEventRequest = {
 --- to describe any title-based event. The created event will be locked to the authenticated 
 --- title.  
 export type WriteTitleEventRequest = {
-	Body: {[any]: any}?, --- Custom event properties. Each property consists of a name (string) and a value (JSON object).
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	EventName: string, --- The name of the event, within the namespace scoped to the title. The naming convention is up to the caller, but it commonly follows the subject_verb_object pattern (e.g. player_logged_in).
-	Timestamp: string?, --- The time (in UTC) associated with this event. The value defaults to the current time.
+	--- Custom event properties. Each property consists of a name (string) and a value 
+	--- (JSON object). 
+	Body: {[any]: any}?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The name of the event, within the namespace scoped to the title. The naming 
+	--- convention is up to the caller, but it commonly follows the subject_verb_object 
+	--- pattern (e.g. player_logged_in). 
+	EventName: string,
+	--- The time (in UTC) associated with this event. The value defaults to the current 
+	--- time. 
+	Timestamp: string?,
 }
 
 export type XboxLiveAccountPlayFabIdPair = {
-	PlayFabId: string?, --- Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Xbox Live identifier.
-	XboxLiveAccountId: string?, --- Unique Xbox Live identifier for a user.
+	--- Unique PlayFab identifier for a user, or null if no PlayFab account is linked 
+	--- to the Xbox Live identifier. 
+	PlayFabId: string?,
+	--- Unique Xbox Live identifier for a user. 
+	XboxLiveAccountId: string?,
 }
 
 

@@ -15,124 +15,203 @@ function EconomyApi.SetSettings(settings: PlayFabInternal.ISettings)
 end
 
 export type AddInventoryItemsOperation = {
-	Amount: number, --- The amount to add to the current item amount.
-	Item: InventoryItemReference?, --- The inventory item the operation applies to.
+	--- The amount to add to the current item amount. 
+	Amount: number,
+	--- The inventory item the operation applies to. 
+	Item: InventoryItemReference?,
 }
 
 --- Given an entity type, entity identifier and container details, will add the 
 --- specified inventory items. 
 export type AddInventoryItemsRequest = {
-	Amount: number, --- The amount to add for the current item.
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	IdempotencyId: string?, --- The Idempotency ID for this request.
-	Item: InventoryItemReference?, --- The inventory item the request applies to.
+	--- The amount to add for the current item. 
+	Amount: number,
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The Idempotency ID for this request. 
+	IdempotencyId: string?,
+	--- The inventory item the request applies to. 
+	Item: InventoryItemReference?,
 }
 
 export type AddInventoryItemsResponse = {
-	IdempotencyId: string?, --- The idempotency id used in the request.
-	TransactionIds: {any}?, --- The ids of transactions that occurred as a result of the request.
+	--- The idempotency id used in the request. 
+	IdempotencyId: string?,
+	--- The ids of transactions that occurred as a result of the request. 
+	TransactionIds: {any}?,
 }
 
 export type AlternateId = {
-	Type: string?, --- Type of the alternate ID.
-	Value: string?, --- Value of the alternate ID.
+	--- Type of the alternate ID. 
+	Type: string?,
+	--- Value of the alternate ID. 
+	Value: string?,
 }
 
 --- The basic wrapper around every failed API response 
 export type ApiErrorWrapper = {
-	code: number, --- Numerical HTTP code
-	error: string?, --- Playfab error code
-	errorCode: number, --- Numerical PlayFab error code
-	errorDetails: {[any]: any}?, --- Detailed description of individual issues with the request object
-	errorMessage: string?, --- Description for the PlayFab errorCode
-	status: string?, --- String HTTP code
+	--- Numerical HTTP code 
+	code: number,
+	--- Playfab error code 
+	error: string?,
+	--- Numerical PlayFab error code 
+	errorCode: number,
+	--- Detailed description of individual issues with the request object 
+	errorDetails: {[any]: any}?,
+	--- Description for the PlayFab errorCode 
+	errorMessage: string?,
+	--- String HTTP code 
+	status: string?,
 }
 
 export type CatalogAlternateId = {
-	Type: string?, --- Type of the alternate ID.
-	Value: string?, --- Value of the alternate ID.
+	--- Type of the alternate ID. 
+	Type: string?,
+	--- Value of the alternate ID. 
+	Value: string?,
 }
 
 export type CatalogConfig = {
-	AdminEntities: {EntityKey}?, --- A list of player entity keys that will have admin permissions.
-	Catalog: CatalogSpecificConfig?, --- The set of configuration that only applies to catalog items.
-	DeepLinkFormats: {DeepLinkFormat}?, --- A list of deep link formats.
-	DisplayPropertyIndexInfos: {DisplayPropertyIndexInfo}?, --- A list of display properties to index.
-	File: FileConfig?, --- The set of configuration that only applies to Files.
-	Image: ImageConfig?, --- The set of configuration that only applies to Images.
-	IsCatalogEnabled: boolean, --- Flag defining whether catalog is enabled.
-	Platforms: {any}?, --- A list of Platforms that can be applied to catalog items.
-	ReviewerEntities: {EntityKey}?, --- A set of player entity keys that are allowed to review content.
-	UserGeneratedContent: UserGeneratedContentSpecificConfig?, --- The set of configuration that only applies to user generated contents.
+	--- A list of player entity keys that will have admin permissions. 
+	AdminEntities: {EntityKey}?,
+	--- The set of configuration that only applies to catalog items. 
+	Catalog: CatalogSpecificConfig?,
+	--- A list of deep link formats. 
+	DeepLinkFormats: {DeepLinkFormat}?,
+	--- A list of display properties to index. 
+	DisplayPropertyIndexInfos: {DisplayPropertyIndexInfo}?,
+	--- The set of configuration that only applies to Files. 
+	File: FileConfig?,
+	--- The set of configuration that only applies to Images. 
+	Image: ImageConfig?,
+	--- Flag defining whether catalog is enabled. 
+	IsCatalogEnabled: boolean,
+	--- A list of Platforms that can be applied to catalog items. 
+	Platforms: {any}?,
+	--- A set of player entity keys that are allowed to review content. 
+	ReviewerEntities: {EntityKey}?,
+	--- The set of configuration that only applies to user generated contents. 
+	UserGeneratedContent: UserGeneratedContentSpecificConfig?,
 }
 
 export type CatalogItem = {
-	AlternateIds: {CatalogAlternateId}?, --- The alternate IDs associated with this item.
-	ContentType: string?, --- The client-defined type of the item.
-	Contents: {Content}?, --- The set of contents associated with this item.
-	CreationDate: string?, --- The date and time when this item was created.
-	CreatorEntity: EntityKey?, --- The ID of the creator of this catalog item.
-	DeepLinks: {DeepLink}?, --- The set of platform specific deep links for this item.
-	Description: {[any]: any}?, --- A dictionary of localized descriptions. Key is language code and localized string is the value. The neutral locale is required.
-	DisplayProperties: {[any]: any}?, --- Game specific properties for display purposes. This is an arbitrary JSON blob.
-	DisplayVersion: string?, --- The user provided version of the item for display purposes.
-	ETag: string?, --- The current ETag value that can be used for optimistic concurrency in the If-None-Match header.
-	EndDate: string?, --- The date of when the item will cease to be available. If not provided then the product will be available indefinitely.
-	Id: string?, --- The unique ID of the item.
-	Images: {Image}?, --- The images associated with this item. Images can be thumbnails or screenshots.
-	IsHidden: boolean?, --- Indicates if the item is hidden.
-	ItemReferences: {CatalogItemReference}?, --- The item references associated with this item.
-	Keywords: KeywordSet?, --- A dictionary of localized keywords. Key is language code and localized list of keywords is the value.
-	LastModifiedDate: string?, --- The date and time this item was last updated.
-	Moderation: ModerationState?, --- The moderation state for this item.
-	Platforms: {any}?, --- The platforms supported by this item.
-	PriceOptions: CatalogPriceOptions?, --- The base price of this item.
-	Rating: Rating?, --- Rating summary for this item.
-	StartDate: string?, --- The date of when the item will be available. If not provided then the product will appear immediately.
-	StoreDetails: StoreDetails?, --- Optional details for stores items.
-	Tags: {any}?, --- The list of tags that are associated with this item.
-	Title: {[any]: any}?, --- A dictionary of localized titles. Key is language code and localized string is the value. The neutral locale is required.
-	Type: string?, --- The high-level type of the item. The following item types are supported: bundle, catalogItem, currency, store, ugc.
+	--- The alternate IDs associated with this item. 
+	AlternateIds: {CatalogAlternateId}?,
+	--- The client-defined type of the item. 
+	ContentType: string?,
+	--- The set of contents associated with this item. 
+	Contents: {Content}?,
+	--- The date and time when this item was created. 
+	CreationDate: string?,
+	--- The ID of the creator of this catalog item. 
+	CreatorEntity: EntityKey?,
+	--- The set of platform specific deep links for this item. 
+	DeepLinks: {DeepLink}?,
+	--- A dictionary of localized descriptions. Key is language code and localized string 
+	--- is the value. The neutral locale is required. 
+	Description: {[any]: any}?,
+	--- Game specific properties for display purposes. This is an arbitrary JSON blob. 
+	DisplayProperties: {[any]: any}?,
+	--- The user provided version of the item for display purposes. 
+	DisplayVersion: string?,
+	--- The current ETag value that can be used for optimistic concurrency in the If-None-Match 
+	--- header. 
+	ETag: string?,
+	--- The date of when the item will cease to be available. If not provided then the 
+	--- product will be available indefinitely. 
+	EndDate: string?,
+	--- The unique ID of the item. 
+	Id: string?,
+	--- The images associated with this item. Images can be thumbnails or screenshots. 
+	Images: {Image}?,
+	--- Indicates if the item is hidden. 
+	IsHidden: boolean?,
+	--- The item references associated with this item. 
+	ItemReferences: {CatalogItemReference}?,
+	--- A dictionary of localized keywords. Key is language code and localized list 
+	--- of keywords is the value. 
+	Keywords: KeywordSet?,
+	--- The date and time this item was last updated. 
+	LastModifiedDate: string?,
+	--- The moderation state for this item. 
+	Moderation: ModerationState?,
+	--- The platforms supported by this item. 
+	Platforms: {any}?,
+	--- The base price of this item. 
+	PriceOptions: CatalogPriceOptions?,
+	--- Rating summary for this item. 
+	Rating: Rating?,
+	--- The date of when the item will be available. If not provided then the product 
+	--- will appear immediately. 
+	StartDate: string?,
+	--- Optional details for stores items. 
+	StoreDetails: StoreDetails?,
+	--- The list of tags that are associated with this item. 
+	Tags: {any}?,
+	--- A dictionary of localized titles. Key is language code and localized string 
+	--- is the value. The neutral locale is required. 
+	Title: {[any]: any}?,
+	--- The high-level type of the item. The following item types are supported: bundle, 
+	--- catalogItem, currency, store, ugc. 
+	Type: string?,
 }
 
 export type CatalogItemReference = {
-	Amount: number?, --- The amount of the catalog item.
-	Id: string?, --- The unique ID of the catalog item.
-	PriceOptions: CatalogPriceOptions?, --- The prices the catalog item can be purchased for.
+	--- The amount of the catalog item. 
+	Amount: number?,
+	--- The unique ID of the catalog item. 
+	Id: string?,
+	--- The prices the catalog item can be purchased for. 
+	PriceOptions: CatalogPriceOptions?,
 }
 
 export type CatalogPrice = {
-	Amounts: {CatalogPriceAmount}?, --- The amounts of the catalog item price.
+	--- The amounts of the catalog item price. 
+	Amounts: {CatalogPriceAmount}?,
 }
 
 export type CatalogPriceAmount = {
-	Amount: number, --- The amount of the price.
-	ItemId: string?, --- The Item Id of the price.
+	--- The amount of the price. 
+	Amount: number,
+	--- The Item Id of the price. 
+	ItemId: string?,
 }
 
 export type CatalogPriceAmountOverride = {
-	FixedValue: number?, --- The exact value that should be utilized in the override.
-	ItemId: string?, --- The id of the item this override should utilize.
-	Multiplier: number?, --- The multiplier that will be applied to the base Catalog value to determine what value should be utilized in the override.
+	--- The exact value that should be utilized in the override. 
+	FixedValue: number?,
+	--- The id of the item this override should utilize. 
+	ItemId: string?,
+	--- The multiplier that will be applied to the base Catalog value to determine what 
+	--- value should be utilized in the override. 
+	Multiplier: number?,
 }
 
 export type CatalogPriceOptions = {
-	Prices: {CatalogPrice}?, --- Prices of the catalog item.
+	--- Prices of the catalog item. 
+	Prices: {CatalogPrice}?,
 }
 
 export type CatalogPriceOptionsOverride = {
-	Prices: {CatalogPriceOverride}?, --- The prices utilized in the override.
+	--- The prices utilized in the override. 
+	Prices: {CatalogPriceOverride}?,
 }
 
 export type CatalogPriceOverride = {
-	Amounts: {CatalogPriceAmountOverride}?, --- The currency amounts utilized in the override for a singular price.
+	--- The currency amounts utilized in the override for a singular price. 
+	Amounts: {CatalogPriceAmountOverride}?,
 }
 
 export type CatalogSpecificConfig = {
-	ContentTypes: {any}?, --- The set of content types that will be used for validation.
-	Tags: {any}?, --- The set of tags that will be used for validation.
+	--- The set of content types that will be used for validation. 
+	ContentTypes: {any}?,
+	--- The set of tags that will be used for validation. 
+	Tags: {any}?,
 }
 
 export type ConcernCategory = 
@@ -148,12 +227,18 @@ export type ConcernCategory =
 	| "Profanity"
 
 export type Content = {
-	Id: string?, --- The content unique ID.
-	MaxClientVersion: string?, --- The maximum client version that this content is compatible with.
-	MinClientVersion: string?, --- The minimum client version that this content is compatible with.
-	Tags: {any}?, --- The list of tags that are associated with this content.
-	Type: string?, --- The client-defined type of the content.
-	Url: string?, --- The Azure CDN URL for retrieval of the catalog item binary content.
+	--- The content unique ID. 
+	Id: string?,
+	--- The maximum client version that this content is compatible with. 
+	MaxClientVersion: string?,
+	--- The minimum client version that this content is compatible with. 
+	MinClientVersion: string?,
+	--- The list of tags that are associated with this content. 
+	Tags: {any}?,
+	--- The client-defined type of the content. 
+	Type: string?,
+	--- The Azure CDN URL for retrieval of the catalog item binary content. 
+	Url: string?,
 }
 
 export type ContentFeed = {
@@ -413,13 +498,18 @@ export type CountryCode =
 --- The item will not be published to the public catalog until the PublishItem API 
 --- is called for the item. 
 export type CreateDraftItemRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Item: CatalogItem?, --- Metadata describing the new catalog item to be created.
-	Publish: boolean, --- Whether the item should be published immediately.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Metadata describing the new catalog item to be created. 
+	Item: CatalogItem?,
+	--- Whether the item should be published immediately. 
+	Publish: boolean,
 }
 
 export type CreateDraftItemResponse = {
-	Item: CatalogItem?, --- Updated metadata describing the catalog item just created.
+	--- Updated metadata describing the catalog item just created. 
+	Item: CatalogItem?,
 }
 
 --- Upload URLs point to Azure Blobs; clients must follow the Microsoft Azure Storage 
@@ -427,27 +517,39 @@ export type CreateDraftItemResponse = {
 --- URLs and IDs for each file. The IDs and URLs returned must be added to the item 
 --- metadata and committed using the CreateDraftItem or UpdateDraftItem Item APIs. 
 export type CreateUploadUrlsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Files: {UploadInfo}?, --- Description of the files to be uploaded by the client.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Description of the files to be uploaded by the client. 
+	Files: {UploadInfo}?,
 }
 
 export type CreateUploadUrlsResponse = {
-	UploadUrls: {UploadUrlMetadata}?, --- List of URLs metadata for the files to be uploaded by the client.
+	--- List of URLs metadata for the files to be uploaded by the client. 
+	UploadUrls: {UploadUrlMetadata}?,
 }
 
 export type DeepLink = {
-	Platform: string?, --- Target platform for this deep link.
-	Url: string?, --- The deep link for this platform.
+	--- Target platform for this deep link. 
+	Platform: string?,
+	--- The deep link for this platform. 
+	Url: string?,
 }
 
 export type DeepLinkFormat = {
-	Format: string?, --- The format of the deep link to return. The format should contain '{id}' to represent where the item ID should be placed.
-	Platform: string?, --- The target platform for the deep link.
+	--- The format of the deep link to return. The format should contain '{id}' to represent 
+	--- where the item ID should be placed. 
+	Format: string?,
+	--- The target platform for the deep link. 
+	Platform: string?,
 }
 
 export type DeleteEntityItemReviewsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
 }
 
 export type DeleteEntityItemReviewsResponse = {
@@ -455,46 +557,66 @@ export type DeleteEntityItemReviewsResponse = {
 
 --- Delete an Inventory Collection by the specified Id for an Entity 
 export type DeleteInventoryCollectionRequest = {
-	CollectionId: string?, --- The inventory collection id the request applies to.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity the request is about. Set to the caller by default.
+	--- The inventory collection id the request applies to. 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity the request is about. Set to the caller by default. 
+	Entity: EntityKey?,
 }
 
 export type DeleteInventoryCollectionResponse = {
 }
 
 export type DeleteInventoryItemsOperation = {
-	Item: InventoryItemReference?, --- The inventory item the operation applies to.
+	--- The inventory item the operation applies to. 
+	Item: InventoryItemReference?,
 }
 
 --- Given an entity type, entity identifier and container details, will delete the 
 --- entity's inventory items 
 export type DeleteInventoryItemsRequest = {
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	IdempotencyId: string?, --- The Idempotency ID for this request.
-	Item: InventoryItemReference?, --- The inventory item the request applies to.
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The Idempotency ID for this request. 
+	IdempotencyId: string?,
+	--- The inventory item the request applies to. 
+	Item: InventoryItemReference?,
 }
 
 export type DeleteInventoryItemsResponse = {
-	IdempotencyId: string?, --- The idempotency id used in the request.
-	TransactionIds: {any}?, --- The ids of transactions that occurred as a result of the request.
+	--- The idempotency id used in the request. 
+	IdempotencyId: string?,
+	--- The ids of transactions that occurred as a result of the request. 
+	TransactionIds: {any}?,
 }
 
 export type DeleteItemRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Id: string?, --- The unique ID of the item.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The unique ID of the item. 
+	Id: string?,
 }
 
 export type DeleteItemResponse = {
 }
 
 export type DisplayPropertyIndexInfo = {
-	Name: string?, --- The property name in the 'DisplayProperties' property to be indexed.
-	Type: string?, --- The type of the property to be indexed.
+	--- The property name in the 'DisplayProperties' property to be indexed. 
+	Name: string?,
+	--- The type of the property to be indexed. 
+	Type: string?,
 }
 
 export type DisplayPropertyType = 
@@ -506,218 +628,343 @@ export type DisplayPropertyType =
 
 --- Combined entity type and ID structure which uniquely identifies a single entity. 
 export type EntityKey = {
-	Id: string, --- Unique ID of the entity.
-	Type: string?, --- Entity type. See https://docs.microsoft.com/gaming/playfab/features/data/entities/available-built-in-entity-types
+	--- Unique ID of the entity. 
+	Id: string,
+	--- Entity type. See https://docs.microsoft.com/gaming/playfab/features/data/entities/available-built-in-entity-types 
+	Type: string?,
 }
 
 --- Execute a list of Inventory Operations for an Entity 
 export type ExecuteInventoryOperationsRequest = {
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	IdempotencyId: string?, --- The Idempotency ID for this request.
-	Operations: {InventoryOperation}?, --- The operations to run transactionally. The operations will be executed in-order sequentially and will succeed or fail as a batch.
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The Idempotency ID for this request. 
+	IdempotencyId: string?,
+	--- The operations to run transactionally. The operations will be executed in-order 
+	--- sequentially and will succeed or fail as a batch. 
+	Operations: {InventoryOperation}?,
 }
 
 export type ExecuteInventoryOperationsResponse = {
-	IdempotencyId: string?, --- The idempotency id used in the request.
-	TransactionIds: {any}?, --- The ids of the transactions that occurred as a result of the request.
+	--- The idempotency id used in the request. 
+	IdempotencyId: string?,
+	--- The ids of the transactions that occurred as a result of the request. 
+	TransactionIds: {any}?,
 }
 
 export type FileConfig = {
-	ContentTypes: {any}?, --- The set of content types that will be used for validation.
-	Tags: {any}?, --- The set of tags that will be used for validation.
+	--- The set of content types that will be used for validation. 
+	ContentTypes: {any}?,
+	--- The set of tags that will be used for validation. 
+	Tags: {any}?,
 }
 
 export type FilterOptions = {
-	Filter: string?, --- The OData filter utilized. Mutually exclusive with 'IncludeAllItems'.
-	IncludeAllItems: boolean?, --- The flag that overrides the filter and allows for returning all catalog items. Mutually exclusive with 'Filter'.
+	--- The OData filter utilized. Mutually exclusive with 'IncludeAllItems'. 
+	Filter: string?,
+	--- The flag that overrides the filter and allows for returning all catalog items. 
+	--- Mutually exclusive with 'Filter'. 
+	IncludeAllItems: boolean?,
 }
 
 export type GetCatalogConfigRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
 }
 
 export type GetCatalogConfigResponse = {
-	Config: CatalogConfig?, --- The catalog configuration.
+	--- The catalog configuration. 
+	Config: CatalogConfig?,
 }
 
 export type GetDraftItemRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Id: string?, --- The unique ID of the item.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The unique ID of the item. 
+	Id: string?,
 }
 
 export type GetDraftItemResponse = {
-	Item: CatalogItem?, --- Full metadata of the catalog item requested.
+	--- Full metadata of the catalog item requested. 
+	Item: CatalogItem?,
 }
 
 export type GetDraftItemsRequest = {
-	AlternateIds: {CatalogAlternateId}?, --- List of item alternate IDs.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Ids: {any}?, --- List of Item Ids.
+	--- List of item alternate IDs. 
+	AlternateIds: {CatalogAlternateId}?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- List of Item Ids. 
+	Ids: {any}?,
 }
 
 export type GetDraftItemsResponse = {
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items, if any are available.
-	Items: {CatalogItem}?, --- A set of items created by the entity.
+	--- An opaque token used to retrieve the next page of items, if any are available. 
+	ContinuationToken: string?,
+	--- A set of items created by the entity. 
+	Items: {CatalogItem}?,
 }
 
 export type GetEntityDraftItemsRequest = {
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items created by the caller, if any are available. Should be null on initial request.
-	Count: number, --- Number of items to retrieve. Maximum page size is 10.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Filter: string?, --- OData Filter to specify ItemType.
+	--- An opaque token used to retrieve the next page of items created by the caller, 
+	--- if any are available. Should be null on initial request. 
+	ContinuationToken: string?,
+	--- Number of items to retrieve. Maximum page size is 10. 
+	Count: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- OData Filter to specify ItemType. 
+	Filter: string?,
 }
 
 export type GetEntityDraftItemsResponse = {
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items, if any are available.
-	Items: {CatalogItem}?, --- A set of items created by the entity.
+	--- An opaque token used to retrieve the next page of items, if any are available. 
+	ContinuationToken: string?,
+	--- A set of items created by the entity. 
+	Items: {CatalogItem}?,
 }
 
 export type GetEntityItemReviewRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Id: string?, --- The unique ID of the item.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The unique ID of the item. 
+	Id: string?,
 }
 
 export type GetEntityItemReviewResponse = {
-	Review: Review?, --- The review the entity submitted for the requested item.
+	--- The review the entity submitted for the requested item. 
+	Review: Review?,
 }
 
 --- Get a list of Inventory Collection Ids for the specified Entity 
 export type GetInventoryCollectionIdsRequest = {
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of collection ids, if any are available.
-	Count: number, --- Number of items to retrieve. (Default = 10)
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity the request is about. Set to the caller by default.
+	--- An opaque token used to retrieve the next page of collection ids, if any are 
+	--- available. 
+	ContinuationToken: string?,
+	--- Number of items to retrieve. (Default = 10) 
+	Count: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity the request is about. Set to the caller by default. 
+	Entity: EntityKey?,
 }
 
 export type GetInventoryCollectionIdsResponse = {
-	CollectionIds: {any}?, --- The requested inventory collection ids.
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of collection ids, if any are available.
+	--- The requested inventory collection ids. 
+	CollectionIds: {any}?,
+	--- An opaque token used to retrieve the next page of collection ids, if any are 
+	--- available. 
+	ContinuationToken: string?,
 }
 
 --- Given an entity type, entity identifier and container details, will get the 
 --- entity's inventory items.  
 export type GetInventoryItemsRequest = {
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items in the inventory, if any are available. Should be null on initial request.
-	Count: number, --- Number of items to retrieve. Maximum page size is 50. (Default=10)
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Filter: string?, --- The filters to limit what is returned to the client.
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- An opaque token used to retrieve the next page of items in the inventory, if 
+	--- any are available. Should be null on initial request. 
+	ContinuationToken: string?,
+	--- Number of items to retrieve. Maximum page size is 50. (Default=10) 
+	Count: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The filters to limit what is returned to the client. 
+	Filter: string?,
 }
 
 export type GetInventoryItemsResponse = {
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items, if any are available.
-	Items: {InventoryItem}?, --- The requested inventory items.
+	--- An opaque token used to retrieve the next page of items, if any are available. 
+	ContinuationToken: string?,
+	--- The requested inventory items. 
+	Items: {InventoryItem}?,
 }
 
 --- Given an item, return a set of bundles and stores containing the item. 
 export type GetItemContainersRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items in the inventory, if any are available. Should be null on initial request.
-	Count: number, --- Number of items to retrieve. Maximum page size is 25.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Id: string?, --- The unique ID of the item.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- An opaque token used to retrieve the next page of items in the inventory, if 
+	--- any are available. Should be null on initial request. 
+	ContinuationToken: string?,
+	--- Number of items to retrieve. Maximum page size is 25. 
+	Count: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The unique ID of the item. 
+	Id: string?,
 }
 
 export type GetItemContainersResponse = {
-	Containers: {CatalogItem}?, --- List of Bundles and Stores containing the requested items.
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items, if any are available.
+	--- List of Bundles and Stores containing the requested items. 
+	Containers: {CatalogItem}?,
+	--- An opaque token used to retrieve the next page of items, if any are available. 
+	ContinuationToken: string?,
 }
 
 export type GetItemModerationStateRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Id: string?, --- The unique ID of the item.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The unique ID of the item. 
+	Id: string?,
 }
 
 export type GetItemModerationStateResponse = {
-	State: ModerationState?, --- The current moderation state for the requested item.
+	--- The current moderation state for the requested item. 
+	State: ModerationState?,
 }
 
 export type GetItemPublishStatusRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Id: string?, --- The unique ID of the item.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The unique ID of the item. 
+	Id: string?,
 }
 
 export type GetItemPublishStatusResponse = {
-	Result: string?, --- High level status of the published item.
-	StatusMessage: string?, --- Descriptive message about the current status of the publish.
+	--- High level status of the published item. 
+	Result: string?,
+	--- Descriptive message about the current status of the publish. 
+	StatusMessage: string?,
 }
 
 export type GetItemRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Id: string?, --- The unique ID of the item.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The unique ID of the item. 
+	Id: string?,
 }
 
 --- Get item result. 
 export type GetItemResponse = {
-	Item: CatalogItem?, --- The item result.
+	--- The item result. 
+	Item: CatalogItem?,
 }
 
 export type GetItemReviewSummaryRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Id: string?, --- The unique ID of the item.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The unique ID of the item. 
+	Id: string?,
 }
 
 export type GetItemReviewSummaryResponse = {
-	LeastFavorableReview: Review?, --- The least favorable review for this item.
-	MostFavorableReview: Review?, --- The most favorable review for this item.
-	Rating: Rating?, --- The summary of ratings associated with this item.
-	ReviewsCount: number, --- The total number of reviews associated with this item.
+	--- The least favorable review for this item. 
+	LeastFavorableReview: Review?,
+	--- The most favorable review for this item. 
+	MostFavorableReview: Review?,
+	--- The summary of ratings associated with this item. 
+	Rating: Rating?,
+	--- The total number of reviews associated with this item. 
+	ReviewsCount: number,
 }
 
 export type GetItemReviewsRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items, if any are available.
-	Count: number, --- Number of items to retrieve. Maximum page size is 200. If not specified, defaults to 10.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Id: string?, --- The unique ID of the item.
-	OrderBy: string?, --- An OData orderBy used to order the results of the query.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- An opaque token used to retrieve the next page of items, if any are available. 
+	ContinuationToken: string?,
+	--- Number of items to retrieve. Maximum page size is 200. If not specified, defaults 
+	--- to 10. 
+	Count: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The unique ID of the item. 
+	Id: string?,
+	--- An OData orderBy used to order the results of the query. 
+	OrderBy: string?,
 }
 
 export type GetItemReviewsResponse = {
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items, if any are available.
-	Reviews: {Review}?, --- The paginated set of results.
+	--- An opaque token used to retrieve the next page of items, if any are available. 
+	ContinuationToken: string?,
+	--- The paginated set of results. 
+	Reviews: {Review}?,
 }
 
 export type GetItemsRequest = {
-	AlternateIds: {CatalogAlternateId}?, --- List of item alternate IDs.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Ids: {any}?, --- List of Item Ids.
+	--- List of item alternate IDs. 
+	AlternateIds: {CatalogAlternateId}?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- List of Item Ids. 
+	Ids: {any}?,
 }
 
 export type GetItemsResponse = {
-	Items: {CatalogItem}?, --- Metadata of set of items.
+	--- Metadata of set of items. 
+	Items: {CatalogItem}?,
 }
 
 --- Gets the access tokens for Microsoft Store authentication. 
 export type GetMicrosoftStoreAccessTokensRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
 }
 
 export type GetMicrosoftStoreAccessTokensResponse = {
-	CollectionsAccessToken: string?, --- The collections access token for calling https://onestore.microsoft.com/b2b/keys/create/collections to obtain a CollectionsIdKey for the user
-	CollectionsAccessTokenExpirationDate: string, --- The date the collections access token expires
+	--- The collections access token for calling https://onestore.microsoft.com/b2b/keys/create/collections 
+	--- to obtain a CollectionsIdKey for the user 
+	CollectionsAccessToken: string?,
+	--- The date the collections access token expires 
+	CollectionsAccessTokenExpirationDate: string,
 }
 
 export type GooglePlayProductPurchase = {
-	ProductId: string?, --- The Product ID (SKU) of the InApp product purchased from the Google Play store.
-	Token: string?, --- The token provided to the player's device when the product was purchased
+	--- The Product ID (SKU) of the InApp product purchased from the Google Play store. 
+	ProductId: string?,
+	--- The token provided to the player's device when the product was purchased 
+	Token: string?,
 }
 
 export type HelpfulnessVote = 
@@ -726,46 +973,68 @@ export type HelpfulnessVote =
 	| "Helpful"
 
 export type Image = {
-	Id: string?, --- The image unique ID.
-	Tag: string?, --- The client-defined tag associated with this image.
-	Type: string?, --- The client-defined type of this image.
-	Url: string?, --- The URL for retrieval of the image.
+	--- The image unique ID. 
+	Id: string?,
+	--- The client-defined tag associated with this image. 
+	Tag: string?,
+	--- The client-defined type of this image. 
+	Type: string?,
+	--- The URL for retrieval of the image. 
+	Url: string?,
 }
 
 export type ImageConfig = {
-	Tags: {any}?, --- The set of tags that will be used for validation.
+	--- The set of tags that will be used for validation. 
+	Tags: {any}?,
 }
 
 export type InventoryItem = {
-	Amount: number, --- The amount of the item.
-	Id: string?, --- The id of the item. This should correspond to the item id in the catalog.
-	StackId: string?, --- The stack id of the item.
-	Type: string?, --- The type of the item. This should correspond to the item type in the catalog.
+	--- The amount of the item. 
+	Amount: number,
+	--- The id of the item. This should correspond to the item id in the catalog. 
+	Id: string?,
+	--- The stack id of the item. 
+	StackId: string?,
+	--- The type of the item. This should correspond to the item type in the catalog. 
+	Type: string?,
 }
 
 export type InventoryItemReference = {
-	AlternateId: AlternateId?, --- The inventory item alternate id the request applies to.
-	Id: string?, --- The inventory item id the request applies to.
-	StackId: string?, --- The inventory stack id the request should redeem to. (Default="default")
+	--- The inventory item alternate id the request applies to. 
+	AlternateId: AlternateId?,
+	--- The inventory item id the request applies to. 
+	Id: string?,
+	--- The inventory stack id the request should redeem to. (Default="default") 
+	StackId: string?,
 }
 
 export type InventoryOperation = {
-	Add: AddInventoryItemsOperation?, --- The add operation.
-	Delete: DeleteInventoryItemsOperation?, --- The delete operation.
-	Purchase: PurchaseInventoryItemsOperation?, --- The purchase operation.
-	Subtract: SubtractInventoryItemsOperation?, --- The subtract operation.
-	Transfer: TransferInventoryItemsOperation?, --- The transfer operation.
-	Update: UpdateInventoryItemsOperation?, --- The update operation.
+	--- The add operation. 
+	Add: AddInventoryItemsOperation?,
+	--- The delete operation. 
+	Delete: DeleteInventoryItemsOperation?,
+	--- The purchase operation. 
+	Purchase: PurchaseInventoryItemsOperation?,
+	--- The subtract operation. 
+	Subtract: SubtractInventoryItemsOperation?,
+	--- The transfer operation. 
+	Transfer: TransferInventoryItemsOperation?,
+	--- The update operation. 
+	Update: UpdateInventoryItemsOperation?,
 }
 
 export type KeywordSet = {
-	Values: {any}?, --- A list of localized keywords.
+	--- A list of localized keywords. 
+	Values: {any}?,
 }
 
 export type ModerationState = {
-	LastModifiedDate: string?, --- The date and time this moderation state was last updated.
-	Reason: string?, --- The current stated reason for the associated item being moderated.
-	Status: string?, --- The current moderation status for the associated item.
+	--- The date and time this moderation state was last updated. 
+	LastModifiedDate: string?,
+	--- The current stated reason for the associated item being moderated. 
+	Reason: string?,
+	--- The current moderation status for the associated item. 
+	Status: string?,
 }
 
 export type ModerationStatus = 
@@ -780,11 +1049,21 @@ export type PayoutDetails = {
 --- The call kicks off a workflow to publish the item to the public catalog. The 
 --- Publish Status API should be used to monitor the publish job. 
 export type PublishDraftItemRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	ETag: string?, --- ETag of the catalog item to published from the working catalog to the public catalog. Used for optimistic concurrency. If the provided ETag does not match the ETag in the current working catalog, the request will be rejected. If not provided, the current version of the document in the working catalog will be published.
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Id: string?, --- The unique ID of the item.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- ETag of the catalog item to published from the working catalog to the public 
+	--- catalog. Used for optimistic concurrency. If the provided ETag does not match 
+	--- the ETag in the current working catalog, the request will be rejected. If not 
+	--- provided, the current version of the document in the working catalog will be 
+	--- published. 
+	ETag: string?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The unique ID of the item. 
+	Id: string?,
 }
 
 export type PublishDraftItemResponse = {
@@ -798,155 +1077,249 @@ export type PublishResult =
 	| "Canceled"
 
 export type PurchaseInventoryItemsOperation = {
-	Amount: number, --- The amount to purchase.
-	DeleteEmptyStacks: boolean, --- Indicates whether stacks reduced to an amount of 0 during the operation should be deleted from the inventory. (Default = false)
-	Item: InventoryItemReference?, --- The inventory item the operation applies to.
-	PriceAmounts: {PurchasePriceAmount}?, --- The per-item price the item is expected to be purchased at. This must match a value configured in the Catalog or specified Store.
-	StoreId: string?, --- The id of the Store to purchase the item from.
+	--- The amount to purchase. 
+	Amount: number,
+	--- Indicates whether stacks reduced to an amount of 0 during the operation should 
+	--- be deleted from the inventory. (Default = false) 
+	DeleteEmptyStacks: boolean,
+	--- The inventory item the operation applies to. 
+	Item: InventoryItemReference?,
+	--- The per-item price the item is expected to be purchased at. This must match 
+	--- a value configured in the Catalog or specified Store. 
+	PriceAmounts: {PurchasePriceAmount}?,
+	--- The id of the Store to purchase the item from. 
+	StoreId: string?,
 }
 
 --- Purchase a single item or bundle, paying the associated price. 
 export type PurchaseInventoryItemsRequest = {
-	Amount: number, --- The amount to purchase.
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	DeleteEmptyStacks: boolean, --- Indicates whether stacks reduced to an amount of 0 during the request should be deleted from the inventory. (Default=false)
-	Entity: EntityKey?, --- The entity to perform this action on.
-	IdempotencyId: string?, --- The Idempotency ID for this request.
-	Item: InventoryItemReference?, --- The inventory item the request applies to.
-	PriceAmounts: {PurchasePriceAmount}?, --- The per-item price the item is expected to be purchased at. This must match a value configured in the Catalog or specified Store. 
-	StoreId: string?, --- The id of the Store to purchase the item from.
+	--- The amount to purchase. 
+	Amount: number,
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Indicates whether stacks reduced to an amount of 0 during the request should 
+	--- be deleted from the inventory. (Default=false) 
+	DeleteEmptyStacks: boolean,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The Idempotency ID for this request. 
+	IdempotencyId: string?,
+	--- The inventory item the request applies to. 
+	Item: InventoryItemReference?,
+	--- The per-item price the item is expected to be purchased at. This must match 
+	--- a value configured in the Catalog or specified Store.  
+	PriceAmounts: {PurchasePriceAmount}?,
+	--- The id of the Store to purchase the item from. 
+	StoreId: string?,
 }
 
 export type PurchaseInventoryItemsResponse = {
-	IdempotencyId: string?, --- The idempotency id used in the request.
-	TransactionIds: {any}?, --- The ids of transactions that occurred as a result of the request.
+	--- The idempotency id used in the request. 
+	IdempotencyId: string?,
+	--- The ids of transactions that occurred as a result of the request. 
+	TransactionIds: {any}?,
 }
 
 export type PurchaseOverride = {
 }
 
 export type PurchasePriceAmount = {
-	Amount: number, --- The amount of the inventory item to use in the purchase .
-	ItemId: string?, --- The inventory item id to use in the purchase .
-	StackId: string?, --- The inventory stack id the to use in the purchase. Set to "default" by default
+	--- The amount of the inventory item to use in the purchase . 
+	Amount: number,
+	--- The inventory item id to use in the purchase . 
+	ItemId: string?,
+	--- The inventory stack id the to use in the purchase. Set to "default" by default 
+	StackId: string?,
 }
 
 export type Rating = {
-	Average: number?, --- The average rating for this item.
-	Count1Star: number?, --- The total count of 1 star ratings for this item.
-	Count2Star: number?, --- The total count of 2 star ratings for this item.
-	Count3Star: number?, --- The total count of 3 star ratings for this item.
-	Count4Star: number?, --- The total count of 4 star ratings for this item.
-	Count5Star: number?, --- The total count of 5 star ratings for this item.
-	TotalCount: number?, --- The total count of ratings for this item.
+	--- The average rating for this item. 
+	Average: number?,
+	--- The total count of 1 star ratings for this item. 
+	Count1Star: number?,
+	--- The total count of 2 star ratings for this item. 
+	Count2Star: number?,
+	--- The total count of 3 star ratings for this item. 
+	Count3Star: number?,
+	--- The total count of 4 star ratings for this item. 
+	Count4Star: number?,
+	--- The total count of 5 star ratings for this item. 
+	Count5Star: number?,
+	--- The total count of ratings for this item. 
+	TotalCount: number?,
 }
 
 --- Redeem items from the Apple App Store. 
 export type RedeemAppleAppStoreInventoryItemsRequest = {
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Receipt: string?, --- The receipt provided by the Apple marketplace upon successful purchase.
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The receipt provided by the Apple marketplace upon successful purchase. 
+	Receipt: string?,
 }
 
 export type RedeemAppleAppStoreInventoryItemsResponse = {
-	Failed: {RedemptionFailure}?, --- The list of failed redemptions from the external marketplace.
-	Succeeded: {RedemptionSuccess}?, --- The list of successful redemptions from the external marketplace.
-	TransactionIds: {any}?, --- The Transaction IDs associated with the inventory modifications
+	--- The list of failed redemptions from the external marketplace. 
+	Failed: {RedemptionFailure}?,
+	--- The list of successful redemptions from the external marketplace. 
+	Succeeded: {RedemptionSuccess}?,
+	--- The Transaction IDs associated with the inventory modifications 
+	TransactionIds: {any}?,
 }
 
 --- Redeem items from the Google Play Store. 
 export type RedeemGooglePlayInventoryItemsRequest = {
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Purchases: {GooglePlayProductPurchase}?, --- The list of purchases to redeem
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The list of purchases to redeem 
+	Purchases: {GooglePlayProductPurchase}?,
 }
 
 export type RedeemGooglePlayInventoryItemsResponse = {
-	Failed: {RedemptionFailure}?, --- The list of failed redemptions from the external marketplace.
-	Succeeded: {RedemptionSuccess}?, --- The list of successful redemptions from the external marketplace.
-	TransactionIds: {any}?, --- The Transaction IDs associated with the inventory modifications
+	--- The list of failed redemptions from the external marketplace. 
+	Failed: {RedemptionFailure}?,
+	--- The list of successful redemptions from the external marketplace. 
+	Succeeded: {RedemptionSuccess}?,
+	--- The Transaction IDs associated with the inventory modifications 
+	TransactionIds: {any}?,
 }
 
 --- Redeem items from the Microsoft Store. 
 export type RedeemMicrosoftStoreInventoryItemsRequest = {
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CollectionsIdKey: string?, --- The OneStore Collections Id Key used for AAD authentication.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	XboxToken: string?, --- Xbox Token used for delegated business partner authentication.
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The OneStore Collections Id Key used for AAD authentication. 
+	CollectionsIdKey: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- Xbox Token used for delegated business partner authentication. 
+	XboxToken: string?,
 }
 
 export type RedeemMicrosoftStoreInventoryItemsResponse = {
-	Failed: {RedemptionFailure}?, --- The list of failed redemptions from the external marketplace.
-	Succeeded: {RedemptionSuccess}?, --- The list of successful redemptions from the external marketplace.
-	TransactionIds: {any}?, --- The Transaction IDs associated with the inventory modifications
+	--- The list of failed redemptions from the external marketplace. 
+	Failed: {RedemptionFailure}?,
+	--- The list of successful redemptions from the external marketplace. 
+	Succeeded: {RedemptionSuccess}?,
+	--- The Transaction IDs associated with the inventory modifications 
+	TransactionIds: {any}?,
 }
 
 --- Redeem items from the Nintendo EShop. 
 export type RedeemNintendoEShopInventoryItemsRequest = {
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	NintendoServiceAccountIdToken: string?, --- The Nintendo provided token authorizing redemption
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The Nintendo provided token authorizing redemption 
+	NintendoServiceAccountIdToken: string?,
 }
 
 export type RedeemNintendoEShopInventoryItemsResponse = {
-	Failed: {RedemptionFailure}?, --- The list of failed redemptions from the external marketplace.
-	Succeeded: {RedemptionSuccess}?, --- The list of successful redemptions from the external marketplace.
-	TransactionIds: {any}?, --- The Transaction IDs associated with the inventory modifications
+	--- The list of failed redemptions from the external marketplace. 
+	Failed: {RedemptionFailure}?,
+	--- The list of successful redemptions from the external marketplace. 
+	Succeeded: {RedemptionSuccess}?,
+	--- The Transaction IDs associated with the inventory modifications 
+	TransactionIds: {any}?,
 }
 
 --- Redeem items from the PlayStation Store. 
 export type RedeemPlayStationStoreInventoryItemsRequest = {
-	AuthorizationCode: string?, --- Authorization code provided by the PlayStation OAuth provider.
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	ServiceLabel: string?, --- Optional Service Label to pass into the request.
+	--- Authorization code provided by the PlayStation OAuth provider. 
+	AuthorizationCode: string?,
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- Optional Service Label to pass into the request. 
+	ServiceLabel: string?,
 }
 
 export type RedeemPlayStationStoreInventoryItemsResponse = {
-	Failed: {RedemptionFailure}?, --- The list of failed redemptions from the external marketplace.
-	Succeeded: {RedemptionSuccess}?, --- The list of successful redemptions from the external marketplace.
-	TransactionIds: {any}?, --- The Transaction IDs associated with the inventory modifications
+	--- The list of failed redemptions from the external marketplace. 
+	Failed: {RedemptionFailure}?,
+	--- The list of successful redemptions from the external marketplace. 
+	Succeeded: {RedemptionSuccess}?,
+	--- The Transaction IDs associated with the inventory modifications 
+	TransactionIds: {any}?,
 }
 
 --- Redeem inventory items from Steam. 
 export type RedeemSteamInventoryItemsRequest = {
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
 }
 
 export type RedeemSteamInventoryItemsResponse = {
-	Failed: {RedemptionFailure}?, --- The list of failed redemptions from the external marketplace.
-	Succeeded: {RedemptionSuccess}?, --- The list of successful redemptions from the external marketplace.
-	TransactionIds: {any}?, --- The Transaction IDs associated with the inventory modifications
+	--- The list of failed redemptions from the external marketplace. 
+	Failed: {RedemptionFailure}?,
+	--- The list of successful redemptions from the external marketplace. 
+	Succeeded: {RedemptionSuccess}?,
+	--- The Transaction IDs associated with the inventory modifications 
+	TransactionIds: {any}?,
 }
 
 export type RedemptionFailure = {
-	FailureCode: string?, --- The marketplace failure code.
-	FailureDetails: string?, --- The marketplace error details explaining why the offer failed to redeem.
-	MarketplaceTransactionId: string?, --- The transaction id in the external marketplace.
-	OfferId: string?, --- The ID of the offer being redeemed.
+	--- The marketplace failure code. 
+	FailureCode: string?,
+	--- The marketplace error details explaining why the offer failed to redeem. 
+	FailureDetails: string?,
+	--- The transaction id in the external marketplace. 
+	MarketplaceTransactionId: string?,
+	--- The ID of the offer being redeemed. 
+	OfferId: string?,
 }
 
 export type RedemptionSuccess = {
-	MarketplaceTransactionId: string?, --- The transaction id in the external marketplace.
-	OfferId: string?, --- The ID of the offer being redeemed.
-	SuccessTimestamp: string, --- The timestamp for when the redeem was completed.
+	--- The transaction id in the external marketplace. 
+	MarketplaceTransactionId: string?,
+	--- The ID of the offer being redeemed. 
+	OfferId: string?,
+	--- The timestamp for when the redeem was completed. 
+	SuccessTimestamp: string,
 }
 
 export type ReportItemRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	ConcernCategory: string?, --- Category of concern for this report.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Id: string?, --- The unique ID of the item.
-	Reason: string?, --- The string reason for this report.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- Category of concern for this report. 
+	ConcernCategory: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The unique ID of the item. 
+	Id: string?,
+	--- The string reason for this report. 
+	Reason: string?,
 }
 
 export type ReportItemResponse = {
@@ -955,220 +1328,347 @@ export type ReportItemResponse = {
 --- Submit a report for an inappropriate review, allowing the submitting user to 
 --- specify their concern. 
 export type ReportItemReviewRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID of the item associated with the review.
-	ConcernCategory: string?, --- The reason this review is being reported.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	ItemId: string?, --- The string ID of the item associated with the review.
-	Reason: string?, --- The string reason for this report.
-	ReviewId: string?, --- The ID of the review to submit a report for.
+	--- An alternate ID of the item associated with the review. 
+	AlternateId: CatalogAlternateId?,
+	--- The reason this review is being reported. 
+	ConcernCategory: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The string ID of the item associated with the review. 
+	ItemId: string?,
+	--- The string reason for this report. 
+	Reason: string?,
+	--- The ID of the review to submit a report for. 
+	ReviewId: string?,
 }
 
 export type ReportItemReviewResponse = {
 }
 
 export type Review = {
-	HelpfulNegative: number, --- The number of negative helpfulness votes for this review.
-	HelpfulPositive: number, --- The number of positive helpfulness votes for this review.
-	IsInstalled: boolean, --- Indicates whether the review author has the item installed.
-	ItemId: string?, --- The ID of the item being reviewed.
-	ItemVersion: string?, --- The version of the item being reviewed.
-	Locale: string?, --- The locale for which this review was submitted in.
-	Rating: number, --- Star rating associated with this review.
-	ReviewId: string?, --- The ID of the review.
-	ReviewText: string?, --- The full text of this review.
-	ReviewerEntity: EntityKey?, --- The ID of the author of the review.
-	ReviewerId: string?, --- Deprecated. Use ReviewerEntity instead. This property will be removed in a future release.
-	Submitted: string, --- The date and time this review was last submitted.
-	Title: string?, --- The title of this review.
+	--- The number of negative helpfulness votes for this review. 
+	HelpfulNegative: number,
+	--- The number of positive helpfulness votes for this review. 
+	HelpfulPositive: number,
+	--- Indicates whether the review author has the item installed. 
+	IsInstalled: boolean,
+	--- The ID of the item being reviewed. 
+	ItemId: string?,
+	--- The version of the item being reviewed. 
+	ItemVersion: string?,
+	--- The locale for which this review was submitted in. 
+	Locale: string?,
+	--- Star rating associated with this review. 
+	Rating: number,
+	--- The ID of the review. 
+	ReviewId: string?,
+	--- The full text of this review. 
+	ReviewText: string?,
+	--- The ID of the author of the review. 
+	ReviewerEntity: EntityKey?,
+	--- Deprecated. Use ReviewerEntity instead. This property will be removed in a future 
+	--- release. 
+	ReviewerId: string?,
+	--- The date and time this review was last submitted. 
+	Submitted: string,
+	--- The title of this review. 
+	Title: string?,
 }
 
 export type ReviewItemRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Id: string?, --- The unique ID of the item.
-	Review: Review?, --- The review to submit.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The unique ID of the item. 
+	Id: string?,
+	--- The review to submit. 
+	Review: Review?,
 }
 
 export type ReviewItemResponse = {
 }
 
 export type ReviewTakedown = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	ItemId: string?, --- The ID of the item associated with the review to take down.
-	ReviewId: string?, --- The ID of the review to take down.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The ID of the item associated with the review to take down. 
+	ItemId: string?,
+	--- The ID of the review to take down. 
+	ReviewId: string?,
 }
 
 export type ScanResult = {
-	Url: string?, --- The URL of the item which failed the scan.
+	--- The URL of the item which failed the scan. 
+	Url: string?,
 }
 
 export type SearchItemsRequest = {
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items, if any are available.
-	Count: number, --- Number of items to retrieve. Maximum page size is 225. Default value is 10.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	Filter: string?, --- An OData filter used to refine the search query.
-	OrderBy: string?, --- An OData orderBy used to order the results of the search query.
-	Search: string?, --- The text to search for.
-	Select: string?, --- An OData select query option used to augment the search results. If not defined, the default search result metadata will be returned.
-	Store: StoreReference?, --- The store to restrict the search request to.
+	--- An opaque token used to retrieve the next page of items, if any are available. 
+	ContinuationToken: string?,
+	--- Number of items to retrieve. Maximum page size is 225. Default value is 10. 
+	Count: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- An OData filter used to refine the search query. 
+	Filter: string?,
+	--- An OData orderBy used to order the results of the search query. 
+	OrderBy: string?,
+	--- The text to search for. 
+	Search: string?,
+	--- An OData select query option used to augment the search results. If not defined, 
+	--- the default search result metadata will be returned. 
+	Select: string?,
+	--- The store to restrict the search request to. 
+	Store: StoreReference?,
 }
 
 export type SearchItemsResponse = {
-	ContinuationToken: string?, --- An opaque token used to retrieve the next page of items, if any are available.
-	Items: {CatalogItem}?, --- The paginated set of results for the search query.
+	--- An opaque token used to retrieve the next page of items, if any are available. 
+	ContinuationToken: string?,
+	--- The paginated set of results for the search query. 
+	Items: {CatalogItem}?,
 }
 
 export type SetItemModerationStateRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID associated with this item.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Id: string?, --- The unique ID of the item.
-	Reason: string?, --- The reason for the moderation state change for the associated item.
-	Status: string?, --- The status to set for the associated item.
+	--- An alternate ID associated with this item. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The unique ID of the item. 
+	Id: string?,
+	--- The reason for the moderation state change for the associated item. 
+	Reason: string?,
+	--- The status to set for the associated item. 
+	Status: string?,
 }
 
 export type SetItemModerationStateResponse = {
 }
 
 export type StoreDetails = {
-	FilterOptions: FilterOptions?, --- The options for the filter in filter-based stores. These options are mutually exclusive with item references.
-	PriceOptionsOverride: CatalogPriceOptionsOverride?, --- The global prices utilized in the store. These options are mutually exclusive with price options in item references.
+	--- The options for the filter in filter-based stores. These options are mutually 
+	--- exclusive with item references. 
+	FilterOptions: FilterOptions?,
+	--- The global prices utilized in the store. These options are mutually exclusive 
+	--- with price options in item references. 
+	PriceOptionsOverride: CatalogPriceOptionsOverride?,
 }
 
 export type StoreReference = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID of the store.
-	Id: string?, --- The unique ID of the store.
+	--- An alternate ID of the store. 
+	AlternateId: CatalogAlternateId?,
+	--- The unique ID of the store. 
+	Id: string?,
 }
 
 export type SubmitItemReviewVoteRequest = {
-	AlternateId: CatalogAlternateId?, --- An alternate ID of the item associated with the review.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	ItemId: string?, --- The string ID of the item associated with the review.
-	ReviewId: string?, --- The ID of the review to submit a helpfulness vote for.
-	Vote: string?, --- The helpfulness vote of the review.
+	--- An alternate ID of the item associated with the review. 
+	AlternateId: CatalogAlternateId?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The string ID of the item associated with the review. 
+	ItemId: string?,
+	--- The ID of the review to submit a helpfulness vote for. 
+	ReviewId: string?,
+	--- The helpfulness vote of the review. 
+	Vote: string?,
 }
 
 export type SubmitItemReviewVoteResponse = {
 }
 
 export type SubscriptionDetails = {
-	DurationInSeconds: number, --- The length of time that the subscription will last in seconds.
+	--- The length of time that the subscription will last in seconds. 
+	DurationInSeconds: number,
 }
 
 export type SubtractInventoryItemsOperation = {
-	Amount: number, --- The amount to subtract from the current item amount.
-	DeleteEmptyStacks: boolean, --- Indicates whether stacks reduced to an amount of 0 during the request should be deleted from the inventory. (Default = false).
-	Item: InventoryItemReference?, --- The inventory item the operation applies to.
+	--- The amount to subtract from the current item amount. 
+	Amount: number,
+	--- Indicates whether stacks reduced to an amount of 0 during the request should 
+	--- be deleted from the inventory. (Default = false). 
+	DeleteEmptyStacks: boolean,
+	--- The inventory item the operation applies to. 
+	Item: InventoryItemReference?,
 }
 
 --- Given an entity type, entity identifier and container details, will subtract 
 --- the specified inventory items.  
 export type SubtractInventoryItemsRequest = {
-	Amount: number, --- The amount to add for the current item.
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	DeleteEmptyStacks: boolean, --- Indicates whether stacks reduced to an amount of 0 during the request should be deleted from the inventory. (Default=false)
-	Entity: EntityKey?, --- The entity to perform this action on.
-	IdempotencyId: string?, --- The Idempotency ID for this request.
-	Item: InventoryItemReference?, --- The inventory item the request applies to.
+	--- The amount to add for the current item. 
+	Amount: number,
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Indicates whether stacks reduced to an amount of 0 during the request should 
+	--- be deleted from the inventory. (Default=false) 
+	DeleteEmptyStacks: boolean,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The Idempotency ID for this request. 
+	IdempotencyId: string?,
+	--- The inventory item the request applies to. 
+	Item: InventoryItemReference?,
 }
 
 export type SubtractInventoryItemsResponse = {
-	IdempotencyId: string?, --- The idempotency id used in the request.
-	TransactionIds: {any}?, --- The ids of transactions that occurred as a result of the request.
+	--- The idempotency id used in the request. 
+	IdempotencyId: string?,
+	--- The ids of transactions that occurred as a result of the request. 
+	TransactionIds: {any}?,
 }
 
 --- Submit a request to takedown one or more reviews, removing them from public 
 --- view. Authors will still be able to see their reviews after being taken down. 
 export type TakedownItemReviewsRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Reviews: {ReviewTakedown}?, --- The set of reviews to take down.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The set of reviews to take down. 
+	Reviews: {ReviewTakedown}?,
 }
 
 export type TakedownItemReviewsResponse = {
 }
 
 export type TransferInventoryItemsOperation = {
-	Amount: number, --- The amount to transfer.
-	DeleteEmptyStacks: boolean, --- Indicates whether stacks reduced to an amount of 0 during the operation should be deleted from the inventory. (Default = false)
-	GivingItem: InventoryItemReference?, --- The inventory item the operation is transferring from.
-	ReceivingItem: InventoryItemReference?, --- The inventory item the operation is transferring to.
+	--- The amount to transfer. 
+	Amount: number,
+	--- Indicates whether stacks reduced to an amount of 0 during the operation should 
+	--- be deleted from the inventory. (Default = false) 
+	DeleteEmptyStacks: boolean,
+	--- The inventory item the operation is transferring from. 
+	GivingItem: InventoryItemReference?,
+	--- The inventory item the operation is transferring to. 
+	ReceivingItem: InventoryItemReference?,
 }
 
 --- Transfer the specified inventory items of an entity's container Id to another 
 --- entity's container Id. 
 export type TransferInventoryItemsRequest = {
-	Amount: number, --- The amount to transfer .
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	DeleteEmptyStacks: boolean, --- Indicates whether stacks reduced to an amount of 0 during the request should be deleted from the inventory. (Default = false)
-	GivingCollectionId: string?, --- The inventory collection id the request is transferring from. (Default="default")
-	GivingEntity: EntityKey?, --- The entity the request is transferring from. Set to the caller by default.
-	GivingItem: InventoryItemReference?, --- The inventory item the request is transferring from.
-	IdempotencyId: string?, --- The idempotency id for the request.
-	ReceivingCollectionId: string?, --- The inventory collection id the request is transferring to. (Default="default")
-	ReceivingEntity: EntityKey?, --- The entity the request is transferring to. Set to the caller by default.
-	ReceivingItem: InventoryItemReference?, --- The inventory item the request is transferring to.
+	--- The amount to transfer . 
+	Amount: number,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Indicates whether stacks reduced to an amount of 0 during the request should 
+	--- be deleted from the inventory. (Default = false) 
+	DeleteEmptyStacks: boolean,
+	--- The inventory collection id the request is transferring from. (Default="default") 
+	GivingCollectionId: string?,
+	--- The entity the request is transferring from. Set to the caller by default. 
+	GivingEntity: EntityKey?,
+	--- The inventory item the request is transferring from. 
+	GivingItem: InventoryItemReference?,
+	--- The idempotency id for the request. 
+	IdempotencyId: string?,
+	--- The inventory collection id the request is transferring to. (Default="default") 
+	ReceivingCollectionId: string?,
+	--- The entity the request is transferring to. Set to the caller by default. 
+	ReceivingEntity: EntityKey?,
+	--- The inventory item the request is transferring to. 
+	ReceivingItem: InventoryItemReference?,
 }
 
 export type TransferInventoryItemsResponse = {
-	GivingTransactionIds: {any}?, --- The ids of transactions that occurred as a result of the request's giving action.
-	IdempotencyId: string?, --- The idempotency id for the request.
-	ReceivingTransactionIds: {any}?, --- The ids of transactions that occurred as a result of the request's receiving action.
+	--- The ids of transactions that occurred as a result of the request's giving action. 
+	GivingTransactionIds: {any}?,
+	--- The idempotency id for the request. 
+	IdempotencyId: string?,
+	--- The ids of transactions that occurred as a result of the request's receiving 
+	--- action. 
+	ReceivingTransactionIds: {any}?,
 }
 
 export type UpdateCatalogConfigRequest = {
-	Config: CatalogConfig?, --- The updated catalog configuration.
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+	--- The updated catalog configuration. 
+	Config: CatalogConfig?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
 }
 
 export type UpdateCatalogConfigResponse = {
 }
 
 export type UpdateDraftItemRequest = {
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Item: CatalogItem?, --- Updated metadata describing the catalog item to be updated.
-	Publish: boolean, --- Whether the item should be published immediately.
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- Updated metadata describing the catalog item to be updated. 
+	Item: CatalogItem?,
+	--- Whether the item should be published immediately. 
+	Publish: boolean,
 }
 
 export type UpdateDraftItemResponse = {
-	Item: CatalogItem?, --- Updated metadata describing the catalog item just updated.
+	--- Updated metadata describing the catalog item just updated. 
+	Item: CatalogItem?,
 }
 
 export type UpdateInventoryItemsOperation = {
-	Item: InventoryItem?, --- The inventory item to update with the specified values.
+	--- The inventory item to update with the specified values. 
+	Item: InventoryItem?,
 }
 
 --- Given an entity type, entity identifier and container details, will update the 
 --- entity's inventory items 
 export type UpdateInventoryItemsRequest = {
-	CollectionId: string?, --- The id of the entity's collection to perform this action on. (Default="default")
-	CustomTags: {[any]: any}?, --- The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
-	Entity: EntityKey?, --- The entity to perform this action on.
-	IdempotencyId: string?, --- The Idempotency ID for this request.
-	Item: InventoryItem?, --- The inventory item to update with the specified values.
+	--- The id of the entity's collection to perform this action on. (Default="default") 
+	CollectionId: string?,
+	--- The optional custom tags associated with the request (e.g. build number, external 
+	--- trace identifiers, etc.). 
+	CustomTags: {[any]: any}?,
+	--- The entity to perform this action on. 
+	Entity: EntityKey?,
+	--- The Idempotency ID for this request. 
+	IdempotencyId: string?,
+	--- The inventory item to update with the specified values. 
+	Item: InventoryItem?,
 }
 
 export type UpdateInventoryItemsResponse = {
-	IdempotencyId: string?, --- The idempotency id used in the request.
-	TransactionIds: {any}?, --- The ids of transactions that occurred as a result of the request.
+	--- The idempotency id used in the request. 
+	IdempotencyId: string?,
+	--- The ids of transactions that occurred as a result of the request. 
+	TransactionIds: {any}?,
 }
 
 export type UploadInfo = {
-	FileName: string?, --- Name of the file to be uploaded.
+	--- Name of the file to be uploaded. 
+	FileName: string?,
 }
 
 export type UploadUrlMetadata = {
-	FileName: string?, --- Name of the file for which this upload URL was requested.
-	Id: string?, --- Unique ID for the binary content to be uploaded to the target URL.
-	Url: string?, --- URL for the binary content to be uploaded to.
+	--- Name of the file for which this upload URL was requested. 
+	FileName: string?,
+	--- Unique ID for the binary content to be uploaded to the target URL. 
+	Id: string?,
+	--- URL for the binary content to be uploaded to. 
+	Url: string?,
 }
 
 export type UserGeneratedContentSpecificConfig = {
-	ContentTypes: {any}?, --- The set of content types that will be used for validation.
-	Tags: {any}?, --- The set of tags that will be used for validation.
+	--- The set of content types that will be used for validation. 
+	ContentTypes: {any}?,
+	--- The set of tags that will be used for validation. 
+	Tags: {any}?,
 }
 
 
