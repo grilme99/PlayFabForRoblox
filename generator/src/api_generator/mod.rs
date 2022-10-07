@@ -191,7 +191,7 @@ impl<'a> ApiGenerator<'a> {
 
     fn publish_package(&self, module_root: &PathBuf, version: &str) -> anyhow::Result<()> {
         cmd!("wally", "publish", "--project-path", module_root)
-            .reader()
+            .run()
             .context("Failed to publish package")?;
 
         let name = self.api_name.to_case(Case::Pascal);
