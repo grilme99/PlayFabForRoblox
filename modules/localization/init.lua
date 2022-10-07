@@ -5,7 +5,7 @@
 	The Localization APIs give you the tools needed to manage language setup in 
 	your title. 
 
-	API Version: 1.220926.4
+	API Version: 1.220926.5
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

@@ -4,7 +4,7 @@
 
 	API methods for executing CloudScript using an Entity Profile. 
 
-	API Version: 1.220926.4
+	API Version: 1.220926.5
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

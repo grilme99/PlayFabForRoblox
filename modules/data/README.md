@@ -9,7 +9,7 @@ Wally is the easiest way to manage the PlayFab SDK, and is currently the only su
 To use this package, add the following to your `wally.toml` file:
 
 ```toml
-PlayFabDataApi = "grilme99/playfab-data@1.220926.4"
+PlayFabDataApi = "grilme99/playfab-data@1.220926.5"
 ```
 
 More information and documentation is available at:
