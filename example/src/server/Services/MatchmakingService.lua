@@ -20,8 +20,8 @@ local PlayFabMultiplayer = require(Packages.PlayFabMultiplayer)
 local SessionService = require(script.Parent.SessionService)
 
 local QUEUE_NAME = "Demo_Queue"
-local MATCHMAKING_TIMEOUT = 30 -- Seconds. How long until the player is kicked out the queue.
-local MATCHER_POLL_INTERVAL = 6 -- Seconds. Should not be changed.
+local MATCHMAKING_TIMEOUT = 120 -- Seconds. How long until the player is kicked out the queue.
+local MATCHMAKING_POLL_INTERVAL = 6 -- Seconds. Should not be changed.
 
 local MatchmakingService = {}
 local PlayerMatchmakingTickets: { [Player]: string } = {}
@@ -52,9 +52,49 @@ end
 
 --- Where much of the good stuff happens. Recursive function that polls for ticket statues on a set interval.
 function MatchmakingService:_driveMatchmakingLoop()
-	task.delay(MATCHER_POLL_INTERVAL, function()
+	if not IsMapEmpty(PlayerMatchmakingTickets) then
+		print("--------------")
+		print("Polling matchmaking queue\n")
+
+		for player, ticketId in PlayerMatchmakingTickets do
+			local playerSession = SessionService:GetPlayerSession(player)
+			local ticket = PlayFabMultiplayer.GetMatchmakingTicketAsync(playerSession.entityToken, {
+				TicketId = ticketId,
+				QueueName = QUEUE_NAME,
+				EscapeObject = false,
+			})
+
+			print(
+				"Player: "
+					.. player.Name
+					.. "\n    Ticket ID: "
+					.. ticketId
+					.. "\n    Status: "
+					.. ticket.Status
+					.. "\n"
+			)
+
+			if ticket.Status == "Matched" and ticket.MatchId then
+				-- We found a match!
+				local matchId = ticket.MatchId
+				print("    Match ID: " .. matchId .. "\n")
+
+				self:_handleFoundMatch(player, matchId)
+			end
+		end
+
+		print("--------------")
+	end
+
+	task.delay(MATCHMAKING_POLL_INTERVAL, function()
 		self:_driveMatchmakingLoop()
 	end)
+end
+
+--- Once a match is found, we need to pass the player off to LobbyService to handle persisting match data and
+--- teleporting into games.
+function MatchmakingService:_handleFoundMatch(_player: Player, _matchId: string)
+	-- TODO
 end
 
 --- We want to clean up any active tickets for players who have left the game. Helps to keep games full and allows the
@@ -92,6 +132,14 @@ function MatchmakingService:_handleJoinQueueRequest(player: Player)
 	PlayerMatchmakingTickets[player] = ticketId
 
 	print("Created ticket for player " .. player.Name .. " with ID: " .. ticketId)
+	return true
+end
+
+function IsMapEmpty(map: any): boolean
+	for _, _ in pairs(map) do
+		return false
+	end
+
 	return true
 end
 
