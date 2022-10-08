@@ -5,7 +5,7 @@ for Roblox and Luau.</p>
 
 ----- 
 
-# What is PlayFab? 
+### What is PlayFab? 
 
 PlayFab is a complete backend platform for live games with managed game services, 
 real-time analytics, and LiveOps. This SDK provides complete access to the entire 
@@ -17,7 +17,7 @@ PlayFab APIs are **big**, so only import the packages you actually need.
 
 ----- 
 
-# Example Project 
+### Example Project 
 
 This repo comes with a production-ready implementation of the PlayFab SDK, and 
 is available pre-built to play [here](https://roblox.com). Building the example 
@@ -26,7 +26,7 @@ queue setup. Follow the instructions under the [`example/`](/example) directory.
 
 ----- 
 
-# Luau Types 
+### Luau Types 
 
 While the entire PlayFab API is reflected in this SDK, Wally is currently unable 
 to re-export Luau types to the package thunk. Whilst this doesn't break intellisense 
@@ -39,7 +39,7 @@ can be found under [`install_packages.sh`](example/scripts/install_packages.sh)
 
 ----- 
 
-# API Reference 
+### API Reference 
 
 Documentation for all PlayFab APIs are available on the Microsoft website (linked 
 for each package below). 
