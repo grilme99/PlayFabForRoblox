@@ -14,13 +14,13 @@ local MatchmakingService = require(Services.MatchmakingService)
 
 -- PlayFab settings can be applied to any PlayFab API library and it will automatically "sync" with all the others.
 -- Bit of a strange API, but probably the cleanest way to do it.
-PlayFabClient.SetSettings({
-	titleId = TITLE_ID,
-	secretKey = "", -- Not required in this example. Only using "client" APIs to
-	-- avoid using a secret key.
+PlayFabClient.SetSettings {
+    titleId = TITLE_ID,
+    secretKey = "", -- Not required in this example. Only using "client" APIs to
+    -- avoid using a secret key.
 
-	productionUrl = ".playfabapi.com",
-})
+    productionUrl = ".playfabapi.com",
+}
 
 -- Start all the services
 SessionService:Start()

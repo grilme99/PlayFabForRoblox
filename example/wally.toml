@@ -7,3 +7,6 @@ realm = "shared"
 [dependencies]
 PlayFabClient = "grilme99/playfab-client@1.220926.6"
 PlayFabMultiplayer = "grilme99/playfab-multiplayer@1.220926.6"
+
+# Only version of Fusion I can find uploaded to Wally. Saves using submodules.
+Fusion = "ruizukun-dev/fusion@1.0.0"

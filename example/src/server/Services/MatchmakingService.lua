@@ -27,116 +27,116 @@ local MatchmakingService = {}
 local PlayerMatchmakingTickets: { [Player]: string } = {}
 
 function IsMapEmpty(map: any): boolean
-	return (next(map) == nil)
+    return (next(map) == nil)
 end
 
 function MatchmakingService:Start()
-	local joinQueueRemote = Instance.new("RemoteFunction")
-	joinQueueRemote.Name = "JoinQueue"
-	joinQueueRemote.Parent = ReplicatedStorage
+    local joinQueueRemote = Instance.new("RemoteFunction")
+    joinQueueRemote.Name = "JoinQueue"
+    joinQueueRemote.Parent = ReplicatedStorage
 
-	joinQueueRemote.OnServerInvoke = function(player, ...)
-		return self:_handleJoinQueueRequest(player, ...)
-	end
+    joinQueueRemote.OnServerInvoke = function(player, ...)
+        return self:_handleJoinQueueRequest(player, ...)
+    end
 
-	Players.PlayerRemoving:Connect(function(player)
-		self:_handlePlayerRemoving(player)
-	end)
+    Players.PlayerRemoving:Connect(function(player)
+        self:_handlePlayerRemoving(player)
+    end)
 
-	-- Clean up matchmaking tickets on server close
-	game:BindToClose(function()
-		for _, player in Players:GetPlayers() do
-			self:_handlePlayerRemoving(player)
-		end
-	end)
+    -- Clean up matchmaking tickets on server close
+    game:BindToClose(function()
+        for _, player in Players:GetPlayers() do
+            self:_handlePlayerRemoving(player)
+        end
+    end)
 
-	-- Kick off the loop!
-	self:_driveMatchmakingLoop()
+    -- Kick off the loop!
+    self:_driveMatchmakingLoop()
 end
 
 --- Where much of the good stuff happens. Recursive function that polls for ticket statues on a set interval.
 function MatchmakingService:_driveMatchmakingLoop()
-	if not IsMapEmpty(PlayerMatchmakingTickets) then
-		print("--------------")
-		print("Polling matchmaking queue\n")
+    if not IsMapEmpty(PlayerMatchmakingTickets) then
+        print("--------------")
+        print("Polling matchmaking queue\n")
 
-		for player, ticketId in PlayerMatchmakingTickets do
-			local playerSession = SessionService:GetPlayerSession(player)
-			local ticket = PlayFabMultiplayer.GetMatchmakingTicketAsync(playerSession.entityToken, {
-				TicketId = ticketId,
-				QueueName = QUEUE_NAME,
-				EscapeObject = false,
-			})
+        for player, ticketId in PlayerMatchmakingTickets do
+            local playerSession = SessionService:GetPlayerSession(player)
+            local ticket = PlayFabMultiplayer.GetMatchmakingTicketAsync(playerSession.entityToken, {
+                TicketId = ticketId,
+                QueueName = QUEUE_NAME,
+                EscapeObject = false,
+            })
 
-			print(
-				"Player: "
-					.. player.Name
-					.. "\n    Ticket ID: "
-					.. ticketId
-					.. "\n    Status: "
-					.. ticket.Status
-					.. "\n"
-			)
+            print(
+                "Player: "
+                    .. player.Name
+                    .. "\n    Ticket ID: "
+                    .. ticketId
+                    .. "\n    Status: "
+                    .. ticket.Status
+                    .. "\n"
+            )
 
-			if ticket.Status == "Matched" and ticket.MatchId then
-				-- We found a match!
-				local matchId = ticket.MatchId
-				print("    Match ID: " .. matchId .. "\n")
+            if ticket.Status == "Matched" and ticket.MatchId then
+                -- We found a match!
+                local matchId = ticket.MatchId
+                print("    Match ID: " .. matchId .. "\n")
 
-				self:_handleFoundMatch(player, matchId)
-			end
-		end
+                self:_handleFoundMatch(player, matchId)
+            end
+        end
 
-		print("--------------")
-	end
+        print("--------------")
+    end
 
-	task.delay(MATCHMAKING_POLL_INTERVAL, function()
-		self:_driveMatchmakingLoop()
-	end)
+    task.delay(MATCHMAKING_POLL_INTERVAL, function()
+        self:_driveMatchmakingLoop()
+    end)
 end
 
 --- Once a match is found, we need to pass the player off to LobbyService to handle persisting match data and
 --- teleporting into games.
 function MatchmakingService:_handleFoundMatch(_player: Player, _matchId: string)
-	-- TODO
+    -- TODO
 end
 
 --- We want to clean up any active tickets for players who have left the game. Helps to keep games full and allows the
 --- player to rejoin the queue again in a new server without waiting for the ticket timeout, or for their old ticket to
 --- find a match.
 function MatchmakingService:_handlePlayerRemoving(player: Player)
-	if PlayerMatchmakingTickets[player] == nil then
-		return -- No outstanding tickets
-	end
+    if PlayerMatchmakingTickets[player] == nil then
+        return -- No outstanding tickets
+    end
 
-	local playerSession = SessionService:GetPlayerSession(player)
+    local playerSession = SessionService:GetPlayerSession(player)
 
-	PlayFabMultiplayer.CancelAllMatchmakingTicketsForPlayerAsync(playerSession.entityToken, {
-		QueueName = QUEUE_NAME,
-		Entity = playerSession.entityKey,
-	})
+    PlayFabMultiplayer.CancelAllMatchmakingTicketsForPlayerAsync(playerSession.entityToken, {
+        QueueName = QUEUE_NAME,
+        Entity = playerSession.entityKey,
+    })
 
-	PlayerMatchmakingTickets[player] = nil
-	print("Cancelled any outstanding matchmaking tickets for player: " .. player.Name)
+    PlayerMatchmakingTickets[player] = nil
+    print("Cancelled any outstanding matchmaking tickets for player: " .. player.Name)
 end
 
 function MatchmakingService:_handleJoinQueueRequest(player: Player)
-	print("Attempting to create a matchmaking ticket for player: " .. player.Name)
+    print("Attempting to create a matchmaking ticket for player: " .. player.Name)
 
-	local playerSession = SessionService:GetPlayerSession(player)
-	local ticket = PlayFabMultiplayer.CreateMatchmakingTicketAsync(playerSession.entityToken, {
-		Creator = {
-			Entity = playerSession.entityKey,
-		},
-		GiveUpAfterSeconds = MATCHMAKING_TIMEOUT,
-		QueueName = QUEUE_NAME,
-	})
+    local playerSession = SessionService:GetPlayerSession(player)
+    local ticket = PlayFabMultiplayer.CreateMatchmakingTicketAsync(playerSession.entityToken, {
+        Creator = {
+            Entity = playerSession.entityKey,
+        },
+        GiveUpAfterSeconds = MATCHMAKING_TIMEOUT,
+        QueueName = QUEUE_NAME,
+    })
 
-	local ticketId = ticket.TicketId
-	PlayerMatchmakingTickets[player] = ticketId
+    local ticketId = ticket.TicketId
+    PlayerMatchmakingTickets[player] = ticketId
 
-	print("Created ticket for player " .. player.Name .. " with ID: " .. ticketId)
-	return true
+    print("Created ticket for player " .. player.Name .. " with ID: " .. ticketId)
+    return true
 end
 
 return MatchmakingService
