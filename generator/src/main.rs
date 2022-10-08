@@ -23,7 +23,7 @@ use crate::api_generator::ApiGenerator;
 use crate::domain::PlayFabAPI;
 use crate::playfab_api::SwaggerSpec;
 
-const README_CONTENTS: [&str; 12] = [
+const README_CONTENTS: [&str; 16] = [
     "<h1 align=\"center\">Roblox PlayFab SDK</h1>",
     "<p align=\"center\">An automatically generated and statically typed PlayFab SDK for Roblox and Luau.</p>",
 
@@ -39,10 +39,20 @@ const README_CONTENTS: [&str; 12] = [
     "-----",
 
     "# Example Project",
-    "This repo comes with a production-ready implementation of the PlayFab SDK ([`example/`](/example)), and is \
-    available pre-built to play [here](https://roblox.com). Building the example project is a bit of a process because \
-    you will need a PlayFab title and matchmaking queue setup. Follow the instructions under the [`example/`](/example) \
-    directory.",
+    "This repo comes with a production-ready implementation of the PlayFab SDK, and is available pre-built to play \
+    [here](https://roblox.com). Building the example project is a bit of a process because you will need a PlayFab \
+    title and matchmaking queue setup. Follow the instructions under the [`example/`](/example) directory.",
+
+    "-----",
+
+    "# Luau Types",
+    "While the entire PlayFab API is reflected in this SDK, Wally is currently unable to re-export Luau types to the \
+    package thunk. Whilst this doesn't break intellisense in your editor, it *does* mean you can't reference PlayFab \
+    API types for use in (for example) function signatures or type aliases.",
+
+    "To fix this, you should use the [`wally-package-types`](https://github.com/JohnnyMorganz/wally-package-types) \
+    tool. This is a temporary fix until Wally supports re-exporting types, and usage can be found under \
+    [`install_packages.sh`](example/scripts/install_packages.sh)",
 
     "-----",
 
