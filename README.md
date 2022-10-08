@@ -1,6 +1,6 @@
 <h1 align="center">Roblox PlayFab SDK</h1> 
 
-<p algin="center">An automatically generated and statically typed PlayFab SDK 
+<p align="center">An automatically generated and statically typed PlayFab SDK 
 for Roblox and Luau.</p> 
 
 ----- 
