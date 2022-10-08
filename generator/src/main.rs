@@ -6,7 +6,7 @@ mod playfab_api;
 mod util;
 
 use std::borrow::Cow;
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 use std::env;
 use std::fs::File;
 use std::io::Write;
@@ -23,12 +23,26 @@ use crate::api_generator::ApiGenerator;
 use crate::domain::PlayFabAPI;
 use crate::playfab_api::SwaggerSpec;
 
-const README_CONTENTS: [&str; 5] = [
+const README_CONTENTS: [&str; 12] = [
+    "<h1 align=\"center\">Roblox PlayFab SDK</h1>",
+    "<p algin=\"center\">An automatically generated and statically typed PlayFab SDK for Roblox and Luau.</p>",
+
+    "-----",
+
+    "# What is PlayFab?",
     "PlayFab is a complete backend platform for live games with managed game services, real-time analytics, and \
     LiveOps. This SDK provides complete access to the entire PlayFab API on Roblox.",
 
     "Each API scope (client, server, admin, matchmaking, etc) is split into its own Wally package to help reduce the \
     overall bundle size (see reference below). PlayFab APIs are **big**, so only import the packages you actually need.",
+
+    "-----",
+
+    "# Example Project",
+    "This repo comes with a production-ready implementation of the PlayFab SDK ([`example/`](/example)), and is \
+    available pre-built to play [here](https://roblox.com). Building the example project is a bit of a process because \
+    you will need a PlayFab title and matchmaking queue setup. Follow the instructions under the [`example/`](/example) \
+    directory.",
 
     "-----",
 
@@ -77,7 +91,7 @@ async fn main() -> anyhow::Result<()> {
         .await
         .context("Failed to collect API specs")?;
 
-    let mut actual_specs: HashMap<PlayFabAPI, SwaggerSpec> = HashMap::new();
+    let mut actual_specs: BTreeMap<PlayFabAPI, SwaggerSpec> = BTreeMap::new();
 
     for api in api_specs {
         let api_spec = playfab_api::get_api_spec(&api)
@@ -121,7 +135,7 @@ fn resolve_path(path: &Path) -> Cow<'_, Path> {
 
 fn generate_readme(
     codegen_path: &Cow<Path>,
-    api_specs: HashMap<PlayFabAPI, SwaggerSpec>,
+    api_specs: BTreeMap<PlayFabAPI, SwaggerSpec>,
 ) -> anyhow::Result<()> {
     let mut w = File::create(codegen_path.join("README.md"))?;
 

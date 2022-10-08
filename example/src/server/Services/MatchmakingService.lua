@@ -26,6 +26,10 @@ local MATCHMAKING_POLL_INTERVAL = 6 -- Seconds. Should not be changed.
 local MatchmakingService = {}
 local PlayerMatchmakingTickets: { [Player]: string } = {}
 
+function IsMapEmpty(map: any): boolean
+	return (next(map) == nil)
+end
+
 function MatchmakingService:Start()
 	local joinQueueRemote = Instance.new("RemoteFunction")
 	joinQueueRemote.Name = "JoinQueue"
@@ -132,14 +136,6 @@ function MatchmakingService:_handleJoinQueueRequest(player: Player)
 	PlayerMatchmakingTickets[player] = ticketId
 
 	print("Created ticket for player " .. player.Name .. " with ID: " .. ticketId)
-	return true
-end
-
-function IsMapEmpty(map: any): boolean
-	for _, _ in pairs(map) do
-		return false
-	end
-
 	return true
 end
 

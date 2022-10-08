@@ -3,11 +3,6 @@
 registry = "test"
 
 [[package]]
-name = "csqrl/sift"
-version = "0.0.3"
-dependencies = []
-
-[[package]]
 name = "grilme99/playfab-client"
 version = "1.220926.6"
 dependencies = [["PlayFabInternal", "grilme99/playfab-internal@1.0.3"]]
@@ -15,7 +10,7 @@ dependencies = [["PlayFabInternal", "grilme99/playfab-internal@1.0.3"]]
 [[package]]
 name = "grilme99/playfab-example"
 version = "0.1.0"
-dependencies = [["PlayFabClient", "grilme99/playfab-client@1.220926.6"], ["PlayFabMultiplayer", "grilme99/playfab-multiplayer@1.220926.6"], ["Sift", "csqrl/sift@0.0.3"]]
+dependencies = [["PlayFabClient", "grilme99/playfab-client@1.220926.6"], ["PlayFabMultiplayer", "grilme99/playfab-multiplayer@1.220926.6"]]
 
 [[package]]
 name = "grilme99/playfab-internal"
