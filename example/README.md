@@ -17,7 +17,7 @@ their needs or contribute back up. The project comes with:
 
 Before anything, you'll want [Foreman](https://github.com/Roblox/foreman) or [Aftman](https://github.com/LPGhatguy/aftman) (ideally Aftman) installed to manage dependencies. If you're crazy, you can also just install `Rojo` and `Wally` manually. The PlayFab SDK requires Wally!
 
-After installing dependencies, run `wally install` *or*, if you want to fix type re-exports with Wally, `scripts/install_packages.sh`. Running the shell script will require you to have [`wally-package-types`](https://github.com/JohnnyMorganz/wally-package-types) installed. Just use Wally or Foreman to manage this for you!
+After installing dependencies, run `wally install` *or*, if you want to fix type re-exports with Wally, `scripts/install_packages.sh`. Running the shell script will require you to have [`wally-package-types`](https://github.com/JohnnyMorganz/wally-package-types) installed. Just use Aftman or Foreman to manage this for you!
 
 Next, rename `src/server/TitleId.example.lua` to `TitleId.lua` and replace `TITLE_ID_HERE` with your actual PlayFab title ID.
 
