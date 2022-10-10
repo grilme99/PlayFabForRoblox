@@ -1,9 +1,9 @@
 <h1 align="center">Roblox PlayFab SDK</h1> 
 
+![banner](/.github/assets/banner.jpg) 
+
 <p align="center">An automatically generated and statically typed PlayFab SDK 
 for Roblox and Luau.</p> 
-
-![banner](/.github/assets/banner.jpg) 
 
 ----- 
 
