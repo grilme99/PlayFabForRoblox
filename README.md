@@ -1,3 +1,5 @@
+![banner](/.github/assets/banner.jpg) 
+
 <h1 align="center">Roblox PlayFab SDK</h1> 
 
 <p align="center">An automatically generated and statically typed PlayFab SDK 
@@ -11,9 +13,9 @@ PlayFab is a complete backend platform for live games with managed game services
 real-time analytics, and LiveOps. This SDK provides complete access to the entire 
 PlayFab API on Roblox. 
 
-Each API scope (client, server, admin, matchmaking, etc) is split into its own 
-Wally package to help reduce the overall bundle size (see reference below). 
-PlayFab APIs are **big**, so only import the packages you actually need. 
+Each PlayFab service (client, server, admin, matchmaking, etc) is split into 
+its own Wally package to help reduce the overall bundle size (see reference 
+below). PlayFab APIs are **big**, so only import the packages you actually need. 
 
 ----- 
 
@@ -39,12 +41,12 @@ can be found under [`install_packages.sh`](example/scripts/install_packages.sh)
 
 ----- 
 
-### API Reference 
+### Service Reference 
 
-Documentation for all PlayFab APIs are available on the Microsoft website (linked 
-for each package below). 
+Documentation for all PlayFab services are available on the Microsoft website 
+(linked for each package below). 
 
-| API | Wally Package | Description |
+| Service | Wally Package | Description |
 | --- | ------------- | ----------- |
 | [Admin](https://learn.microsoft.com/en-gb/rest/api/playfab/admin) | `grilme99/playfab-admin@1.220926.6` | APIs for managing title configurations, uploaded Game Server code executables, and user data |
 | [Authentication](https://learn.microsoft.com/en-gb/rest/api/playfab/authentication) | `grilme99/playfab-authentication@1.220926.6` | The Authentication APIs provide a convenient way to convert classic authentication responses into entity authentication models. These APIs will provide you with the entity authentication token needed for subsequent Entity API calls. Manage API keys for authenticating any entity. The game_server API is designed to create uniquely identifiable game_server entities. The game_server Entity token can be used to call Matchmaking Lobby and Pubsub for server scenarios. |

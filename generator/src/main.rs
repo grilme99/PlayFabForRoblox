@@ -23,7 +23,8 @@ use crate::api_generator::ApiGenerator;
 use crate::domain::PlayFabAPI;
 use crate::playfab_api::SwaggerSpec;
 
-const README_CONTENTS: [&str; 16] = [
+const README_CONTENTS: [&str; 17] = [
+    "![banner](/.github/assets/banner.jpg)",
     "<h1 align=\"center\">Roblox PlayFab SDK</h1>",
     "<p align=\"center\">An automatically generated and statically typed PlayFab SDK for Roblox and Luau.</p>",
 
@@ -33,7 +34,7 @@ const README_CONTENTS: [&str; 16] = [
     "PlayFab is a complete backend platform for live games with managed game services, real-time analytics, and \
     LiveOps. This SDK provides complete access to the entire PlayFab API on Roblox.",
 
-    "Each API scope (client, server, admin, matchmaking, etc) is split into its own Wally package to help reduce the \
+    "Each PlayFab service (client, server, admin, matchmaking, etc) is split into its own Wally package to help reduce the \
     overall bundle size (see reference below). PlayFab APIs are **big**, so only import the packages you actually need.",
 
     "-----",
@@ -56,8 +57,8 @@ const README_CONTENTS: [&str; 16] = [
 
     "-----",
 
-    "### API Reference",
-    "Documentation for all PlayFab APIs are available on the Microsoft website (linked for each package below)."
+    "### Service Reference",
+    "Documentation for all PlayFab services are available on the Microsoft website (linked for each package below)."
 ];
 
 #[derive(Parser, Debug)]
@@ -159,7 +160,7 @@ fn generate_readme(
     }
 
     // Packages table
-    writeln!(w, "| API | Wally Package | Description |")?;
+    writeln!(w, "| Service | Wally Package | Description |")?;
     writeln!(w, "| --- | ------------- | ----------- |")?;
 
     for (name, api) in api_specs {
