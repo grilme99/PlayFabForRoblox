@@ -24,10 +24,11 @@ use crate::domain::PlayFabAPI;
 use crate::playfab_api::SwaggerSpec;
 
 const README_CONTENTS: [&str; 17] = [
-    "![banner](/.github/assets/banner.jpg)",
     "<h1 align=\"center\">Roblox PlayFab SDK</h1>",
     "<p align=\"center\">An automatically generated and statically typed PlayFab SDK for Roblox and Luau.</p>",
 
+    "![banner](/.github/assets/banner.jpg)",
+    
     "-----",
 
     "### What is PlayFab?",
