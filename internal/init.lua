@@ -47,7 +47,7 @@ function PlayFabInternal.SetSettings(settings: ISettings)
 	Settings = table.clone(settings)
 end
 
-function PlayFabInternal.MakeApiCall(path: string, requestBody: any, authKey: string?, authValue: string?): unknown
+function PlayFabInternal.MakeApiCall(path: string, requestBody: any, authKey: string?, authValue: string?): never
 	local fullUrl = GetFullUrl(path)
 	local headers = {
 		["X-ReportErrorAsSuccess"] = "true",
