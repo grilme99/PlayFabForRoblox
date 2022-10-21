@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 --- If the task instance has already completed, there will be no-op. 
 export type AbortTaskInstanceRequest = {
 	--- The optional custom tags associated with the request (e.g. build number, external 
@@ -5075,4 +5077,6 @@ export type VirtualCurrencyRechargeTime = {
 	SecondsToRecharge: number,
 }
 
+
+return Types
 

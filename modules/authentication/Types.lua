@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 --- The basic wrapper around every failed API response 
 export type ApiErrorWrapper = {
 	--- Numerical HTTP code 
@@ -154,4 +156,6 @@ export type ValidateEntityTokenResponse = {
 	Lineage: EntityLineage?,
 }
 
+
+return Types
 

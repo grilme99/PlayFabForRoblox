@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 export type AddInventoryItemsOperation = {
 	--- The amount to add to the current item amount. 
 	Amount: number,
@@ -1657,4 +1659,6 @@ export type UserGeneratedContentSpecificConfig = {
 	Tags: {any}?,
 }
 
+
+return Types
 

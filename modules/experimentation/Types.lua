@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 export type AnalysisTaskState = 
 	"Waiting"
 	| "ReadyForSubmission"
@@ -392,4 +394,6 @@ export type Variant = {
 	Variables: {Variable}?,
 }
 
+
+return Types
 

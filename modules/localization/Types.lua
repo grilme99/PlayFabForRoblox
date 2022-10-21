@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 --- The basic wrapper around every failed API response 
 export type ApiErrorWrapper = {
 	--- Numerical HTTP code 
@@ -27,4 +29,6 @@ export type GetLanguageListResponse = {
 	LanguageList: {any}?,
 }
 
+
+return Types
 

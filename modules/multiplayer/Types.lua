@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 export type AccessPolicy = 
 	"Public"
 	| "Friends"
@@ -2955,4 +2957,6 @@ export type WindowsCrashDumpConfiguration = {
 	IsEnabled: boolean,
 }
 
+
+return Types
 

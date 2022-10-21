@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 --- Aborts the pending upload of the requested files. 
 export type AbortFileUploadsRequest = {
 	--- The optional custom tags associated with the request (e.g. build number, external 
@@ -255,4 +257,6 @@ export type SetObjectsResponse = {
 	SetResults: {SetObjectInfo}?,
 }
 
+
+return Types
 

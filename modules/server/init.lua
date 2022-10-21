@@ -6,7 +6,7 @@
 	with user inventories and data in a trusted manner, and to handle matchmaking 
 	and client connection orchestration. 
 
-	API Version: 1.221010.0
+	API Version: 1.221010.1
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

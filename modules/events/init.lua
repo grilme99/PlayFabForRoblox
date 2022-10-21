@@ -6,7 +6,7 @@
 	events can be used for analytic, reporting, or debugging. PlayStream events 
 	can do all of that and also trigger custom actions in near real-time. 
 
-	API Version: 1.221007.2
+	API Version: 1.221007.3
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

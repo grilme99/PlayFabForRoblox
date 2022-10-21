@@ -9,7 +9,7 @@
 	and files support a flexible permissions system to control read and write access 
 	by other entities. 
 
-	API Version: 1.221007.2
+	API Version: 1.221007.3
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

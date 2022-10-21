@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 export type AcceptTradeRequest = {
 	--- Items from the accepting player's inventory in exchange for the offered items 
 	--- in the trade. In the case of a gift, this will be null. 
@@ -4915,4 +4917,6 @@ export type XboxLiveAccountPlayFabIdPair = {
 	XboxLiveAccountId: string?,
 }
 
+
+return Types
 

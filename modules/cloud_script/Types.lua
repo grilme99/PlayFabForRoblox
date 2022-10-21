@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 export type AdCampaignAttributionModel = {
 	--- UTC time stamp of attribution 
 	AttributedAt: string,
@@ -789,4 +791,6 @@ export type ValueToDateModel = {
 	TotalValueAsDecimal: string?,
 }
 
+
+return Types
 

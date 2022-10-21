@@ -50,6 +50,7 @@ pub async fn generate_source(
 
     write_entry_footer(&mut entry_buffer, api_name)?;
     write_apis_footer(&mut apis_buffer)?;
+    write_types_footer(&mut types_buffer)?;
 
     Ok((entry_buffer, apis_buffer, types_buffer))
 }
@@ -82,7 +83,7 @@ fn write_entry_header(
     )?;
     writeln!(w, "local Types = require(script.Types)")?;
     writeln!(w, "")?;
-    
+
     writeln!(w, "local {api_name}Api = require(script.Apis)")?;
     writeln!(w, "")?;
 
@@ -99,6 +100,9 @@ fn write_entry_header(
 
 fn write_types_module_header(w: &mut dyn Write) -> anyhow::Result<()> {
     writeln!(w, "--!strict")?;
+    writeln!(w, "")?;
+
+    writeln!(w, "local Types = {{}}")?;
     writeln!(w, "")?;
 
     Ok(())
@@ -338,6 +342,13 @@ fn write_entry_footer(w: &mut dyn Write, api_name: &str) -> anyhow::Result<()> {
 
 fn write_apis_footer(w: &mut dyn Write) -> anyhow::Result<()> {
     writeln!(w, "return Apis")?;
+    writeln!(w, "")?;
+
+    Ok(())
+}
+
+fn write_types_footer(w: &mut dyn Write) -> anyhow::Result<()> {
+    writeln!(w, "return Types")?;
     writeln!(w, "")?;
 
     Ok(())

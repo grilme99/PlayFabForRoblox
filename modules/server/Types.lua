@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 export type AdCampaignAttribution = {
 	--- UTC time stamp of attribution 
 	AttributedAt: string,
@@ -4803,4 +4805,6 @@ export type XboxLiveAccountPlayFabIdPair = {
 	XboxLiveAccountId: string?,
 }
 
+
+return Types
 

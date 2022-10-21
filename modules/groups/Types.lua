@@ -1,5 +1,7 @@
 --!strict
 
+local Types = {}
+
 --- Accepts an outstanding invitation to to join a group if the invited entity is 
 --- not blocked by the group. Nothing is returned in the case of success. 
 export type AcceptGroupApplicationRequest = {
@@ -615,4 +617,6 @@ export type UpdateGroupRoleResponse = {
 	SetResult: string?,
 }
 
+
+return Types
 
