@@ -6,7 +6,7 @@
 	entity. These APIs give you the tools needed to manage entity profiles. The 
 	Master Player APIs allow you to perform operations on a master player account. 
 
-	API Version: 1.221007.1
+	API Version: 1.221007.2
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

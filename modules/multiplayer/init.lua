@@ -6,7 +6,7 @@
 	The lobby service helps players group together to play multiplayer games. It 
 	is often used as a rendezvous point for players to share connection information. 
 
-	API Version: 1.221007.1
+	API Version: 1.221007.2
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
