@@ -9,7 +9,8 @@
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
-local Types = require(script.Parent.Types)
+local Types = require(script.Types)
+
 local EconomyApi = require(script.Apis)
 
 function EconomyApi.SetSettings(settings: PlayFabInternal.ISettings)

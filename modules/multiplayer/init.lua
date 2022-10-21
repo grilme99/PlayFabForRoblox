@@ -6,11 +6,12 @@
 	The lobby service helps players group together to play multiplayer games. It 
 	is often used as a rendezvous point for players to share connection information. 
 
-	API Version: 1.221007.0
+	API Version: 1.221007.1
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
-local Types = require(script.Parent.Types)
+local Types = require(script.Types)
+
 local MultiplayerApi = require(script.Apis)
 
 function MultiplayerApi.SetSettings(settings: PlayFabInternal.ISettings)

@@ -13,7 +13,8 @@
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
-local Types = require(script.Parent.Types)
+local Types = require(script.Types)
+
 local AuthenticationApi = require(script.Apis)
 
 function AuthenticationApi.SetSettings(settings: PlayFabInternal.ISettings)

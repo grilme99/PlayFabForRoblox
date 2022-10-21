@@ -5,11 +5,12 @@
 	APIs for managing title configurations, uploaded Game Server code executables, 
 	and user data. 
 
-	API Version: 1.221007.0
+	API Version: 1.221007.1
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
-local Types = require(script.Parent.Types)
+local Types = require(script.Types)
+
 local AdminApi = require(script.Apis)
 
 function AdminApi.SetSettings(settings: PlayFabInternal.ISettings)

@@ -9,11 +9,12 @@
 	and files support a flexible permissions system to control read and write access 
 	by other entities. 
 
-	API Version: 1.221007.0
+	API Version: 1.221007.1
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
-local Types = require(script.Parent.Types)
+local Types = require(script.Types)
+
 local DataApi = require(script.Apis)
 
 function DataApi.SetSettings(settings: PlayFabInternal.ISettings)

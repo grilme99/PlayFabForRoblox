@@ -6,11 +6,12 @@
 	events can be used for analytic, reporting, or debugging. PlayStream events 
 	can do all of that and also trigger custom actions in near real-time. 
 
-	API Version: 1.221007.0
+	API Version: 1.221007.1
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
-local Types = require(script.Parent.Types)
+local Types = require(script.Types)
+
 local EventsApi = require(script.Apis)
 
 function EventsApi.SetSettings(settings: PlayFabInternal.ISettings)

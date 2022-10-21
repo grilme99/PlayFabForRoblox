@@ -11,7 +11,8 @@
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
-local Types = require(script.Parent.Types)
+local Types = require(script.Types)
+
 local GroupsApi = require(script.Apis)
 
 function GroupsApi.SetSettings(settings: PlayFabInternal.ISettings)

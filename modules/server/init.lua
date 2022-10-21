@@ -10,7 +10,8 @@
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
-local Types = require(script.Parent.Types)
+local Types = require(script.Types)
+
 local ServerApi = require(script.Apis)
 
 function ServerApi.SetSettings(settings: PlayFabInternal.ISettings)

@@ -8,7 +8,8 @@
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
-local Types = require(script.Parent.Types)
+local Types = require(script.Types)
+
 local CloudScriptApi = require(script.Apis)
 
 function CloudScriptApi.SetSettings(settings: PlayFabInternal.ISettings)
