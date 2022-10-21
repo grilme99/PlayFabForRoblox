@@ -4,13 +4,13 @@ registry = "test"
 
 [[package]]
 name = "grilme99/playfab-client"
-version = "1.220926.6"
+version = "1.221008.0"
 dependencies = [["PlayFabInternal", "grilme99/playfab-internal@1.0.3"]]
 
 [[package]]
 name = "grilme99/playfab-example"
 version = "0.1.0"
-dependencies = [["Fusion", "ruizukun-dev/fusion@1.0.0"], ["PlayFabClient", "grilme99/playfab-client@1.220926.6"], ["PlayFabMultiplayer", "grilme99/playfab-multiplayer@1.220926.6"]]
+dependencies = [["Fusion", "ruizukun-dev/fusion@1.0.0"], ["PlayFabClient", "grilme99/playfab-client@1.221008.0"], ["PlayFabMultiplayer", "grilme99/playfab-multiplayer@1.221007.0"]]
 
 [[package]]
 name = "grilme99/playfab-internal"
@@ -19,7 +19,7 @@ dependencies = []
 
 [[package]]
 name = "grilme99/playfab-multiplayer"
-version = "1.220926.6"
+version = "1.221007.0"
 dependencies = [["PlayFabInternal", "grilme99/playfab-internal@1.0.3"]]
 
 [[package]]

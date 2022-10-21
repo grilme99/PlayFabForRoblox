@@ -80,7 +80,9 @@ fn write_entry_header(
         w,
         "local PlayFabInternal = require(script.Parent.PlayFabInternal)"
     )?;
-    writeln!(w, "local Types = require(script.Parent.Types)")?;
+    writeln!(w, "local Types = require(script.Types)")?;
+    writeln!(w, "")?;
+    
     writeln!(w, "local {api_name}Api = require(script.Apis)")?;
     writeln!(w, "")?;
 
@@ -108,7 +110,7 @@ fn write_apis_module_header(w: &mut dyn Write) -> anyhow::Result<()> {
 
     writeln!(
         w,
-        "local PlayFabInternal = require(script.Parent.PlayFabInternal)"
+        "local PlayFabInternal = require(script.Parent.Parent.PlayFabInternal)"
     )?;
     writeln!(w, "local Types = require(script.Parent.Types)")?;
     writeln!(w, "")?;
