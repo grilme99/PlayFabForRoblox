@@ -4,33 +4,18 @@
 
 	Manage entity statistics Manage entity statistics. 
 
-	API Version: 1.220926.6
+	API Version: 1.221010.0
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)
-
-local LeaderboardsApi = {}
+local Types = require(script.Parent.Types)
+local LeaderboardsApi = require(script.Apis)
 
 function LeaderboardsApi.SetSettings(settings: PlayFabInternal.ISettings)
 	PlayFabInternal.SetSettings(settings)
 end
 
---- The basic wrapper around every failed API response 
-export type ApiErrorWrapper = {
-	--- Numerical HTTP code 
-	code: number,
-	--- Playfab error code 
-	error: string?,
-	--- Numerical PlayFab error code 
-	errorCode: number,
-	--- Detailed description of individual issues with the request object 
-	errorDetails: {[any]: any}?,
-	--- Description for the PlayFab errorCode 
-	errorMessage: string?,
-	--- String HTTP code 
-	status: string?,
-}
-
+export type ApiErrorWrapper = Types.ApiErrorWrapper
 
 return LeaderboardsApi
 

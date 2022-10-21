@@ -9,7 +9,7 @@ Wally is the easiest way to manage the PlayFab SDK, and is currently the only su
 To use this package, add the following to your `wally.toml` file:
 
 ```toml
-PlayFabAuthenticationApi = "grilme99/playfab-authentication@1.220926.6"
+PlayFabAuthenticationApi = "grilme99/playfab-authentication@1.221008.0"
 ```
 
 More information and documentation is available at:

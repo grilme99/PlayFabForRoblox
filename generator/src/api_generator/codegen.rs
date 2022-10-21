@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
-use std::fs::File;
+use std::fs::{self, File};
 use std::io::Write;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use anyhow::Context;
 use convert_case::{Case, Casing};
@@ -21,25 +21,40 @@ enum ApiSecurity {
 }
 
 pub async fn generate_source(
-    file_name: PathBuf,
+    module_root: &PathBuf,
     api_name: &str,
     api_description: &str,
     swagger_spec: &SwaggerSpec,
     version: &str,
-) -> anyhow::Result<File> {
-    let mut buffer = File::create(file_name)?;
+) -> anyhow::Result<(File, File, File)> {
+    if !module_root.exists() {
+        fs::create_dir(module_root)?;
+    }
 
-    write_module_header(&mut buffer, api_name, api_description, version)?;
+    let entry_path = module_root.join(Path::new("init.lua"));
+    let apis_path = module_root.join(Path::new("Apis.lua"));
+    let types_path = module_root.join(Path::new("Types.lua"));
 
-    write_type_definitions(&mut buffer, swagger_spec)?;
-    write_api_functions(&mut buffer, swagger_spec, api_name)?;
+    let mut entry_buffer = File::create(entry_path)?;
+    let mut apis_buffer = File::create(apis_path)?;
+    let mut types_buffer = File::create(types_path)?;
 
-    write_module_footer(&mut buffer, api_name)?;
+    write_entry_header(&mut entry_buffer, api_name, api_description, version)?;
+    write_apis_module_header(&mut apis_buffer)?;
+    write_types_module_header(&mut types_buffer)?;
 
-    Ok(buffer)
+    write_type_definitions(&mut types_buffer, swagger_spec)?;
+    write_api_functions(&mut apis_buffer, swagger_spec)?;
+
+    write_entry_reexports(&mut entry_buffer, swagger_spec)?;
+
+    write_entry_footer(&mut entry_buffer, api_name)?;
+    write_apis_footer(&mut apis_buffer)?;
+
+    Ok((entry_buffer, apis_buffer, types_buffer))
 }
 
-fn write_module_header(
+fn write_entry_header(
     w: &mut dyn Write,
     api_name: &str,
     api_description: &str,
@@ -65,9 +80,8 @@ fn write_module_header(
         w,
         "local PlayFabInternal = require(script.Parent.PlayFabInternal)"
     )?;
-    writeln!(w, "")?;
-
-    writeln!(w, "local {api_name}Api = {{}}")?;
+    writeln!(w, "local Types = require(script.Parent.Types)")?;
+    writeln!(w, "local {api_name}Api = require(script.Apis)")?;
     writeln!(w, "")?;
 
     writeln!(
@@ -76,6 +90,41 @@ fn write_module_header(
     )?;
     writeln!(w, "\tPlayFabInternal.SetSettings(settings)")?;
     writeln!(w, "end")?;
+    writeln!(w, "")?;
+
+    Ok(())
+}
+
+fn write_types_module_header(w: &mut dyn Write) -> anyhow::Result<()> {
+    writeln!(w, "--!strict")?;
+    writeln!(w, "")?;
+
+    Ok(())
+}
+
+fn write_apis_module_header(w: &mut dyn Write) -> anyhow::Result<()> {
+    writeln!(w, "--!strict")?;
+    writeln!(w, "")?;
+
+    writeln!(
+        w,
+        "local PlayFabInternal = require(script.Parent.PlayFabInternal)"
+    )?;
+    writeln!(w, "local Types = require(script.Parent.Types)")?;
+    writeln!(w, "")?;
+
+    writeln!(w, "local Apis = {{}}")?;
+    writeln!(w, "")?;
+
+    Ok(())
+}
+
+fn write_entry_reexports(w: &mut dyn Write, swagger_spec: &SwaggerSpec) -> anyhow::Result<()> {
+    let definitions = &swagger_spec.definitions;
+    for (name, _) in definitions {
+        writeln!(w, "export type {name} = Types.{name}")?;
+    }
+
     writeln!(w, "")?;
 
     Ok(())
@@ -192,12 +241,7 @@ fn write_type_string(
     Ok(())
 }
 
-fn write_api_functions(
-    w: &mut dyn Write,
-    swagger_spec: &SwaggerSpec,
-    api_name: &str,
-) -> anyhow::Result<()> {
-    let namespace = format!("{api_name}Api");
+fn write_api_functions(w: &mut dyn Write, swagger_spec: &SwaggerSpec) -> anyhow::Result<()> {
     for (url, methods) in &swagger_spec.paths {
         let method = &methods.post;
 
@@ -223,14 +267,14 @@ fn write_api_functions(
             .get("$ref")
             .context("Missing parameter ref")?;
         let parameter_type = parse_ref(parameter_ref).context("Failed to parse parameter ref")?;
-        let parameters = format!("{security_parameter}request: {parameter_type}");
+        let parameters = format!("{security_parameter}request: Types.{parameter_type}");
 
         let return_type =
             parse_api_responses(&method.responses).context("Failed to parse API responses")?;
 
         writeln!(
             w,
-            "function {namespace}.{}Async(\n\t{parameters}\n): {return_type}",
+            "function Apis.{}Async(\n\t{parameters}\n): Types.{return_type}",
             method.operation_id
         )?;
 
@@ -283,8 +327,15 @@ fn write_description(
     Ok(())
 }
 
-fn write_module_footer(w: &mut dyn Write, api_name: &str) -> anyhow::Result<()> {
+fn write_entry_footer(w: &mut dyn Write, api_name: &str) -> anyhow::Result<()> {
     writeln!(w, "return {api_name}Api")?;
+    writeln!(w, "")?;
+
+    Ok(())
+}
+
+fn write_apis_footer(w: &mut dyn Write) -> anyhow::Result<()> {
+    writeln!(w, "return Apis")?;
     writeln!(w, "")?;
 
     Ok(())

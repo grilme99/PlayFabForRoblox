@@ -170,12 +170,11 @@ impl<'a> ApiGenerator<'a> {
         api_description: &str,
         version: &str,
     ) -> anyhow::Result<()> {
-        let file_name = module_root.join("init.lua");
         let api_name = self.api_name.to_case(Case::Pascal);
 
         // Creates and writes to a file internally
         codegen::generate_source(
-            file_name,
+            module_root,
             &api_name,
             api_description,
             &self.swagger_spec,

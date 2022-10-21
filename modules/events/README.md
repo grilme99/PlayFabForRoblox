@@ -9,7 +9,7 @@ Wally is the easiest way to manage the PlayFab SDK, and is currently the only su
 To use this package, add the following to your `wally.toml` file:
 
 ```toml
-PlayFabEventsApi = "grilme99/playfab-events@1.220926.6"
+PlayFabEventsApi = "grilme99/playfab-events@1.221007.0"
 ```
 
 More information and documentation is available at:
