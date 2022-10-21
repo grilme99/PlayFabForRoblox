@@ -5,8 +5,8 @@ registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 
 [dependencies]
-PlayFabClient = "grilme99/playfab-client@1.221007.0"
-PlayFabMultiplayer = "grilme99/playfab-multiplayer@1.221007.0"
+PlayFabClient = "grilme99/playfab-client@1.221007.1"
+PlayFabMultiplayer = "grilme99/playfab-multiplayer@1.221007.1"
 
 # Only version of Fusion I can find uploaded to Wally. Saves using submodules.
 Fusion = "ruizukun-dev/fusion@1.0.0"
