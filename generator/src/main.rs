@@ -23,14 +23,19 @@ use crate::api_generator::ApiGenerator;
 use crate::domain::PlayFabAPI;
 use crate::playfab_api::SwaggerSpec;
 
-const README_CONTENTS: [&str; 17] = [
-    "<h1 align=\"center\">PlayFab for Roblox</h1>",
+const README_CONTENTS: [&str; 29] = [
+    "<div align=\"center\">",
+
+    "# `🕹️ PlayFab For Roblox`",
     
-    "![banner](/.github/assets/banner.jpg)",
-
-    "*<p align=\"center\">An automatically generated and statically typed PlayFab SDK for Roblox and Luau.</p>*",
-
-    "-----",
+    "**An automatically generated and statically typed PlayFab SDK for Roblox and Luau.**",
+    
+    "<img src=\".github/assets/banner.jpg\" width="800">",
+    
+    "[![Announcement](https://img.shields.io/badge/blog-announcement-blueviolet.svg)](https://brooke.fyi/posts/playfab-sdk-v3/)",
+    "[![Wally.run](https://img.shields.io/badge/wally-v1.0.0-ad4646.svg)](https://crates.io/crates/puffin)",
+    
+    "</div>",
 
     "### What is PlayFab?",
     "PlayFab is a complete backend platform for live games with managed game services, real-time analytics, and \
@@ -39,14 +44,10 @@ const README_CONTENTS: [&str; 17] = [
     "Each PlayFab service (client, server, admin, matchmaking, etc) is split into its own Wally package to help reduce the \
     overall bundle size (see reference below). PlayFab APIs are **big**, so only import the packages you actually need.",
 
-    "-----",
-
     "### Example Project",
     "This repo comes with a production-ready implementation of the PlayFab SDK, and is available pre-built to play \
     [here](https://roblox.com). Building the example project is a bit of a process because you will need a PlayFab \
     title and matchmaking queue setup. Follow the instructions under the [`example/`](/example) directory.",
-
-    "-----",
 
     "### Luau Types",
     "While the entire PlayFab API is reflected in this SDK, Wally is currently unable to re-export Luau types to the \
@@ -57,7 +58,29 @@ const README_CONTENTS: [&str; 17] = [
     tool. This is a temporary fix until Wally supports re-exporting types, and usage can be found under \
     [`install_packages.sh`](example/scripts/install_packages.sh)",
 
-    "-----",
+    "---",
+
+    "### Contribution",
+
+    "[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.1-ff69b4.svg)](CODE_OF_CONDUCT.md)",
+    
+    "I welcome contributions to this project!",
+    
+    "Please keep in mind that all code contributions should be made to the [`generator/`](/generator/), \
+    because the [`modules/`](/modules/) directory is overwritten every update.",
+
+    "### License",
+
+    "This contribution is dual licensed under EITHER OF",
+    
+    "- Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)",
+    "- MIT license ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)",
+    
+    "at your option.",
+    
+    "For clarity, \"your\" refers to Brooke Rhodes or any other licensee/user of the contribution.",
+
+    "---",
 
     "### Service Reference",
     "Documentation for all PlayFab services are available on the Microsoft website (linked for each package below)."

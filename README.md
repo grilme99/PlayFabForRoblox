@@ -1,11 +1,14 @@
-<h1 align="center">PlayFab for Roblox</h1> 
+<div align="center">
 
-![banner](/.github/assets/banner.jpg) 
+# `🕹️ PlayFab For Roblox`
 
-*<p align="center">An automatically generated and statically typed PlayFab SDK 
-for Roblox and Luau.</p>* 
+**An automatically generated and statically typed PlayFab SDK for Roblox and Luau.**
 
------ 
+<img src=".github/assets/banner.jpg" width="800">
+
+[![Announcement](https://img.shields.io/badge/blog-announcement-blueviolet.svg)](https://brooke.fyi/posts/playfab-sdk-v3/)
+
+</div>
 
 ### What is PlayFab? 
 
@@ -17,16 +20,12 @@ Each PlayFab service (client, server, admin, matchmaking, etc) is split into
 its own Wally package to help reduce the overall bundle size (see reference 
 below). PlayFab APIs are **big**, so only import the packages you actually need. 
 
------ 
-
 ### Example Project 
 
 This repo comes with a production-ready implementation of the PlayFab SDK, and 
 is available pre-built to play [here](https://roblox.com). Building the example 
 project is a bit of a process because you will need a PlayFab title and matchmaking 
 queue setup. Follow the instructions under the [`example/`](/example) directory. 
-
------ 
 
 ### Luau Types 
 
@@ -39,7 +38,30 @@ To fix this, you should use the [`wally-package-types`](https://github.com/Johnn
 tool. This is a temporary fix until Wally supports re-exporting types, and usage 
 can be found under [`install_packages.sh`](example/scripts/install_packages.sh) 
 
------ 
+---
+
+### Contribution
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.1-ff69b4.svg)](CODE_OF_CONDUCT.md)
+
+I welcome contributions to this project!
+
+Please keep in mind that all code contributions should be made to the [`generator/`](/generator/),
+because the [`modules/`](/modules/) directory is overwritten every update.
+
+### License
+
+This contribution is dual licensed under EITHER OF
+
+- Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
+- MIT license ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
+
+at your option.
+
+For clarity, "your" refers to Brooke Rhodes or any other licensee/user of the
+contribution.
+
+---
 
 ### Service Reference 
 
@@ -64,4 +86,3 @@ Documentation for all PlayFab services are available on the Microsoft website
 | [Multiplayer](https://learn.microsoft.com/en-gb/rest/api/playfab/multiplayer) | `grilme99/playfab-multiplayer@1.221007.3` | API methods for managing multiplayer servers. API methods for managing parties. The lobby service helps players group together to play multiplayer games. It is often used as a rendezvous point for players to share connection information. |
 | [Profiles](https://learn.microsoft.com/en-gb/rest/api/playfab/profiles) | `grilme99/playfab-profiles@1.221007.3` | All PlayFab entities have profiles, which hold top-level properties about the entity. These APIs give you the tools needed to manage entity profiles. The Master Player APIs allow you to perform operations on a master player account |
 | [Server](https://learn.microsoft.com/en-gb/rest/api/playfab/server) | `grilme99/playfab-server@1.221010.1` | Provides functionality to allow external (developer-controlled) servers to interact with user inventories and data in a trusted manner, and to handle matchmaking and client connection orchestration |
-
