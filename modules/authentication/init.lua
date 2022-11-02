@@ -9,7 +9,7 @@
 	uniquely identifiable game_server entities. The game_server Entity token can 
 	be used to call Matchmaking Lobby and Pubsub for server scenarios. 
 
-	API Version: 1.221008.0
+	API Version: 1.221024.0
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

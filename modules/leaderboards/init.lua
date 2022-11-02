@@ -4,7 +4,7 @@
 
 	Manage entity statistics Manage entity statistics. 
 
-	API Version: 1.221010.1
+	API Version: 1.221024.0
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

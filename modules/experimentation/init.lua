@@ -4,7 +4,7 @@
 
 	APIs for managing experiments. 
 
-	API Version: 1.221007.3
+	API Version: 1.221024.0
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

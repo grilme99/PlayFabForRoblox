@@ -5,7 +5,7 @@
 	Enables the use of an external match-making service in conjunction with PlayFab 
 	hosted Game Server instances. 
 
-	API Version: 1.221010.1
+	API Version: 1.221024.0
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

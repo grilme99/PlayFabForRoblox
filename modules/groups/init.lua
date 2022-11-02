@@ -7,7 +7,7 @@
 	then you should use groups. Groups can also be used to make chatrooms, parties, 
 	or any other persistent collection of entities. 
 
-	API Version: 1.221010.1
+	API Version: 1.221024.0
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

@@ -5,7 +5,7 @@
 	API methods for managing the catalog. Inventory manages in-game assets for any 
 	given entity. 
 
-	API Version: 1.221008.0
+	API Version: 1.221024.0
 ]=]
 
 local PlayFabInternal = require(script.Parent.PlayFabInternal)

@@ -30,7 +30,7 @@ const README_CONTENTS: [&str; 29] = [
     
     "**An automatically generated and statically typed PlayFab SDK for Roblox and Luau.**",
     
-    "<img src=\".github/assets/banner.jpg\" width="800">",
+    "<img src=\".github/assets/banner.jpg\" width=\"800\">",
     
     "[![Announcement](https://img.shields.io/badge/blog-announcement-blueviolet.svg)](https://brooke.fyi/posts/playfab-sdk-v3/)",
     "[![Wally.run](https://img.shields.io/badge/wally-v1.0.0-ad4646.svg)](https://crates.io/crates/puffin)",
