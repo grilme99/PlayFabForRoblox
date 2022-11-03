@@ -9,8 +9,6 @@ Luau.**
 
 [![Announcement](https://img.shields.io/badge/blog-announcement-blueviolet.svg)](https://brooke.fyi/posts/playfab-sdk-v3/) 
 
-[![Wally.run](https://img.shields.io/badge/wally-v1.0.0-ad4646.svg)](https://crates.io/crates/puffin) 
-
 </div> 
 
 ### What is PlayFab? 
