@@ -1,5 +1,7 @@
 [tools]
-rojo = "Roblox/rojo@7.4.4"
+rojo = "rojo-rbx/rojo@7.4.4"
 wally = "UpliftGames/wally@0.3.1"
 wally-package-types = "JohnnyMorganz/wally-package-types@1.3.2"
 lune = "lune-org/lune@0.8.9"
+pesde = "daimond113/pesde@0.5.2+registry.0.1.1"
+run-in-roblox = "rojo-rbx/run-in-roblox@0.3.0"

@@ -1,0 +1,23 @@
+{
+    "name": "PlayFab",
+    "tree": {
+        "$className": "DataModel",
+        "ReplicatedStorage": {
+            "PlayFab": {
+                "$path": "modules/",
+                "common": {
+                    "$path": "common/"
+                },
+                "jest.config": {
+                    "$path": "test/jest.config.luau"
+                }
+            },
+            "Packages": {
+                "$path": "roblox_packages/"
+            }
+        },
+        "TestService": {
+            "$path": "test/"
+        }
+    }
+}

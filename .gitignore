@@ -1,1 +1,8 @@
 .DS_Store
+sourcemap.json
+*.rbxl
+*.lock
+
+.pesde/
+roblox_packages/
+modules/

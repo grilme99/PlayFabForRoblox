@@ -14,11 +14,23 @@ type SwaggerSpec = NetworkTypes.SwaggerSpec
 
 type Result<T, E> = Result.Result<T, E>
 
-type Array<T> = { T }
+type Map<K, V> = { [K]: V }
 export type ApiSpecs = {
 	toc: TocResponse,
-	apis: Array<ApiDocument>,
+	apiCount: number,
+	apis: Map<string, SwaggerSpec>,
 }
+
+local function extractAPIName(str: string): string
+	return str:match("PlayFab/(.-)%.swagger%.json") or ""
+end
+
+local function pascalToKebab(name: string): string
+	local converted = name:gsub("([A-Z])", function(char)
+		return "-" .. char:lower()
+	end)
+	return (converted:sub(1, 1) == "-") and converted:sub(2) or converted
+end
 
 -- Gets the table of contents (TOC) for the PlayFab API specs
 local function getTableOfContentsAsync(): Result<TocResponse, string>
@@ -57,24 +69,33 @@ local function getApiSpecsAsync(): Result<ApiSpecs, string>
 
 		-- Fetch all of the API specs
 		local apiSpecs = {}
+		local apiCount = 0
+
 		for _, doc in toc.documents do
 			-- Skip non-swagger formats because all others are legacy.
 			if doc.format ~= "Swagger" then
 				continue
 			end
 
+			local apiName_ = extractAPIName(doc.relPath)
+			local apiNameFormatted = pascalToKebab(apiName_)
+
 			local apiSpec, err = getApiSpecAsync(doc.relPath):unpack()
 			if err then
 				return Result.Err(err)
 			end
 
-			print(`  Fetched API spec: {apiSpec.info.title}`)
-			table.insert(apiSpecs, apiSpec)
+			print(`  Fetched API spec: {apiSpec.info.title} ({apiNameFormatted})`)
+			apiSpecs[apiNameFormatted] = apiSpec
+			apiCount += 1
+
+			break
 		end
 
 		stdio.write(stdio.style("reset"))
 		return Result.Ok({
 			toc = toc,
+			apiCount = apiCount,
 			apis = apiSpecs,
 		})
 	end)
