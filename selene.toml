@@ -1,1 +1,5 @@
 std = "roblox"
+
+[rules]
+# Covered by Luau analyzer already
+incorrect_standard_library_use = "allow"
