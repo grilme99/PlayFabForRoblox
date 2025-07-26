@@ -3,6 +3,6 @@ sourcemap.json
 *.rbxl
 *.lock
 
-.pesde/
-roblox_packages/
+Packages/
+DevPackages/
 modules/
