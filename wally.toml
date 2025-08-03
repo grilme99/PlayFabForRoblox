@@ -1,0 +1,15 @@
+# THIS PACKAGE IS NOT DIRECTLY PUBLISHED!
+
+[package]
+name = "playfab-roblox/test-place"
+version = "0.0.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+private = true
+
+[place]
+shared-packages = "game.ReplicatedStorage.Packages"
+
+[dependencies]
+Jest = "jsdotlua/jest@3.10.0"
+JestGlobals = "jsdotlua/jest-globals@3.10.0"

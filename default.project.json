@@ -1,23 +1,17 @@
 {
-    "name": "PlayFab",
-    "tree": {
-        "$className": "DataModel",
-        "ReplicatedStorage": {
-            "PlayFab": {
-                "$path": "modules/",
-                "common": {
-                    "$path": "common/"
-                },
-                "jest.config": {
-                    "$path": "test/jest.config.luau"
-                }
-            },
-            "Packages": {
-                "$path": "roblox_packages/"
-            }
+  "name": "PlayFab Sourcemap",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Packages": {
+        "$path": "Packages",
+        "PlayFabCommon": {
+          "$path": "common"
         },
-        "TestService": {
-            "$path": "test/"
+        "admin": {
+          "$path": "modules/admin"
         }
+      }
     }
+  }
 }
