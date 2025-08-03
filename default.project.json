@@ -8,8 +8,62 @@
         "PlayFabCommon": {
           "$path": "common"
         },
+        "addon": {
+          "$path": "modules/addon"
+        },
         "admin": {
           "$path": "modules/admin"
+        },
+        "authentication": {
+          "$path": "modules/authentication"
+        },
+        "client": {
+          "$path": "modules/client"
+        },
+        "cloud-script": {
+          "$path": "modules/cloud-script"
+        },
+        "data": {
+          "$path": "modules/data"
+        },
+        "economy": {
+          "$path": "modules/economy"
+        },
+        "events": {
+          "$path": "modules/events"
+        },
+        "experimentation": {
+          "$path": "modules/experimentation"
+        },
+        "groups": {
+          "$path": "modules/groups"
+        },
+        "insights": {
+          "$path": "modules/insights"
+        },
+        "localization": {
+          "$path": "modules/localization"
+        },
+        "matchmaker": {
+          "$path": "modules/matchmaker"
+        },
+        "multiplayer": {
+          "$path": "modules/multiplayer"
+        },
+        "profiles": {
+          "$path": "modules/profiles"
+        },
+        "progression": {
+          "$path": "modules/progression"
+        },
+        "server": {
+          "$path": "modules/server"
+        },
+        "state": {
+          "$path": "modules/state"
+        },
+        "sweepstakes": {
+          "$path": "modules/sweepstakes"
         }
       }
     }

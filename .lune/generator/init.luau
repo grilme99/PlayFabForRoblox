@@ -31,6 +31,8 @@ local function main(): Result<nil, string>
         return Result.Err(err)
     end
 
+    rojo.generateRojoProject(apiSpecs)
+
     for apiName, api in apiSpecs.apis do
         -- local success, result = buildPackage({
         --     name = apiName,
@@ -50,8 +52,6 @@ local function main(): Result<nil, string>
 
         -- break
     end
-
-    rojo.generateRojoProject(apiSpecs)
 
     return Result.Ok(nil)
 end

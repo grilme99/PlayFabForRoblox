@@ -91,8 +91,6 @@ local function getApiSpecsAsync(): Result<ApiSpecs, string>
 
             apiSpecs[apiNameFormatted] = apiSpec
             apiCount += 1
-
-            break
         end
 
         spinner.stop()

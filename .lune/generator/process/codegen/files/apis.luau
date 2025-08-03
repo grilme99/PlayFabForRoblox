@@ -47,6 +47,8 @@ local function getAuthParam(path: ir.Path): string?
         return "entityToken"
     elseif security == "X-Authorization" then
         return "sessionTicket"
+    elseif security == "None" then
+        return nil
     else
         error(`Unknown security type "{security}" for path "{path.id}"`)
     end

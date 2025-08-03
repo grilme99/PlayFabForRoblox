@@ -45,10 +45,6 @@ local function validateSwaggerSpec(spec: SwaggerSpec): Result<nil, string>
         return Result.Err("API title is missing in the Swagger spec.")
     end
 
-    if spec.paths == nil or next(spec.paths) == nil then
-        return Result.Err("Paths section is missing or empty in the Swagger spec.")
-    end
-
     if spec.definitions == nil or next(spec.definitions) == nil then
         return Result.Err("Definitions section is missing or empty in the Swagger spec.")
     end
