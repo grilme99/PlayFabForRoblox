@@ -1,0 +1,13 @@
+# This file was generated on 2025-08-03 at 00:04 UTC. Do not edit directly.
+
+[dependencies]
+PlayFabShared = "playfab-roblox/shared@^1.0.0"
+
+[package]
+authors = ["Brooke Rhodes <hello@brooke.sh>"]
+description = "The Authentication APIs provide a convenient way to convert classic authentication responses into entity authentication models. These APIs will provide you with the entity authentication token needed for subsequent Entity API calls. The game_server API is designed to create uniquely identifiable game_server entities. The game_server Entity token can be used to call Matchmaking Lobby and Pubsub for server scenarios."
+license = "Apache-2.0"
+name = "playfab-roblox/authentication"
+realm = "shared"
+registry = "https://github.com/UpliftGames/wally-index"
+version = "3.250801.0"

@@ -1,0 +1,6 @@
+{
+  "name": "matchmaker",
+  "tree": {
+    "$path": "src"
+  }
+}

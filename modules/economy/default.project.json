@@ -1,0 +1,6 @@
+{
+  "name": "economy",
+  "tree": {
+    "$path": "src"
+  }
+}

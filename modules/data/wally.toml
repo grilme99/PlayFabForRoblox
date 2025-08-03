@@ -1,0 +1,13 @@
+# This file was generated on 2025-08-03 at 00:04 UTC. Do not edit directly.
+
+[dependencies]
+PlayFabShared = "playfab-roblox/shared@^1.0.0"
+
+[package]
+authors = ["Brooke Rhodes <hello@brooke.sh>"]
+description = "Store arbitrary data associated with an entity. Objects are small (~1KB) JSON-compatible objects which are stored directly on the entity profile. Objects are made available for use in other PlayFab contexts, such as PlayStream events and CloudScript functions. Files can efficiently store data of any size or format. Both objects and files support a flexible permissions system to control read and write access by other entities."
+license = "Apache-2.0"
+name = "playfab-roblox/data"
+realm = "shared"
+registry = "https://github.com/UpliftGames/wally-index"
+version = "3.250801.0"

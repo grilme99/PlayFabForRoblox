@@ -1,0 +1,6 @@
+{
+  "name": "client",
+  "tree": {
+    "$path": "src"
+  }
+}

@@ -1,0 +1,13 @@
+# This file was generated on 2025-08-03 at 00:04 UTC. Do not edit directly.
+
+[dependencies]
+PlayFabShared = "playfab-roblox/shared@^1.0.0"
+
+[package]
+authors = ["Brooke Rhodes <hello@brooke.sh>"]
+description = "APIs which provide the full range of PlayFab features available to the client - authentication, account and data management, inventory, friends, matchmaking, reporting, and platform-specific functionality"
+license = "Apache-2.0"
+name = "playfab-roblox/client"
+realm = "shared"
+registry = "https://github.com/UpliftGames/wally-index"
+version = "3.250801.0"
