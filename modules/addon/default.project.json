@@ -1,6 +1,0 @@
-{
-  "name": "addon",
-  "tree": {
-    "$path": "src"
-  }
-}
