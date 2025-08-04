@@ -1,5 +1,5 @@
 [package]
-name = "playfab/sdk-common"
+name = "playfab-luau/sdk-common"
 version = "3.0.0"
 authors = ["Brooke Rhodes <hello@brooke.sh>"]
 description = "Internal utilities shared between the PlayFab SDKs. Do not use directly."
