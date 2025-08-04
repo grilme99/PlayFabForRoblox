@@ -1,1 +1,8 @@
 std = "roblox"
+
+[rules]
+# This is covered by the LSP and gets in the way
+undefined_variable = "allow"
+incorrect_standard_library_use = "allow"
+global_usage = "allow"
+unused_variable = "allow"

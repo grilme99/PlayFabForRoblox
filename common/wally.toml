@@ -1,0 +1,11 @@
+[package]
+name = "playfab-luau/sdk-common"
+version = "3.0.0"
+authors = ["Brooke Rhodes <hello@brooke.sh>"]
+description = "Internal utilities shared between the PlayFab SDKs. Do not use directly."
+license = "Apache-2.0"
+realm = "shared"
+registry = "https://github.com/UpliftGames/wally-index"
+
+[dev-dependencies]
+JestGlobals = "jsdotlua/jest-globals@3.10.0"
