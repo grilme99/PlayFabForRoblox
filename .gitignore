@@ -1,5 +1,6 @@
 .DS_Store
 sourcemap.json
+globalTypes.d.lua
 .env.luau
 *.rbxl
 *.lock
