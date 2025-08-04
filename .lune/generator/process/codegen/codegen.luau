@@ -1,4 +1,5 @@
 local fs = require("@lune/fs")
+local process = require("@lune/process")
 
 local Result = require("../../vendor/result")
 type Result<T, E> = Result.Result<T, E>
@@ -66,6 +67,17 @@ local function buildPackage(spec: ir.Spec): Result<nil, string>
         local success, err = pcall(fs.writeFile, `{basePath}/src/Types.luau`, types.generateTypes(spec))
         if not success then
             return Result.Err(`Failed to write types.luau file:\n\t{err}`)
+        end
+    end
+
+    -- Run Stylua to format the generated files
+    do
+        local result = process.exec("stylua", {
+            basePath,
+        })
+
+        if not result.ok then
+            return Result.Err(`Failed to format generated files with Stylua:\n\t{result.stderr}`)
         end
     end
 

@@ -66,11 +66,6 @@
           "$path": "modules/sweepstakes"
         }
       }
-    },
-    "ServerScriptService": {
-      "$properties": {
-        "LoadStringEnabled": true
-      }
     }
   }
 }
