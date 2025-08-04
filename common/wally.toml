@@ -1,8 +1,8 @@
 [package]
-name = "playfab-roblox/common"
+name = "playfab/sdk-common"
 version = "3.0.0"
 authors = ["Brooke Rhodes <hello@brooke.sh>"]
-description = "APIs for managing title configurations, uploaded Game Server code executables, and user data"
+description = "Internal utilities shared between the PlayFab SDKs. Do not use directly."
 license = "Apache-2.0"
 realm = "shared"
 registry = "https://github.com/UpliftGames/wally-index"

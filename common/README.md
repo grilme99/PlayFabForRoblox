@@ -1,3 +1,3 @@
-# Shared
+# SDK Common
 
-Common code used between all of the PlayFab modules.
+Internal utilities shared between the PlayFab SDKs. Do not use directly.

@@ -1,5 +1,5 @@
 {
-    "name": "common",
+    "name": "sdk-common",
     "tree": {
         "$path": "src/"
     }
