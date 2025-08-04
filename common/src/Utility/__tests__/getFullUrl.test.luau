@@ -20,6 +20,18 @@ describe("getFullUrl", function()
         jest.resetModules()
     end)
 
+    it("should return the correct full URL with vertical name", function()
+        local Settings = require(PackageRoot.Settings)
+        local getFullUrl = require(PackageRoot.Utility.getFullUrl)
+
+        Settings.verticalName = "verticalName"
+        Settings.requestGetParams = nil
+
+        local urlPath = "/foo/bar"
+        local fullUrl = getFullUrl(urlPath)
+        expect(fullUrl).toBe("https://verticalName.playfabapi.com/foo/bar")
+    end)
+
     it("should return the correct full URL with string title ID", function()
         local Settings = require(PackageRoot.Settings)
         local getFullUrl = require(PackageRoot.Utility.getFullUrl)

@@ -8,9 +8,11 @@ local getFullUrl = require(PackageRoot.Utility.getFullUrl)
 local Types = require(PackageRoot.Types)
 type Result<T, E> = Types.Result<T, E>
 
+type Map<K, V> = { [K]: V }
+
 local function makeApiCall(path: string, requestBody: any, authKey: string?, authValue: string?): Result<any, string>
     local fullUrl = getFullUrl(path)
-    local headers = {
+    local headers: Map<string, string | Secret> = {
         ["X-ReportErrorAsSuccess"] = "false",
         ["X-PlayFabSDK"] = VERSION,
         ["Content-Type"] = "application/json",
@@ -18,6 +20,8 @@ local function makeApiCall(path: string, requestBody: any, authKey: string?, aut
 
     if authKey and authValue ~= "" and authValue then
         headers[authKey] = authValue
+    elseif authKey == "X-SecretKey" and Settings.secretKey and Settings.secretKey ~= "" then
+        headers[authKey] = Settings.secretKey
     end
 
     requestBody.TitleID = Settings.titleId

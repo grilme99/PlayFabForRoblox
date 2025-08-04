@@ -17,6 +17,11 @@ local function generateRojoProject(specs: ApiSpecs)
                     },
                 },
             },
+            ServerScriptService = {
+                ["$properties"] = {
+                    LoadStringEnabled = true,
+                },
+            },
         },
     }
 
